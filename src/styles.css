@@ -1,0 +1,96 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f1e8;
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-strong: #fffdf8;
+  --text: #1f1b16;
+  --muted: #6f6559;
+  --accent: #a56a2a;
+  --accent-soft: rgba(165, 106, 42, 0.14);
+  --border: rgba(56, 43, 28, 0.1);
+  --shadow: 0 20px 60px rgba(31, 27, 22, 0.08);
+  --content-width: 42rem;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #171513;
+  --surface: rgba(30, 27, 24, 0.92);
+  --surface-strong: #211d1a;
+  --text: #f4ede3;
+  --muted: #b5a895;
+  --accent: #d49b5c;
+  --accent-soft: rgba(212, 155, 92, 0.16);
+  --border: rgba(244, 237, 227, 0.08);
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Georgia", "Times New Roman", serif;
+  background:
+    radial-gradient(circle at top, rgba(212, 155, 92, 0.14), transparent 30%),
+    var(--bg);
+  color: var(--text);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+.page-shell {
+  width: min(100%, calc(var(--content-width) + 2rem));
+  margin: 0 auto;
+  padding: 1rem 1rem 2rem;
+}
+
+.hero-card {
+  margin-top: 8vh;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-card h1 {
+  margin: 0;
+  font-size: clamp(2rem, 9vw, 3.4rem);
+  line-height: 1.05;
+}
+
+.lede {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
