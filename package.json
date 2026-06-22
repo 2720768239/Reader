@@ -5,11 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run import:articles && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run --passWithNoTests",
-    "test:watch": "vitest --passWithNoTests",
-    "import:articles": "node --loader tsx scripts/import-articles.ts"
+    "test:watch": "vitest --passWithNoTests"
   },
   "dependencies": {
     "react": "^19.1.0",
