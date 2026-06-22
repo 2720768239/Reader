@@ -1,0 +1,558 @@
+{
+  "slug": "16-self-service-data-analytics",
+  "title": "How Anthropic enables self-service data analytics with Claude",
+  "preview": "As many data science and data engineering teams can attest, enabling self-service business analytics has traditionally been a slog.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "As many data science and data engineering teams can attest, enabling self-service business analytics has traditionally been a slog.",
+      "chinese": "正如许多数据科学和数据工程团队所证实的那样，实现自助式商业分析历来是一项艰巨的工作。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Making the data model more accessible to less technical coworkers via wide and denormalized tables often leads to overlapping views with inconsistent definitions as the business scales (and does little to bridge the gap for employees with little desire to learn SQL). Alternatively, creating more ringfenced environments for users often misses the long tail of business questions and leads to metric and dashboard bloat as teams silo their work.",
+      "chinese": "通过宽表和非规范化表让数据模型对技术水平较低的同事更易访问，往往会导致随着业务扩展而出现定义不一致的重叠视图（而且对于不愿学习 SQL 的员工来说收效甚微）。另一种方法是为用户创建更封闭的环境，但这往往会遗漏大量长尾业务问题，并导致指标和仪表盘膨胀，因为各团队各自为政。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "The rise of LLMs provides an additional path for self-service analytics that avoids those challenges. However, pointing Claude at a warehouse and letting the agents execute can create a false sense of precision.",
+      "chinese": "大语言模型的兴起为自助式分析提供了另一条路径，可以避免上述挑战。然而，直接让 Claude 连接数据仓库并让智能体自行执行，可能会产生一种虚假的精确感。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "The initial elation of liberation from ad-hoc requests turns into dread with the realization that this setup separates stakeholders from the underlying infrastructure, documentation, and expertise that previously steered them toward carefully curated datasets.",
+      "chinese": "从临时数据请求中解放出来的最初喜悦，很快就会变成忧虑——因为人们意识到这种设置将利益相关者与底层基础设施、文档以及之前引导他们使用精心策划数据集的专业知识隔离开来。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "At Anthropic, 95% of business analytics queries are automated via Claude, with ~95% accuracy in aggregate. By giving this often rote, repetitive work to Claude, our data science team can focus on more strategic work like causal modeling, forecasting, and machine learning.",
+      "chinese": "在 Anthropic，95% 的商业分析查询通过 Claude 自动完成，总体准确率约为 95%。将这些通常机械重复的工作交给 Claude 后，我们的数据科学团队可以专注于更具战略性的工作，如因果建模、预测和机器学习。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "After meeting with dozens of Anthropic's top Claude Code users and having seen myriad design patterns for analytics agents, we've cultivated some best practices for other data teams working with LLMs. In this post, we'll share these tips and approaches to maximizing Claude's ability to drive self-serve business insights, including:",
+      "chinese": "在与数十位 Anthropic 顶级 Claude Code 用户会面并看到了众多分析智能体的设计模式后，我们为其他使用大语言模型的数据团队总结了一些最佳实践。在本文中，我们将分享这些技巧和方法，以最大限度地发挥 Claude 驱动自助式商业洞察的能力，包括："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "- Why analytics accuracy is a context and verification problem, not a code generation issue;",
+      "chinese": "- 为什么分析准确性是一个上下文和验证问题，而非代码生成问题；"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "- The three failure modes that cause most errors;",
+      "chinese": "- 导致大多数错误的三种失败模式；"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "- The agentic analytics stack we built to address these errors;",
+      "chinese": "- 我们为解决这些错误而构建的智能体分析技术栈；"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "- How we measure effectiveness; and",
+      "chinese": "- 我们如何衡量效果；"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "- A basic template for how we create the majority of our skills (see the appendix)",
+      "chinese": "- 以及我们创建大部分技能的基本模板（见附录）"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Data is not software",
+      "chinese": "数据不是软件"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "LLMs' generative abilities are a double-edged sword: the mechanisms that enable creative solutions to complex problems can also hallucinate erroneous output. To fully understand the challenges with analytics agents, it's useful to compare them to coding agents.",
+      "chinese": "大语言模型的生成能力是一把双刃剑：使模型能够为复杂问题提供创造性解决方案的机制，同样也会产生幻觉错误输出。要充分理解分析智能体面临的挑战，将其与编码智能体进行比较很有帮助。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "Coding is an open-ended solution space that rewards the models' creativity, while documentation and tests provide natural guardrails against hallucination. In contrast, for analytics use cases, there's often only a single correct answer using a single correct source in which there's no deterministic way of proving the correctness.",
+      "chinese": "编码是一个开放式解空间，奖励模型的创造力，而文档和测试提供了防止幻觉的天然屏障。相比之下，对于分析用例，通常只有一个正确答案、一个正确来源，且没有确定性的方法来证明其正确性。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "For self-service agentic business analytics, the complexity mainly lies in the ambiguity of the data. The central problem comes down to our **ability to map a user's question to specific and up-to-date entities in our data model and know the correct way of working with them**. If we can do that, then the resulting execution and SQL becomes trivial.",
+      "chinese": "对于自助式智能体商业分析，复杂性主要在于数据的模糊性。核心问题归结为**我们将用户问题映射到数据模型中特定且最新的实体并知道正确使用方式的能力**。如果我们能做到这一点，那么后续的执行和 SQL 就变得微不足道了。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "We've identified three attributes of this problem that account for an overwhelming majority of inaccurate responses:",
+      "chinese": "我们已经确定了这个问题的三个属性，它们导致了绝大多数不准确的回答："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "1. **Concept <> entity ambiguity**: with hundreds of viable options in a data model (out of potentially millions of fields), the agent is unable to choose the correct fields that best answer a user's question. For example, in measuring the number of active users: what actions constitute being \"active\"? Do you include fraudulent users? What lookback window do you use?",
+      "chinese": "1. **概念与实体的模糊性**：数据模型中有数百个可行选项（在可能数百万个字段中），智能体无法选择最能回答用户问题的正确字段。例如，在衡量活跃用户数量时：哪些行为构成\"活跃\"？是否包括欺诈用户？使用什么回溯窗口？"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "2. **Data staleness**: data sources, business definitions, and schemas change constantly; assets and agent knowledge go stale and start returning subtly wrong answers.",
+      "chinese": "2. **数据过时**：数据源、业务定义和模式不断变化；资产和智能体知识变得陈旧，开始返回微妙错误的答案。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "3. **Retrieval failure**: the right information may actually be in the data model and properly annotated, but given the vastness of the search space, the agent simply doesn't find it.",
+      "chinese": "3. **检索失败**：正确的信息实际上可能在数据模型中并被正确标注，但由于搜索空间的庞大，智能体根本找不到它。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Our agentic analytics stack",
+      "chinese": "我们的智能体分析技术栈"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "At Anthropic, the main way we minimize these three errors is via our agentic data stack. Each layer exists primarily to attack one or more of these problems:",
+      "chinese": "在 Anthropic，我们最小化这三种错误的主要方式是通过我们的智能体数据技术栈。每一层的存在主要是为了解决这些难题中的一个或多个："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-20",
+      "english": "- **Entity ambiguity**: data foundations and sources of truth shrink the space of plausible entities until there's a single governed answer.",
+      "chinese": "- **实体模糊性**：数据基础和真相来源缩小了合理实体的空间，直到只剩下一个受治理的答案。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-21",
+      "english": "- **Staleness**: maintenance and validation processes keep everything from rotting as the business changes.",
+      "chinese": "- **数据过时**：维护和验证流程确保一切不会随着业务变化而腐化。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-22",
+      "english": "- **Retrieval failure**: skills make sure the agent reliably finds and correctly uses that answer.",
+      "chinese": "- **检索失败**：技能确保智能体可靠地找到并正确使用该答案。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-23",
+      "english": "In this section, we'll discuss how we built each layer.",
+      "chinese": "在本节中，我们将讨论我们如何构建每一层。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Data foundations",
+      "chinese": "数据基础"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-24",
+      "english": "The most important aspect of ensuring analytics agents are accurate is via strong data foundations, which include the data models, transforms, tests, and tables in a data warehouse, along with the metadata describing them. Standard data engineering and data quality practices such as dimensional modeling, shift-left testing, freshness and completeness checks on critical pipelines all still apply (and we won't relitigate these).",
+      "chinese": "确保分析智能体准确性的最重要方面是建立强大的数据基础，包括数据仓库中的数据模型、转换、测试和表，以及描述它们的元标准数据工程和数据质量实践，如维度建模、左移测试、关键管道的时效性和完整性检查，这些仍然适用（我们不会重新讨论这些）。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-25",
+      "english": "What does change is that the end user of your data model is no longer a data expert (e.g. data scientist), but rather agents acting on behalf of users with varying degrees of data expertise or understanding of the underlying infrastructure. This shift presents a challenge in that the results can't require the user to validate the underlying correctness simply because the end user doesn't know.",
+      "chinese": "真正的变化在于，数据模型的最终用户不再是数据专家（如数据科学家），而是代表具有不同数据专业知识或对底层基础设施理解程度的用户行动的智能体。这一转变带来了一个挑战：结果不能要求用户验证底层正确性，因为最终用户根本不知道如何验证。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-26",
+      "english": "The data foundations layer is aimed primarily at ambiguity: if *revenue*, for example, resolves to one governed dataset instead of forty plausible candidates, the problem largely disappears before the agent ever has to search. It's also where the first staleness defense lives, since the same repo that defines the canonical models is the natural place to enforce that they stay current.",
+      "chinese": "数据基础层主要针对模糊性：例如，如果*收入*解析为一个受治理的数据集而非四十个合理的候选数据集，那么在智能体开始搜索之前问题就基本消失了。这里也是第一道过时防线的所在地，因为定义规范模型的同一代码仓库是确保它们保持最新状态的自然场所。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-27",
+      "english": "We've seen a few practices work especially well:",
+      "chinese": "我们看到一些实践效果特别好："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-28",
+      "english": "**Create canonical datasets**: By far the most common failure is that the agent can't map a concept (\"revenue for product X\") to the single correct table, column, and metric definition, usually because there are multiple plausible candidates with subtly different implementations. The fix is fewer, more heavily governed logical models: curate a small set of canonical, single source-of-truth datasets that are clearly owned, consumption-ready, and discoverable, then aggressively deprecate the near-duplicates. Physical rollups and caches still matter for cost and performance, but they should derive mechanically from the canonical models rather than living alongside them as alternatives. The goal is that when an agent searches for a concept, it finds a single governed answer.",
+      "chinese": "**创建规范数据集**：迄今为止最常见的失败是智能体无法将一个概念（\"产品 X 的收入\"）映射到单一正确的表、列和指标定义，通常是因为有多个合理但实现略有不同的候选。解决方法是更少、治理更严格的逻辑模型：策划一小组规范的、单一真相来源的数据集，明确归属、可供消费、可发现，然后积极弃用近似重复项。物理汇总和缓存对成本和性能仍然重要，但它们应该从规范模型机械派生，而不是作为替代方案并存。目标是当智能体搜索一个概念时，它能找到一个单一的受治理答案。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-29",
+      "english": "**Enforce your standards**: We've found the foundations only hold if the canonical models and metric definitions are enforced by tooling (the agent is structurally routed to them first; more on that below), by CI (changes that bypass them fail review), by mandate (downstream teams build on the governed layer or explain why not). Governance without enforcement otherwise quickly decays back to the multiple candidates problem.",
+      "chinese": "**强制执行标准**：我们发现基础只有在规范模型和指标定义通过工具强制执行时才能维持（智能体在结构上首先被引导到它们；更多内容见下文），通过 CI（绕过它们的变更无法通过审核），通过命令（下游团队必须基于受治理层构建，否则需解释原因）。没有强制执行的治理会很快退化回多候选问题。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-30",
+      "english": "**Colocate artifacts**: Our main defense against constantly changing data models and business logic is colocation. Nearly all data code (i.e., modeling, semantic layer, reference docs, canonical dashboard definitions) lives in a single repo, with CI checks that protect cross-layer integrity. If a modeling change would break a downstream dashboard or invalidate a documented metric, CI flags it and the fix ships in the same PR.",
+      "chinese": "**共同定位工件**：我们对抗不断变化的数据模型和业务逻辑的主要防线是共同定位。几乎所有数据代码（即建模、语义层、参考文档、规范仪表盘定义）都位于单一仓库中，通过 CI 检查保护跨层完整性。如果建模更改会破坏下游仪表盘或使文档化的指标失效，CI 会标记它，修复在同一 PR 中提交。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-31",
+      "english": "**Treat metadata as a first-class product**: Coding agents perform well partly because codebases are legible: READMEs, type signatures, docstrings, etc. Your warehouse can be just as legible, but only if column and table descriptions, canonical metric definitions, grain documentation, valid value ranges, lineage, ownership, and model tiering are maintained with the same rigor as the transformations themselves. While not a new insight, good governance provides critical context that helps the agent choose the right dataset.",
+      "chinese": "**将元数据视为一等产品**：编码智能体表现出色，部分原因是代码库是可读的：README、类型签名、文档字符串等。你的数据仓库同样可以是可读的，但前提是列和表描述、规范指标定义、粒度文档、有效值范围、血缘关系、所有权和模型分层都以与转换本身相同的严格程度维护。虽然这不是新见解，但良好的治理提供了帮助智能体选择正确数据集的关键上下文。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Sources of truth",
+      "chinese": "真相来源"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-32",
+      "english": "If data foundations are the data warehouse itself, sources of truth are the reference surfaces the agent consults to navigate it. This layer reduces concept <> entity ambiguity and turns \"weekly active users\" in a stakeholder's question into a specific, governed entity in your data model. Roughly in descending order of trust:",
+      "chinese": "如果数据基础是数据仓库本身，那么真相来源就是智能体用来导航它的参考界面。这一层减少了概念与实体的模糊性，将利益相关者问题中的\"周活跃用户\"转换为数据模型中特定的、受治理的实体。大致按信任度从高到低排列："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-33",
+      "english": "**Semantic layer**: the compiled metric and dimension definitions. If a question maps cleanly to a defined metric, the agent calls a function and gets one number, the same number every other surface in the company produces. Our agents are structurally required (by skill instruction) to leverage the semantic layer first. One idea we tried that didn't work: bootstrapping the semantic layer by having an LLM auto-generate metric definitions from raw tables and query logs. It produced plausible-looking definitions that encoded the very ambiguities we were trying to eliminate, and was net-negative on our evals versus a smaller, human-curated layer. Therefore we recommend generating the documentation with Claude, but having a human own the definition.",
+      "chinese": "**语义层**：编译后的指标和维度定义。如果一个问题能清晰映射到已定义的指标，智能体调用一个函数就能得到一个数字，与公司其他所有界面产生的数字相同。我们的智能体在结构上被要求（通过技能指令）首先使用语义层。我们尝试过一个不起作用的方法：让大语言模型从原始表和查询日志自动生成指标定义来引导语义层。它产生了看起来合理但编码了我们试图消除的模糊性的定义，在我们的评估中相比更小的、人工策划的层产生了净负面影响。因此我们建议使用 Claude 生成文档，但由人类负责定义。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-34",
+      "english": "**Lineage and the transformation graph**: when the semantic layer doesn't cover a question, lineage and table ranking (based on number of references) let the agent reason about which upstream models feed a concept, which are deprecated, and which share grain. This transforms \"I don't know the metric\" into \"I know which governed model to aggregate from.\" It's also the backbone of the freshness and provenance signals we surface in online validation below.",
+      "chinese": "**血缘关系和转换图**：当语义层不覆盖某个问题时，血缘关系和表排名（基于引用次数）让智能体能够推理哪些上游模型支撑某个概念、哪些已弃用、哪些共享粒度。这将\"我不知道指标\"转变为\"我知道从哪个受治理的模型进行聚合\"。它也是我们在下面在线验证中展示的时效性和来源信号的骨干。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-35",
+      "english": "**Query corpus**: historical SQL from dashboards, notebooks, and prior analyses. Intuitively, this should be high-value: it's a record of every question already answered correctly. In practice, we found that giving the agent raw retrieval access to thousands of prior queries moved accuracy by less than a point. Unstructured retrieval couldn't map a new question to the right precedent. What does work is distilling that corpus into structured per-domain reference docs and reusable analysis patterns described in skills. Treat the query history as raw material for curation, not as a source of truth the agent reads directly.",
+      "chinese": "**查询语料库**：来自仪表盘、笔记本和先前分析的历史 SQL。直觉上这应该是高价值的：它是每个已正确回答问题的记录。在实践中，我们发现让智能体直接检索访问数千条先前查询，准确率提升不到一个百分点。非结构化检索无法将新问题映射到正确的先例。真正有效的是将该语料库提炼为结构化的按领域参考文档和技能中描述的可重用分析模式。将查询历史视为策划的原材料，而非智能体直接阅读的真相来源。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-36",
+      "english": "**Business context**: the layer most teams skip, and the one we underrated the longest. An agent that doesn't understand your business will answer what the user asked, but not what they meant. It won't know that \"the Q2 launch\" refers to a specific product, that two teams define the same term differently, or that a question is being asked because a board meeting is on Thursday. We pipe in a company knowledge graph consisting of indexed docs, roadmaps, decision logs, and our organizational structure so the agent can resolve ambient references and ask better clarifying questions.",
+      "chinese": "**业务上下文**：大多数团队跳过的层，也是我们低估最久的层。一个不了解你业务的智能体会回答用户问的问题，但不是他们真正想问的。它不会知道\"Q2 发布\"指的是一个特定产品，两个团队对同一术语有不同的定义，或者一个问题被提出是因为周四有董事会会议。我们输入了一个由索引文档、路线图、决策日志和组织结构组成的公司知识图谱，使智能体能够解析上下文引用并提出更好的澄清问题。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-37",
+      "english": "The common failure pattern across all four is the same one from the data foundations layer: poor or stale documentation. Claude is exceptionally useful for closing the gap (drafting column descriptions, proposing metric docs from query patterns, flagging undocumented models in CI), but the curation and ownership are managed by humans.",
+      "chinese": "这四个层的常见失败模式与数据基础层相同：文档质量差或过时。Claude 在弥合差距方面非常有用（起草列描述、从查询模式中提出指标文档、在 CI 中标记未文档化的模型），但策划和所有权由人类管理。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Skills",
+      "chinese": "技能"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-38",
+      "english": "If the sources of truth are the agent's declarative knowledge (i.e., what a metric means) then a skill is its procedural knowledge: which sources to consult in what order, how to navigate ambiguous data, and what a finished analysis looks like.",
+      "chinese": "如果真相来源是智能体的陈述性知识（即一个指标意味着什么），那么技能就是它的程序性知识：按什么顺序查阅哪些来源、如何导航模糊数据，以及完成的分析是什么样的。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-39",
+      "english": "In Claude Code, a skill is a folder of markdown the agent reads on demand. At Anthropic, the skills we developed are hugely value additive. Without skills, Claude's ability to answer analytics questions accurately didn't exceed 21% on our evals. Adding skills gets these numbers consistently above 95% in aggregate and regularly around 99% in certain domains. See the appendix for a skeleton we use to create a majority of our skills.",
+      "chinese": "在 Claude Code 中，技能是一个按需读取的 markdown 文件夹。在 Anthropic，我们开发的技能具有巨大的附加价值。没有技能时，Claude 准确回答分析问题的能力在我们的评估中不超过 21%。添加技能后，这些数字总体上持续超过 95%，在某些领域经常达到 99% 左右。请参阅附录了解我们用于创建大部分技能的骨架模板。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-40",
+      "english": "Some best practices:",
+      "chinese": "一些最佳实践："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-41",
+      "english": "**Create pairwise skills**: a knowledge skill acts as a thin top-level router that allows additional domain details to load on demand. It says \"try the semantic layer first, but if there's no coverage, here are ~30 reference files for this domain describing the relevant tables, columns, joins and gotchas.\" This router is, in effect, our answer to retrieval failure: rather than letting the agent search a million-field warehouse, it narrows the space to a few dozen curated files before a query is ever written. The task skill encodes the process a senior analyst would follow: clarify the question, find sources (via the knowledge skill), run the query, and then loop the result through adversarial review sub-agents. It also bundles a dozen reusable analysis patterns (retention curves, rate decomposition, funnel analysis) so that common requests don't get reinvented each time.",
+      "chinese": "**创建配对技能**：知识技能充当一个薄的顶层路由器，允许按需加载额外的领域详情。它指示\"首先尝试语义层，但如果没有覆盖，这里有约 30 个该领域的参考文件，描述相关表、列、联接和注意事项。\"这个路由器实际上是我们应对检索失败的方案：与其让智能体搜索一个百万字段的仓库，它在编写查询之前将空间缩小到几十个策划文件。任务技能编码了高级分析师会遵循的流程：澄清问题、查找来源（通过知识技能）、执行查询，然后通过对抗性审查子智能体循环结果。它还捆绑了十几个可重用的分析模式（留存曲线、速率分解、漏斗分析），这样常见请求就不会每次都重新发明。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-42",
+      "english": "**Create proper reference docs**: written for retrieval by an LLM. Our reference docs describe tables (grain, scope, and exclusions), the mechanics of gotchas (e.g., \"exclude known free-email domains, but keep custom ones like anthropic.com\"), and explicit routing triggers (e.g., \"IF the question is about experiment lift… DO NOT use for raw event counts\") without prescriptive recipes that go stale.",
+      "chinese": "**创建适当的参考文档**：为大语言模型的检索而编写。我们的参考文档描述表（粒度、范围和排除项）、注意事项的机制（例如，\"排除已知的免费邮箱域名，但保留自定义域名如 anthropic.com\"）以及明确的路由触发器（例如，\"如果问题关于实验提升……不要用于原始事件计数\"），而不包含会过时的处方性方案。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-43",
+      "english": "**Treat skill maintenance as a first class citizen**: Skill docs describe a data model that changes daily, so without active maintenance they're wrong within weeks. We watched our offline accuracy drift from ~95% at launch to ~65% over a month before we treated this as an engineering problem. That meant colocating skill markdown files in the same repo as our transformation models, so the PR that changes a model is the same PR that updates the doc describing it. A code-review hook flags any reporting-model change that doesn't touch a skill file. Roughly 90% of our data-model PRs now include a skill change in the same diff. We also regularly prune skill scaffolding as models improve and previous failure modes no longer apply.",
+      "chinese": "**将技能维护视为一等公民**：技能文档描述的是每天都在变化的数据模型，因此如果不积极维护，几周内就会出错。在我们将此视为工程问题之前，我们观察到离线准确率从发布时的约 95% 在一个月内漂移到约 65%。这意味着将技能 markdown 文件与我们的转换模型放在同一仓库中，这样更改模型的 PR 也是更新描述它的文档的 PR。代码审查钩子会标记任何不涉及技能文件的报告模型更改。大约 90% 的数据模型 PR 现在在同一差异中包含技能更改。随着模型改进和之前的失败模式不再适用，我们还会定期修剪技能脚手架。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-44",
+      "english": "**Create a consistent and seamless experience across all surfaces**: the same skill must provide the same answer to questions in Slack, in the IDE, in a dashboard tool, and in standalone agent sessions. We did this by ensuring one canonical source (the data repo) and that skill changes are synced automatically. On merge, the skill syncs to a plugin marketplace (for IDE users), to cloud-storage blobs (for hosted apps that read a single file), and is served directly as resources over MCP. We also designed for portability from the start by avoiding hardcoded repo paths and surface-specific namespaces.",
+      "chinese": "**在所有界面上创建一致且无缝的体验**：相同的技能必须在 Slack、IDE、仪表盘工具和独立智能体会话中对问题提供相同的答案。我们通过确保一个规范来源（数据仓库）并自动同步技能更改来实现这一点。合并时，技能同步到插件市场（面向 IDE 用户）、云存储 blob（面向读取单个文件的托管应用），并直接作为 MCP 资源提供服务。我们从一开始就为可移植性设计，避免硬编码的仓库路径和特定界面的命名空间。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Validation",
+      "chinese": "验证"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-45",
+      "english": "Finally, validation is how you find out which of the three failure modes is still leaking through.",
+      "chinese": "最后，验证是发现三种失败模式中哪些仍在泄漏的方法。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Offline evaluations",
+      "chinese": "离线评估"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-46",
+      "english": "A common pattern we see is that data teams will set up elaborate analytic environments without having any process to understand the accuracy of their analytics agents.",
+      "chinese": "我们看到的一个常见模式是，数据团队会建立精心设计的分析环境，但没有任何流程来了解其分析智能体的准确性。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-47",
+      "english": "One way of addressing this gap is via offline evals, which are simple question / answer pairs. You can think of offline evals similar to offline testing for an ML model in that they don't tell you the performance of your online agents, but they do give you a good sense of whether you'll have any critical gaps.",
+      "chinese": "解决这一差距的一种方法是通过离线评估，即简单的问答对。你可以将离线评估类似于机器学习模型的离线测试，它们不会告诉你在线智能体的表现，但确实能让你很好地了解是否存在关键差距。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-48",
+      "english": "We deploy two kinds of offline evals at Anthropic. Dashboard-based evals are auto-generated by Claude (then human validated), covering the most common stakeholder questions. Long tail evals are where we feed Claude business context (roadmaps, table docs) and have it generate plausible questions across the rest of the domain. We also continuously harvest every time a stakeholder corrects the agent in a thread as that correction is a candidate eval.",
+      "chinese": "我们在 Anthropic 部署了两种离线评估。基于仪表盘的评估由 Claude 自动生成（然后由人工验证），涵盖最常见的利益相关者问题。长尾评估是我们向 Claude 提供业务上下文（路线图、表文档）并让它在整个领域生成合理问题的评估。我们还持续收集每次利益相关者在线程中纠正智能体的记录，因为该纠正是候选评估。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-49",
+      "english": "Other best practices, include:",
+      "chinese": "其他最佳实践包括："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-50",
+      "english": "**Anchor ground truth so it can't drift**: An eval written against live data goes stale the moment the underlying number moves. Pin every eval to a snapshot date, write it against a stable fact table, or have the grader judge the agent's query rather than its number. Wire the suite into CI so a PR touching a dependency re-runs the affected evals.",
+      "chinese": "**锚定真实数据使其不会漂移**：针对实时数据编写的评估在底层数据变动的瞬间就会过时。将每个评估固定到快照日期、针对稳定的事实表编写，或者让评分者评判智能体的查询而非其数字。将测试套件接入 CI，使得触及依赖的 PR 会重新运行受影响的评估。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-51",
+      "english": "**Store results like telemetry, not like test logs**: Every run lands in a warehouse table with the skill version, git SHA, model ID, per-assertion pass/fail, token count, and wall-clock. \"Did that change help?\" becomes a query, and you get the time-series to catch slow regressions that a single CI run won't.",
+      "chinese": "**像遥测数据而非测试日志一样存储结果**：每次运行都记录在仓库表中，包含技能版本、git SHA、模型 ID、每个断言的通过/失败、token 数量和挂钟时间。\"那个更改有帮助吗？\"变成一个查询，你还能获得时间序列来捕获单次 CI 运行无法发现的缓慢回归。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-52",
+      "english": "**Gate launches per domain**: A domain owner can't announce the agent to their stakeholders until their slice of the eval set clears some threshold (we initially used ~90%). It forces reference-doc fixes before users see the failures.",
+      "chinese": "**按领域控制发布**：领域所有者在他们的评估集部分达到某个阈值之前不能向利益相关者发布智能体（我们最初使用约 90%）。这迫使在用户看到失败之前修复参考文档。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-53",
+      "english": "**Create the appropriate number of evals**: The number of evals you should have depends on the complexity of the business area and the complexity of the underlying data model. Calibrate by tracking how well offline accuracy predicts online accuracy: we've found there are diminishing returns past a few dozen per topic (e.g., \"growth\"), and that ceiling drops with each new model generation.",
+      "chinese": "**创建适当数量的评估**：你应该拥有的评估数量取决于业务领域的复杂性和底层数据模型的复杂性。通过跟踪离线准确率预测在线准确率的程度来校准：我们发现每个主题（如\"增长\"）超过几十个后收益递减，且该上限随着每一代新模型的推出而下降。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-54",
+      "english": "Offline eval accuracy should be ~100%; every correct answer should also be hitting your semantic layer (if you have one). Again, this level of accuracy doesn't tell you your system isn't going to produce a wrong answer, just that there are no obvious gaps, assuming you have proper eval coverage.",
+      "chinese": "离线评估准确率应该接近 100%；每个正确答案也应该命中你的语义层（如果有的话）。同样，这个准确率水平并不意味着你的系统不会产生错误答案，只是在你有适当评估覆盖的前提下没有明显差距。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Ablation techniques",
+      "chinese": "消融技术"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-55",
+      "english": "Every structural decision about the skill (e.g., which sources to expose, whether a sub-agent earns its latency, whether to merge two skills into one) is made by holding our offline eval set fixed.",
+      "chinese": "关于技能的每个结构化决策（例如，暴露哪些来源、子智能体是否值得其延迟、是否将两个技能合并为一个）都是在固定离线评估集的情况下做出的。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-56",
+      "english": "We vary exactly one component and compare pass rates. Each run only takes an hour and replaces a lot of arguments. The methodology matters more than any single result:",
+      "chinese": "我们每次只改变一个组件并比较通过率。每次运行只需一个小时，取代了很多争论。方法论比任何单一结果都更重要："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-57",
+      "english": "**Design for null results.** Our most useful ablation was a negative one. We gave the agent direct grep access to our entire dashboard, transformation, and analyst-notebook SQL (thousands of files). We then verified in transcripts that it actually read them before every answer. Accuracy moved by less than a point in either direction. We then checked the obvious confounds: was the answer actually in the corpus for the questions it got wrong? About 80% of the time, yes. Did \"answer present\" predict \"now gets it right\"? No, the flip rate was flat. The information was there, the agent saw it, and it still didn't use it. That single experiment told us our bottleneck wasn't access to prior work, it was structure (i.e., mapping a question to the right entity). That insight redirected months of roadmap.",
+      "chinese": "**为空结果而设计。** 我们最有用的消融实验是一个负面结果。我们让智能体直接 grep 访问我们整个仪表盘、转换和分析师笔记本的 SQL（数千个文件）。然后我们在记录中验证它确实在每次回答前阅读了这些文件。准确率在任一方向上的变化不到一个百分点。然后我们检查了明显的混杂因素：对于它答错的问题，答案实际上是否在语料库中？大约 80% 的情况下是的。\"答案存在\"是否预测了\"现在答对了\"？不，翻转率是平的。信息在那里，智能体看到了它，但仍然没有使用它。那个单一实验告诉我们，瓶颈不是对先前工作的访问，而是结构（即将问题映射到正确的实体）。这个洞察重新引导了数月的路线图。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-58",
+      "english": "**Ablate at PR granularity.** Every meaningful skill edit gets a before / after run on the relevant eval slice, with the delta in the PR description. It keeps \"I improved the docs\" honest and catches the surprisingly common case where a well-intentioned addition makes things worse.",
+      "chinese": "**在 PR 粒度上进行消融。** 每个有意义的技能编辑都会在相关评估切片上进行前后运行，增量记录在 PR 描述中。它使\"我改进了文档\"保持诚实，并捕获善意添加反而使情况变得更糟的惊人常见情况。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-59",
+      "english": "**Keep a short list of what didn't work.** Two of ours: stacking additional rounds of doc refinement past a certain point (we hit three consecutive net-negative iterations: the docs were getting longer, not better), and swapping the adversarial reviewer to a cheaper model to cut latency (it lost most of the accuracy wins, for no real speedup). Negative results are cheap to record and they prevent the next person from re-running the same experiment.",
+      "chinese": "**保留一份不起作用的简短清单。** 我们的两个例子：在某个点之后叠加额外的文档优化轮次（我们连续三次遇到净负面迭代：文档变得更长而不是更好），以及将对抗性审查者换成更便宜的模型以减少延迟（它失去了大部分准确率收益，却没有真正的加速）。负面结果记录成本低，可以防止下一个人重新运行相同的实验。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Online validation",
+      "chinese": "在线验证"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-60",
+      "english": "The final step is ensuring the actual online system performance is as accurate as possible. Some of the steps we take include:",
+      "chinese": "最后一步是确保实际在线系统性能尽可能准确。我们采取的一些步骤包括："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-61",
+      "english": "**Adversarial review**: we've found that employing a Claude skill to aggressively challenge all underlying assumptions on a potential final answer increased accuracy by 6% within our eval set, but at the cost of 32% more tokens and 72% higher latency.",
+      "chinese": "**对抗性审查**：我们发现使用 Claude 技能积极挑战潜在最终答案的所有底层假设，在我们的评估集中将准确率提高了 6%，但代价是 32% 更多的 token 和 72% 更高的延迟。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-62",
+      "english": "**Provenance footer**: every response carries a footer that contains which source tier it came from (semantic layer > curated reference > raw table), how fresh the underlying data is, and who owns the model. It doesn't make the answer more correct, but it does help the consumer judge how much they can trust the response. A \"raw table, freshness unknown\" footer is a signal to verify before forwarding upstream, and it's one of the few mitigations we have for silent failures.",
+      "chinese": "**来源页脚**：每个响应都携带一个页脚，包含它来自哪个来源层级（语义层 > 策划参考 > 原始表）、底层数据的时效性以及谁拥有该模型。它不会使答案更正确，但确实帮助消费者判断他们可以多大程度信任响应。\"原始表，时效性未知\"的页脚是转发给上级之前需要验证的信号，也是我们为数不多的针对静默失败的缓解措施之一。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-63",
+      "english": "**Data quality checks**: it's possible that your agent is using the right field in the appropriate way, but the data itself is incorrect. Adding basic data quality checks to ensure the referenced field is up-to-date, complete, and has no anomalies is generally good hygiene.",
+      "chinese": "**数据质量检查**：你的智能体可能以适当的方式使用了正确的字段，但数据本身是不正确的。添加基本数据质量检查以确保引用的字段是最新的、完整的且没有异常，通常是良好的卫生习惯。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-64",
+      "english": "**Passive monitoring**: two production signals we track continuously are the share of agent queries that resolve through the semantic layer, and the share of responses that use correction language (\"that's the wrong table,\" \"you're missing the fraud filter\"). Both feed a dashboard reviewed weekly alongside the offline pass rate.",
+      "chinese": "**被动监控**：我们持续跟踪的两个生产信号是通过语义层解决的智能体查询份额，以及使用纠正语言的响应份额（\"那是错误的表\"、\"你缺少欺诈过滤器\"）。两者都汇入每周审查的仪表盘，与离线通过率一起查看。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-65",
+      "english": "**Active correction harvesting**: the part that closes the loop. A scheduled agent scans stakeholder channels every few hours for similar correction language, drafts a one-line fix to the relevant reference doc, and opens a PR tagged to the domain owner. The fix path is deliberately boring — edit a markdown file, merge, auto-sync everywhere — so a domain owner doesn't spend too much time on the task. The same corrections feed back into the offline eval set.",
+      "chinese": "**主动纠正收集**：闭环的部分。一个定时智能体每隔几小时扫描利益相关者频道中的类似纠正语言，起草对相关参考文档的一行修复，并打开标记给领域所有者的 PR。修复路径故意设计得简单——编辑一个 markdown 文件、合并、自动同步到所有地方——这样领域所有者不会在任务上花费太多时间。相同的纠正会反馈到离线评估集中。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-66",
+      "english": "The failure mode none of this fully catches is the silent one. The answer is wrong, but looks plausible and is used without objection. Our mitigations are the provenance footer, explicit human sign-off on anything leadership-bound, and a standing eval for each domain's top KPIs that sanity-checks against the blessed dashboard daily, though we don't have a robust solution yet.",
+      "chinese": "这些都无法完全捕获的失败模式是静默失败。答案是错误的，但看起来合理且在没有异议的情况下被使用。我们的缓解措施是来源页脚、对任何面向领导层的内容进行明确的人工签署，以及对每个领域顶级 KPI 的常设评估，每天与授权仪表盘进行健全性检查，尽管我们还没有一个稳健的解决方案。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Getting started",
+      "chinese": "入门指南"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-67",
+      "english": "If you're starting from zero, a handful of canonical datasets, a few dozen offline evals, and a thin knowledge skill will capture most of the upside; everything else in this post is what we added once those were built.",
+      "chinese": "如果你从零开始，少量规范数据集、几十个离线评估和一个薄的知识技能就能捕获大部分收益；本文中的其他所有内容都是我们在这些基础之上添加的。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-68",
+      "english": "We also shared many best practices, and not all of them will be appropriate for every data team. Align with your organization on a few principles that will affect your approach by asking:",
+      "chinese": "我们还分享了许多最佳实践，并非所有都适合每个数据团队。通过以下问题与你的组织就几个影响你方法的原则达成一致："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-69",
+      "english": "**How important is a correct answer today vs. in the future?** AI models are progressing at a rapid pace. We often see companies building a significant amount of infrastructure to account for current model shortfalls that become moot once those models improve. Knowing where models fall short, and waiting for model improvements to fill the gap has significantly less overhead, but may not fit your company's risk tolerance.",
+      "chinese": "**今天获得正确答案与未来获得正确答案哪个更重要？** AI 模型正在快速发展。我们经常看到公司构建大量基础设施来弥补当前模型的不足，而这些不足在模型改进后就变得无关紧要。了解模型的不足之处，并等待模型改进来填补差距，开销要小得多，但可能不适合你公司的风险承受能力。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-70",
+      "english": "**How do you anticipate the complexity of your business to change over time?** Some of the processes we discussed may be overkill if, for example, you don't produce much data, you only have a few consumers of the output, or your data model is likely to remain simple.",
+      "chinese": "**你预期业务的复杂性会如何随时间变化？** 如果你不产生大量数据、只有少数输出消费者，或者你的数据模型可能保持简单，我们讨论的某些流程可能就过度了。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-71",
+      "english": "**How technical is the intended audience of the output?** Phrased differently, if you're building this analytics system for data scientists who can recognize when an answer is incorrect, you may be more tolerant of errors compared to a situation in which the audience has no familiarity with the underlying data model.",
+      "chinese": "**输出的目标受众技术水平如何？** 换句话说，如果你为能够识别答案错误的数据科学家构建这个分析系统，与受众对底层数据模型不熟悉的情况相比，你可能对错误更宽容。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-72",
+      "english": "**How much are you willing to spend for improved accuracy?** We've found certain processes like adversarial validation can significantly improve accuracy, but often at a higher cost and latency.",
+      "chinese": "**你愿意为提高准确率投入多少？** 我们发现某些流程如对抗性验证可以显著提高准确率，但通常以更高的成本和延迟为代价。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-73",
+      "english": "**What is your comfort around access controls and internal data privacy?** Agents are often significantly more performant the more context they have; however, broad data access cuts against most companies' governance posture. This determines whether you're building one agent or many scoped ones.",
+      "chinese": "**你对访问控制和内部数据隐私的接受程度如何？** 智能体通常在拥有更多上下文时表现显著更好；然而，广泛的数据访问与大多数公司的治理姿态相悖。这决定了你是构建一个智能体还是多个有范围限制的智能体。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-74",
+      "english": "Whatever your route, our greatest gains have come from addressing each of the three failure modes: collapsing ambiguity into a single governed answer, making the answer easily discoverable, and flagging when either has gone stale.",
+      "chinese": "无论你的路线如何，我们最大的收益来自解决三种失败模式中的每一种：将模糊性折叠为单一受治理的答案、使答案易于发现，以及在两者之一过时时发出标记。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-75",
+      "english": "*This article was written by Chen Chang, Clement Peng, Justin Leder, Johanne Jiao, and Josh Cherry, members of the Data Science and Data Engineering team. The authors would like to thank Michael Segner for his contributions.*",
+      "chinese": "*本文由数据科学和数据工程团队成员 Chen Chang、Clement Peng、Justin Leder、Johanne Jiao 和 Josh Cherry 撰写。作者感谢 Michael Segner 的贡献。*"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "附录：技能文件骨架模板",
+      "language": "zh"
+    },
+    {
+      "type": "standalone",
+      "text": "以下是他们主要仓库技能的骨架：真实文件的结构，内部具体信息已替换为 `[括号占位符]`。这不是为了逐字复制，而是为了展示我们认为值得记录的各种部分类型。",
+      "language": "zh"
+    },
+    {
+      "type": "standalone",
+      "text": "该骨架还包含以下部分：",
+      "language": "zh"
+    },
+    {
+      "type": "standalone",
+      "text": "- **PART 1: MUST KNOW** — 快速启动工作流、业务上下文、实体消歧、业务术语、数据完整性要求",
+      "language": "zh"
+    },
+    {
+      "type": "standalone",
+      "text": "- **PART 2: HOW TO DO** — 技术执行指南、分析最佳实践（包括强制性的对抗性 SQL 审查和带来源的报告）",
+      "language": "zh"
+    },
+    {
+      "type": "standalone",
+      "text": "- **PART 3: DATA REFERENCES & RESOURCES** — 知识库导航、按域组织的参考文档、故障排除指南、字段命名注意事项",
+      "language": "zh"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"16-self-service-data-analytics\"."
+    },
+    {
+      "code": "code-fence",
+      "message": "Skipped fenced code block in \"16-self-service-data-analytics\"."
+    }
+  ]
+}

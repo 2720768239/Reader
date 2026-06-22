@@ -1,0 +1,180 @@
+{
+  "slug": "27-artifacts-in-claude-code",
+  "title": "Claude Code now supports artifacts",
+  "publishedAt": "June 18, 2026",
+  "category": "Product announcements",
+  "preview": "Starting today, Claude Code can capture work progress as an artifact, which turn Claude Code's work into live, shareable visual pages— including PR walkthroughs, system explainers, dashboards, and release checklists—that update themselves as your session works.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Starting today, Claude Code can capture work progress as an artifact, which turn Claude Code's work into live, shareable visual pages— including PR walkthroughs, system explainers, dashboards, and release checklists—that update themselves as your session works.",
+      "chinese": "从今天起，Claude Code 可以将工作进度捕获为 Artifact，将 Claude Code 的工作转化为实时、可共享的可视化页面——包括 PR walkthrough、系统说明文档、Dashboard 和发布清单——并且会随着会话的推进自动更新。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "A Claude Code session can range from investigating an incident to refactoring a service to analyzing months of data. Artifacts translate the work into a web page anyone can open and explore, like a pull request walkthrough, a dashboard you can filter and sort, or even a release checklist that fills itself out as work gets done. Artifacts make it easier to collaborate on shared work, so teams can spend more time building and less time communicating status updates.",
+      "chinese": "一次 Claude Code 会话可能涉及事件调查、服务重构或数月数据的分析。Artifacts 将这些工作转化为任何人都能打开和浏览的网页，例如 Pull Request walkthrough、可筛选排序的 Dashboard，甚至是随着工作完成自动填充的发布清单。Artifacts 让协作更加便捷，团队可以将更多时间花在构建上，而非沟通状态更新。"
+    },
+    {
+      "type": "standalone",
+      "text": "📹 [See your projects differently with Artifacts in Claude Code](https://www.youtube.com/watch?v=artifacts-claude-code)",
+      "language": "en"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Built on the context from your session",
+      "language": "en"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "**基于会话上下文构建**",
+      "language": "zh"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "Claude Code builds an artifact using the full context of your session, including your codebase, your connectors, and the conversation itself. A single incident page can bring together the failing test and the function behind it from your code, the error spike from a connected monitoring tool, and the root-cause reasoning from the session you just ran. With artifacts, you don't need to wire up data sources or stand up infrastructure. You ask for a page, and Claude Code builds it from what already exists.",
+      "chinese": "Claude Code 使用会话的完整上下文来构建 Artifact，包括代码库、连接器和对话本身。一个事件页面可以将代码中的失败测试及其背后的函数、来自监控工具的错误峰值，以及刚完成的会话中的根因分析整合在一起。使用 Artifacts，无需配置数据源或搭建基础设施。只需提出页面需求，Claude Code 就会基于已有内容构建。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Live pages that update in place",
+      "language": "en"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "**实时更新的页面**",
+      "language": "zh"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "When Claude Code updates an artifact, the open page refreshes in place and teammates see the updates the moment they're published. Every publish is a new version at the same link, with version history so you can restore at any time, and a gallery lets you browse and manage all artifacts you've made.",
+      "chinese": "当 Claude Code 更新 Artifact 时，打开的页面会就地刷新，团队成员在发布瞬间就能看到更新。每次发布都是同一链接的新版本，附带版本历史以便随时恢复，还有 Gallery 可以浏览和管理所有已创建的 Artifacts。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "From our internal testing, one of our most common use cases has been debugging. These typically look something like: An engineer kicks off an incident investigation before standup. Claude Code works through the logs and publishes an artifact: a timeline, the suspect commits, and an error-rate chart. She shares the link with her team from the page header. By the time standup begins, Claude has republished it twice as the investigation progressed, incorporating the latest information. With artifacts, team members and stakeholders don't have to \"walk us through what the agent found\" because they're all looking at the same view, with the same context.",
+      "chinese": "在内部测试中，最常见的使用场景之一是调试。通常流程如下：一位工程师在站会前启动事件调查。Claude Code 分析日志并发布一个 Artifact：包含时间线、可疑提交和错误率图表。她通过页面头部将链接分享给团队。到站会开始时，随着调查推进，Claude 已重新发布了两次，融入了最新信息。使用 Artifacts，团队成员和利益相关者无需\"向我们解释 Agent 发现了什么\"，因为他们都在查看相同的视图和上下文。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Private to your organization",
+      "language": "en"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "**组织内私有**",
+      "language": "zh"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "Every artifact is private to its author by default. When you're ready, share it with your teammates and your organization directly from the page. Artifacts are viewable only by authenticated members of your org and cannot be made public. Admins manage access with an org-level toggle and role-based scoping, set retention policies, and get org-wide visibility through the compliance API.",
+      "chinese": "每个 Artifact 默认对作者私有。准备好后，可直接从页面分享给团队成员和组织。Artifacts 仅对组织内的认证成员可见，无法设为公开。管理员通过组织级开关和基于角色的范围控制来管理访问权限，设置保留策略，并通过 Compliance API 获取组织范围的可见性。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Getting started",
+      "language": "en"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "**开始使用**",
+      "language": "zh"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "Ask your session for an artifact — or just ask for something visual, here are some ideas by role:",
+      "chinese": "在会话中请求一个 Artifact——或者只是要求一些可视化内容，以下是一些按角色分类的建议："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "- **Legal / open source**: A license audit of every dependency, flagging copyleft, straight from the repo. *\"Build an artifact listing every third-party dependency and its license, flagging anything copyleft.\"*",
+      "chinese": "**法务 / 开源**：对每个依赖项的许可证审计，标记 copyleft，直接从仓库获取。*\"构建一个列出所有第三方依赖项及其许可证的 Artifact，标记所有 copyleft 许可证。\"*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "- **Privacy**: A data-flow map of where personal data is collected, stored, and logged across the code. *\"Trace where we touch personal data across the codebase into an artifact for the privacy review.\"*",
+      "chinese": "**隐私**：数据流图，展示个人数据在代码中被收集、存储和记录的位置。*\"追踪代码库中涉及个人数据的位置，生成用于隐私审查的 Artifact。\"*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "- **Security**: Findings that link to the exact line, so the fix is unambiguous. *\"Create an artifact with all security findings from this repo, linked to the exact line of code.\"*",
+      "chinese": "**安全**：链接到具体代码行的发现，使修复明确无歧义。*\"创建一个包含此仓库所有安全发现的 Artifact，链接到具体代码行。\"*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "- **Platform / DevOps**: Cloud resources and cost drivers mapped from your infrastructure-as-code. *\"Map our cloud resources and cost drivers from the IaC into an artifact.\"*",
+      "chinese": "**平台 / DevOps**：从 Infrastructure-as-Code 映射的云资源和成本驱动因素。*\"将我们的云资源和成本驱动因素从 IaC 映射到一个 Artifact 中。\"*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "- **Reviewer**: A PR or bug walkthrough reviewers can actually follow, pulled from the diff and the code around it. *\"Make an artifact walking through this PR — the diff, the reasoning, and what I tested.\"*",
+      "chinese": "**代码审查**：审查者可以真正理解的 PR 或 Bug walkthrough，从 diff 及周围代码中提取。*\"制作一个讲解此 PR 的 Artifact——包括 diff、推理过程和测试内容。\"*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "- **Designer**: Several UX directions for a screen, each built from your real components so the one you pick is shippable. *\"Give me an artifact with 5 UX variations of this signup form, built from our component library.\"*",
+      "chinese": "**设计师**：一个页面的多种 UX 方向，每个都基于真实组件构建，选中的方案即可发布。*\"给我一个包含 5 种注册表单 UX 变体的 Artifact，使用我们的组件库构建。\"*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "- **Architect**: A map of how a service actually fits together, drawn from the real import graph instead of a whiteboard. *\"Map how the payments service fits together into an artifact, from the code.\"*",
+      "chinese": "**架构师**：服务实际如何组合的地图，从真实的导入图中绘制而非白板。*\"将支付服务的组合方式映射到一个 Artifact 中，基于代码。\"*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "- **Incident responder**: An incident page that grows as you investigate and becomes the postmortem. *\"Turn this incident into an artifact — timeline, suspect commits, error spike from our monitoring — and republish as I work through it.\"*",
+      "chinese": "**事件响应者**：随着调查进行而增长的事件页面，最终成为事后分析报告。*\"将此事件转化为一个 Artifact——时间线、可疑提交、监控中的错误峰值——并在调查过程中重新发布。\"*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "- **Engineering manager**: A page of what actually shipped, built from the merged PRs. *\"Build an artifact of what merged on my team this week from the PRs, grouped by project.\"*",
+      "chinese": "**工程经理**：基于已合并 PR 构建的实际发布内容页面。*\"从 PR 中构建一个我团队本周合并内容的 Artifact，按项目分组。\"*"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"27-artifacts-in-claude-code\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"27-artifacts-in-claude-code\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"27-artifacts-in-claude-code\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"27-artifacts-in-claude-code\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"27-artifacts-in-claude-code\"."
+    }
+  ]
+}

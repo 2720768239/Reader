@@ -1,0 +1,435 @@
+{
+  "slug": "15-anthropic-gtm-engineering",
+  "title": "How one Anthropic seller rebuilt his team's workflows with Claude Code",
+  "preview": "Before joining Anthropic in 2024, Jared Sires had never written a line of code. And why would he? He was a startup account executive.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Before joining Anthropic in 2024, Jared Sires had never written a line of code. And why would he? He was a startup account executive.",
+      "chinese": "在2024年加入Anthropic之前，Jared Sires从未写过一行代码。他为什么要写呢？他当时是一名初创公司的客户经理。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "As is often the case at fast-growing companies, Jared's book quickly grew to 600 or 700 accounts. With 10 to 15 customer calls a day and an expanding account list, Jared found himself at his desk, answering customer emails until 9 or 10 p.m. every night.",
+      "chinese": "就像快速增长公司中常见的情况一样，Jared的客户名单迅速增长到600至700个账户。每天要打10到15个客户电话，客户名单还在不断扩大，Jared发现自己每天都要坐在办公桌前回复客户邮件，直到晚上9点或10点。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "\"It was almost impossible to manage my inbox,\" he says. \"And doing outbound on top of that, you don't really know where to focus.\"",
+      "chinese": "\"管理收件箱几乎是不可能的，\"他说。\"再加上还要做外展工作，你根本不知道该把精力集中在何处。\""
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "Jared turned to Claude Code for help. With no coding experience, he created CLAFTS, short for *Claude Drafts*: an application that lives inside Gmail and uses the Claude API to draft replies to customer emails. It took multiple iterations, but eventually Jared estimates CLAFTS was saving him two to three hours a day. He shared it in Slack the next morning, and within 24 hours, others from the sales organization had started using it with similar results.",
+      "chinese": "Jared向Claude Code寻求帮助。凭借零编程经验，他创建了CLAFTS——即 *Claude Drafts* 的缩写：一个运行在Gmail内部的应用程序，使用Claude API来草拟客户邮件回复。经过多次迭代，Jared估计CLAFTS每天为他节省了两到三个小时。第二天早上他在Slack上分享了这个工具，24小时内，销售组织中的其他人也开始使用，并取得了类似的效果。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "That led to a shift in Jared's role at Anthropic: today, he is product manager of the go-to-market team, a role focused exclusively on identifying problems in how the Anthropic sales organization operates and building Claude-powered solutions to fix them. In this new role, Jared has built tools that automate customer communications, research customer backgrounds before calls, and generate follow-up emails from meeting transcripts. He then packages them as a plugin inside Claude Cowork so the whole sales team can use them.",
+      "chinese": "这导致了Jared在Anthropic角色的转变：如今，他是市场推广团队的产品经理，这个角色专注于发现Anthropic销售组织运营中的问题，并构建基于Claude的解决方案来解决它们。在这个新角色中，Jared构建了自动化客户沟通、在通话前调研客户背景、以及根据会议记录生成后续邮件的工具。然后他将这些工具打包为Claude Cowork中的插件，让整个销售团队都能使用。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "He describes the shift in his career as \"the most empowering thing I've ever experienced.\"",
+      "chinese": "他将这次职业转变描述为\"我经历过的最赋能的事情\"。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "Here's how Jared used Claude to handle his inbox at scale, what he's building next, and best practices GTM teams can take from his approach.",
+      "chinese": "以下是Jared如何使用Claude大规模处理收件箱、他接下来在构建什么，以及GTM团队可以从他的方法中学到的最佳实践。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "A sales rep buried in administrative tasks",
+      "chinese": "被行政任务淹没的销售代表"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "Email volume wasn't the only challenge Jared faced as an account executive. Anthropic ships product changes every 24 to 48 hours, and customer questions tend to land on the most recent details: batch API SLAs, prompt caching discounts, model pricing, SDK behavior. Answering them well meant searching across Slack, Google Docs, internal knowledge bases, and the developer documentation—and doing it again day after day, with a slightly different set of facts.",
+      "chinese": "邮件量并不是Jared作为客户经理面临的唯一挑战。Anthropic每24到48小时就会发布产品变更，客户的问题往往集中在最新的细节上：批量API的SLA、提示缓存折扣、模型定价、SDK行为。要很好地回答这些问题，意味着需要在Slack、Google Docs、内部知识库和开发者文档之间反复搜索——而且每天都要这样做，面对的是一组略有不同的事实。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "\"Having to relay technical documentation to customers is pretty hard, especially here at Anthropic when your products evolve so quickly,\" Jared says.",
+      "chinese": "\"向客户传达技术文档相当困难，尤其是在Anthropic这样的地方，产品迭代速度如此之快，\"Jared说。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "One of his first experiments with Claude was narrow and practical. Using Apps Script (Google's lightweight development platform) and Claude, Jared pulled product usage data from internal systems and had Claude rank his accounts each morning by how fast they were growing.",
+      "chinese": "他最早使用Claude的实验之一是小范围而实用的。利用Apps Script（Google的轻量级开发平台）和Claude，Jared从内部系统中提取产品使用数据，让Claude每天早上根据账户增长速度对客户进行排名。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "\"Each day Claude would give me a brief on who I needed to focus on based on how much they were using,\" he says. With 700 accounts in his book, the daily brief helped him determine where to spend his outbound time.",
+      "chinese": "\"每天Claude会根据客户的使用量给我一份简报，告诉我需要重点关注谁，\"他说。手握700个客户账户，这份每日简报帮助他确定应该把外展时间花在哪里。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Developing CLAFTS",
+      "chinese": "开发CLAFTS"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "The harder challenge was Jared's inbox and the late hours he had to spend responding to emails.",
+      "chinese": "更棘手的挑战是Jared的收件箱以及他不得不花费在回复邮件上的深夜时光。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "With Claude Code, he started to develop a system that drafts replies to customer emails in his voice. \"Claude Code, having the terminology 'code' at the end of it, made me feel a little bit intimidated just to even start,\" he says. \"But after a certain time frame, I understood the power of it being able to hook up to my computer and answer things about files on it.\"",
+      "chinese": "借助Claude Code，他开始开发一个以他的语气草拟客户邮件回复的系统。\"'Claude Code'这个名字末尾带着'Code'这个词，光是开始使用就让我有点害怕，\"他说。\"但过了一段时间后，我理解了它能够连接到我的电脑并回答关于文件的问题的强大之处。\""
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "CLAFTS is built on roughly 4,300 lines of code, almost all of it written by Claude Code. It pulls context from a shared Google Drive folder and other third-party tools, references Anthropic's public documentation through web search, and matches Jared's writing style. By the time he opens his drafts folder at the end of the day, the responses are waiting for review.",
+      "chinese": "CLAFTS由大约4300行代码构建而成，几乎所有代码都是由Claude Code编写的。它从共享的Google Drive文件夹和其他第三方工具中提取上下文，通过网络搜索引用Anthropic的公开文档，并匹配Jared的写作风格。当他每天结束工作打开草稿文件夹时，回复已经准备好等待审阅了。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "Whenever Anthropic ships a product change, the documentation reflects it and Claude picks up the change on the next draft. \"Claude is able to use web search to understand our latest documentation from our website and reference that material when generating emails,\" Jared says. \"I don't need to keep all of that in my head.\"",
+      "chinese": "每当Anthropic发布产品变更，文档会相应更新，Claude在下一次草稿中就能捕捉到这些变化。\"Claude能够通过网络搜索理解我们网站上的最新文档，并在生成邮件时引用这些材料，\"Jared说。\"我不需要把所有这些都记在脑子里。\""
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "Out of the box, Claude's writing tended to be longer and heavier on hedging phrases, so Jared reworked the system prompt until the drafts matched his own writing style. \"I've probably gone through hundreds of iterations with CLAFTS in the system prompt to generate different pieces of writing for me,\" he says.",
+      "chinese": "开箱即用时，Claude的写作往往较长且更倾向于使用修饰性措辞，因此Jared反复调整系统提示词，直到草稿与他自己的写作风格相匹配。\"我可能已经对CLAFTS的系统提示词进行了数百次迭代，让它为我生成不同类型的文本，\"他说。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "Next, he developed the CLAFTS Tones feature, which uses pattern matching to mimic his voice across different relationships. Customers, peers, and family threads all read differently, and the drafts adjust to each.",
+      "chinese": "接下来，他开发了CLAFTS Tones功能，使用模式匹配来模仿他在不同关系中的语气。客户、同事和家人的对话读起来各不相同，草稿会针对每种关系进行调整。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "Jared tested the feature by writing himself a sequence of increasingly angry emails on his personal account. Claude picked up the tone, then refused to keep going.",
+      "chinese": "Jared用他的个人账户给自己写了一系列越来越愤怒的邮件来测试这个功能。Claude捕捉到了语气，然后拒绝继续生成。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "\"Claude started to mimic that, and at some point I started to have refusals because Claude didn't want to generate angry emails to customers,\" he says. \"That was when I knew CLAFTS Tones was working.\"",
+      "chinese": "\"Claude开始模仿那种语气，但到某个时候我开始收到拒绝回复，因为Claude不想给客户生成愤怒的邮件，\"他说。\"那一刻我就知道CLAFTS Tones起作用了。\""
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Measuring the impact of CLAFTS",
+      "chinese": "衡量CLAFTS的影响"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-20",
+      "english": "While CLAFTS saves Jared 10-15 hours per week, the shift he cares about most is the accuracy of the work. With Claude pulling current product details from documentation on every draft, the answers customers receive are tied to whatever shipped most recently rather than to whatever Jared happened to remember.",
+      "chinese": "虽然CLAFTS每周为Jared节省10到15个小时，但他最看重的是工作准确性的提升。由于Claude在每次草稿中都从文档中提取最新的产品细节，客户收到的答案与最近发布的内容相关联，而不是取决于Jared碰巧记得的内容。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-21",
+      "english": "\"Before CLAFTS, I felt like I was doing more administrative work than actually spending time with customers,\" Jared says. \"After CLAFTS, I was actually able to do more of what I wanted to do, which is sales.\"",
+      "chinese": "\"在使用CLAFTS之前，我觉得自己做的行政工作比真正花在客户身上的时间还多，\"Jared说。\"使用CLAFTS之后，我终于能做更多我想做的事情了，那就是销售。\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Scaling Anthropic's GTM toolkit",
+      "chinese": "扩展Anthropic的GTM工具集"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-22",
+      "english": "Beyond Jared, a BDR regularly working past midnight emailing customers, John Albert, helped co-build Clafts. The rest of the business development team came on board once they saw their teammate was getting hours back each day. From there, they did most of the evangelism themselves.",
+      "chinese": "除了Jared之外，一位经常加班到午夜之后给客户发邮件的BDR（商务拓展代表）John Albert也参与了CLAFTS的共同构建。当业务发展团队的其他成员看到他们的同事每天都能节省数小时后，他们也纷纷加入。从那时起，大部分推广工作都是他们自己完成的。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-23",
+      "english": "The next set of tools Jared built was a set of skills bookending his calendar: daily brief and daily recap.",
+      "chinese": "Jared构建的下一套工具是围绕日历的一组技能：每日简报和每日回顾。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-24",
+      "english": "Each morning, the daily brief skill reads his calendar, runs a web search on whoever he's meeting with, and produces talking points before the first call. The skill connects to Google Calendar and CRM data through MCP servers, pulling relevant information about each customer.",
+      "chinese": "每天早上，每日简报技能会读取他的日历，对即将会面的人进行网络搜索，并在第一个电话之前生成谈话要点。该技能通过MCP服务器连接Google Calendar和CRM数据，提取每个客户的相关信息。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-25",
+      "english": "And at the end of the day, the daily recap skill pulls from Google Docs and meeting notes to draft follow-up emails, similar to CLAFTS.",
+      "chinese": "在一天结束时，每日回顾技能从Google Docs和会议记录中提取内容来草拟后续邮件，类似于CLAFTS。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-26",
+      "english": "\"You couple those together and you get Claude managing your daily tasks, which essentially becomes an agent,\" he says.",
+      "chinese": "\"你把它们结合在一起，就让Claude管理你的日常任务，这本质上就变成了一个智能代理，\"他说。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-27",
+      "english": "Jared's work now pushes further into agent territory as he's experimenting with the Agent SDK and chaining workflows where the output of one Claude run feeds the input of the next.",
+      "chinese": "Jared的工作现在进一步深入智能代理领域，他正在试验Agent SDK和链式工作流，将一次Claude运行的输出作为下一次运行的输入。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-28",
+      "english": "To make sure the tools he builds with Claude Code scale across the wider team he supports, he ships them with Claude Cowork, packaging skills and MCP connectors into a plugin anyone can install in minutes.",
+      "chinese": "为了确保他用Claude Code构建的工具能在更广泛的团队中推广，他通过Claude Cowork来发布这些工具，将技能和MCP连接器打包成一个任何人都能在几分钟内安装的插件。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-29",
+      "english": "Within months of launching the Sales plugin, roughly 80 percent of Anthropic's sales org was using it. The remaining 20 percent are largely new hires, which Jared considers the next challenge to tackle, since the skills were built specifically to help people ramp faster.",
+      "chinese": "在销售插件发布后的几个月内，Anthropic大约80%的销售组织都在使用它。剩下的20%主要是新员工，Jared认为这是下一个要解决的挑战，因为这些技能的构建初衷就是帮助人们更快地上手。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-30",
+      "english": "Before the plugin, every new hire used to spend weeks figuring out their own workflow. Now a new hire can install it on day one and have 20-plus skills already wired into the tools they use: Salesforce, Intercom, Gong, Google Calendar, Gmail, Google Drive, and BigQuery.",
+      "chinese": "在插件出现之前，每个新员工都要花几周时间摸索自己的工作流程。现在新员工可以在入职第一天就安装插件，立即拥有20多个已连接到常用工具的技能：Salesforce、Intercom、Gong、Google Calendar、Gmail、Google Drive和BigQuery。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-31",
+      "english": "Two skills anchor the sales team plugin:",
+      "chinese": "两个技能构成了销售团队插件的核心："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-32",
+      "english": "The package also integrates with Cowork's scheduling feature, which lets reps queue skills to run automatically.",
+      "chinese": "该插件还与Cowork的调度功能集成，让销售代表可以将技能排队自动运行。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-33",
+      "english": "\"Our sales people can get back to having meaningful conversations instead of going to update all these different applications,\" he says.",
+      "chinese": "\"我们的销售人员可以重新专注于有意义的对话，而不是去更新所有这些不同的应用程序，\"他说。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Architecting what's next",
+      "chinese": "规划未来"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-34",
+      "english": "Jared's role has changed alongside the tooling. As a GTM Architect, he now sits in design conversations with product engineers and helps shape new tools for Anthropic's sales team.",
+      "chinese": "Jared的角色随着工具的发展而改变。作为GTM架构师，他现在参与与产品工程师的设计讨论，帮助塑造Anthropic销售团队的新工具。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-35",
+      "english": "\"I feel like with the technical barrier dissolving, I'm almost able to design more products and have senior engineers help me implement to the final stretch,\" Jared says. \"I'm able to augment and do more things.\"",
+      "chinese": "\"我觉得随着技术壁垒的消融，我几乎可以设计更多的产品，然后让资深工程师帮我实现到最后一步，\"Jared说。\"我能够增强自己的能力，做更多的事情。\""
+    },
+    {
+      "type": "paragraph",
+      "id": "p-36",
+      "english": "For sellers wondering whether they could build something similar, his advice is to open Claude Code, find one task that's slowing them down, and ask Claude how to build a solution for it.",
+      "chinese": "对于想知道是否能构建类似工具的销售人员，他的建议是：打开Claude Code，找到一个拖慢你速度的任务，然后问Claude如何为它构建一个解决方案。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-37",
+      "english": "\"If you told me I was going to be a go-to-market product manager at Anthropic a year ago, I would be pretty surprised,\" he says. \"I never had the technical chops to be in these conversations. With Claude, I'm able to design and build things that don't just improve my own day-to-day workflows, but also those of my broader team. I have space to work more creatively and strategically, and there's no turning back.\"",
+      "chinese": "\"如果你一年前告诉我我将成为Anthropic的市场推广产品经理，我会非常惊讶，\"他说。\"我从来没有技术能力参与这些讨论。有了Claude，我能够设计和构建不仅改善我自己日常工作流程、还能改善整个团队工作流程的东西。我有了更有创造力和战略性的工作空间，而且再也回不去了。\""
+    },
+    {
+      "type": "paragraph",
+      "id": "p-38",
+      "english": "Get started with Claude today. Stay tuned for more stories in the \"How Anthropic uses Claude\" series.",
+      "chinese": "立即开始使用Claude。敬请关注\"Anthropic如何使用Claude\"系列的更多故事。"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"15-anthropic-gtm-engineering\"."
+    }
+  ]
+}

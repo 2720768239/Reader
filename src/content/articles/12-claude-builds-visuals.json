@@ -1,0 +1,88 @@
+{
+  "slug": "12-claude-builds-visuals",
+  "title": "Claude now creates interactive charts, diagrams and visualizations",
+  "sourceUrl": "https://claude.com/blog/claude-builds-visuals",
+  "publishedAt": "March 12, 2026",
+  "category": "Product announcements",
+  "preview": "Update: Now available in Claude Cowork on all paid plans (April 22, 2026).",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Update: Now available in Claude Cowork on all paid plans (April 22, 2026).",
+      "chinese": "更新：现已在所有付费方案的 Claude Cowork 中可用（2026年4月22日）。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Last fall, we previewed Imagine with Claude: a new way for Claude to build visuals in real time, without any code. We're now bringing a version of this feature, in beta, to Claude's chat conversations. Claude can create custom charts, diagrams and other visualizations in-line in its responses—and then tweak and modify its creations as the conversation develops.",
+      "chinese": "去年秋天，我们预览了\"用 Claude 想象\"（Imagine with Claude）：一种让 Claude 无需编写代码即可实时构建视觉内容的新方式。现在，我们将此功能的一个版本（测试阶段）引入 Claude 的聊天对话中。Claude 可以在其回复中内联创建自定义图表、图形和其他可视化内容——并随着对话的推进对其创作进行调整和修改。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "Claude's conversations already include artifacts: permanent tools and documents created by Claude, designed to be shared or downloaded as more polished work. By contrast, these charts, diagrams and visualizations serve a different purpose: Claude builds them to aid users' understanding as it's discussing the topic at hand. They appear in-line, rather than in a side panel, and they're temporary—they change or disappear as the conversation evolves.",
+      "chinese": "Claude 的对话中已经包含了\"工件\"（artifacts）：由 Claude 创建的永久性工具和文档，旨在作为更精致的作品被共享或下载。相比之下，这些图表、图形和可视化内容有着不同的用途：Claude 构建它们是为了在讨论当前话题时帮助用户理解。它们以内联方式呈现，而非显示在侧边面板中，并且是临时性的——它们会随着对话的推进而变化或消失。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "Here are a couple of examples. You can ask Claude how compound interest works, and it'll give you a curve to play around with. Or you can ask about the periodic table, and it'll build an interactive visualization in which you can click around for more details, as in the example below:",
+      "chinese": "以下是几个示例。你可以询问 Claude 复利是如何运作的，它会给你一条可供探索的曲线。或者你可以询问元素周期表，它会构建一个交互式可视化，你可以点击各处查看更多详情，如下方示例所示："
+    },
+    {
+      "type": "image",
+      "alt": "内联可视化演示",
+      "src": "images/12-claude-builds-visuals/inline-visualization.gif"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "This feature will be on by default. Claude will decide when to build a visual for something, or you can ask it to do so directly (with a query like \"draw this as a diagram\" or \"visualize how this might change over time\"). Once Claude has created something, you can ask for adjustments or to dig in deeper.",
+      "chinese": "此功能默认开启。Claude 会自行决定何时为某内容构建可视化，你也可以直接要求它这样做（例如使用\"将此绘制成图表\"或\"可视化这随时间如何变化\"之类的查询）。Claude 创建内容后，你可以要求调整或深入探索。"
+    },
+    {
+      "type": "image",
+      "alt": "内联可视化示例 2",
+      "src": "images/12-claude-builds-visuals/inline-visuals-2.png"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "These visuals are part of a broader set of improvements we've made to Claude's responses recently. Earlier this year, Claude began using purpose-designed formats for some topics: recipes, for example, now appear with ingredients and steps, and Claude provides a visual when you ask it for the weather. You can also interact directly with apps like Figma, Canva, and Slack within your discussions.",
+      "chinese": "这些可视化功能是我们最近对 Claude 回复所做的一系列更广泛改进的一部分。今年早些时候，Claude 开始为某些话题使用专门设计的格式：例如，食谱现在会显示食材和步骤，询问天气时 Claude 会提供可视化展示。你还可以在对话中直接与 Figma、Canva 和 Slack 等应用进行交互。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "Try it today. This feature is available on all plan types.",
+      "chinese": "今天就来试试吧。此功能适用于所有方案类型。"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"12-claude-builds-visuals\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"12-claude-builds-visuals\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"12-claude-builds-visuals\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"12-claude-builds-visuals\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"12-claude-builds-visuals\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"12-claude-builds-visuals\"."
+    }
+  ]
+}

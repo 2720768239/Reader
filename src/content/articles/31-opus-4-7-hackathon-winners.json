@@ -1,0 +1,260 @@
+{
+  "slug": "31-opus-4-7-hackathon-winners",
+  "title": "Meet the winners of the Built with Opus 4.7 Claude Code hackathon",
+  "preview": "From medical training and electronics repair to coding education and factory maintenance, see the projects built by the winners of our latest virtual hackathon.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "From medical training and electronics repair to coding education and factory maintenance, see the projects built by the winners of our latest virtual hackathon.",
+      "chinese": "从医学培训到电子维修，从编程教育到工厂维护，来看看我们最新虚拟黑客松获奖者们构建的项目。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Last week, we hosted Claude Build Day, our latest hackathon where builders got together in San Francisco to put their ideas to work using Claude Opus 4.8.",
+      "chinese": "上周，我们举办了 Claude Build Day，这是我们最新的黑客松，构建者们齐聚旧金山，使用 Claude Opus 4.8 将他们的想法付诸实践。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "While we wait to see what they built, we chatted with the winners of our Built with Opus 4.7 hackathon about their projects. They tackled medical training, electronics repair, computer science education, interactive play, home repair, and factory maintenance.",
+      "chinese": "在等待看到他们构建的成果的同时，我们与 Built with Opus 4.7 黑客松的获奖者们聊了聊他们的项目。他们涉足医学培训、电子维修、计算机科学教育、互动游戏、家庭维修和工厂维护等领域。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "Congratulations to the winners and to everyone who participated! We hope their ideas will inspire you.",
+      "chinese": "祝贺获奖者和所有参与者！我们希望他们的想法能启发你。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "First place: Medkit, Bedirhan Keskin",
+      "chinese": "第一名：Medkit，Bedirhan Keskin"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "Bedirhan Keskin, an Istanbul-based physician-turned-software engineer, used Claude Managed Agents to build Medkit: a learning tool for medical residents or junior doctors, simulating real-life patient encounters in a gamified medical clinic.",
+      "chinese": "Bedirhan Keskin 是一位来自伊斯坦布尔的医生转型软件工程师，他使用 Claude Managed Agents 构建了 Medkit：一个面向住院医师或初级医生的学习工具，在游戏化的医疗诊所中模拟真实的患者接诊场景。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "\"When you're alone in an emergency department with 50 patients waiting and you realize there are cases you never practiced in medical school, you end up practicing them on real patients in real time,\" says Bedirhan.",
+      "chinese": "\"当你独自一人在急诊室，有 50 位患者在等待，而你意识到有些病例你在医学院从未练习过，你最终只能在真实的患者身上实时练习，\"Bedirhan 说。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "With Medkit, medical students practice diagnosing and treating simulated patients, using the tool to take medical history, order labs, read imaging, diagnose, and prescribe treatment. At the end, an agentic grader assesses the full encounter against the same published clinical guidelines that a board examiner would use.",
+      "chinese": "通过 Medkit，医学生练习诊断和治疗模拟患者，使用该工具进行病史采集、开具检验单、阅读影像、诊断和开处方。最后，一个智能体评分器会按照考官使用的相同公开临床指南对整个接诊过程进行评估。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "Bedirhan built Medkit across four separate Claude Code sessions (voice engine, content generation, 3D game layer, and a core app), keeping each context clean and progressing on all at once. He followed a \"talk, don't type\" approach, working almost entirely by voice.",
+      "chinese": "Bedirhan 在四个独立的 Claude Code 会话中构建了 Medkit（语音引擎、内容生成、3D 游戏层和核心应用），保持每个上下文清晰并同时推进所有工作。他采用\"说话而不是打字\"的方法，几乎完全通过语音工作。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "Medkit is already gaining traction, with three medical faculties and a pharma company, all based in Istanbul, set to start running pilots in the coming weeks.",
+      "chinese": "Medkit 已经开始获得关注，三家医学院和一家制药公司（均位于伊斯坦布尔）将在未来几周内开始试运行。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "**Advice to other builders:** Work with Claude as a thought partner, not just a coding agent.",
+      "chinese": "**给其他构建者的建议：** 将 Claude 作为思想伙伴合作，而不仅仅是编码代理。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "Bedirhan's first instinct was to self-host the voice engine, but Claude suggested using a cloud provider to move faster. \"What I value most about Claude is it's not just a code generator, but a thought partner helping me see options I'd otherwise miss,\" he says.",
+      "chinese": "Bedirhan 的第一反应是自托管语音引擎，但 Claude 建议使用云提供商以加快进度。\"我最看重 Claude 的是，它不仅仅是一个代码生成器，而是一个思想伙伴，帮助我看到我会错过的选择，\"他说。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Second place: Wrench Board, Alexis Chapellier",
+      "chinese": "第二名：Wrench Board，Alexis Chapellier"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "Alexis Chapellier from Reignier-Ésery, France, spent years fixing electronics before creating RepairMind, an AI-powered management platform for repair shops. His Opus 4.7 hackathon project, Wrench Board, helps independent technicians figure out complex repairs.",
+      "chinese": "来自法国 Reignier-Ésery 的 Alexis Chapellier 在创建 RepairMind（一个 AI 驱动的维修店管理平台）之前花了多年时间修理电子产品。他的 Opus 4.7 黑客松项目 Wrench Board 帮助独立技术人员解决复杂维修问题。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "Users drop in a schematic and a boardview and describe the symptoms, and the agent creates a unified electrical graph, reasons over it, points to the exact pad to probe, reads measurements, and updates its hypotheses until it diagnoses the issue.",
+      "chinese": "用户放入原理图和板图并描述症状，代理会创建统一的电气图，对其进行推理，指出需要探测的精确焊盘，读取测量值，并更新其假设直到诊断出问题。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "Alexis prototyped Wrench Board in Claude Design, separating the app's responsibilities (design, schematic ingestion, boardview, diagnostic agent) and producing first a spec and then a plan for each one. He executed in Claude Code's multi-agent mode, benchmarking at every step by running five or six agents in parallel during debugging, with one dedicated agent per domain.",
+      "chinese": "Alexis 在 Claude Design 中制作了 Wrench Board 的原型，将应用的职责分离（设计、原理图导入、板图、诊断代理），并为每个职责先制定规格说明再制定计划。他在 Claude Code 的多代理模式下执行，在调试过程中每一步都通过并行运行五到六个代理进行基准测试，每个领域一个专用代理。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "Alexis's big bet was on Opus 4.7's new ability to understand visual schematics; he says he knew it was working when he asked the model to trace a power path on a motherboard.",
+      "chinese": "Alexis 的重大赌注是 Opus 4.7 理解视觉原理图的新能力；他说当他让模型追踪主板上的电源路径时，他知道它在工作。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "\"I watched Wrench Board's boardview light up step by step, arrows appearing, components getting pointed at, names surfacing. At that moment, I understood the idea was holding up,\" he says.",
+      "chinese": "\"我看着 Wrench Board 的板图一步步亮起来，箭头出现，组件被指向，名称浮现。那一刻，我知道这个想法是可行的，\"他说。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "**Advice to other builders:** Go deep in the brainstorm and push back on the model.",
+      "chinese": "**给其他构建者的建议：** 深入头脑风暴，并向模型提出反驳。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "Alexis uses Superpowers, a skills framework integrated into Claude that structures the brainstorm-then-plan steps, sometimes running brainstorms in parallel to make progress on different fronts.",
+      "chinese": "Alexis 使用 Superpowers，一个集成到 Claude 中的技能框架，它构建了头脑风暴然后规划的步骤，有时并行运行头脑风暴以在不同方面取得进展。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "\"During the hackathon, Claude told me several times that this or that wouldn't fit in the time available. In reality, I had plenty of time,\" he says. \"You have to know how to tell it, I'm going to try anyway.\"",
+      "chinese": "\"在黑客松期间，Claude 多次告诉我这个或那个在可用时间内无法完成。实际上，我有足够的时间，\"他说。\"你必须知道如何告诉它，我还是要试试。\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Third place: Maieutic, Paula Vásquez-Henríquez",
+      "chinese": "第三名：Maieutic，Paula Vásquez-Henríquez"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-20",
+      "english": "Paula Vásquez-Henríquez, who teaches computer science at Universidad del Desarrollo in Concepción, Chile, says over the past two years she is seeing more students pass tests without understanding their own code.",
+      "chinese": "在智利康塞普西翁的德萨罗洛大学教授计算机科学的 Paula Vásquez-Henríquez 说，在过去两年里，她看到越来越多的学生通过考试却不理解自己的代码。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-21",
+      "english": "\"Students now use AI to manufacture code, but they have no idea what the code does,\" she says. \"They never learn to state a problem precisely, to draft a plan before coding, or to read their own code critically and notice where it drifted from what they intended. The autocomplete delivers working code before they've even finished forming the question, so the metacognitive loop, the thinking-about-your-thinking that actually creates a programmer, never closes. They graduate able to generate code but not reason about it.\"",
+      "chinese": "\"学生现在使用 AI 来制造代码，但他们完全不知道代码做了什么，\"她说。\"他们从未学会精确地陈述问题、在编码前起草计划、或批判性地阅读自己的代码并注意到它偏离了他们的意图。自动完成在他们甚至还没完成问题构思时就提供了可运行的代码，所以元认知循环——真正创造程序员的'关于思考的思考'——从未闭合。他们毕业时能够生成代码但无法推理代码。\""
+    },
+    {
+      "type": "paragraph",
+      "id": "p-22",
+      "english": "Maieutic is an IDE designed to make students slow down at key moments. Students must describe in plain language what their program should do before writing any code; Claude asks targeted clarifying questions and keeps the editor locked until the spec is detailed enough that a competent programmer could implement it without guessing.",
+      "chinese": "Maieutic 是一个 IDE，旨在让学生在关键时刻放慢脚步。学生必须在编写任何代码之前用简洁的语言描述他们的程序应该做什么；Claude 会提出有针对性的澄清问题，并锁定编辑器直到规格说明详细到足以让有能力的程序员无需猜测即可实现。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-23",
+      "english": "The Intent-Diff Review, the core of the tool, has Claude compare the spec against the final code, classify each divergence as drift, revision, or bug, and then surface a neutral, non-accusatory question prompting the student to explain the issue themselves.",
+      "chinese": "意图差异审查是该工具的核心，让 Claude 将规格说明与最终代码进行比较，将每个偏差分类为漂移、修订或错误，然后提出一个中立的、非指责性的问题，促使学生自己解释问题。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-24",
+      "english": "**Advice to other builders:** Think before you build.",
+      "chinese": "**给其他构建者的建议：** 构建之前先思考。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-25",
+      "english": "This project was Paula dogfooding her own philosophy: specify before you build. \"Maieutic exists because students jump straight to code, and the only way I built it well was by refusing to do exactly that myself,\" she says.",
+      "chinese": "这个项目是 Paula 亲身实践自己的理念：构建之前先制定规格。\"Maieutic 的存在是因为学生直接跳到代码，而我唯一能把它做好的方式就是拒绝自己这样做，\"她说。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Most Creative Use of Opus 4.7: Virtual Puppet Theater, Rene Hangstrup Møller",
+      "chinese": "Opus 4.7 最具创意使用奖：Virtual Puppet Theater，Rene Hangstrup Møller"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-26",
+      "english": "Intrigued with Opus 4.7's spatial reasoning capabilities, full stack developer Rene Hangstrup Møller built Virtual Puppet Theater, a browser-based app that turns webcam video and voice into a dynamic interactive puppet show.",
+      "chinese": "出于对 Opus 4.7 空间推理能力的兴趣，全栈开发者 Rene Hangstrup Møller 构建了 Virtual Puppet Theater，一个基于浏览器的应用，将摄像头视频和语音转化为动态互动木偶戏。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-27",
+      "english": "A real-time animated puppet mirrors a user's movements while a second AI-driven companion puppet banters with the user; spoken prompts can transform the scenery and spawn 3D props on the fly.",
+      "chinese": "一个实时动画木偶镜像用户的动作，而第二个 AI 驱动的伙伴木偶与用户互动；语音提示可以即时变换场景并生成 3D 道具。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-28",
+      "english": "**Advice to other builders:** If you're participating in a hackathon, plan time to create the demo video.",
+      "chinese": "**给其他构建者的建议：** 如果你参加黑客松，要预留时间制作演示视频。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-29",
+      "english": "\"It takes way longer than you think to produce a 3-minute video,\" Rene says.",
+      "chinese": "\"制作一个 3 分钟的视频花的时间比你想象的要长得多，\"Rene 说。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "\"Keep Thinking\" Prize: MaestrIA, Benjamin Torralbo",
+      "chinese": "\"持续思考\"奖：MaestrIA，Benjamin Torralbo"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-30",
+      "english": "Benjamin Torralbo grew up apprenticing alongside his father, Juan Rodrigo Torralbo, a certified Maestro Mayor carpenter in Chiloé, Chile. \"My father has 30 years of craft, has restored UNESCO-listed churches, but is still invisible to the Chilean system, like hundreds of thousands of other tradespeople,\" Benjamin says.",
+      "chinese": "Benjamin Torralbo 从小跟随父亲 Juan Rodrigo Torralbo 学徒，他是智利奇洛埃的一名认证大师级木匠。\"我父亲有 30 年的手艺，修复过联合国教科文组织认证的教堂，但在智利系统中仍然是隐形的，像其他数十万技工一样，\"Benjamin 说。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-31",
+      "english": "His MaestrIA hackathon project solves both sides as a web app that gives ordinary people master-level home repair diagnostics while giving skilled tradespeople a way to demonstrate expertise.",
+      "chinese": "他的 MaestrIA 黑客松项目作为一个 Web 应用解决了双方的问题，既为普通人提供大师级的家庭维修诊断，又为熟练技工提供展示专业技能的方式。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-32",
+      "english": "**Advice to other builders:** Eval first, features later.",
+      "chinese": "**给其他构建者的建议：** 先评估，后功能。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-33",
+      "english": "\"The single most important thing I did was build an auditable 9-dimension eval against 12 real cases with ground truth recorded by my dad,\" Benjamin says.",
+      "chinese": "\"我做的最重要的一件事是建立了一个可审计的 9 维评估，针对 12 个真实案例，由我父亲记录的基准真相，\"Benjamin 说。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Best Use of Claude Managed Agents: ARIA, Idriss Benguezzou & Adam Hnaien",
+      "chinese": "Claude Managed Agents 最佳使用奖：ARIA，Idriss Benguezzou & Adam Hnaien"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-34",
+      "english": "Most factories have that one veteran technician who can tell when a machine is about to break, just by the sound it makes. The Best Use of Claude Managed Agents prize-winning project, ARIA (Adaptive Runtime Intelligence) turns an experienced maintenance engineer's instincts into an affordable, fast-to-set-up AI system that continuously watches factory machines and generates custom diagnostics and repair plans the moment trouble appears.",
+      "chinese": "大多数工厂都有那样一位资深技师，仅凭声音就能判断机器何时要出故障。Claude Managed Agents 最佳使用奖获奖项目 ARIA（自适应运行时智能）将经验丰富的维护工程师的直觉转化为一个经济实惠、快速部署的 AI 系统，持续监控工厂机器并在问题出现的瞬间生成定制的诊断和维修计划。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-35",
+      "english": "**Advice to other builders:** Let Claude audit.",
+      "chinese": "**给其他构建者的建议：** 让 Claude 审计。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-36",
+      "english": "Ask Claude to find if there's anything wrong with what you've already built before building the next thing, says Idriss. \"That loop is underrated.\"",
+      "chinese": "在构建下一个东西之前，让 Claude 检查你已经构建的东西是否有问题，Idriss 说。\"这个循环被低估了。\""
+    }
+  ],
+  "warnings": []
+}

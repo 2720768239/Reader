@@ -1,0 +1,170 @@
+{
+  "slug": "02-whats-new-managed-agents",
+  "title": "New in Claude Managed Agents: run agents on a schedule and store environment variables in vaults",
+  "sourceUrl": "https://claude.com/blog/whats-new-in-claude-managed-agents",
+  "publishedAt": "June 9, 2026",
+  "category": "产品公告",
+  "preview": "Starting today, Claude Managed Agents can run on a schedule and securely access CLI tools and other authenticated services. Both features are now available in public beta on the Claude Platform.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Starting today, Claude Managed Agents can run on a schedule and securely access CLI tools and other authenticated services. Both features are now available in public beta on the Claude Platform.",
+      "chinese": "从今天起，Claude 托管代理可以按计划运行，并安全地访问 CLI 工具和其他需要身份验证的服务。这两项功能现已在 Claude 平台上以公开测试版提供。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Run agents on a schedule",
+      "chinese": "按计划运行代理"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Agents can now run on a schedule, completing routine work automatically. A scheduled deployment gives an agent a cron schedule. Each time the schedule fires, the agent starts a new session and completes its task, with no scheduler for you to build or host.",
+      "chinese": "代理现在可以按计划运行，自动完成日常工作。定时部署为代理提供一个 cron 计划。每次计划触发时，代理会启动一个新会话并完成任务，无需您自行构建或托管调度器。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "Use it for recurring work like a nightly data sync, a weekly compliance scan, or a daily digest. Once a deployment is live, you can pause, resume, or archive it at any time, or trigger additional runs on demand.",
+      "chinese": "将其用于周期性工作，如每晚数据同步、每周合规扫描或每日摘要。部署上线后，您可以随时暂停、恢复或归档，也可以按需触发额外运行。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "Teams are already using scheduled deployments to automate recurring work:",
+      "chinese": "各团队已经在使用定时部署来自动化周期性工作："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "- **Rakuten** uses scheduled deployments to analyze spreadsheet data and produce reports and decks on a weekly or monthly schedule. Teams also monitor production logs and metrics, allowing product managers to see application health without creating a dashboard.",
+      "chinese": "- **乐天（Rakuten）** 使用定时部署按周或按月分析电子表格数据并生成报告和演示文稿。团队还监控生产日志和指标，使产品经理无需创建仪表板即可查看应用健康状况。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "- **Actively AI** uses Managed Agents to power cross-account agentic search for sales teams. Scheduled deployments refresh answers regularly, simplifying their stack by replacing scheduling infrastructure the team initially built themselves.",
+      "chinese": "- **Actively AI** 使用托管代理为销售团队提供跨账户的智能搜索能力。定时部署定期刷新答案，替代了团队最初自行构建的调度基础设施，从而简化了技术栈。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "- **Ando** uses scheduled deployments to keep hiring and sales teams moving. Agents autonomously watch channels for proposed next steps, follow up when they're due, and send meeting reminders.",
+      "chinese": "- **Ando** 使用定时部署推动招聘和销售团队的工作进展。代理自主监控频道中的后续步骤提案，在到期时跟进，并发送会议提醒。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Store environment variables in vaults to authenticate CLIs and other tools",
+      "chinese": "在保险库中存储环境变量以验证 CLI 和其他工具"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "Agents connect to external systems through direct API calls, CLIs, and MCP. Now we're extending vaults to support environment variables, so CLIs and other tools can make authenticated requests. CLIs let agents drive existing command-line tools directly through a shell, making them a fast, lightweight integration path. Register an API key with an environment variable name and the domains it can reach, and the CLIs installed in an agent's sandbox can use it to make authenticated API calls.",
+      "chinese": "代理通过直接 API 调用、CLI 和 MCP 连接外部系统。现在我们扩展了保险库功能以支持环境变量，使 CLI 和其他工具可以发出经过身份验证的请求。CLI 让代理能够直接通过 shell 驱动现有命令行工具，这是一种快速、轻量的集成路径。注册一个 API 密钥时指定环境变量名称及其可访问的域名，代理沙箱中安装的 CLI 即可使用该密钥进行经过身份验证的 API 调用。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "The agent never sees your key because the sandbox only holds a placeholder. The real key is attached at the network boundary, and only on requests to domains you allow, so it only goes where you've approved. To change a key, update it in the vault, and running sessions will pick up the new value on their next call. Most CLIs that send their key in an HTTP request work this way, including the Browserbase, KERNEL, Notion, Ramp, and Sentry CLIs. Browserbase and KERNEL give Managed Agents browser capabilities for the first time, so agents can navigate and interact with the web alongside their other tools.",
+      "chinese": "代理永远不会看到您的密钥，因为沙箱中只保存一个占位符。真正的密钥在网络边界处附加，且仅用于您允许的域名请求，因此密钥只会发送到您批准的地方。要更改密钥，只需在保险库中更新，正在运行的会话将在下一次调用时获取新值。大多数通过 HTTP 请求发送密钥的 CLI 都采用这种方式，包括 Browserbase、KERNEL、Notion、Ramp 和 Sentry 的 CLI。Browserbase 和 KERNEL 首次为托管代理提供了浏览器功能，使代理能够在使用其他工具的同时浏览和与网页交互。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "Teams are using environment variables in vaults to give agents secure access to authenticated tools:",
+      "chinese": "各团队正在使用保险库中的环境变量让代理安全地访问需要身份验证的工具："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "- **Notion** uses environment variables in vaults to roll out its CLI alongside MCP tools, adding file-upload capabilities to its agents without API tokens ever being handed to the model.",
+      "chinese": "- **Notion** 使用保险库中的环境变量配合 MCP 工具推出其 CLI，在不将 API 令牌交给模型的情况下为代理添加文件上传功能。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "- **Browserbase** built its public catalog of browser skills using the browse CLI, authenticated through vaults. A scheduled deployment periodically validates the catalog to keep it accurate.",
+      "chinese": "- **Browserbase** 使用通过保险库验证的 browse CLI 构建了其公开的浏览器技能目录。定时部署定期验证该目录以保持其准确性。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "- **KERNEL** uses environment variables in vaults to securely connect agents to the databases where it tracks usage and customer conversations. The agent flags usage surges as they happen, so the team can confirm with customers if the activity is intended.",
+      "chinese": "- **KERNEL** 使用保险库中的环境变量将代理安全连接到其跟踪使用情况和客户对话的数据库。代理在使用量激增时即时标记，以便团队与客户确认该活动是否为预期行为。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "- **Milana** uses environment variables in vaults to securely connect its AI product engineer to a customer's codebase. The agent finds and fixes bugs automatically, with large-scale data analysis running faster than before.",
+      "chinese": "- **Milana** 使用保险库中的环境变量将其 AI 产品工程师安全连接到客户的代码库。代理自动发现并修复 Bug，大规模数据分析的运行速度比以前更快。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "\"Environment variables in vaults let us securely roll out the Notion CLI, meeting our security team's strict guidelines by ensuring sensitive API tokens are never handed to agents. The CLI is complementary to MCP tools, enabling file-upload capabilities in Claude Managed Agents.\"  — Quan Nguyen, Public API Lead",
+      "chinese": "\"保险库中的环境变量让我们能够安全地推出 Notion CLI，通过确保敏感 API 令牌永远不会交给代理来满足安全团队的严格要求。CLI 是 MCP 工具的补充，为 Claude 托管代理启用了文件上传功能。\"  — Quan Nguyen，公共 API 负责人"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "\"Teams across Rakuten use scheduled deployments to analyze data in a spreadsheet and produce a report or deck on a weekly or monthly schedule. Our power users put it on production logs and metrics, so a product manager can see the health of their application without creating an analytics dashboard.\"  — Yusuke Kaji, General Manager of AI for Business",
+      "chinese": "\"乐天各团队使用定时部署按周或按月分析电子表格数据并生成报告或演示文稿。我们的高级用户将其用于生产日志和指标，这样产品经理无需创建分析仪表板即可查看应用的健康状况。\"  — Yusuke Kaji，AI 商务总经理"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "\"Most of our users prefer to work with fewer agents rather than many. With scheduled deployments, they can bundle more capabilities into one autonomous agent. For example, an agent can watch multiple sales and hiring processes, check in with the right people for updates, and push next steps along.\"  — Sara Du, Founder",
+      "chinese": "\"我们的大多数用户更喜欢使用较少的代理而非很多代理。通过定时部署，他们可以将更多功能捆绑到一个自主代理中。例如，一个代理可以监控多个销售和招聘流程，与相关人员确认进展，并推动后续步骤。\"  — Sara Du，创始人"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "\"We built a cross-account agentic search system on Claude Managed Agents that lets sales teams ask things like which accounts to reach out to today. Since customers want those answers refreshed regularly, we replaced the scheduling infrastructure we'd built ourselves with scheduled deployments, which greatly simplified our stack and improved our product cycles.\"  — Mihir Garimella, Co-founder",
+      "chinese": "\"我们在 Claude 托管代理上构建了一个跨账户智能搜索系统，让销售团队可以问诸如'今天应该联系哪些客户'之类的问题。由于客户希望这些答案定期刷新，我们用定时部署替代了自行构建的调度基础设施，这大大简化了我们的技术栈并改善了产品迭代周期。\"  — Mihir Garimella，联合创始人"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "\"With Claude Managed Agents, we grounded our agent on a customer's actual codebase. We found it easy to work with and got high-quality results almost instantly. The key unlock was environment variables in vaults, which let our agent invoke private APIs through a CLI without exposing credentials. Large-scale data analysis is now dramatically faster, and with outcomes we can ensure the quality of every output.\"  — Raghav Sethi, Co-founder & CTO",
+      "chinese": "\"通过 Claude 托管代理，我们将代理建立在客户的实际代码库之上。我们发现它易于使用，几乎立即就能获得高质量的结果。关键突破是保险库中的环境变量，它让我们的代理能够通过 CLI 调用私有 API 而不暴露凭据。大规模数据分析现在速度大幅提升，我们也能确保每个输出的质量。\"  — Raghav Sethi，联合创始人兼 CTO"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-20",
+      "english": "\"Environment variables in vaults enabled our engineering team to combine two major compute primitives: the agent and the browser. At Browserbase, we used Claude Managed Agents with the browse CLI to generate our public catalog of browser skills that help agents navigate the web, and scheduled deployments run periodic validation on our public catalog.\"  — Ziray Hao, Product Lead",
+      "chinese": "\"保险库中的环境变量使我们的工程团队能够结合两大计算原语：代理和浏览器。在 Browserbase，我们使用 Claude 托管代理配合 browse CLI 生成了帮助代理浏览网页的公开浏览器技能目录，定时部署定期对我们的公开目录进行验证。\"  — Ziray Hao，产品负责人"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-21",
+      "english": "\"Usage on Kernel's browser infrastructure can surge quickly, often right after a customer deploys. With environment variables in vaults, our agent now connects directly to the databases where we track usage and customer conversations. It pulls 30 days of daily usage in seconds, flags surges as they happen, and helps our team confirm with customers that the activity is intended.\"  — Catherine Jue, Co-founder & CEO",
+      "chinese": "\"Kernel 浏览器基础设施的使用量可能会迅速激增，通常发生在客户部署之后。通过保险库中的环境变量，我们的代理现在可以直接连接到跟踪使用情况和客户对话的数据库。它能在几秒内拉取 30 天的每日使用数据，在激增发生时即时标记，并帮助我们的团队与客户确认该活动是否为预期行为。\"  — Catherine Jue，联合创始人兼 CEO"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Getting started",
+      "chinese": "入门指南"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-22",
+      "english": "Explore our documentation to learn more or visit the Claude Console to deploy your first agent.",
+      "chinese": "查阅我们的文档了解更多信息，或访问 Claude 控制台部署您的第一个代理。"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"02-whats-new-managed-agents\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"02-whats-new-managed-agents\"."
+    }
+  ]
+}

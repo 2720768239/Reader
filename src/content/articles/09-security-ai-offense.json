@@ -1,0 +1,607 @@
+{
+  "slug": "09-security-ai-offense",
+  "title": "Preparing your security program for AI-accelerated offense",
+  "publishedAt": "April 10, 2026",
+  "category": "Agents",
+  "preview": "AI is changing the speed at which vulnerabilities are found and exploited. We're publishing an initial set of recommendations to shore up your defenses based on our own findings and security practices.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "AI is changing the speed at which vulnerabilities are found and exploited. We're publishing an initial set of recommendations to shore up your defenses based on our own findings and security practices.",
+      "chinese": "AI正在改变漏洞被发现和利用的速度。我们基于自身的发现和安全实践，发布了一组初步建议来加固您的防御体系。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Earlier this week, we announced Project Glasswing—our urgent attempt to put the strong cybersecurity capabilities of our newest frontier model, Claude Mythos Preview, to use for defensive purposes. In the announcement—and the accompanying technical blog post—we described how AI models are rapidly reducing the required resources, time, and skill required to find and exploit vulnerabilities in software.",
+      "chinese": "本周早些时候，我们宣布了Project Glasswing计划——这是我们紧急将最新前沿模型Claude Mythos Preview的强大网络安全能力用于防御目的的尝试。在公告中——以及随附的技术博客文章中——我们描述了AI模型如何快速降低发现和利用软件漏洞所需的资源、时间和技能。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "With an eye on the lightning-fast progress of AI, we also noted that it will not be long before models of similar capability levels are widely available. Within the next 24 months, vast numbers of bugs that sat unnoticed in code, possibly for years, will be found by AI models and chained into working exploits. Indeed, it is already the case that publicly available, sub-Mythos-level models can find serious vulnerabilities that traditional reviews have missed for long periods of time.",
+      "chinese": "着眼于AI的飞速发展，我们还指出，类似能力水平的模型不久后将广泛可用。在未来24个月内，大量在代码中可能已经存在多年而未被发现的bug，将被AI模型发现并串联成可用的漏洞利用。事实上，公开可用的低于Mythos级别模型已经能够发现传统审查长期遗漏的严重漏洞。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "Thankfully, this works both ways: although attackers can use AI to move faster, so can defenders who adopt AI tools to secure themselves. In this post, we offer security recommendations and practical tips based on what our security teams and researchers have observed and learned from using frontier AI models to secure real codebases and systems. We hope security teams and others will find this advice useful as we enter the age of AI-driven cybersecurity.",
+      "chinese": "值得庆幸的是，这是一把双刃剑：虽然攻击者可以利用AI加速攻击，但采用AI工具保护自己的防御者同样可以加速防御。在这篇文章中，我们基于安全团队和研究人员在使用前沿AI模型保护真实代码库和系统的过程中所观察和学到的经验，提供安全建议和实用技巧。我们希望安全团队和其他人能在我们进入AI驱动的网络安全时代时发现这些建议的价值。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "Many of the pieces of advice below are already part of the existing security consensus; we have prioritized them according to which controls we have seen hold and which we have seen degrade. If your organization reports against SOC 2 and ISO 27001, these will map directly onto controls you are already tracking.",
+      "chinese": "下面的许多建议已经属于现有安全共识的一部分；我们根据哪些控制措施仍然有效、哪些已经退化来确定优先级。如果您的组织按照SOC 2和ISO 27001进行报告，这些建议将直接映射到您已在跟踪的控制措施上。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "We'll update this guidance as we and our Project Glasswing partners continue our cybersecurity work.",
+      "chinese": "我们将随着Project Glasswing合作伙伴继续网络安全工作而更新本指南。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "What to do now",
+      "chinese": "现在应该做什么"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "1. Close your patch gap",
+      "chinese": "1. 消除补丁差距"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "AI models are very effective at recognizing the signatures of known, already-patched vulnerabilities in unpatched systems. Reversing a patch into a working exploit is exactly the kind of mechanical analysis at which these models excel. This means that the window between a patch being published and an exploit becoming available is shrinking.",
+      "chinese": "AI模型非常擅长在未打补丁的系统中识别已知的、已修补漏洞的特征。将补丁逆向还原为可用的漏洞利用，正是这些模型擅长的机械性分析。这意味着补丁发布到漏洞利用出现之间的时间窗口正在缩小。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "- **Patch everything on the CISA Known Exploited Vulnerabilities (KEV) catalog immediately.** This catalog contains vulnerabilities that are confirmed to be under active exploitation. Anything on this list which is reachable from a network should be treated as an emergency.",
+      "chinese": "- **立即修补CISA已知被利用漏洞（KEV）目录中的所有漏洞。** 该目录包含已被确认正在被积极利用的漏洞。此列表中任何可从网络访问的项目都应被视为紧急情况。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "- **Use EPSS to prioritize the rest.** Exploit Prediction Scoring System (EPSS) provides a daily-updated probability that a given Common Vulnerability and Exposure (CVE) will be exploited in the next 30 days. Patching the KEV list first and then everything above a chosen EPSS threshold will help you turn thousands of open CVEs into a manageable queue.",
+      "chinese": "- **使用EPSS对其余漏洞进行优先级排序。** 漏洞利用预测评分系统（EPSS）提供每日更新的特定通用漏洞披露（CVE）在未来30天内被利用的概率。首先修补KEV列表，然后修补超过所选EPSS阈值的所有漏洞，将帮助您把数千个未解决的CVE转化为可管理的队列。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "- **Reduce time-to-patch on internet-exposed systems.** We recommend patching internet-facing applications within 24 hours of an exploit becoming available, and within days for other vulnerabilities.",
+      "chinese": "- **缩短面向互联网系统的补丁时间。** 我们建议在漏洞利用出现后24小时内修补面向互联网的应用程序，其他漏洞则在数天内修补。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "- **Automate patch deployment and reboots** where the risk of an automated update causing an outage is acceptable. Manual approval steps add delay, and delay is now the primary risk.",
+      "chinese": "- **在自动更新导致停机风险可接受的情况下，自动化补丁部署和重启。** 人工审批步骤会增加延迟，而延迟现在是首要风险。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "**Practical tip:** Most cloud and OS vendors already ship patch automation; enabling it is often a simple configuration change. For container images and dependency manifests, several open-source scanners run as a single continuous integration step and annotate CVEs with data from the KEV catalogue and EPSS, so prioritization is built in.",
+      "chinese": "**实用提示：** 大多数云和操作系统供应商已提供补丁自动化功能；启用它通常只需简单的配置更改。对于容器镜像和依赖清单，多个开源扫描器可作为单个持续集成步骤运行，并使用KEV目录和EPSS的数据标注CVE，从而内置了优先级排序。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "2. Prepare to handle a much higher volume of vulnerability reports",
+      "chinese": "2. 准备处理更大量的漏洞报告"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "Over approximately the next two years, the processes you use to receive, prioritize, and fix vulnerabilities (both in your own code and in the software you buy from vendors) will be under far more pressure than they are today. Your Vulnerability Management process should plan for many more patches, from vendors and upstream.",
+      "chinese": "在大约未来两年内，您用于接收、优先排序和修复漏洞的流程（无论是在您自己的代码中还是在您从供应商购买的软件中）将承受比今天大得多的压力。您的漏洞管理流程应计划来自供应商和上游的更多补丁。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "- **Plan for an order-of-magnitude increase in finding volume.** Aspects like intake, triage, and remediation tracking need to keep pace with the increasing numbers of vulnerabilities being exposed. If your security meetings are still built around a spreadsheet and a weekly meeting, it's unlikely that you'll keep up. It's worth considering some amount of automation—with, of course, humans in the loop, to assist with the sheer volume here.",
+      "chinese": "- **计划发现量增加一个数量级。** 接收、分类和修复跟踪等方面需要跟上不断增加的漏洞数量。如果您的安全会议仍然围绕电子表格和每周会议进行，您很可能跟不上节奏。值得考虑一定程度的自动化——当然需要人在环中——以协助处理如此大量的工作。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "- **Check the security of your open-source dependencies.** Most software supply chains are mostly open source. Most open-source projects have no service-level agreement or commitment to maintain a high level of security. OpenSSF Scorecard automatically scores every dependency on signals like branch protection, fuzzing coverage, signed releases, and maintainer activity. It runs in CI and helps to identify unmaintained packages.",
+      "chinese": "- **检查开源依赖项的安全性。** 大多数软件供应链主要由开源组成。大多数开源项目没有服务级别协议或维护高水平安全性的承诺。OpenSSF Scorecard根据分支保护、模糊测试覆盖率、签名发布和维护者活动等信号自动为每个依赖项评分。它在CI中运行，有助于识别未维护的包。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "- **Apply the same expectations to your vendors.** Your third-party risk management process should ask suppliers how they are themselves preparing for accelerated exploit timelines and whether they are scanning their own code.",
+      "chinese": "- **对您的供应商施加同样的期望。** 您的第三方风险管理流程应询问供应商他们自己如何为加速的漏洞利用时间线做准备，以及他们是否在扫描自己的代码。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "**Practical tip:** Look into open source software and third-party services that evaluate the reachability of vulnerable code. Build automated processes that continuously deliver new software updates to your IT and production infrastructure, by doing regression testing on updates to gain confidence that you can deploy them quickly.",
+      "chinese": "**实用提示：** 了解评估漏洞代码可达性的开源软件和第三方服务。构建自动化流程，持续将新的软件更新交付到您的IT和生产基础设施，通过对更新进行回归测试来建立快速部署的信心。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "Above we mentioned automation of these processes. There are a number of important ways that AI can assist:",
+      "chinese": "上面我们提到了这些流程的自动化。AI可以在多个重要方面提供协助："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "- **Speeding up triage.** Triage is a bottleneck, because it requires expert review and classification. A frontier model can deduplicate findings against an existing backlog, use its knowledge of your assets to estimate exposure, and draft remediation tickets where the affected code paths are pre-identified.",
+      "chinese": "- **加速分类。** 分类是一个瓶颈，因为它需要专家审查和分类。前沿模型可以针对现有待处理列表对发现进行去重，利用其对您资产的了解来评估暴露程度，并在受影响的代码路径已预先识别的情况下起草修复工单。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-20",
+      "english": "- **Check your dependencies for redundancy.** Most large codebases accumulate multiple libraries doing the same job (several HTTP clients; several JSON parsers). This gives attackers more opportunity, all for no functional gain on your part. Pointing an LLM at a lockfile and asking which dependencies overlap (and what migration and consolidation would look like) is a one-hour exercise that often pays off.",
+      "chinese": "- **检查依赖项的冗余性。** 大多数大型代码库积累了执行相同工作的多个库（多个HTTP客户端；多个JSON解析器）。这给攻击者更多机会，而对您没有任何功能增益。将LLM指向锁定文件并询问哪些依赖项重叠（以及迁移和整合是什么样子）是一项通常在一小时内完成且往往有回报的工作。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-21",
+      "english": "- **AI upgrade automation.** Frontier models are increasingly capable of generating patches to include alongside vulnerability reports. When the report is clear and thorough, maybe even with a proof-of-concept, the model can directly test the patch to confirm that the exploit path is closed. It can also directly automate the process of accepting the upstream patch, validating that the upgrade doesn't break tests or internal systems.",
+      "chinese": "- **AI升级自动化。** 前沿模型越来越能够生成与漏洞报告一起包含的补丁。当报告清晰详尽时，甚至可能包含概念验证，模型可以直接测试补丁以确认漏洞利用路径已关闭。它还可以直接自动化接受上游补丁的过程，验证升级不会破坏测试或内部系统。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-22",
+      "english": "- **AI vendoring.** Some small dependencies will score poorly on the OpenSSF Scorecard—perhaps because they're not actively maintained. You shouldn't continue to rely on these; instead, you should consider having an LLM write its own code to reimplement the functionality you actually use.",
+      "chinese": "- **AI供应商化。** 一些小型依赖项在OpenSSF Scorecard上得分较低——可能是因为它们没有被积极维护。您不应该继续依赖这些；相反，您应考虑让LLM编写自己的代码来重新实现您实际使用的功能。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "3. Find bugs before you ship them",
+      "chinese": "3. 在发布前发现bug"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-23",
+      "english": "Prevention is always better than cure. You should assume that bugs that reach production will eventually be found, so your security testing needs to happen well before.",
+      "chinese": "预防总是优于治疗。您应该假设到达生产环境的bug最终会被发现，因此您的安全测试需要在此之前进行。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-24",
+      "english": "- **Add static analysis and AI-assisted code review to your continuous integration pipeline, and block merges on high-confidence findings.** If false positives make this impractical, you should keep the check, but address the tooling. The OWASP Application Security Verification Standard defines what \"passing\" a test looks like at three different levels of rigor.",
+      "chinese": "- **在持续集成管道中添加静态分析和AI辅助代码审查，并在高置信度发现时阻止合并。** 如果误报使这不可行，您应保留检查，但改进工具。OWASP应用安全验证标准定义了三个不同严格级别的\"通过\"测试标准。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-25",
+      "english": "- **Add automated penetration testing to your continuous delivery pipeline.** You can run the same scanning for staging that attackers will run against your production systems.",
+      "chinese": "- **在持续交付管道中添加自动化渗透测试。** 您可以对预发布环境运行与攻击者对生产系统运行的相同扫描。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-26",
+      "english": "- **Secure the build pipeline.** An attacker who can inject code between commit and deployment does not need to find a vulnerability. The SLSA security framework provides a graded path: lower levels establish which commit produced which artifact, and higher levels make the build itself verifiable.",
+      "chinese": "- **保护构建管道。** 能够在提交和部署之间注入代码的攻击者不需要寻找漏洞。SLSA安全框架提供了分级路径：较低级别确定哪个提交产生了哪个制品，较高级别使构建本身可验证。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-27",
+      "english": "- **Adopt Secure by Design practices.** CISA's pledge commitments (multi-factor authentication by default; no default passwords; transparent vulnerability reporting) are a reasonable minimum bar.",
+      "chinese": "- **采用安全设计实践。** CISA的承诺（默认多因素认证；无默认密码；透明的漏洞报告）是一个合理的最低标准。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-28",
+      "english": "- **Prefer memory-safe languages for new code.** A large share of severe vulnerabilities are memory-safety bugs that do not occur in Rust, Go, or managed runtimes. CISA, the NSA, and the NCSC have published useful roadmaps. Existing C/C++ code does not need to be rewritten, but new C/C++ code should require a justification. AI assisted rewrites are increasingly viable, as well.",
+      "chinese": "- **新代码优先使用内存安全语言。** 大量严重漏洞是内存安全bug，这些bug不会出现在Rust、Go或托管运行时中。CISA、NSA和NCSC已发布有用的路线图。现有的C/C++代码不需要重写，但新的C/C++代码应需要提供理由。AI辅助重写也越来越可行。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-29",
+      "english": "**Practical tip:** Static application security testing (SAST) tooling that runs as a CI action with OWASP Top 10 and language-specific rule sets is widely available, both open-source and built into code hosting platforms (CodeQL on GitHub being the most common starting point). To assess build provenance, OpenSSF publishes a reusable workflow that produces SLSA Level 3 attestations from GitHub Actions; adopting it is significantly less work than the SLSA spec suggests.",
+      "chinese": "**实用提示：** 作为CI操作运行的静态应用安全测试（SAST）工具，使用OWASP Top 10和语言特定规则集，无论是开源的还是内置于代码托管平台中的（GitHub上的CodeQL是最常见的起点），都广泛可用。要评估构建来源，OpenSSF发布了一个可重用的工作流，从GitHub Actions生成SLSA Level 3证明；采用它的工作量远小于SLSA规范所暗示的。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-30",
+      "english": "As before, there are some clear opportunities for accelerating this work with AI:",
+      "chinese": "与之前一样，有一些明确的机会可以用AI加速这项工作："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-31",
+      "english": "- **AI vulnerability scanning.** The logic here is straightforward: you should scan your own code and systems with the same kind of model an attacker would use, before they do. This approach just requires an isolated agent, a verification step to filter noise, and a path into your existing triage process. You can do this with an LLM today. If you implement one thing from this section, implement this.",
+      "chinese": "- **AI漏洞扫描。** 这里的逻辑很直接：您应该在攻击者之前，使用他们可能使用的同类模型扫描您自己的代码和系统。这种方法只需要一个隔离的智能体、一个过滤噪声的验证步骤，以及一条进入您现有分类流程的路径。您今天就可以用LLM实现这一点。如果您在本节中只实施一件事，请实施这一项。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-32",
+      "english": "- **Patch generation.** When SAST or a scanner produces a finding, a frontier model can usually propose a patch for it. This does not remove the need for review, but it changes the developer's job from \"understand the bug and write a fix\" to \"verify a proposed fix is correct.\" The latter is faster. The same approach applies to memory-safe migration: LLMs can port a self-contained C module to Rust with tests; a reviewer can validate the equivalence rather than writing the whole thing from scratch.",
+      "chinese": "- **补丁生成。** 当SAST或扫描器产生发现时，前沿模型通常可以为其提出补丁。这并不能消除审查的需要，但它将开发者的工作从\"理解bug并编写修复\"转变为\"验证提议的修复是否正确\"。后者更快。同样的方法适用于内存安全迁移：LLM可以将一个独立的C模块移植到Rust并附带测试；审查者可以验证等效性，而不是从头编写整个东西。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "4. Find the vulnerabilities already in your code",
+      "chinese": "4. 发现已在代码中的漏洞"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-33",
+      "english": "Patching addresses known vulnerabilities in software you depend on. But your own codebase contains unknown ones. Most long-running production code has been reviewed by humans many times, but has never been examined by a frontier model, and that kind of analysis tends to surface new, previously-overlooked issues. Proactively scanning can identify vulnerabilities that are within the reach of modern LLMs before attackers discover them themselves.",
+      "chinese": "修补解决的是您所依赖软件中的已知漏洞。但您自己的代码库包含未知漏洞。大多数长期运行的生产代码已被人类多次审查，但从未被前沿模型检查过，而这种分析往往会暴露新的、以前被忽视的问题。主动扫描可以在攻击者发现之前识别出现代LLM能力范围内的漏洞。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-34",
+      "english": "- **Prioritize by exposure.** Start with code that parses untrusted input, enforces an authentication or authorization decision, or is reachable from the internet. These are the paths where a finding is most likely to matter.",
+      "chinese": "- **按暴露程度优先排序。** 从解析不受信任的输入、执行认证或授权决策、或可从互联网访问的代码开始。这些是最有可能使发现变得重要的路径。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-35",
+      "english": "- **Include legacy code.** Code that predates current review practices, or whose original authors have moved on, often has the least recent scrutiny. That's where you have the most to gain from a fresh pass.",
+      "chinese": "- **包含遗留代码。** 早于当前审查实践的代码，或其原始作者已经离开的代码，往往受到最近最少的审查。这是您从新一轮审查中获益最多的地方。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-36",
+      "english": "- **Budget for remediation.** A well-structured model scan of older code typically produces fewer findings than a SAST rollout, but a higher share of them are real. Plan engineering time to fix the bugs.",
+      "chinese": "- **为修复留出预算。** 对旧代码进行结构良好的模型扫描通常比SAST推出产生的发现更少，但其中真实的比例更高。计划工程时间来修复这些bug。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-37",
+      "english": "**Practical tip:** Pick one internet-facing service with few current owners and scan its input handling and auth logic. Run the agent in isolation and add a verification step so you're acting on confirmed findings. One service done properly is a reasonable basis for estimating what a broader program will cost.",
+      "chinese": "**实用提示：** 选择一个当前所有者较少的面向互联网的服务，扫描其输入处理和认证逻辑。隔离运行智能体并添加验证步骤，以便您基于已确认的发现采取行动。一个正确完成的服务是估算更广泛计划成本的合理基础。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "5. Design for breach",
+      "chinese": "5. 为入侵而设计"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-38",
+      "english": "Attackers will try to get a foothold somewhere. You need to limit what they can reach from there.",
+      "chinese": "攻击者会试图在某处获得立足点。您需要限制他们从那里能够到达的范围。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-39",
+      "english": "Mitigations whose value comes from friction—making an attack tedious—rather than a hard barrier (extra pivot hops, rate limits, non-standard ports, SMS-based MFA) are much less effective against an adversary that can grind through those tedious steps. Our recommendations below favor controls that hold even when the attacker has unlimited patience: hardware-bound credentials, expiring tokens, and network paths that do not exist rather than paths that are merely inconvenient.",
+      "chinese": "那些依靠摩擦力——使攻击变得繁琐——而非硬屏障来提供价值的缓解措施（额外的跳板、速率限制、非标准端口、基于短信的MFA），对于能够忍受繁琐步骤的对手来说效果要差得多。我们下面的建议偏好那些即使攻击者有无限耐心也仍然有效的控制措施：硬件绑定的凭据、过期令牌，以及不存在的网络路径而非仅仅是不便的路径。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-40",
+      "english": "- **Adopt zero trust architecture.** Authenticate and authorize every request between services as if it came from the internet. CISA's Zero Trust Maturity Model and the NCSC's zero trust principles both provide staged adoption paths.",
+      "chinese": "- **采用零信任架构。** 对服务间的每个请求进行认证和授权，就像它来自互联网一样。CISA的零信任成熟度模型和NCSC的零信任原则都提供了分阶段的采用路径。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-41",
+      "english": "- **Tie access to verified hardware rather than credentials.** Production systems and sensitive internal tools should only be reachable from managed employee devices with attested hardware identity, paired with phishing-resistant 2FA (FIDO2 or passkeys). Stolen credentials alone should never be sufficient to gain access. Even calls between production services should be rooted in hardware identity.",
+      "chinese": "- **将访问绑定到经过验证的硬件而非凭据。** 生产系统和敏感内部工具应仅可从具有经验证硬件身份的受管员工设备访问，配合防钓鱼的2FA（FIDO2或通行密钥）。仅凭被盗凭据绝不应足以获得访问权限。即使是生产服务之间的调用也应基于硬件身份。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-42",
+      "english": "- **Isolate services by identity.** A compromised build server should not be able to query production databases. A compromised laptop should not be able to reach build infrastructure. Enforce this at the receiving end: every workload should carry its own cryptographic identity, and each service should accept connections only from the specific callers of its policy names. Network segmentation can still reduce blast radius and noise, but it is a backstop.",
+      "chinese": "- **按身份隔离服务。** 被入侵的构建服务器不应能够查询生产数据库。被入侵的笔记本电脑不应能够访问构建基础设施。在接收端强制执行：每个工作负载应携带自己的加密身份，每个服务应仅接受来自其策略命名的特定调用者的连接。网络分段仍可减少爆炸半径和噪声，但它只是最后防线。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-43",
+      "english": "- **Replace long-lived secrets with short-lived tokens.** Static API keys, embedded credentials, and shared service-account passwords are among the first things an attacker with model-assisted code analysis will find. Use short-lived, narrowly-scoped tokens issued by an identity provider.",
+      "chinese": "- **用短期令牌替代长期密钥。** 静态API密钥、嵌入式凭据和共享的服务账户密码是使用模型辅助代码分析的攻击者最先发现的东西之一。使用由身份提供商颁发的短期、范围狭窄的令牌。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-44",
+      "english": "**Practical tip:** Full zero-trust is a multi-year program, but an identity-aware access proxy puts device-verified, MFA-gated access in front of internal services without having to fundamentally change their architecture. Each major cloud provider offers a native option, and several open-source and commercial alternatives exist for on-premises or multi-cloud environments. For secrets, every major cloud has a managed secrets store; moving the single most widely-shared credential into one and rotating it is a useful forcing function for the rest.",
+      "chinese": "**实用提示：** 完整的零信任是一个多年计划，但身份感知访问代理可以在内部服务前面放置设备验证、MFA门控的访问，而无需从根本上改变其架构。每个主要云提供商都提供原生选项，并且存在多个开源和商业替代方案用于本地或多云环境。对于密钥，每个主要云都有托管密钥存储；将最广泛共享的单个凭据移入其中一个并轮换它，是推动其余工作的有效手段。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "6. Reduce and inventory what you expose",
+      "chinese": "6. 减少并清点您暴露的内容"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-45",
+      "english": "This section is based on two important principles. First, you cannot defend systems you don't know about. Second, the smaller the exposed surface, the less there is to attack.",
+      "chinese": "本节基于两个重要原则。首先，您无法防御您不知道的系统。其次，暴露面越小，可攻击的东西就越少。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-46",
+      "english": "- **Maintain a current inventory of every internet-facing host, service, and API endpoint in your systems.** Attackers can run automated reconnaissance; your inventory should be at least as accurate. Include these systems in your pentests and red-teaming.",
+      "chinese": "- **维护系统中每个面向互联网的主机、服务和API端点的最新清单。** 攻击者可以运行自动侦察；您的清单应至少同样准确。将这些系统纳入您的渗透测试和红队演练。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-47",
+      "english": "- **Decommission unused systems.** Legacy services with no clear owner are typically also unpatched.",
+      "chinese": "- **停用未使用的系统。** 没有明确所有者的遗留服务通常也未打补丁。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-48",
+      "english": "- **Minimize what each service exposes.** Default-deny network ingress and limit API surface area to what is actually required.",
+      "chinese": "- **最小化每个服务暴露的内容。** 默认拒绝网络入口，将API表面积限制在实际需要的范围内。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-49",
+      "english": "**Practical tip:** Internet-wide scan indexes are publicly searchable; querying one for your own IP ranges and domains shows you what an attacker's reconnaissance sees. For cloud assets, native inventory tools (AWS Config, Azure Resource Graph, GCP Asset Inventory) already exist; the work is in querying them.",
+      "chinese": "**实用提示：** 互联网范围的扫描索引是公开可搜索的；查询您自己的IP范围和域名可以看到攻击者的侦察所看到的内容。对于云资产，原生清单工具（AWS Config、Azure Resource Graph、GCP Asset Inventory）已经存在；工作在于查询它们。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-50",
+      "english": "AI can help directly here, too:",
+      "chinese": "AI在这里也可以直接提供帮助："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-51",
+      "english": "- **Pruning stale code and systems.** Identifying unused code is tedious—but as noted above, AI models are good at tedious tasks. A model with read access to a codebase and traffic logs can list endpoints that have no callers and have not received traffic; from there, it can explain what removing each one would affect.",
+      "chinese": "- **修剪过时的代码和系统。** 识别未使用的代码是繁琐的——但如上所述，AI模型擅长繁琐任务。一个对代码库和流量日志具有读取权限的模型可以列出没有调用者且未收到流量的端点；从那里，它可以解释删除每个端点会影响什么。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-52",
+      "english": "- **Autonomous external red-teaming.** Point an AI offensive agent at your own perimeter from the outside, with no credentials and no source access. Then, let it do what an attacker would: work out what is reachable, fingerprint it, and attempt to chain what it finds into a foothold. This kind of automated red-teaming can catch things source scanning doesn't see: forgotten hosts, exposed management interfaces, default credentials, and misconfigured storage. Run it on the same cadence as your inventory refresh.",
+      "chinese": "- **自主外部红队演练。** 从外部将AI攻击智能体指向您自己的边界，不提供凭据和源代码访问权限。然后，让它做攻击者会做的事：找出什么是可以访问的，对其进行指纹识别，并尝试将发现串联成一个立足点。这种自动化红队演练可以捕捉源代码扫描看不到的东西：被遗忘的主机、暴露的管理界面、默认凭据和配置错误的存储。按照与清单刷新相同的节奏运行它。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "7. Shorten your incident response time",
+      "chinese": "7. 缩短事件响应时间"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-53",
+      "english": "Exploits can appear within hours of a patch. Response processes that take days are too slow. Here are some ideas for how to reduce your incident response time:",
+      "chinese": "漏洞利用可能在补丁发布后数小时内出现。需要数天的响应流程太慢了。以下是一些减少事件响应时间的想法："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-54",
+      "english": "- **Put a model at the front of your alert queue.** Every inbound alert should get an automated first-pass investigation before a human sees it. This kind of \"triage agent\" with read-only access to your Security Information and Event Management (SIEM) platform and a well-scoped set of query tools can direct your attention to the alerts that need human judgement most.",
+      "chinese": "- **将模型放在告警队列的前端。** 每个入站告警在人类看到之前都应获得自动化的初步调查。这种对您的安全信息和事件管理（SIEM）平台具有只读访问权限并配备适当范围查询工具的\"分类智能体\"，可以将您的注意力引导到最需要人类判断的告警上。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-55",
+      "english": "- **Put instrument dwell time and coverage before anything else.** These are the two metrics that AI automation has the greatest ability to move; both matter most when exploit windows shorten.",
+      "chinese": "- **将工具驻留时间和覆盖率放在首位。** 这是AI自动化最有能力改变的两个指标；当漏洞利用窗口缩短时，两者都最为重要。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-56",
+      "english": "- **Automate the bookkeeping around incidents.** During an active incident, models should be taking notes, capturing artifacts, pursuing parallel investigation tracks, and drafting the postmortem and root-cause analysis. On the other hand, humans should be making the containment calls, disclosure calls, and customer-comms calls. Human decision speed during an incident should never be rate-limited on aspects that would be better handed to an AI, like evidence collection or write-ups.",
+      "chinese": "- **自动化事件相关的记录工作。** 在活跃事件期间，模型应做笔记、捕获制品、追踪并行调查线索，并起草事后分析和根本原因分析。另一方面，人类应做出遏制决策、披露决策和客户沟通决策。事件期间人类的决策速度绝不应因更适合交给AI的方面（如证据收集或报告撰写）而受到速率限制。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-57",
+      "english": "- **Let models drive the detection flywheel.** Ingesting threat intelligence, generating candidate detections, hunting for matches, and tuning what fires are all now within reach of frontier models, who can run the process end-to-end.",
+      "chinese": "- **让模型驱动检测飞轮。** 摄取威胁情报、生成候选检测、搜寻匹配项和调整触发条件，现在都在前沿模型的能力范围内，它们可以端到端地运行该过程。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-58",
+      "english": "- **Run a tabletop for five simultaneous incidents.** The standard exercise assumes one critical CVE with a working exploit hits on a Monday. Given the improved AI capabilities we're seeing, this might be unwise. To truly stress-test your responses, you should run the version where five incidents hit in the same week.",
+      "chinese": "- **针对五个同时发生的事件进行桌面演练。** 标准演练假设一个具有可用漏洞利用的关键CVE在周一出现。鉴于我们看到的AI能力提升，这可能是不明智的。要真正压力测试您的响应，您应该运行同一周内发生五个事件的版本。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-59",
+      "english": "- **Map detection coverage against MITRE ATT&CK.** ATT&CK provides a standard vocabulary of attacker techniques that most detection tools already use. Knowing which techniques you can detect (and which you can't), is more useful than a general goal to \"improve detection.\" You should prioritize coverage for lateral movement and credential access.",
+      "chinese": "- **根据MITRE ATT&CK映射检测覆盖率。** ATT&CK提供了大多数检测工具已在使用的攻击者技术标准词汇。了解您能检测哪些技术（以及不能检测哪些）比\"改进检测\"的笼统目标更有用。您应优先考虑横向移动和凭据访问的覆盖。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-60",
+      "english": "- **Establish emergency change procedures in advance.** A two-week change-approval cycle for production patches is itself a security risk. The same applies to emergency containment actions (like taking a service offline, rotating a credential, or blocking a network path). You should decide in advance who can authorize these and how fast.",
+      "chinese": "- **预先建立紧急变更程序。** 生产补丁的两周变更审批周期本身就是安全风险。紧急遏制行动（如将服务下线、轮换凭据或阻止网络路径）同样如此。您应预先决定谁可以授权这些操作以及多快。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-61",
+      "english": "**Practical tip:** Pick one noisy rule with a known-high false positive rate. Wire a frontier model into its alert stream with read-only access to the underlying data, and have it produce a structured disposition for every firing. Measure agreement against a human reviewer for two weeks. If the agreement rate is tolerable, expand to the next rule. It's not worth trying to automate the whole queue at once. Separately, Atomic Red Team is an open-source library of small, safe tests mapped to ATT&CK techniques; running a handful and checking which ones your existing logging actually detected is a one-afternoon exercise that produces a concrete coverage map.",
+      "chinese": "**实用提示：** 选择一个已知高误报率的嘈杂规则。将前沿模型接入其告警流，对底层数据具有只读访问权限，并让其为每次触发产生结构化处置。与人工审查者测量两周的一致性。如果一致率可接受，扩展到下一个规则。不值得尝试一次性自动化整个队列。另外，Atomic Red Team是一个映射到ATT&CK技术的小型安全测试开源库；运行几个并检查您现有日志实际检测到哪些，是一个下午的工作，可以产生具体的覆盖图。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-62",
+      "english": "Here are some ways AI can assist with response times:",
+      "chinese": "以下是AI可以帮助改善响应时间的一些方式："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-63",
+      "english": "- **First-pass triage at 100% coverage.** A well-scoped triage agent can investigate every alert (where humans might only look at those above a given severity threshold), and produce a structured disposition a human can accept, reject, or escalate. The mechanism that makes this work is giving your model a minimal tool set (query, think, report), letting it choose its own investigation strategy, and measuring the output against operational metrics.",
+      "chinese": "- **100%覆盖的初步分类。** 一个适当范围的分类智能体可以调查每个告警（而人类可能只查看高于特定严重性阈值的告警），并产生人类可以接受、拒绝或升级的结构化处置。使这可行的机制是给您的模型一个最小工具集（查询、思考、报告），让它选择自己的调查策略，并根据运营指标衡量输出。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-64",
+      "english": "- **Incident scribe and parallel investigator.** During an active incident, a model can take contemporaneous notes, timestamp artifacts as they are collected, pursue independent investigation tracks the responder has not gotten to yet, and draft the postmortem from the transcript once the incident closes. This is the least glamorous application of frontier models to security work—but it's probably the highest-impact one.",
+      "chinese": "- **事件记录员和并行调查员。** 在活跃事件期间，模型可以做实时笔记，在制品收集时为其添加时间戳，追踪响应者尚未触及的独立调查线索，并在事件结束后从记录中起草事后分析。这是前沿模型在安全工作中最不引人注目的应用——但可能是影响最大的一个。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-65",
+      "english": "- **Proactive hunting against your own environment.** The same kind of agent that can find vulnerabilities in source code can hunt for misconfigurations and indicators of compromise across your telemetry. You can run it on the same cadence as your external attack-surface scan.",
+      "chinese": "- **针对您自己环境的主动猎捕。** 能够在源代码中发现漏洞的同类智能体可以在您的遥测数据中搜寻错误配置和入侵指标。您可以按照与外部攻击面扫描相同的节奏运行它。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Advice for submitting vulnerability reports to others",
+      "chinese": "向他人提交漏洞报告的建议"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-66",
+      "english": "If you are scanning code—your own dependencies, open-source projects, or vendor products—and reporting findings upstream, the quality of those reports determines whether anyone acts on them. Open-source maintainers are already receiving large volumes of low-quality automated reports, and many have started ignoring anything that looks AI-generated. Adding to that volume without adding signal makes the problem worse for everyone, including you.",
+      "chinese": "如果您正在扫描代码——您自己的依赖项、开源项目或供应商产品——并向上游报告发现，这些报告的质量决定了是否有人会采取行动。开源维护者已经在接收大量低质量的自动化报告，许多人已经开始忽略任何看起来是AI生成的内容。在不增加信号的情况下增加数量，会使每个人的问题变得更糟，包括您自己。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-67",
+      "english": "A report should be sent only when a human has verified it and is willing to put their name on it. Concretely:",
+      "chinese": "报告只应在人类已验证并愿意署名时才发送。具体来说："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-68",
+      "english": "- **State the bug and its impact in plain language.** A maintainer should be able to understand what is wrong and why it matters from the first paragraph, without running anything.",
+      "chinese": "- **用简洁的语言陈述bug及其影响。** 维护者应能从第一段就理解什么出了问题以及为什么重要，而无需运行任何东西。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-69",
+      "english": "- **Walk through the code path.** Show where the input enters, where it is mishandled, and where the consequence occurs. This is the part that distinguishes a real finding from a pattern match.",
+      "chinese": "- **走查代码路径。** 展示输入在哪里进入、在哪里被错误处理、以及后果在哪里发生。这是区分真实发现和模式匹配的部分。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-70",
+      "english": "- **Provide a working reproduction.** A proof-of-concept the maintainer can run, or a test case that fails, is more credible than any amount of explanation.",
+      "chinese": "- **提供可工作的复现。** 维护者可以运行的概念验证，或失败的测试用例，比任何数量的解释都更可信。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-71",
+      "english": "- **Include a proposed patch you would accept if you were the maintainer.** A patch demonstrates that the reporter understands the codebase well enough to fix the problem in a way that fits the project's conventions.",
+      "chinese": "- **包含如果您是维护者会接受的提议补丁。** 补丁表明报告者对代码库的理解足以以符合项目惯例的方式修复问题。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-72",
+      "english": "- **Disclose AI involvement upfront.** If a model found the bug or drafted the report, say so in the first line. Maintainers will find out anyway; concealing it costs more credibility than disclosing it.",
+      "chinese": "- **预先披露AI参与。** 如果模型发现了bug或起草了报告，在第一行说明。维护者无论如何都会发现；隐瞒比披露付出更多信誉代价。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-73",
+      "english": "- **Defer to the maintainer's judgment.** If they decline the report, you should make peace with that. The goodwill from being easy to work with is worth more than winning an argument over one bug.",
+      "chinese": "- **尊重维护者的判断。** 如果他们拒绝了报告，您应该接受。易于合作带来的善意比赢得一个bug争论更有价值。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-74",
+      "english": "**Practical tip:** A useful self-check before sending a vulnerability report is to close the editor and explain the bug from memory. If you cannot describe what goes wrong without referring back to the model output, you do not understand it well enough to report it.",
+      "chinese": "**实用提示：** 发送漏洞报告前一个有用的自查方法是关闭编辑器，凭记忆解释bug。如果您无法在不参考模型输出的情况下描述出了什么问题，说明您对它的理解不足以报告它。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "If you don't have a security team",
+      "chinese": "如果您没有安全团队"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-75",
+      "english": "Most of the above advice assumes that your organization has a dedicated security function. If you are a small organization, a solo developer, or an open-source maintainer, the same risks apply but the actions are simpler:",
+      "chinese": "上述大部分建议假设您的组织有专门的安全职能。如果您是小型组织、独立开发者或开源维护者，同样的风险适用，但行动更简单："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-76",
+      "english": "- **Turn on automatic updates for your operating system, browser, and every application that offers it.** This is the single most effective action available and requires no ongoing effort.",
+      "chinese": "- **为您的操作系统、浏览器和每个提供此功能的应用程序开启自动更新。** 这是最有效的单一措施，且不需要持续努力。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-77",
+      "english": "- **Prefer managed services over self-hosting.** Letting a provider with a security team run the database, authentication, and email shifts the patching burden to them. The cost of a managed service like this is almost always lower than the cost of one incident.",
+      "chinese": "- **优先选择托管服务而非自托管。** 让拥有安全团队的提供商运行数据库、认证和电子邮件，将补丁负担转移给他们。这类托管服务的成本几乎总是低于一次事件的成本。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-78",
+      "english": "- **Use passkeys or hardware security keys on every account that supports them.** SMS codes can be intercepted and passwords get reused; a hardware key cannot be phished.",
+      "chinese": "- **在每个支持的账户上使用通行密钥或硬件安全密钥。** 短信验证码可以被截获，密码会被重复使用；硬件密钥无法被钓鱼。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-79",
+      "english": "- **Enable the free security tooling on your code host.** GitHub's Dependabot, secret scanning, and CodeQL are free for public repositories and catch a meaningful share of what enterprise tools catch. Enabling them takes minutes.",
+      "chinese": "- **在您的代码托管平台上启用免费安全工具。** GitHub的Dependabot、密钥扫描和CodeQL对公共仓库免费，能捕获企业工具所捕获的有意义的部分。启用它们只需几分钟。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-80",
+      "english": "If you maintain an open-source project, publish a SECURITY.md stating who to contact and what to expect when they're contacted. AI-assisted scanning means you will receive more vulnerability reports than before. Some will be valuable; some will be automated noise. A clear intake process helps you tell them apart, and signals to good-faith reporters that their effort will not be wasted.",
+      "chinese": "如果您维护一个开源项目，请发布一个SECURITY.md文件，说明联系谁以及联系时可以期待什么。AI辅助扫描意味着您将收到比以前更多的漏洞报告。有些是有价值的；有些是自动化噪声。清晰的接收流程帮助您区分它们，并向善意的报告者发出信号，表明他们的努力不会被浪费。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Acknowledgements",
+      "chinese": "致谢"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-81",
+      "english": "This article was written by members of Anthropic's Security Engineering and Research teams, including Donny Greenberg, Jason Clinton, Michael Moore, Abel Ribbink, and Jackie Bow, with contributions from Jannet Park, Gabby Curtis, and Stuart Ritchie.",
+      "chinese": "本文由Anthropic安全工程和研究团队成员撰写，包括Donny Greenberg、Jason Clinton、Michael Moore、Abel Ribbink和Jackie Bow，并有Jannet Park、Gabby Curtis和Stuart Ritchie的贡献。"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"09-security-ai-offense\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"09-security-ai-offense\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"09-security-ai-offense\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"09-security-ai-offense\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"09-security-ai-offense\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"09-security-ai-offense\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"09-security-ai-offense\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"09-security-ai-offense\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"09-security-ai-offense\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"09-security-ai-offense\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"09-security-ai-offense\"."
+    }
+  ]
+}

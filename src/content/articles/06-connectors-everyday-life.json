@@ -1,0 +1,101 @@
+{
+  "slug": "06-connectors-everyday-life",
+  "title": "New connectors in Claude for everyday life | Claude",
+  "sourceUrl": "https://claude.com/blog/connectors-for-everyday-life",
+  "publishedAt": "April 23, 2026",
+  "category": "Product announcements",
+  "preview": "Today we're expanding what you can connect to Claude. Alongside the work tools you already use, you can now connect the apps you use throughout your week, including AllTrails, Instacart, Audible, Tripadvisor, Intuit TurboTax, and more.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Today we're expanding what you can connect to Claude. Alongside the work tools you already use, you can now connect the apps you use throughout your week, including AllTrails, Instacart, Audible, Tripadvisor, Intuit TurboTax, and more.",
+      "chinese": "今天，我们正在扩展 Claude 可连接的范围。除了你已经使用的工作工具之外，你现在还可以将日常生活中使用的应用程序连接到 Claude，包括 AllTrails、Instacart、Audible、Tripadvisor、Intuit TurboTax 等等。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "How people have been using connectors",
+      "chinese": "用户如何使用连接器"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Since launching in July 2025, the Claude directory has grown to over 200 connectors, spanning popular apps for design, finance, productivity, and health used by millions of people every day. We've found that people often connect multiple apps and use them together in a single conversation with Claude. For example, a product manager will pull a query from Amplitude, turn it into a Canva deck, and drop the link into Asana for the team, all without leaving the conversation.",
+      "chinese": "自 2025 年 7 月推出以来，Claude 目录已发展到超过 200 个连接器，涵盖设计、财务、生产力和健康等领域的热门应用，每天有数百万人使用。我们发现，用户经常会连接多个应用，并在与 Claude 的一次对话中同时使用它们。例如，一位产品经理可以从 Amplitude 中提取查询数据，将其制作成 Canva 演示文稿，然后将链接发送到 Asana 给团队——所有操作都无需离开对话。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "This expansion extends that functionality to more of the tools you use outside of work. Starting today, Claude connects to AllTrails, Audible, Booking.com, Instacart, Intuit Credit Karma, Intuit TurboTax, Resy, Spotify, StubHub, Taskrabbit, Thumbtack, Tripadvisor, Uber, Uber Eats, and Viator, with more on the way.",
+      "chinese": "此次扩展将这一功能延伸到了更多工作之外的工具。从今天起，Claude 可以连接 AllTrails、Audible、Booking.com、Instacart、Intuit Credit Karma、Intuit TurboTax、Resy、Spotify、StubHub、Taskrabbit、Thumbtack、Tripadvisor、Uber、Uber Eats 和 Viator，更多应用即将加入。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Connectors dynamically show up in conversations",
+      "chinese": "连接器在对话中动态出现"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "We've also changed how connectors show up in conversations. Claude now suggests the right app for what you're doing, like finding a reservation, adding to a grocery cart, or identifying a flight. It's working from what you've told it: your preferences, your context, your conversation.",
+      "chinese": "我们还改变了连接器在对话中的呈现方式。Claude 现在会根据你正在做的事情推荐合适的应用，比如查找预订、添加购物车或识别航班信息。它基于你提供的信息来工作：你的偏好、你的上下文、你的对话内容。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "This all happens inside your conversation. Ask Claude to recommend a weekend hike, and AllTrails will surface trails nearby that match your preferences. You can then refine the recommendations by asking for something shorter, more scenic, or dog-friendly without leaving the thread. When more than one connected app could help answer your question, Claude shows them all and lets you choose.",
+      "chinese": "这一切都发生在对话内部。请 Claude 推荐一条周末徒步路线，AllTrails 就会根据你的偏好筛选出附近的步道。然后你可以进一步优化推荐，要求更短的路线、更美的风景或允许携带宠物的路线，而无需离开对话。当有多个已连接的应用可以帮助回答你的问题时，Claude 会将它们全部展示出来，让你选择。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "You control what you see and share",
+      "chinese": "你掌控所见和所分享的内容"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "Claude is ad-free and will stay that way. There are no paid placements or sponsored answers in conversations with Claude. When two connectors could help, you see both, ranked by what's most useful to you.",
+      "chinese": "Claude 没有广告，未来也不会有。在与 Claude 的对话中，没有付费植入或赞助答案。当两个连接器都能提供帮助时，你会同时看到它们，并按照对你最有用的顺序排列。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "Connecting a service gives Claude access to it on your behalf. Your data from that app isn't used to train our models, and the app doesn't see your other conversations with Claude. You can also disconnect it at any time.",
+      "chinese": "连接一项服务后，Claude 将代表你访问该服务。你在该应用中的数据不会用于训练我们的模型，该应用也无法看到你与 Claude 的其他对话。你也可以随时断开连接。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "Claude suggests connectors and makes recommendations. But you stay in control of its actions: before it books or purchases something on your behalf, it's designed to check with you first.",
+      "chinese": "Claude 会推荐连接器并提供建议。但你始终掌控着它的行为：在代表你预订或购买任何东西之前，它会先向你确认。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Getting started",
+      "chinese": "开始使用"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "The more apps you connect, the more Claude can do. Claude suggests relevant connectors as you work, which you can install with a click on desktop or a few taps on mobile. Once connected, the service is available in every conversation.",
+      "chinese": "你连接的应用越多，Claude 的能力就越强。Claude 会在你使用过程中推荐相关连接器，你可以在桌面端一键安装，或在移动端轻点几下即可完成。连接成功后，该服务将在所有对话中可用。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "Connectors are available on all plans, with mobile in beta. See the full list at claude.ai/directory/connectors. If you build a product that would be useful in Claude, submit it to our directory here.",
+      "chinese": "连接器适用于所有套餐，移动端目前处于测试阶段。完整列表请访问 claude.ai/directory/connectors。如果你开发的产品可以在 Claude 中发挥作用，请在此提交到我们的目录。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "For more information on getting started with connectors, along with security and privacy best practices when connecting data sources to Claude, visit our Help Center.",
+      "chinese": "有关连接器入门指南以及将数据源连接到 Claude 时的安全和隐私最佳实践，请访问我们的帮助中心。"
+    }
+  ],
+  "warnings": []
+}

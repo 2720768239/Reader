@@ -1,0 +1,260 @@
+{
+  "slug": "23-coderabbit-agent-orchestration",
+  "title": "How CodeRabbit used Claude to build an agent orchestration system",
+  "sourceUrl": "https://claude.com/blog/how-coderabbit-used-claude-to-build-an-agent-orchestration-system",
+  "publishedAt": "May 27, 2026",
+  "category": "Claude Code",
+  "preview": "CodeRabbit built a layer on Claude that sits between a coding request and a coding agent, producing a structured coding plan the team can review before any code gets generated.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "CodeRabbit built a layer on Claude that sits between a coding request and a coding agent, producing a structured coding plan the team can review before any code gets generated.",
+      "chinese": "CodeRabbit 在 Claude 之上构建了一个中间层，位于编码请求和编码智能体之间，生成一个结构化的编码计划，团队可以在任何代码生成之前对其进行审查。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "*In our series, **How startups build with Claude**, we highlight how startups are transforming their industries with AI. In this article, we share how CodeRabbit built an agent orchestration layer that plans before AI generates code.*",
+      "chinese": "*在我们的系列文章 **《初创公司如何用 Claude 构建》** 中，我们重点介绍初创公司如何利用 AI 变革其所在行业。在本文中，我们分享 CodeRabbit 如何构建一个在 AI 生成代码之前进行规划的智能体编排层。*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "AI coding tools have collapsed the time between idea and working prototype. CodeRabbit, an AI code review platform, has noticed a different trend climbing alongside that throughput: code that compiles and passes tests but doesn't do what the team actually meant to build.",
+      "chinese": "AI 编码工具大幅缩短了从想法到可工作原型的时间。AI 代码审查平台 CodeRabbit 注意到，在吞吐量提升的同时，另一个趋势也在上升：代码能编译通过、能通过测试，但并没有实现团队真正想要构建的功能。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "David Loker, VP of AI at CodeRabbit, locates the cause upstream of the model. Experienced developers often assume coding agents understand the same context they do, so they don't write down requirements that feel obvious to them. The coding agent then fills the gaps with whatever it considers plausible.",
+      "chinese": "CodeRabbit AI 副总裁 David Loker 将原因定位在模型的上游。经验丰富的开发者常常假设编码智能体理解与他们相同的上下文，因此不会写下那些对他们来说显而易见的需求。编码智能体随后用它认为合理的任何内容来填补空白。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "To close that gap, CodeRabbit used Claude to design and build an agent orchestration system that runs a structured planning phase before any code is generated. The team's working thesis is that planning quality determines output quality, and the cheaper code generation gets, the more expensive it becomes to move in the wrong direction.",
+      "chinese": "为了弥合这一差距，CodeRabbit 使用 Claude 设计并构建了一个智能体编排系统，在生成任何代码之前运行结构化的规划阶段。团队的工作论点是：规划质量决定输出质量，代码生成越便宜，走错方向的代价就越高。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Addressing the internal knowledge gap in AI coding",
+      "chinese": "解决 AI 编码中的内部知识差距"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "When the CodeRabbit team studied AI-generated pull requests across their customer base, the most frequent failure mode was code that compiled and passed tests, yet still didn't solve the problem it was built to solve.",
+      "chinese": "当 CodeRabbit 团队研究其客户群中 AI 生成的拉取请求时，最常见的失败模式是代码能编译通过且通过测试，但仍然没有解决它本应解决的问题。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "\"As we gain experience as developers, we internalize knowledge,\" Loker says. \"All those things are in our head, and we assume other developers know them too. But then we make that assumption of the AI system as well, that it also implicitly understands. We're not even aware that we're assuming those things.\"",
+      "chinese": "\"随着我们作为开发者积累经验，我们将知识内化了，\"Loker 说。\"所有这些知识都在我们脑子里，我们假设其他开发者也知道。但随后我们也对 AI 系统做出了同样的假设，认为它也能隐式理解。我们甚至没有意识到自己在做这些假设。\""
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "Vague prompts force the underlying system to fill gaps with whatever it considers plausible. That guess often diverges from what the developer had in mind.",
+      "chinese": "模糊的提示迫使底层系统用它认为合理的任何内容来填补空白。这种猜测往往与开发者的预期背道而驰。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "Loker offers a personal example. While building a memory system on a side project, he spent hours iterating with a coding agent until everything ran. When he asked the agent how to use it, the instructions told him to pass in a user token. There was no login page. He had specified that the system required users but never said users needed a way to sign in. The agent filled the gap, and hours of work landed in a product missing a front door.",
+      "chinese": "Loker 举了一个亲身经历的例子。在副项目中构建一个记忆系统时，他花了数小时与编码智能体迭代，直到一切运行正常。当他询问智能体如何使用时，说明告诉他传入一个用户令牌。但没有登录页面。他指定了系统需要用户，但从未说明用户需要一种登录方式。智能体填补了这个空白，数小时的工作最终得到一个缺少\"前门\"的产品。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "\"What ends up happening is you build a lot more stuff on top of it, then much later you find there's a problem,\" Loker says. \"In AI workflows, late validation can be very expensive.\"",
+      "chinese": "\"最终发生的是，你在它之上构建了更多东西，然后很久以后才发现有问题，\"Loker 说。\"在 AI 工作流中，延迟验证可能代价非常高昂。\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "An orchestration layer that runs before AI coding solutions",
+      "chinese": "在 AI 编码解决方案之前运行的编排层"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "CodeRabbit's response was to insert a planning system in front of code generation. It coordinates multiple Claude models to analyze requirements and surface assumptions before producing a structured execution plan that defines what should be built and what constraints it needs to satisfy.",
+      "chinese": "CodeRabbit 的应对方案是在代码生成之前插入一个规划系统。它协调多个 Claude 模型来分析需求、揭示假设，然后生成一个结构化的执行计划，定义应该构建什么以及需要满足哪些约束。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "\"This planning system is not meant to replace Claude Code's Plan Mode,\" Loker says. \"It's a higher level orchestration that happens before Claude Code, to point it in a really narrow and right direction where everything that needs to be explicit is made explicit, and we are aware of all assumptions that are being made.\"",
+      "chinese": "\"这个规划系统并非要取代 Claude Code 的计划模式，\"Loker 说。\"它是一个更高层次的编排，发生在 Claude Code 之前，将其指向一个非常窄且正确的方向，使所有需要明确的内容都变得明确，并且我们清楚正在做出的所有假设。\""
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "The output is a collaborative product requirements document (PRD): a plan created with full context, validated by stakeholders across the team, and reviewed before implementation starts. Claude Code picks up that plan and uses it to generate a fine-grained implementation plan. The plan becomes a shared artifact that captures what was decided and why, which not only helps teams avoid rework and validate later that the output matched the original intent, but also onboard new engineers.",
+      "chinese": "输出是一份协作式产品需求文档（PRD）：一个在完整上下文中创建的计划，经过团队各利益相关者的验证，并在实施开始之前进行审查。Claude Code 接收该计划并用它生成细粒度的实施计划。该计划成为一个共享产物，记录了做了什么决定以及为什么做这些决定，这不仅帮助团队避免返工、事后验证输出是否符合原始意图，还能帮助新工程师快速上手。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Routing across the Claude model family",
+      "chinese": "跨 Claude 模型系列的路由"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "CodeRabbit matches each model tier to task complexity to optimize for cost and latency. Opus drives the orchestration loop and the higher-level strategic work of understanding the problem and setting overall direction. Sonnet takes that output and sequences it into structured planning steps. Haiku handles narrowly scoped operations like context distillation and targeted tool use, where the question is specific enough that a smaller model can answer it well.",
+      "chinese": "CodeRabbit 将每个模型层级与任务复杂度相匹配，以优化成本和延迟。Opus 驱动编排循环以及理解问题和设定整体方向的高层战略工作。Sonnet 接收这些输出并将其编排为结构化的规划步骤。Haiku 处理范围狭窄的操作，如上下文蒸馏和有针对性的工具使用——这些问题足够具体，较小的模型就能很好地回答。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "\"If Haiku does as well as Sonnet on a given task, we use Haiku,\" Loker says. \"If the evaluation harness tells us the plan quality improves when we give Opus more room, we give it more room. We don't guess.\"",
+      "chinese": "\"如果 Haiku 在某项任务上表现与 Sonnet 一样好，我们就用 Haiku，\"Loker 说。\"如果评估框架告诉我们，给 Opus 更多空间时计划质量会提升，我们就给它更多空间。我们不猜测。\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Building an eval harness for plan quality",
+      "chinese": "构建计划质量的评估框架"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "CodeRabbit had a mature evaluation system for code review, but nothing for evaluating planning output. Building that infrastructure became its own project.",
+      "chinese": "CodeRabbit 拥有成熟的代码审查评估系统，但没有用于评估规划输出的系统。构建这一基础设施本身就成为了一个项目。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "The system started with hand-tuned examples and manual inspection. The team developed a library of LLM judges that scored specific dimensions of plan quality. Because plans eventually produce code, the team could also measure whether the generated code worked, whether it contained extra scope, and how many tokens it took to get there. Running the same task with and without the planning step gave them a way to isolate the value of planning itself.",
+      "chinese": "该系统从手工调优的示例和人工检查开始。团队开发了一个 LLM 评审库，对计划质量的特定维度进行评分。由于计划最终会产生代码，团队还可以衡量生成的代码是否有效、是否包含额外范围、以及到达目标消耗了多少 token。通过在有规划步骤和无规划步骤的情况下运行相同任务，他们找到了一种隔离规划本身价值的方法。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "\"We didn't realize what the right level of detail was going to be for that plan,\" Loker says. Plans that were too granular went stale the moment the codebase shifted. Plans that were too high-level left room for the agent to fill in assumptions, which was the original problem the planning layer was meant to solve. Finding the working level of abstraction took iteration, which is what the eval harness made possible.",
+      "chinese": "\"我们没有意识到那个计划的正确详细程度会是什么，\"Loker 说。过于精细的计划在代码库一变动时就过时了。过于高层的计划给智能体留下了填补假设的空间——而这正是规划层要解决的原始问题。找到可行的抽象层级需要迭代，而这正是评估框架所实现的。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Catching errors before any code gets written",
+      "chinese": "在任何代码编写之前捕获错误"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "In an AI-native coding workflow, many of the decisions that used to surface during code review are now made earlier, in the planning layer. Building a plan that the team can review and align on before code generation starts catches mistakes early.",
+      "chinese": "在 AI 原生编码工作流中，许多过去在代码审查阶段才浮现的决策现在被提前到了规划层。构建一个团队可以在代码生成开始之前审查和对齐的计划，能够尽早发现错误。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-20",
+      "english": "\"What we've built, using the Claude ecosystem, is a team-wide planning system,\" Loker says. \"The plan itself becomes a quality gate. If we can make sure the quality of that plan is really good upfront, the downstream effect is very pronounced. You end up with a lot better code at the end of it.\"",
+      "chinese": "\"我们利用 Claude 生态系统构建的是一个全团队范围的规划系统，\"Loker 说。\"计划本身成为了一个质量门。如果我们能确保计划的质量在前期就非常好，下游效果是非常显著的。最终你会得到好得多的代码。\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Best practices from the CodeRabbit team",
+      "chinese": "CodeRabbit 团队的最佳实践"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "table",
+      "message": "Skipped markdown table in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"23-coderabbit-agent-orchestration\"."
+    },
+    {
+      "code": "table",
+      "message": "Skipped markdown table in \"23-coderabbit-agent-orchestration\"."
+    }
+  ]
+}

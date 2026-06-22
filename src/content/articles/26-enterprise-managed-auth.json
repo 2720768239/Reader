@@ -1,0 +1,119 @@
+{
+  "slug": "26-enterprise-managed-auth",
+  "title": "Centrally manage authorization for MCP connectors",
+  "sourceUrl": "https://claude.com/blog/enterprise-managed-auth",
+  "publishedAt": "June 18, 2026",
+  "category": "Enterprise AI, Product announcements",
+  "preview": "Admins can now provision MCP connectors for their whole organization through their identity provider, starting with Okta. Users get connector access automatically on first login, with authorization configured centrally by their organization.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Admins can now provision MCP connectors for their whole organization through their identity provider, starting with Okta. Users get connector access automatically on first login, with authorization configured centrally by their organization.",
+      "chinese": "管理员现在可以通过身份提供商（Identity Provider）为整个组织配置 MCP connector，首先支持 Okta。用户首次登录时即可自动获得 connector 访问权限，授权由组织集中配置。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Connectors make Claude more useful at work — they give Claude the context it needs from the tools that your teams already use. Until now, turning them on required action at two steps: admins enabled a connector for the organization, and then every individual user authorized it themselves.",
+      "chinese": "Connector 让 Claude 在工作中更加实用——它们为 Claude 提供团队已有工具中的上下文信息。此前，启用 connector 需要两个步骤：管理员为组织启用 connector，然后每个用户自行授权。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "Enterprise-managed authorization streamlines that second step. Admins authorize a connector once, users inherit access through the IdP groups and roles they already have, and the connector is there the first time someone opens Claude. The result is zero-touch connector setup for the end user.",
+      "chinese": "企业托管授权简化了第二个步骤。管理员只需授权一次 connector，用户通过已有的 IdP 组和角色继承访问权限，首次打开 Claude 时 connector 即已就绪。最终实现终端用户的零接触 connector 配置。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "Enterprise-managed auth is the first implementation of the [Enterprise-Managed Authorization extension](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#7-enterprise-managed-authorization) to the Model Context Protocol. It's built on an open standard so any connector can support it — including the custom connectors your own teams build — and they all work the same way for every Claude customer.",
+      "chinese": "企业托管授权是 Model Context Protocol 的 [Enterprise-Managed Authorization extension](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#7-enterprise-managed-authorization) 的首个实现。它基于开放标准构建，任何 connector 都可以支持——包括团队自建的自定义 connector——并且对所有 Claude 客户端以相同方式工作。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "How it works",
+      "chinese": "工作原理"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "Connect your identity provider to Claude and choose which MCP connectors to enable for your organization. When an employee logs in, their connectors are already there. Access stays consistent across Claude chat, Claude Code, and Cowork.",
+      "chinese": "将身份提供商连接到 Claude，选择为组织启用哪些 MCP connector。员工登录时，connector 已经就绪。访问权限在 Claude chat、Claude Code 和 Cowork 之间保持一致。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "For admins, this folds MCP access management into the same workflow that governs the rest of your stack: provision once, scope by group, manage revocation through the IdP. Because checking access with the IdP is frictionless, admins can shorten access token lifetimes without impacting productivity — so when someone is deprovisioned, their connector access expires fast instead of lingering on an old token. Access runs through the identity provider you already trust, so connectors fall under the same security and access controls as everything else, rather than a separate surface to monitor.",
+      "chinese": "对管理员而言，这将 MCP 访问管理纳入了与其他技术栈相同的治理流程：一次配置，按组分配，通过 IdP 管理撤销。由于通过 IdP 检查访问权限无摩擦，管理员可以缩短 access token 有效期而不影响生产力——当某人被取消配置时，其 connector 访问权限会快速过期，而不是依赖旧 token 持续存在。访问通过已信任的身份提供商运行，因此 connector 落在与其他系统相同的安全和访问控制之下，而非需要单独监控的表面。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "Admins can also require that a connector only ever connects through the IdP, which keeps work and personal use cleanly separated and prevents someone from accidentally linking a personal account to a work tool.",
+      "chinese": "管理员还可以要求 connector 仅通过 IdP 连接，这使工作和个人使用明确分离，防止意外将个人账户链接到工作工具。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Built with an ecosystem",
+      "chinese": "生态系统共建"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "Enterprise-managed authorization works across three groups: the identity providers that govern access, the MCP providers that support the standard, and the Claude customers deploying managed connections across their teams.",
+      "chinese": "企业托管授权涉及三方：治理访问的身份提供商、支持该标准的 MCP 提供商、以及在团队中部署托管连接的 Claude 客户。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "**Identity providers.** Okta is supported at launch, with support for additional identity providers coming soon.",
+      "chinese": "**身份提供商。** 发布时支持 Okta，更多身份提供商的支持即将推出。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "**MCP providers.** Asana, Atlassian, Canva, Figma, Granola, Linear, and Supabase support Enterprise-managed auth at launch, with Slack coming soon.",
+      "chinese": "**MCP 提供商。** 发布时 Asana、Atlassian、Canva、Figma、Granola、Linear 和 Supabase 支持企业托管授权，Slack 即将推出。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "**Claude customers.** Hubspot, Ramp, and Webflow are among the organizations rolling out enterprise-managed auth across their teams.",
+      "chinese": "**Claude 客户。** Hubspot、Ramp 和 Webflow 等组织正在其团队中推出企业托管授权。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "\"It's great to see Anthropic and Okta make it easier for enterprises to connect to MCP servers securely, centrally and at scale. Granola helps teams capture some of the most important context at work: decisions, details and follow ups as they happen. MCP makes this useful across team tools, and enterprise-managed auth makes it available frictionlessly across teams.\" — Granola",
+      "chinese": "\"很高兴看到 Anthropic 和 Okta 让企业能够安全、集中、大规模地连接 MCP 服务器。Granola 帮助团队捕获工作中最重要的上下文：决策、细节和后续行动。MCP 使其在团队工具间发挥作用，企业托管授权让其在团队间无缝可用。\" — Granola"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "\"The only way to use Supabase through Claude was to be an org owner or hand out Personal Access Tokens to everyone on your team. Enterprise-managed auth fixes that: your IdP controls access and roles, so builders can use Claude to explore and query their data without IT compromising on security to get there.\" — Supabase",
+      "chinese": "\"此前通过 Claude 使用 Supabase 的唯一方式是成为组织所有者或向团队每个人发放 Personal Access Token。企业托管授权解决了这个问题：您的 IdP 控制访问和角色，因此开发者可以使用 Claude 探索和查询数据，IT 部门无需在安全性上妥协。\" — Supabase"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Getting started",
+      "chinese": "开始使用"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "Enterprise-managed auth is available today in beta for customers on the Claude Team and Enterprise plans. [Learn more](https://support.anthropic.com/en/articles/11869942-enterprise-managed-authorization-for-mcp-connectors) on our Help Center and [apply for access](https://forms.anthropic.com/enterprise-managed-auth-beta) to get started.",
+      "chinese": "企业托管授权今天以 beta 版本向 Claude Team 和 Enterprise 计划的客户提供。在我们的[帮助中心](https://support.anthropic.com/en/articles/11869942-enterprise-managed-authorization-for-mcp-connectors)了解更多信息，并[申请访问](https://forms.anthropic.com/enterprise-managed-auth-beta)以开始使用。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "Any identity or MCP provider can add support for enterprise-managed auth by implementing the [open extension](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#7-enterprise-managed-authorization) to the MCP authorization spec. Submit interest to join the beta [here](https://forms.anthropic.com/enterprise-managed-auth-beta).",
+      "chinese": "任何身份或 MCP 提供商都可以通过实现 MCP 授权规范的[开放扩展](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#7-enterprise-managed-authorization)来支持企业托管授权。[在此](https://forms.anthropic.com/enterprise-managed-auth-beta)提交加入 beta 的意向。"
+    }
+  ],
+  "warnings": []
+}

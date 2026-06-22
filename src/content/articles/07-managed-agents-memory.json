@@ -1,0 +1,357 @@
+{
+  "slug": "07-managed-agents-memory",
+  "title": "Scaling Managed Agents: Decoupling the brain from the hands",
+  "sourceUrl": "https://www.anthropic.com/engineering/managed-agents",
+  "publishedAt": "Apr 08, 2026",
+  "preview": "Harnesses encode assumptions that go stale as models improve. Managed Agents—our hosted service for long-horizon agent work—is built around interfaces that stay stable as harnesses change.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Harnesses encode assumptions that go stale as models improve. Managed Agents—our hosted service for long-horizon agent work—is built around interfaces that stay stable as harnesses change.",
+      "chinese": "Harness 会编码一些假设，而这些假设会随着模型的进步而过时。Managed Agents 是我们为长时间运行的智能体任务提供的托管服务，它围绕着在 Harness 变化时保持稳定的接口来构建。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Get started with Claude Managed Agents by following our docs.",
+      "chinese": "请参阅我们的文档开始使用 Claude Managed Agents。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "A running topic on the Engineering Blog is how to build effective agents and design harnesses for long-running work. A common thread across this work is that harnesses encode assumptions about what Claude can't do on its own. However, those assumptions need to be frequently questioned because they can go stale as models improve.",
+      "chinese": "工程博客上持续讨论的一个话题是如何构建有效的智能体并为长时间运行的工作设计 Harness。这些工作的一个共同主线是：Harness 会编码关于 Claude 无法独立完成哪些事情的假设。然而，这些假设需要经常被质疑，因为它们会随着模型的进步而过时。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "As just one example, in prior work we found that Claude Sonnet 4.5 would wrap up tasks prematurely as it sensed its context limit approaching—a behavior sometimes called \"context anxiety.\" We addressed this by adding context resets to the harness. But when we used the same harness on Claude Opus 4.5, we found that the behavior was gone. The resets had become dead weight.",
+      "chinese": "举一个例子，在之前的工作中，我们发现 Claude Sonnet 4.5 会在感知到上下文限制临近时提前结束任务——这种行为有时被称为\"上下文焦虑\"。我们通过在 Harness 中添加上下文重置来解决这个问题。但当我们使用相同的 Harness 运行 Claude Opus 4.5 时，发现这种行为消失了。那些重置机制变成了多余的负担。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "We expect harnesses to continue evolving. So we built Managed Agents: a hosted service in the Claude Platform that runs long-horizon agents on your behalf through a small set of interfaces meant to outlast any particular implementation—including the ones we run today.",
+      "chinese": "我们预计 Harness 将持续演进。因此我们构建了 Managed Agents：Claude 平台上的一项托管服务，通过一小组旨在超越任何特定实现的接口，代表你运行长时间运行的智能体——包括我们今天运行的那些。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "Building Managed Agents meant solving an old problem in computing: how to design a system for \"programs as yet unthought of.\" Decades ago, operating systems solved this problem by virtualizing hardware into abstractions—process, file—general enough for programs that didn't exist yet. The abstractions outlasted the hardware. The read() command is agnostic as to whether it's accessing a disk pack from the 1970s or a modern SSD. The abstractions on top stayed stable while the implementations underneath changed freely.",
+      "chinese": "构建 Managed Agents 意味着要解决计算领域的一个古老问题：如何为\"尚未构想出的程序\"设计一个系统。几十年前，操作系统通过将硬件虚拟化为抽象概念——进程、文件——来解决这个问题，这些抽象足够通用，能够容纳尚不存在的程序。这些抽象比硬件更持久。read() 命令并不关心它访问的是 1970 年代的磁盘组还是现代 SSD。上层的抽象保持稳定，而底层的实现可以自由变化。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "Managed Agents follow the same pattern. We virtualized the components of an agent: a session (the append-only log of everything that happened), a harness (the loop that calls Claude and routes Claude's tool calls to the relevant infrastructure), and a sandbox (an execution environment where Claude can run code and edit files). This allows the implementation of each to be swapped without disturbing the others. We're opinionated about the shape of these interfaces, not about what runs behind them.",
+      "chinese": "Managed Agents 遵循同样的模式。我们将智能体的组件虚拟化：一个会话（所有发生事件的追加日志）、一个 Harness（调用 Claude 并将 Claude 的工具调用路由到相关基础设施的循环），以及一个沙箱（Claude 可以运行代码和编辑文件的执行环境）。这使得每个组件的实现可以在不影响其他组件的情况下被替换。我们对接口的形式有明确的主张，但对背后运行的内容不做限制。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Don't adopt a pet",
+      "chinese": "不要养宠物"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "We started by placing all agent components into a single container, which meant the session, agent harness, and sandbox all shared an environment. There were benefits to this approach, including that file edits are direct syscalls, and there were no service boundaries to design.",
+      "chinese": "我们最初将所有智能体组件放在一个容器中，这意味着会话、智能体 Harness 和沙箱共享同一个环境。这种方法有其优势，包括文件编辑是直接的系统调用，且无需设计服务边界。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "But by coupling everything into one container, we ran into an old infrastructure problem: we'd adopted a pet. In the pets-vs-cattle analogy, a pet is a named, hand-tended individual you can't afford to lose, while cattle are interchangeable. In our case, the server became that pet; if a container failed, the session was lost. If a container was unresponsive, we had to nurse it back to health.",
+      "chinese": "但通过将所有东西耦合到一个容器中，我们遇到了一个古老的基础设施问题：我们养了一只宠物。在宠物与牲畜的类比中，宠物是一个有名字的、精心照料的、你无法承受失去的个体，而牲畜是可以互换的。在我们的案例中，服务器变成了那只宠物；如果一个容器失败了，会话就丢失了。如果一个容器没有响应，我们就不得不精心照料它恢复健康。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "Nursing containers meant debugging unresponsive stuck sessions. Our only window in was the WebSocket event stream, but that couldn't tell us where failures arose, which meant that a bug in the harness, a packet drop in the event stream, or a container going offline all presented the same. To figure out what went wrong, an engineer had to open a shell inside the container, but because that container often also held user data, that approach essentially meant we lacked the ability to debug.",
+      "chinese": "照料容器意味着调试无响应的卡死会话。我们唯一的观察窗口是 WebSocket 事件流，但这无法告诉我们故障发生在哪里，这意味着 Harness 中的 bug、事件流中的数据包丢失或容器离线，看起来都是一样的。为了弄清楚出了什么问题，工程师需要在容器内打开一个 shell，但由于该容器通常也保存了用户数据，这种方法本质上意味着我们缺乏调试能力。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "A second issue was that the harness assumed that whatever Claude worked on lived in the container with it. When customers asked us to connect Claude to their virtual private cloud, they had to either peer their network with ours, or run our harness in their own environment. An assumption baked into the harness became a problem when we wanted to connect it to different infrastructure.",
+      "chinese": "第二个问题是，Harness 假设 Claude 工作的一切都与它在同一个容器中。当客户要求我们将 Claude 连接到他们的虚拟私有云时，他们必须要么将他们的网络与我们的对等连接，要么在他们自己的环境中运行我们的 Harness。当我们将 Harness 连接到不同基础设施时，这个嵌入在 Harness 中的假设就变成了问题。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Decouple the brain from the hands",
+      "chinese": "将大脑与双手解耦"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "The solution we arrived at was to decouple what we thought of as the \"brain\" (Claude and its harness) from both the \"hands\" (sandboxes and tools that perform actions) and the \"session\" (the log of session events). Each became an interface that made few assumptions about the others, and each could fail or be replaced independently.",
+      "chinese": "我们得出的解决方案是将我们所认为的\"大脑\"（Claude 及其 Harness）与\"双手\"（执行操作的沙箱和工具）和\"会话\"（会话事件的日志）解耦。每个都成为对其他部分假设很少的接口，每个都可以独立地失败或被替换。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "The harness leaves the container. Decoupling the brain from the hands meant the harness no longer lived inside the container. It called the container the way it called any other tool: execute(name, input) → string. The container became cattle. If the container died, the harness caught the failure as a tool-call error and passed it back to Claude. If Claude decided to retry, a new container could be reinitialized with a standard recipe: provision({resources}). We no longer had to nurse failed containers back to health.",
+      "chinese": "Harness 离开容器。将大脑与双手解耦意味着 Harness 不再住在容器内部。它像调用任何其他工具一样调用容器：execute(name, input) → string。容器变成了牲畜。如果容器死了，Harness 将失败作为工具调用错误捕获并传回给 Claude。如果 Claude 决定重试，可以用标准配方重新初始化一个新容器：provision({resources})。我们不再需要照料失败的容器恢复健康。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "Recovering from harness failure. The harness also became cattle. Because the session log sits outside the harness, nothing in the harness needs to survive a crash. When one fails, a new one can be rebooted with wake(sessionId), use getSession(id) to get back the event log, and resume from the last event. During the agent loop, the harness writes to the session with emitEvent(id, event) in order to keep a durable record of events.",
+      "chinese": "从 Harness 故障中恢复。Harness 也变成了牲畜。因为会话日志位于 Harness 之外，Harness 中没有任何东西需要在崩溃后存活。当一个 Harness 失败时，可以用 wake(sessionId) 重启一个新的，用 getSession(id) 获取事件日志，并从最后一个事件恢复。在智能体循环期间，Harness 通过 emitEvent(id, event) 写入会话，以保持事件的持久记录。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "The security boundary. In the coupled design, any untrusted code that Claude generated was run in the same container as credentials—so a prompt injection only had to convince Claude to read its own environment. Once an attacker has those tokens, they can spawn fresh, unrestricted sessions and delegate work to them. Narrow scoping is an obvious mitigation, but this encodes an assumption about what Claude can't do with a limited token—and Claude is getting increasingly smart. The structural fix was to make sure the tokens are never reachable from the sandbox where Claude's generated code runs.",
+      "chinese": "安全边界。在耦合设计中，Claude 生成的任何不受信任的代码都在与凭据相同的容器中运行——因此提示注入攻击只需要说服 Claude 读取自己的环境。一旦攻击者获得这些令牌，他们就可以生成新的、不受限制的会话并将工作委派给它们。缩小权限范围是一种显而易见的缓解措施，但这编码了一个关于 Claude 无法用受限令牌做什么的假设——而 Claude 正变得越来越聪明。结构性的修复是确保令牌永远不会被 Claude 生成代码运行的沙箱访问到。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "We used two patterns to ensure this. Auth can be bundled with a resource or held in a vault outside the sandbox. For Git, we use each repository's access token to clone the repo during sandbox initialization and wire it into the local git remote. Git push and pull work from inside the sandbox without the agent ever handling the token itself. For custom tools, we support MCP and store OAuth tokens in a secure vault. Claude calls MCP tools via a dedicated proxy; this proxy takes in a token associated with the session. The proxy can then fetch the corresponding credentials from the vault and make the call to the external service. The harness is never made aware of any credentials.",
+      "chinese": "我们使用两种模式来确保这一点。认证可以与资源捆绑，或保存在沙箱外部的保险库中。对于 Git，我们在沙箱初始化期间使用每个仓库的访问令牌克隆仓库，并将其接入本地 git remote。Git push 和 pull 在沙箱内部工作，而智能体本身永远不会处理令牌。对于自定义工具，我们支持 MCP 并将 OAuth 令牌存储在安全保险库中。Claude 通过专用代理调用 MCP 工具；该代理接收与会话关联的令牌。代理然后可以从保险库中获取相应的凭据并调用外部服务。Harness 永远不会被告知任何凭据。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "The session is not Claude's context window",
+      "chinese": "会话不是 Claude 的上下文窗口"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "Long-horizon tasks often exceed the length of Claude's context window, and the standard ways to address this all involve irreversible decisions about what to keep. We've explored these techniques in prior work on context engineering. For example, compaction lets Claude save a summary of its context window and the memory tool lets Claude write context to files, enabling learning across sessions. This can be paired with context trimming, which selectively removes tokens such as old tool results or thinking blocks.",
+      "chinese": "长时间运行的任务经常超出 Claude 上下文窗口的长度，而解决这个问题的标准方法都涉及关于保留什么的不可逆决策。我们在之前的上下文工程工作中探索了这些技术。例如，压缩让 Claude 保存其上下文窗口的摘要，记忆工具让 Claude 将上下文写入文件，从而实现跨会话的学习。这可以与上下文裁剪相结合，后者选择性地删除旧的工具结果或思维块等 token。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "But irreversible decisions to selectively retain or discard context can lead to failures. It is difficult to know which tokens the future turns will need. If messages are transformed by a compaction step, the harness removes compacted messages from Claude's context window, and these are recoverable only if they are stored. Prior work has explored ways to address this by storing context as an object that lives outside the context window. For example, context can be an object in a REPL that the LLM programmatically accesses by writing code to filter or slice it.",
+      "chinese": "但选择性保留或丢弃上下文的不可逆决策可能导致失败。很难知道未来的轮次需要哪些 token。如果消息被压缩步骤转换，Harness 会从 Claude 的上下文窗口中移除被压缩的消息，而这些消息只有在被存储的情况下才能恢复。之前的工作探索了通过将上下文存储为上下文窗口之外的对象来解决这个问题的方法。例如，上下文可以是 REPL 中的一个对象，LLM 通过编写代码来程序化地访问、过滤或切片它。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "In Managed Agents, the session provides this same benefit, serving as a context object that lives outside Claude's context window. But rather than be stored within the sandbox or REPL, context is durably stored in the session log. The interface, getEvents(), allows the brain to interrogate context by selecting positional slices of the event stream. The interface can be used flexibly, allowing the brain to pick up from wherever it last stopped reading, rewinding a few events before a specific moment to see the lead up, or rereading context before a specific action.",
+      "chinese": "在 Managed Agents 中，会话提供了同样的好处，作为存在于 Claude 上下文窗口之外的上下文对象。但上下文不是存储在沙箱或 REPL 中，而是持久地存储在会话日志中。getEvents() 接口允许大脑通过选择事件流的位置切片来查询上下文。该接口可以灵活使用，允许大脑从上次停止读取的位置继续，在特定时刻之前回退几个事件以查看前因，或重新阅读特定操作之前的上下文。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-20",
+      "english": "Any fetched events can also be transformed in the harness before being passed to Claude's context window. These transformations can be whatever the harness encodes, including context organization to achieve a high prompt cache hit rate and context engineering. We separated the concerns of recoverable context storage in the session and arbitrary context management in the harness because we can't predict what specific context engineering will be required in future models. The interfaces push that context management into the harness, and only guarantee that the session is durable and available for interrogation.",
+      "chinese": "任何获取的事件也可以在传递到 Claude 上下文窗口之前在 Harness 中进行转换。这些转换可以是 Harness 编码的任何内容，包括上下文组织以实现高提示缓存命中率和上下文工程。我们将可恢复上下文存储在会话中和任意上下文管理在 Harness 中的关注点分离开来，因为我们无法预测未来模型将需要什么样的具体上下文工程。接口将上下文管理推入 Harness，只保证会话是持久的并且可供查询。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Many brains, many hands",
+      "chinese": "多个大脑，多只手"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-21",
+      "english": "Many brains. Decoupling the brain from the hands solved one of our earliest customer complaints. When teams wanted Claude to work against resources in their own VPC, the only path was to peer their network with ours, because the container holding the harness assumed every resource sat next to it. Once the harness was no longer in the container, that assumption went away. The same change had a performance payoff. When we initially put the brain in a container, it meant that many brains required as many containers. For each brain, no inference could happen until that container was provisioned; every session paid the full container setup cost up front. Every session, even ones that would never touch the sandbox, had to clone the repo, boot the process, fetch pending events from our servers.",
+      "chinese": "多个大脑。将大脑与双手解耦解决了我们最早的客户投诉之一。当团队希望 Claude 处理他们自己 VPC 中的资源时，唯一的方法是将他们的网络与我们的对等连接，因为承载 Harness 的容器假设每个资源都在它旁边。一旦 Harness 不再在容器中，这个假设就消失了。同样的改变还带来了性能收益。当我们最初将大脑放在容器中时，意味着多个大脑需要同样多的容器。对于每个大脑，在容器被配置好之前无法进行推理；每个会话都要预先承担完整的容器设置成本。每个会话，即使是那些永远不会接触沙箱的会话，都必须克隆仓库、启动进程、从我们的服务器获取待处理的事件。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-22",
+      "english": "That dead time is expressed in time-to-first-token (TTFT), which measures how long a session waits between accepting work and producing its first response token. TTFT is the latency the user most acutely feels.",
+      "chinese": "这段空闲时间体现在首 token 时间（TTFT）中，它衡量一个会话从接受工作到产生第一个响应 token 之间的等待时间。TTFT 是用户感受最明显的延迟。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-23",
+      "english": "Decoupling the brain from the hands means that containers are provisioned by the brain via a tool call (execute(name, input) → string) only if they are needed. So a session that didn't need a container right away didn't wait for one. Inference could start as soon as the orchestration layer pulled pending events from the session log. Using this architecture, our p50 TTFT dropped roughly 60% and p95 dropped over 90%. Scaling to many brains just meant starting many stateless harnesses, and connecting them to hands only if needed.",
+      "chinese": "将大脑与双手解耦意味着容器只在需要时才由大脑通过工具调用（execute(name, input) → string）来配置。因此，不需要立即使用容器的会话就不会等待。推理可以在编排层从会话日志中拉取待处理事件后立即开始。使用这种架构，我们的 p50 TTFT 大约下降了 60%，p95 下降了超过 90%。扩展到多个大脑只需启动多个无状态的 Harness，并仅在需要时将它们连接到手。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-24",
+      "english": "Many hands. We also wanted the ability to connect each brain to many hands. In practice, this means Claude must reason about many execution environments and decide where to send work—a harder cognitive task than operating in a single shell. We started with the brain in a single container because earlier models weren't capable of this. As intelligence scaled, the single container became the limitation instead: when that container failed, we lost state for every hand that the brain was reaching into.",
+      "chinese": "多只手。我们还希望能让每个大脑连接到多只手。在实践中，这意味着 Claude 必须推理多个执行环境并决定将工作发送到哪里——这比在单个 shell 中操作更具认知难度。我们最初将大脑放在单个容器中，因为早期的模型不具备这种能力。随着智能的提升，单个容器反而成为了限制：当那个容器失败时，我们会丢失大脑伸入的每只手的状态。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-25",
+      "english": "Decoupling the brain from the hands makes each hand a tool, execute(name, input) → string: a name and input go in, and a string is returned. That interface supports any custom tool, any MCP server, and our own tools. The harness doesn't know whether the sandbox is a container, a phone, or a Pokémon emulator. And because no hand is coupled to any brain, brains can pass hands to one another.",
+      "chinese": "将大脑与双手解耦使每只手成为一个工具，execute(name, input) → string：输入一个名称和输入，返回一个字符串。该接口支持任何自定义工具、任何 MCP 服务器和我们自己的工具。Harness 不知道沙箱是容器、手机还是 Pokémon 模拟器。因为没有手与任何大脑耦合，大脑可以将手传递给彼此。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Conclusion",
+      "chinese": "结论"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-26",
+      "english": "The challenge we faced is an old one: how to design a system for \"programs as yet unthought of.\" Operating systems have lasted decades by virtualizing the hardware into abstractions general enough for programs that didn't exist yet. With Managed Agents, we aimed to design a system that accommodates future harnesses, sandboxes, or other components around Claude.",
+      "chinese": "我们面临的挑战是一个古老的问题：如何为\"尚未构想出的程序\"设计一个系统。操作系统通过将硬件虚拟化为足够通用的抽象来持续数十年，以容纳尚不存在的程序。通过 Managed Agents，我们的目标是设计一个能够容纳未来 Harness、沙箱或围绕 Claude 的其他组件的系统。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-27",
+      "english": "Managed Agents is a meta-harness in the same spirit, unopinionated about the specific harness that Claude will need in the future. Rather, it is a system with general interfaces that allow many different harnesses. For example, Claude Code is an excellent harness that we use widely across tasks. We've also shown that task-specific agent harnesses excel in narrow domains. Managed Agents can accommodate any of these, matching Claude's intelligence over time.",
+      "chinese": "Managed Agents 是一种同样精神的元 Harness，对 Claude 未来将需要的具体 Harness 不做预设。相反，它是一个具有通用接口的系统，允许多种不同的 Harness。例如，Claude Code 是一个出色的 Harness，我们在各种任务中广泛使用。我们也展示了任务特定的智能体 Harness 在特定领域表现出色。Managed Agents 可以容纳其中任何一个，随着时间的推移与 Claude 的智能相匹配。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-28",
+      "english": "Meta-harness design means being opinionated about the interfaces around Claude: we expect that Claude will need the ability to manipulate state (the session) and perform computation (the sandbox). We also expect that Claude will require the ability to scale to many brains and many hands. We designed the interfaces so that these can be run reliably and securely over long time horizons. But we make no assumptions about the number or location of brains or hands that Claude will need.",
+      "chinese": "元 Harness 设计意味着对围绕 Claude 的接口有明确的主张：我们预计 Claude 将需要操纵状态（会话）和执行计算（沙箱）的能力。我们还预计 Claude 将需要扩展到多个大脑和多只手的能力。我们设计了这些接口，使其能够在长时间范围内可靠且安全地运行。但我们不对 Claude 将需要的大脑或手的数量或位置做任何假设。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Acknowledgements",
+      "chinese": "致谢"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-29",
+      "english": "Written by Lance Martin, Gabe Cemaj, and Michael Cohen. Thanks to Nodir Turakulov and Jeremy Fox for helpful conversations on these topics. Special thanks to the Agents API team and Jake Eaton for their contributions.",
+      "chinese": "作者：Lance Martin、Gabe Cemaj 和 Michael Cohen。感谢 Nodir Turakulov 和 Jeremy Fox 就这些话题进行的有益对话。特别感谢 Agents API 团队和 Jake Eaton 的贡献。"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"07-managed-agents-memory\"."
+    }
+  ]
+}

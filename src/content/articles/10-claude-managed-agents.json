@@ -1,0 +1,218 @@
+{
+  "slug": "10-claude-managed-agents",
+  "title": "Claude Managed Agents: get to production 10x faster",
+  "preview": "Today, we're launching Claude Managed Agents, a suite of composable APIs for building and deploying cloud-hosted agents at scale.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Today, we're launching Claude Managed Agents, a suite of composable APIs for building and deploying cloud-hosted agents at scale.",
+      "chinese": "今天，我们正式发布 Claude Managed Agents——一套可组合的 API，用于大规模构建和部署云端托管的智能体。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Until now, building agents meant spending development cycles on secure infrastructure, state management, permissioning, and reworking your agent loops for every model upgrade. Managed Agents pairs an agent harness tuned for performance with production infrastructure to go from prototype to launch in days rather than months.",
+      "chinese": "在此之前，构建智能体意味着在安全基础设施、状态管理、权限控制上投入大量开发周期，并且每次模型升级都需要重新调整智能体循环。Managed Agents 将针对性能优化的智能体运行框架与生产级基础设施相结合，将从原型到上线的时间从数月缩短到数天。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "Whether you're building single-task runners or complex multi-agent pipelines, you can focus on the user experience, not the operational overhead.",
+      "chinese": "无论你是在构建单任务执行器还是复杂的多智能体流水线，你都可以专注于用户体验，而无需操心运维开销。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "Managed Agents is available today in public beta on the Claude Platform.",
+      "chinese": "Managed Agents 现已在 Claude Platform 上以公开测试版发布。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Build and deploy agents 10x faster",
+      "chinese": "构建和部署智能体速度提升 10 倍"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "Shipping a production agent requires sandboxed code execution, checkpointing, credential management, scoped permissions, and end-to-end tracing. That's months of infrastructure work before you ship anything users see.",
+      "chinese": "部署一个生产级智能体需要沙箱化代码执行、检查点管理、凭证管理、作用域权限和端到端追踪。在用户看到任何成果之前，这需要数月的基础设施搭建工作。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "Managed Agents handles the complexity. You define your agent's tasks, tools, and guardrails and we run it on our infrastructure. A built-in orchestration harness decides when to call tools, how to manage context, and how to recover from errors.",
+      "chinese": "Managed Agents 处理了这些复杂性。你只需定义智能体的任务、工具和防护栏，我们在自己的基础设施上运行它。内置的编排框架负责决定何时调用工具、如何管理上下文以及如何从错误中恢复。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "Managed Agents includes:",
+      "chinese": "Managed Agents 包含以下特性："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "- Production-grade agents with secure sandboxing, authentication, and tool execution handled for you.",
+      "chinese": "- 生产级智能体——安全沙箱、身份验证和工具执行全部为你处理。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "- Long-running sessions that operate autonomously for hours, with progress and outputs that persist even through disconnections.",
+      "chinese": "- 长时间运行的会话——可自主运行数小时，进度和输出即使在断开连接后也能持久保存。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "- Multi-agent coordination so agents can spin up and direct other agents to parallelize complex work (available in research preview, request access here).",
+      "chinese": "- 多智能体协调——智能体可以启动并指挥其他智能体来并行处理复杂工作（研究预览版，可在此申请访问）。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "- Trusted governance, giving agents access to real systems with scoped permissions, identity management, and execution tracing built in.",
+      "chinese": "- 可信治理——通过内置的作用域权限、身份管理和执行追踪，让智能体安全地访问真实系统。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Designed to make the most of Claude",
+      "chinese": "为充分发挥 Claude 能力而设计"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "Claude models are built for agentic work. Managed Agents is purpose-built for Claude, enabling you to get better agent outcomes with less effort. With Managed Agents, you define outcomes and success criteria, and Claude self-evaluates and iterates until it gets there (available in research preview, request access here). It also supports traditional prompt-and-response workflows when you want tighter control.",
+      "chinese": "Claude 模型专为智能体任务而构建。Managed Agents 则为 Claude 量身打造，让你以更少的努力获得更好的智能体效果。使用 Managed Agents，你只需定义目标和成功标准，Claude 会自我评估并迭代直到达成目标（研究预览版，可在此申请访问）。当你需要更精细的控制时，它也支持传统的提示-响应工作流。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "In internal testing around structured file generation, Managed Agents improved outcome task success by up to 10 points over a standard prompting loop, with the largest gains on the hardest problems.",
+      "chinese": "在结构化文件生成的内部测试中，Managed Agents 相比标准提示循环将任务成功率提升了最多 10 个百分点，在最困难的问题上提升最为显著。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "Session tracing, integration analytics, and troubleshooting guidance are built directly into the Claude Console, so you can inspect every tool call, decision, and failure mode.",
+      "chinese": "会话追踪、集成分析和故障排除指南直接内置于 Claude Console 中，你可以检查每一次工具调用、决策和故障模式。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "What teams are building",
+      "chinese": "各团队正在构建什么"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "Teams are already shipping 10x faster with Managed Agents across a range of production use cases. Coding agents that read a codebase, plan a fix, and open a PR. Productivity agents that join a project, pick up tasks, and deliver work alongside the rest of the team. Finance and legal agents that process documents and extract what matters. In each case, shipping in days meant providing value to users faster.",
+      "chinese": "各团队已经在使用 Managed Agents 将各种生产用例的交付速度提升 10 倍。代码智能体可以阅读代码库、制定修复方案并提交 PR。生产力智能体可以加入项目、认领任务并与团队其他成员协作交付成果。财务和法律智能体可以处理文档并提取关键信息。在每种场景中，数天内交付意味着更快地为用户创造价值。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "**Notion** lets teams delegate work to Claude directly inside their workspace (available now in private alpha inside Notion Custom Agents). Engineers use it to ship code, while knowledge workers use it to produce websites and presentations. Dozens of tasks can run in parallel while the whole team collaborates on the output.",
+      "chinese": "**Notion** 让团队可以在其工作空间内直接将任务委托给 Claude（现已在 Notion Custom Agents 中以私有 Alpha 版提供）。工程师用它来交付代码，知识工作者用它来制作网站和演示文稿。数十个任务可以并行运行，同时整个团队协作处理输出。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "**Rakuten** shipped enterprise agents across product, sales, marketing and finance that plug into Slack and Teams, letting employees assign tasks and get back deliverables like spreadsheets, slides, and apps. Each specialist agent was deployed within a week.",
+      "chinese": "**乐天（Rakuten）** 在产品、销售、市场和财务领域部署了企业级智能体，接入 Slack 和 Teams，让员工可以分配任务并获取电子表格、幻灯片和应用程序等交付成果。每个专业智能体都在一周内完成部署。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "**Asana** built AI Teammates, collaborative AI agents that work alongside humans inside Asana projects, taking on tasks and drafting deliverables. The team used Managed Agents to add advanced features dramatically faster than they would have been able to otherwise.",
+      "chinese": "**Asana** 构建了 AI Teammates——协作式 AI 智能体，在 Asana 项目中与人类协同工作，承担任务并起草交付成果。该团队使用 Managed Agents 以前所未有的速度添加了高级功能。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "**Vibecode** helps their customers go from prompt to deployed app using Managed Agents as the default integration, powering a new generation of AI-native apps. Users can now spin up that same infrastructure at least 10x quicker than before.",
+      "chinese": "**Vibecode** 帮助客户使用 Managed Agents 作为默认集成，从提示到部署应用，驱动新一代 AI 原生应用。用户现在可以以至少 10 倍的速度搭建相同的基础设施。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-20",
+      "english": "**Sentry** paired Seer, their debugging agent, with a Claude-powered agent that writes the patch and opens the PR, so developers go from a flagged bug to a reviewable fix in one flow. The integration shipped in weeks instead of months on Managed Agents.",
+      "chinese": "**Sentry** 将其调试智能体 Seer 与一个由 Claude 驱动的智能体配对，后者可以编写补丁并提交 PR，使开发者可以从标记的 Bug 一步到位获得可审查的修复。该集成在 Managed Agents 上仅用数周而非数月就完成了交付。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-21",
+      "english": "\"We want Notion to be the best place for teams to work with agents and get things done. We integrated Claude Managed Agents, which can handle long-running sessions, manage memory, and deliver high-quality outputs over time, to make that possible. Our users can now delegate open-ended, complex tasks, everything from coding to generating slides and spreadsheets, without ever leaving Notion.\"  — Eric Liu, Product Manager",
+      "chinese": "\"我们希望 Notion 成为团队与智能体协作并完成工作的最佳平台。我们集成了 Claude Managed Agents，它能够处理长时间运行的会话、管理记忆并持续提供高质量输出，使这一切成为可能。我们的用户现在可以委托开放式、复杂的任务——从编程到生成幻灯片和电子表格——而无需离开 Notion。\"  — Eric Liu，产品经理"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-22",
+      "english": "\"With Claude Managed Agents, our power users become like Galileo, contributing across domains far beyond a single specialty or discipline. We deploy each specialist agent within a week, managing long-running tasks across engineering, product, sales, marketing, and finance, generating apps, proposal decks, and spreadsheets in sandboxed environments. As agents become more capable, Managed Agents lets us scale safely without building agentic infrastructure ourselves, so we can focus entirely on democratizing innovation across the company.\"  — Yusuke Kaji, General Manager of AI for Business",
+      "chinese": "\"借助 Claude Managed Agents，我们的高级用户如同伽利略一般，能够在远超单一专业或学科的领域做出贡献。我们在一周内部署每个专业智能体，管理工程、产品、销售、市场和财务领域的长时间运行任务，在沙箱环境中生成应用、提案幻灯片和电子表格。随着智能体能力增强，Managed Agents 让我们无需自建智能体基础设施即可安全扩展，从而可以完全专注于在公司内部普及创新。\"  — Yusuke Kaji，AI 商务总经理"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-23",
+      "english": "\"Claude Managed Agents dramatically accelerated our development of Asana AI Teammates — helping us ship advanced capabilities faster — and freeing us to focus on creating an enterprise-grade multiplayer user experience.\"  — Amritansh Raghav, CTO",
+      "chinese": "\"Claude Managed Agents 极大地加速了我们 Asana AI Teammates 的开发——帮助我们更快地交付高级功能——并使我们能够专注于打造企业级多人协作用户体验。\"  — Amritansh Raghav，首席技术官"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-24",
+      "english": "\"Before Claude Managed Agents, users would have to manually run LLMs in sandboxes, manage their lifecycle, equip them with appropriate tools, and oversee their execution, a process that could take weeks or months to set up. Now, with a few lines of code, users can spin up that same infrastructure at least 10x quicker than before. This opens up what's possible to be built by developers and vibe coders alike. We're going to see a surge of AI-native applications on web and mobile.\"  — Ansh Nanda, Co-founder",
+      "chinese": "\"在 Claude Managed Agents 之前，用户需要在沙箱中手动运行大语言模型、管理其生命周期、为其配备适当工具并监督执行，这个过程可能需要数周甚至数月来搭建。现在，只需几行代码，用户就能以至少 10 倍的速度搭建相同的基础设施。这为开发者和'氛围编程者'打开了无限可能。我们将看到 Web 和移动端 AI 原生应用的爆发式增长。\"  — Ansh Nanda，联合创始人"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-25",
+      "english": "\"Turns out telling developers what's wrong with their code isn't enough: they want you to fix it too. Customers can now go from Seer's root cause analysis straight to a Claude-powered agent that writes the fix and opens a PR. We chose Claude Managed Agents because it gives us a secure, fully managed agent runtime, allowing us to focus our efforts on building a seamless developer experience around the handoff. Managed Agents not only allowed us to build the initial integration in weeks instead of months, but has also eliminated the ongoing operational overhead of maintaining bespoke agent infrastructure.\"  — Indragie Karunaratne, Senior Director of Engineering, AI/ML",
+      "chinese": "\"事实证明，仅仅告诉开发者代码哪里有问题还不够——他们还希望你帮忙修复。客户现在可以从 Seer 的根因分析直接跳转到由 Claude 驱动的智能体来编写修复并提交 PR。我们选择 Claude Managed Agents 是因为它提供了安全、完全托管的智能体运行时，让我们能够专注于围绕交接流程构建无缝的开发者体验。Managed Agents 不仅让我们在数周而非数月内完成了初始集成，还消除了维护定制智能体基础设施的持续运维开销。\"  — Indragie Karunaratne，AI/ML 工程高级总监"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-26",
+      "english": "\"Atlassian helps enterprises orchestrate work across humans and agents. With Claude Managed Agents, we can build agents for developers directly into the workflows teams already rely on in weeks instead of months, so customers can assign tasks right from Jira. Managed Agents handles the hard parts like sandboxing, sessions, and scoped permissions, which means our engineers can spend less time on infrastructure and more time building great features for our end users.\"  — Sanchan Saxena, SVP, Head of Product, Teamwork Collection",
+      "chinese": "\"Atlassian 帮助企业协调人类与智能体之间的工作。借助 Claude Managed Agents，我们可以在数周而非数月内将开发者智能体直接构建到团队已经依赖的工作流中，使客户可以直接从 Jira 分配任务。Managed Agents 处理了沙箱化、会话管理和作用域权限等难题，这意味着我们的工程师可以花更少的时间在基础设施上，而将更多时间用于为终端用户构建出色的功能。\"  — Sanchan Saxena，高级副总裁，Teamwork Collection 产品负责人"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-27",
+      "english": "\"Using Claude Managed Agents, we've built a system that can pull information from our users' documents and correspondence to answer any query they ask, even when we haven't built a specific tool to retrieve the data. Before Managed Agents, we would've had to anticipate every question our users might want to ask and build tools or prompt workflows for each one. Now, with Managed Agents it can code up any tool it needs on the fly, allowing it to handle virtually any user query. This cut development time by 10x, letting us focus on UX and integrating more data sources instead.\"  — Javed Qadrud-Din, CTO",
+      "chinese": "\"使用 Claude Managed Agents，我们构建了一个系统，能够从用户的文档和通信中提取信息来回答他们提出的任何查询，即使我们没有构建专门的数据检索工具。在 Managed Agents 之前，我们必须预判用户可能提出的每个问题，并为每个问题构建工具或提示工作流。现在，借助 Managed Agents，它可以即时编写所需的任何工具，从而能够处理几乎任何用户查询。这将开发时间缩短了 10 倍，让我们可以专注于用户体验和集成更多数据源。\"  — Javed Qadrud-Din，首席技术官"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-28",
+      "english": "\"Claude Managed Agents made it 3x faster to build a production-ready meeting prep agent. We went from idea to shipping in a matter of days. Our agent researches every participant ahead of a meeting to surface what matters for moving the conversation forward. Custom tools let us feed in our own calendar and contacts data, MCP made it simple to connect external systems like meeting notetakers, CRMs, etc., and the managed harness handled the heavy lifting, including sandboxed execution and built-in web search. Letting us focus on building the product, not the infrastructure.\"  — John Han, Co-founder",
+      "chinese": "\"Claude Managed Agents 将构建生产级会议准备智能体的速度提升了 3 倍。我们从构思到交付仅用了数天时间。我们的智能体会在会议前研究每位参与者，找出有助于推动对话进展的关键信息。自定义工具让我们可以输入自己的日历和联系人数据，MCP 使连接会议记录器、CRM 等外部系统变得简单，而托管框架则处理了繁重的工作，包括沙箱化执行和内置网络搜索。让我们能够专注于构建产品，而非基础设施。\"  — John Han，联合创始人"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Getting started",
+      "chinese": "开始使用"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-29",
+      "english": "Managed Agents is priced on consumption. Standard Claude Platform token rates apply, plus $0.08 per session-hour for active runtime. See the docs for full pricing details.",
+      "chinese": "Managed Agents 按使用量计费。适用 Claude Platform 标准 Token 费率，另加每活跃会话小时 $0.08 的运行时费用。完整定价详情请参阅文档。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-30",
+      "english": "Managed Agents is available now on the Claude Platform. Read our docs to learn more, head to the Claude Console, or use our new CLI to deploy your first agent.",
+      "chinese": "Managed Agents 现已在 Claude Platform 上可用。阅读我们的文档了解更多信息，前往 Claude Console，或使用我们的新 CLI 部署你的第一个智能体。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-31",
+      "english": "Developers can also use the latest version of Claude Code and built-in claude-api Skill to build with Managed Agents. Just ask \"start onboarding for managed agents in Claude API\" to get started.",
+      "chinese": "开发者还可以使用最新版本的 Claude Code 和内置的 claude-api Skill 来使用 Managed Agents 进行构建。只需输入\"start onboarding for managed agents in Claude API\"即可开始。"
+    }
+  ],
+  "warnings": []
+}

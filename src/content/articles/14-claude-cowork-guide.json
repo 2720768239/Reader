@@ -1,0 +1,71 @@
+{
+  "slug": "14-claude-cowork-guide",
+  "title": "The Claude Cowork product guide",
+  "sourceUrl": "https://claude.com/blog/the-claude-cowork-product-guide",
+  "publishedAt": "June 5, 2026",
+  "category": "Enterprise AI / Claude Cowork",
+  "preview": "Most AI tools are conversational. You ask a question, you get an answer, and the work of turning that answer into something useful—a deck, a doc, a spreadsheet, an email—is still manual.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Most AI tools are conversational. You ask a question, you get an answer, and the work of turning that answer into something useful—a deck, a doc, a spreadsheet, an email—is still manual.",
+      "chinese": "大多数 AI 工具都是对话式的。你提出一个问题，得到一个答案，但将这个答案转化为实用内容——演示文稿、文档、电子表格、邮件——仍然需要手动完成。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Claude Cowork, our new knowledge work agent, lets you delegate this work to Claude so you can focus on solving more the strategic and creative problems that's occupying your time. Running in the Claude desktop app, Claude Cowork reads and writes local files, works across connected apps like Slack and Google Drive, and carries multi-step tasks through to real deliverables, with citations back to the actual files and messages. You describe the goal, desired outcome and cadence, and Claude lays out the steps and does the work, ensuring that you're along every step of the way.",
+      "chinese": "Claude Cowork 是我们全新的知识工作智能体，它让你可以将这些工作委托给 Claude，从而专注于解决更多占用你时间的战略性和创造性问题。Claude Cowork 运行在 Claude 桌面应用中，能够读写本地文件，跨 Slack 和 Google Drive 等已连接的应用协作，并将多步骤任务执行到最终交付成果，同时引用实际的文件和消息来源。你只需描述目标、期望成果和节奏，Claude 就会规划步骤并执行工作，确保你在每一步都参与其中。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "To help you get started, we put together a practical product guide for Claude Cowork. We share:",
+      "chinese": "为了帮助你入门，我们为 Claude Cowork 整理了一份实用的产品指南。我们分享了："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "- **What makes Claude Cowork different** from conversational AI tools and its core capabilities, including local file access, subagents, long-running work, and scheduled tasks",
+      "chinese": "- **Claude Cowork 与对话式 AI 工具的区别**及其核心能力，包括本地文件访问、子智能体、长时间运行任务和定时任务"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "- **A product matrix for understanding when to use what tool:** chat for conversational drafting, Claude Code for coding, and Claude Cowork for cross-app knowledge work",
+      "chinese": "- **产品矩阵，帮助你了解何时使用何种工具：** 对话式草稿用聊天，编码用 Claude Code，跨应用知识工作用 Claude Cowork"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "- **Setup and system requirements**, the permissions model, and what to try first",
+      "chinese": "- **设置和系统要求**、权限模型，以及首先尝试什么"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "- **Seven common Claude Cowork workflows**, including research briefs, meeting prep, and recurring reports",
+      "chinese": "- **七种常见的 Claude Cowork 工作流程**，包括研究简报、会议准备和定期报告"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "- **How to use plugins** for specific knowledge work like marketing and product management",
+      "chinese": "- **如何使用插件**处理特定的知识工作，如市场营销和产品管理"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "**Check it out, [here](https://claude.com/blog/the-claude-cowork-product-guide).**",
+      "chinese": "**点击[这里](https://claude.com/blog/the-claude-cowork-product-guide)查看详情。**"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "Get started with [Claude Cowork](https://claude.com/claude-cowork) today.",
+      "chinese": "立即开始使用 [Claude Cowork](https://claude.com/claude-cowork)。"
+    }
+  ],
+  "warnings": []
+}

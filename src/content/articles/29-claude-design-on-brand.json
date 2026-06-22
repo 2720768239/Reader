@@ -1,0 +1,101 @@
+{
+  "slug": "29-claude-design-on-brand",
+  "title": "Claude Design now stays on brand for daily work",
+  "sourceUrl": "https://claude.com/blog/claude-design-stays-on-brand-for-daily-work",
+  "publishedAt": "2026-06-17",
+  "category": "Product announcements",
+  "preview": "Claude Design now sticks to your design system across projects, works fluidly with Claude Code, lets you edit directly on the canvas, and connects to more tools you already use. It has a new home in the sidebar on the Claude desktop app; you can also find it at claude.ai/design.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Claude Design now sticks to your design system across projects, works fluidly with Claude Code, lets you edit directly on the canvas, and connects to more tools you already use. It has a new home in the sidebar on the Claude desktop app; you can also find it at claude.ai/design.",
+      "chinese": "Claude Design 现在可以在项目间坚持使用你的设计系统（design system），与 Claude Code 流畅协作，支持直接在画布上编辑，并能连接到更多你已在使用的工具。它在 Claude 桌面应用的侧边栏中有了新的入口；你也可以在 claude.ai/design 找到它。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Our goal remains the same as before: letting you explore more directions than a deadline usually allows and making the handoff to polish or build as seamless as possible. That goal now serves a lot more people. Over one million people used Claude Design in its first week, and your feedback is shaping what we build next.",
+      "chinese": "我们的目标与之前相同：让你能在截止日期允许的范围之外探索更多方向，并使向打磨或构建阶段的交接尽可能无缝。这个目标现在服务着更多的人。超过一百万人在第一周就使用了 Claude Design，你们的反馈正在塑造我们接下来构建的内容。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Build with your design system components",
+      "chinese": "使用你的设计系统组件进行构建"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "We rebuilt the design system import to give you more flexibility and increase precision. Bring in one or several design systems from a GitHub repo, design files, or raw uploads. Claude builds with your components, checks its output against your design system, and makes corrections before you see it. For larger teams, a new admin role can approve one standard system and lock down edits, so the work always matches your company guidelines.",
+      "chinese": "我们重建了设计系统导入功能，为你提供更大的灵活性并提高精确度。从 GitHub 仓库、设计文件或原始上传中引入一个或多个设计系统。Claude 使用你的组件进行构建，根据你的设计系统检查输出，并在你看到之前进行修正。对于较大的团队，新的管理员角色可以批准一个标准系统并锁定编辑权限，从而使工作始终符合公司指南。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Move between design and code",
+      "chinese": "在设计与代码之间自由切换"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "It's now easier to move between working in Claude Design and Claude Code while keeping your work synced, with updates rolling out today. Use /design-sync to pull in your design system, so everything you build in Claude Design starts from your existing components. When a design is ready to become software, you can hand it off to Claude Code, which continues from your existing work instead of starting over from a screenshot.",
+      "chinese": "现在可以更轻松地在 Claude Design 和 Claude Code 之间切换工作，同时保持工作同步，更新从今天开始推出。使用 /design-sync 拉取你的设计系统，这样你在 Claude Design 中构建的所有内容都从你现有的组件开始。当设计准备好转化为软件时，你可以将它交给 Claude Code，后者会从你现有的工作继续，而不是从截图重新开始。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "Prefer to begin in Claude Code? You can create, edit, and sync design projects without leaving the terminal using /design. Import a design into your codebase, turn your code into a live prototype, or let Claude carry a project all the way through.",
+      "chinese": "更喜欢从 Claude Code 开始？你可以使用 /design 在不离开终端的情况下创建、编辑和同步设计项目。将设计导入你的代码库，将代码转化为实时原型，或让 Claude 一路推进整个项目。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "\"Claude design gives me the intelligence of frontier models with the functionality & capabilities of tried & true design tools. Anytime I'm working on design directions for Tenex's site, new brand assets, or presentations, Claude Design is the first place I go. The combination of approachable UX with strong taste & design instinct is why it's become a core part of my tech stack. And then the hand-off between Claude Design and Claude Code makes the process of prototype to production seamless.\"  — Alex Lieberman, Cofounder, Morning Brew & Tenex",
+      "chinese": "\"Claude Design 让我同时拥有前沿模型的智能和久经考验的设计工具的功能与能力。每当我为 Tenex 的网站设计方向、新品牌资产或演示文稿工作时，Claude Design 是我的首选。友好的用户体验与卓越的品味和设计直觉的结合，使其成为我技术栈的核心部分。而 Claude Design 与 Claude Code 之间的交接，使从原型到生产的过程无缝衔接。\"  — Alex Lieberman，Morning Brew & Tenex 联合创始人"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Steadier for daily work",
+      "chinese": "日常工作更加稳定"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "Our new editor gives you direct, fine-grained control over every element of your designs. New, rich layout controls let you drag, resize, and align elements. Hundreds of stability fixes make the editor hold up under real use.",
+      "chinese": "我们的新编辑器为你提供对设计中每个元素的直接、细粒度控制。新的丰富布局控制功能让你可以拖动、调整大小和对齐元素。数百项稳定性修复使编辑器在实际使用中表现更佳。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "Claude Design also now shares usage limits with chat, Claude Cowork, and Claude Code, so most people will get much more headroom to create, and those hitting limits will do so less often. The average turn now uses fewer tokens to achieve the same results, and errors are down sharply.",
+      "chinese": "Claude Design 现在还与聊天、Claude Cowork 和 Claude Code 共享使用限额，因此大多数人将获得更大的创作空间，而那些达到限额的用户也将更少遇到这种情况。现在平均每次交互使用更少的 tokens 即可达到相同结果，错误率也大幅下降。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "From the canvas to the tools you use",
+      "chinese": "从画布到你使用的工具"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "Export reliably to PDF and PowerPoint or send your work to the apps you already use—the list of connectors now includes Adobe, Base44, Canva, Gamma, Lovable, Miro, Replit, Vercel and Wix, with more destinations coming soon.",
+      "chinese": "可以可靠地导出为 PDF 和 PowerPoint，或将你的作品发送到你已在使用的应用中——连接器列表现在包括 Adobe、Base44、Canva、Gamma、Lovable、Miro、Replit、Vercel 和 Wix，更多目标平台即将推出。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Getting started",
+      "chinese": "开始使用"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "Claude Design is in beta on Claude Pro, Max, Team, and Enterprise plans and included with your subscription. It's turned off by default for Enterprise users; admins can enable it in organization settings, and work is shareable only within your organization. Find it at claude.ai/design or in the sidebar on the desktop app. Bring in your design system and create. No ideas? Ask for three directions on your next landing page, and pick the one worth refining.",
+      "chinese": "Claude Design 目前在 Claude Pro、Max、Team 和 Enterprise 计划中处于 Beta 测试阶段，包含在你的订阅中。Enterprise 用户默认关闭此功能；管理员可以在组织设置中启用它，且工作仅可在组织内部共享。在 claude.ai/design 或桌面应用的侧边栏中找到它。引入你的设计系统并开始创作。没有想法？要求为你下一个着陆页（landing page）提供三个方向，然后选择值得细化的那个。"
+    }
+  ],
+  "warnings": []
+}

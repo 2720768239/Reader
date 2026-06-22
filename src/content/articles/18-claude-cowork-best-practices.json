@@ -1,0 +1,351 @@
+{
+  "slug": "18-claude-cowork-best-practices",
+  "title": "Best practices for getting started with Claude Cowork",
+  "preview": "Austin Lau, growth marketing lead at Anthropic, explains when to use Claude Cowork, how to decide what workflows to delegate, and concrete steps to get started.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Austin Lau, growth marketing lead at Anthropic, explains when to use Claude Cowork, how to decide what workflows to delegate, and concrete steps to get started.",
+      "chinese": "Anthropic 增长营销负责人 Austin Lau 解释了何时使用 Claude Cowork、如何决定委托哪些工作流程，以及具体的入门步骤。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "In 2024, we had Claude in a chat window. You asked a question and you got an answer, but it was up to you to turn that answer into something useful. In 2025, Claude Code let engineers ship at a pace that made the rest of us a little jealous.",
+      "chinese": "2024 年，我们有一个聊天窗口中的 Claude。你提一个问题就能得到一个答案，但把答案变成有用的东西还得靠你自己。2025 年，Claude Code 让工程师们以令其他人羡慕不已的速度交付产品。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "This year, we can all catch up with Claude Cowork.",
+      "chinese": "今年，我们都可以通过 Claude Cowork 赶上进度。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "I started using Claude Code last year for long, multi-step tasks that chat wasn't equipped to handle. Within a week, I went from not knowing what a terminal was to building out Claude Code workflows that completed 30-minute tasks in 30 seconds. I was using Claude Code for non-technical work because Claude Cowork didn't exist yet.",
+      "chinese": "我去年开始使用 Claude Code 来处理聊天模式无法胜任的长流程、多步骤任务。不到一周时间，我从不知道终端是什么的状态，变成了能构建 Claude Code 工作流来在 30 秒内完成 30 分钟任务的人。我那时用 Claude Code 处理非技术性工作，因为 Claude Cowork 还没问世。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "Now, 90% of my work happens in Claude Cowork. In this post, I'll show you how to tell which of your tasks belong there, walk through real examples from my own work, and get you to your first finished deliverable in about ten minutes.",
+      "chinese": "现在，我 90% 的工作都在 Claude Cowork 中完成。在这篇文章中，我将向你展示如何判断哪些任务适合在其中完成，通过我自己的实际案例进行讲解，并在大约十分钟内帮你完成第一个交付成果。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Using Chat vs Claude Cowork vs Claude Code",
+      "chinese": "使用 Chat vs Claude Cowork vs Claude Code"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "If your job is non-technical knowledge work–emails, decks, spreadsheets, docs, meetings, and \"can you pull together a summary of this\"–then Claude Cowork is for you. You don't need to know how to code. You don't need to know what an \"agent\" is or how to build one.",
+      "chinese": "如果你的工作是非技术性知识工作——邮件、演示文稿、电子表格、文档、会议，以及\"你能帮我整理一下这个的摘要吗\"——那么 Claude Cowork 就是为你准备的。你不需要知道怎么写代码，也不需要知道什么是\"智能体\"或如何构建一个。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "If you've spent the last two years with an AI chat tab open among 100 other tabs and files, copy-pasting prompts or questions into it and copy-pasting the answers back out, you already know how to use Claude Cowork. It's that, minus the copy-pasting.",
+      "chinese": "如果过去两年你一直在 100 多个标签页和文件中开着一个 AI 聊天标签页，把提示或问题复制粘贴进去再把答案复制粘贴出来，那么你已经知道怎么用 Claude Cowork 了。它就是那种体验，只是去掉了复制粘贴。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "The same Claude models power chat, Claude Cowork, Claude Code, Claude Design, and every other place Claude appears. These are separate workspaces that you use for different types of work, but the same models run inside all. Here's a framework for how to think about when to use which one:",
+      "chinese": "Chat、Claude Cowork、Claude Code、Claude Design 以及 Claude 出现的每一个地方，背后驱动的都是同样的 Claude 模型。这些是你用于不同类型工作的独立工作空间，但内部运行的都是相同的模型。以下是一个关于何时使用哪个的思维框架："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "- **Chat** is often how knowledge workers get introduced to Claude. You bring what you have to Claude: upload a file, paste some text, describe what's going on, and get an answer. Chat is for answers, brainstorming, and thinking out loud.",
+      "chinese": "- **Chat** 通常是知识工作者认识 Claude 的方式。你把已有的东西带给 Claude：上传文件、粘贴文本、描述情况，然后得到答案。Chat 适合获取答案、头脑风暴和自由思考。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "- **Claude Cowork** in the Claude desktop app flips that around. Instead of bringing your work to Claude, you bring Claude to your work. You point it at a folder on your computer, connect it to the apps you already use, and tell it what you want done. With Claude Cowork, you describe an outcome, step away, and come back to finished work.",
+      "chinese": "- Claude 桌面应用中的 **Claude Cowork** 反了过来。不是你把工作带给 Claude，而是你把 Claude 带到你的工作中。你指向电脑上的一个文件夹，连接你已使用的应用，然后告诉它你想要什么。使用 Claude Cowork，你描述一个结果，离开一会儿，回来时工作已经完成。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "- **Claude Code** is made for developers building and shipping software. If your work lives in code, start there.",
+      "chinese": "- **Claude Code** 专为构建和发布软件的开发者而设计。如果你的工作围绕代码展开，从那里开始。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "Many people don't know that Claude Cowork and Claude Code run on the same engine under the hood.",
+      "chinese": "很多人不知道 Claude Cowork 和 Claude Code 底层运行的是同一个引擎。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "When should you use Claude Cowork?",
+      "chinese": "你什么时候应该使用 Claude Cowork？"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "Understanding when to use Claude Cowork vs chat is the spot where most people get stuck, so here's my rule of thumb:",
+      "chinese": "理解何时使用 Claude Cowork 而非 chat 是大多数人困惑的地方，以下是我的经验法则："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "- **Use chat** if what you want fits in a few exchanges, like a question, an explanation, a brainstorm, or a gut check.",
+      "chinese": "- **使用 chat**——如果你的需求只需几轮对话就能完成，比如一个问题、一个解释、一次头脑风暴或直觉检验。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "- **Use Claude Cowork** if what you need is a deliverable, for example, a file someone will open, a deck someone will present, or a spreadsheet to be sorted. Use it for anything that's multi-step or touches more than one file/file type or more than one app, or that you'd describe as a task rather than a question. With Claude Cowork, you are *delegating* work to Claude.",
+      "chinese": "- **使用 Claude Cowork**——如果你需要的是一个交付成果，比如别人要打开的文件、要演示的文稿、要排序的电子表格。对于任何多步骤、涉及多个文件/文件类型或多个应用的事情，或者你称之为\"任务\"而非\"问题\"的事情，都使用它。使用 Claude Cowork，你是在*委托*工作给 Claude。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "A few examples of where the line falls:",
+      "chinese": "以下是一些界定使用边界的例子："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "The most common mistake is reaching for chat for everything and never feeling the difference Claude Cowork can make. The opposite mistake is handling Claude Cowork one-off questions, then waiting around for something chat would've answered in five seconds.",
+      "chinese": "最常见的错误是什么都用 chat，从未体会到 Claude Cowork 带来的不同。相反的错误是用 Claude Cowork 处理一次性问题，然后等待一个 chat 五秒钟就能回答的东西。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "The five ingredients of a Claude Cowork-shaped task",
+      "chinese": "Claude Cowork 型任务的五个要素"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "If you're not sure what projects to delegate to Claude Cowork when you're first getting started, run them through this checklist. You don't need all five criteria, but a good candidate hits a few:",
+      "chinese": "如果你刚开始使用时不确定哪些项目适合委托给 Claude Cowork，用这个清单来检验。你不需要满足全部五个标准，但一个好的候选任务通常符合其中几个："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "1. **More than one thing goes in.** Multiple files, a whole folder, or a file plus some connectors. If there's only one input, chat probably handles it fine for the most part (you should still experiment).",
+      "chinese": "1. **有多个输入。** 多个文件、一整个文件夹，或者一个文件加上一些连接器。如果只有一个输入，chat 大部分情况下可能就能处理好（但你仍然应该尝试）。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-20",
+      "english": "2. **A file comes out.** You need a deliverable that you can attach, present, share, or repurpose: a doc, a deck, a spreadsheet, or a CSV.",
+      "chinese": "2. **会产出一个文件。** 你需要一个可以附加、演示、分享或再利用的交付成果：文档、演示文稿、电子表格或 CSV。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-21",
+      "english": "3. **You'll do it again.** One-offs are fine, but recurring tasks are the sweet spot. You can schedule them to run before you're even at your desk.",
+      "chinese": "3. **你会重复做这件事。** 一次性任务也可以，但重复性任务才是最佳选择。你甚至可以在到办公桌之前就安排它们自动运行。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-22",
+      "english": "4. **You already know what good looks like.** You're familiar with the shape of the output, so you can tell in 15 seconds whether the output is right, wrong, or 70% there.",
+      "chinese": "4. **你已经知道好的结果长什么样。** 你熟悉输出的形式，所以能在 15 秒内判断输出是正确、错误还是完成了 70%。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-23",
+      "english": "5. **The middle is the boring part.** The thinking lives at the start (deciding what you want) and the end (deciding if it's right). Everything in between (extract, compile, reconcile, and reformat) is what you hand off.",
+      "chinese": "5. **中间部分是无聊的。** 思考在开头（决定你想要什么）和结尾（判断结果是否正确），中间的所有内容（提取、编译、核对和重新格式化）就是你要交出去的部分。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "How I use Claude Cowork at Anthropic",
+      "chinese": "我在 Anthropic 如何使用 Claude Cowork"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-24",
+      "english": "I manage growth marketing at Anthropic, so my examples are marketing-flavored. Don't read these looking for a workflow to copy—that's not going to be helpful in the long run. Watch how each one hits a few items from the checklist above, because that's the pattern you'll be looking for in your own Claude Cowork workflows.",
+      "chinese": "我在 Anthropic 负责增长营销，所以我的例子带有营销色彩。不要读这些来找一个可以直接复制的工作流——长期来看那样没有帮助。注意看每个案例如何符合上述清单中的几个要素，因为那就是你在自己的 Claude Cowork 工作流中要寻找的模式。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Daily briefing",
+      "chinese": "每日简报"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-25",
+      "english": "The number of Slack channels and emails a marketer receives every day can be overwhelming. I have a \"daily briefing\" task that runs every morning at 6am. Claude Cowork is connected to my Slack and Gmail, and my prompt tells it to review my unread emails and the channels I care about, sort them into buckets, and produce a short report.",
+      "chinese": "营销人员每天收到的 Slack 频道消息和邮件数量可能令人应接不暇。我有一个每天早上 6 点运行的\"每日简报\"任务。Claude Cowork 连接了我的 Slack 和 Gmail，我的提示让它检查我的未读邮件和我关注的频道，将它们分类并生成一份简短报告。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-26",
+      "english": "The report gives me a TLDR of what to look into, flagged emails grouped by type, channel summaries, and any overnight product-related incidents that could have impacted marketing. Anyone drowning in Slack and email can run some version of this workflow.",
+      "chinese": "报告为我提供了需要关注事项的摘要、按类型分组的标记邮件、频道摘要，以及任何可能影响营销的隔夜产品相关事件。任何被 Slack 和邮件淹没的人都可以运行某种版本的这个工作流。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Budget pacing",
+      "chinese": "预算进度跟踪"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-27",
+      "english": "Part of my job includes budget pacing for performance marketing. It's the kind of work nobody wants because it's boring and tedious. Many performance marketing teams track daily spend and run rate in Google Sheets to estimate pacing to goal. Either you're manually exporting daily spend from each channel and pasting it into the sheet, or you're paying for a third-party tool to extract, transform, and load data for you.",
+      "chinese": "我的部分工作包括效果营销的预算进度跟踪。这是没人想做的工作，因为既无聊又繁琐。许多效果营销团队在 Google Sheets 中跟踪每日花费和运行率来估算目标进度。你要么手动从每个渠道导出每日花费并粘贴到表格中，要么付费使用第三方工具来为你提取、转换和加载数据。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-28",
+      "english": "With Claude Cowork, I connect to Google Ads and Meta Ads and create a live artifact (basically an HTML dashboard) in the desktop app that automatically pulls in my daily spend and calculates pacing for me. I can also just tell Claude in plain English how to filter my campaigns and what to look out for.",
+      "chinese": "通过 Claude Cowork，我连接 Google Ads 和 Meta Ads，在桌面应用中创建一个实时组件（本质上是一个 HTML 仪表板），自动拉取我的每日花费并计算进度。我还可以用简单的英语告诉 Claude 如何筛选我的广告系列以及需要注意什么。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-29",
+      "english": "Run that against the checklist above: multiple sources in (every channel's spend), a file out (in this case it's the dashboard), I rerun it constantly, and the middle is the mindless soul-sucking download-copy-paste grind I absolutely do not want to do myself. Since the ad platforms are integrated through my connectors, I can update this dashboard at any time.",
+      "chinese": "用上面的清单来检验：多个输入来源（每个渠道的花费）、一个输出文件（这里是仪表板）、我经常重复运行，中间部分是那种无脑的、令人精疲力竭的下载-复制-粘贴苦差事，我绝对不想自己做。由于广告平台通过连接器集成，我可以随时更新这个仪表板。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Reporting",
+      "chinese": "报告"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-30",
+      "english": "Instead of exporting a pile of CSVs and building pivot tables or combining files manually, I have Claude Cowork connected to Google Search Console. It pulls what I care about (queries, countries, pages) and reconciles it into a single sheet, instead of Google's default of one CSV per dimension when you export data manually.",
+      "chinese": "我让 Claude Cowork 连接 Google Search Console，而不是导出一堆 CSV 并手动制作数据透视表或合并文件。它拉取我关心的内容（查询词、国家/地区、页面）并整合到一个表格中，而不是 Google 手动导出数据时默认的每个维度一个 CSV。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-31",
+      "english": "I also give Claude the context on what to focus on, like looking at the last seven days vs the prior seven, filtering to only specific countries, flagging anything that moved meaningfully, and writing up the report in the template that I want. From there I can go ahead and tweak anything or ask Claude follow up questions.",
+      "chinese": "我还告诉 Claude 需要关注什么，比如对比最近七天和前七天，只筛选特定国家/地区，标记任何有显著变化的内容，并按照我想要的模板撰写报告。之后我可以继续调整任何内容或向 Claude 提出后续问题。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-32",
+      "english": "With scheduling in Claude Cowork, this runs automatically every week. Reporting used to take me ~30 minutes a week; now it takes five and I spend them on the part that needs my judgement: filling in missing context and workshopping the callouts.",
+      "chinese": "通过 Claude Cowork 的定时功能，这个任务每周自动运行。报告过去每周要花我约 30 分钟；现在只需 5 分钟，我把时间花在需要我判断力的部分：补充缺失的上下文和完善要点提炼。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-33",
+      "english": "These are just some examples of how I use Claude Cowork, but they barely scratch the surface. Check out another article I wrote that highlights a more detailed walkthrough of another complex use case that spans plugins, skills, local MCPs, and Dispatch for more best practices.",
+      "chinese": "这些只是我使用 Claude Cowork 的一些例子，但它们只是冰山一角。查看我写的另一篇文章，其中详细介绍了一个跨越插件、技能、本地 MCP 和 Dispatch 的复杂用例，以获取更多最佳实践。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Your first 10 minutes with Claude Cowork",
+      "chinese": "你的 Claude Cowork 前 10 分钟"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-34",
+      "english": "First time opening the app? Here's how to get started:",
+      "chinese": "第一次打开应用？以下是入门指南："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-35",
+      "english": "1. **Open the Claude desktop app and switch to the Claude Cowork tab.**",
+      "chinese": "1. **打开 Claude 桌面应用并切换到 Claude Cowork 标签页。**"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-36",
+      "english": "2. **Give Claude something to work with.** Drop in a few files, point it at a folder on your computer, or connect an app you frequently use (Slack, Gmail, Notion, CRM, etc). The difference between a mediocre Claude Cowork output and a great one is almost never your prompt, but whether you're providing enough rich context for Claude to work with.",
+      "chinese": "2. **给 Claude 一些素材。** 放入几个文件，指向电脑上的一个文件夹，或连接你经常使用的应用（Slack、Gmail、Notion、CRM 等）。Claude Cowork 平庸输出和优秀输出之间的差异，几乎从来不是因为你的提示词，而是你是否为 Claude 提供了足够丰富的上下文。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-37",
+      "english": "3. **Tell Claude the outcome you want.** Describe the deliverable you want at the end and provide any necessary context.",
+      "chinese": "3. **告诉 Claude 你想要的结果。** 描述你最终想要的交付成果，并提供任何必要的上下文。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-38",
+      "english": "4. **Start with a real task you know well.** You'll see immediately where it's strong, where it needs context from you, and you already know what \"good\" looks like for it.",
+      "chinese": "4. **从一个你非常熟悉的实际任务开始。** 你会立刻看到它的强项在哪里、哪里需要你提供上下文，而且你已经知道这个任务\"好\"是什么样的。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-39",
+      "english": "5. **Make Claude ask you questions before it starts.** This is the single most useful habit I've built. Include this as part of your prompt: *Before we begin, repeat my ask back to me so we're aligned, then ask me as many clarifying questions as you have.*",
+      "chinese": "5. **让 Claude 在开始前先向你提问。** 这是我养成的最有用的习惯。在你的提示中加入这段话：*在我们开始之前，把我的需求复述一遍以便我们对齐，然后提出你所有的澄清问题。*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-40",
+      "english": "This surfaces things you didn't think to specify, like which time period are we looking at, what does \"good\" mean here, or what edge cases do you know that Claude doesn't. The trap is assuming Claude already knows what's obvious to you. Answering five questions up front costs you 30 seconds. Finding those same gaps afterwards costs you time and tokens, and it's a pain to fix.",
+      "chinese": "这会暴露你没想到要明确说明的事情，比如我们要看哪个时间段、这里的\"好\"意味着什么、或者你知道而 Claude 不知道的边缘情况。陷阱在于假设 Claude 已经理解了对你来说显而易见的事情。预先回答五个问题只需 30 秒。事后发现同样的差距会花费你的时间和算力，而且修复起来很麻烦。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-41",
+      "english": "Still not sure what to hand off? Ask Claude. Claude has memory and can search your past conversations, so you can ask it which tasks you do most often and which ones to try in Claude Cowork.",
+      "chinese": "还是不确定该交出去什么？问 Claude。Claude 有记忆功能并能搜索你过去的对话，所以你可以问它你最常做哪些任务以及哪些任务适合在 Claude Cowork 中尝试。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "When I still reach for chat",
+      "chinese": "我仍然使用 chat 的时候"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-42",
+      "english": "I still use chat extensively to talk through a positioning problem, pressure-test an idea before I commit to it, or to ask random questions like why my dog keeps licking the bed.",
+      "chinese": "我仍然大量使用 chat 来讨论定位问题、在承诺之前对想法进行压力测试，或者问一些随口的问题，比如为什么我的狗一直在舔床。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-43",
+      "english": "The point isn't that chat is the \"old\" thing. Chat is for when the output is a thought in your head, and Claude Cowork is for when the output is something you'll hand to someone else.",
+      "chinese": "重点不是 chat 是\"旧\"工具。Chat 适合输出是你脑中想法的情况，而 Claude Cowork 适合输出是你要交给别人的东西的情况。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Go build something",
+      "chinese": "去构建些什么吧"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-44",
+      "english": "Pick one repetitive task you do every week, try using Claude Cowork for it, and see what comes back. The first few tasks might feel a little awkward, but after a few tries you'll quickly go from \"how do I use this\" to \"what do I hand it next.\"",
+      "chinese": "选一个你每周都做的重复性任务，尝试用 Claude Cowork 来完成，看看会得到什么结果。前几个任务可能感觉有点别扭，但几次尝试之后，你会很快从\"这怎么用\"变成\"接下来该交给它什么\"。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-45",
+      "english": "*This article was written by Austin Lau, on the growth team at Anthropic, and expresses his opinions, usage patterns, and advice on Claude Cowork.*",
+      "chinese": "*本文由 Anthropic 增长团队的 Austin Lau 永久撰写，表达了他对 Claude Cowork 的个人观点、使用模式和建议。*"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"18-claude-cowork-best-practices\"."
+    },
+    {
+      "code": "table",
+      "message": "Skipped markdown table in \"18-claude-cowork-best-practices\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"18-claude-cowork-best-practices\"."
+    }
+  ]
+}

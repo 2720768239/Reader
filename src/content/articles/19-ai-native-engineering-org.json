@@ -1,0 +1,284 @@
+{
+  "slug": "19-ai-native-engineering-org",
+  "title": "Running an AI-native Engineering Org",
+  "sourceUrl": "https://claude.com/blog/running-an-ai-native-engineering-org",
+  "publishedAt": "June 3, 2026",
+  "category": "Claude Code",
+  "preview": "At Code w/ Claude SF 2026, Director of Engineering for Claude Code and Claude Cowork Fiona Fung walked through how the team's processes and structure changed once agentic coding became the default way of working.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "At Code w/ Claude SF 2026, Director of Engineering for Claude Code and Claude Cowork Fiona Fung walked through how the team's processes and structure changed once agentic coding became the default way of working.",
+      "chinese": "在 2026 年旧金山举办的 \"Code w/ Claude\" 活动上，Claude Code 和 Claude Cowork 的工程总监 Fiona Fung 详细介绍了当智能体编程（agentic coding）成为默认工作方式后，团队的流程和结构发生了怎样的变化。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "For years, engineering bandwidth was the expensive part of building applications. Every process we used to have around software planning and shipping, first waterfall and then agile, was built around that cost.",
+      "chinese": "多年来，工程资源一直是构建应用中最昂贵的部分。我们过去围绕软件规划和交付所建立的每一项流程——无论是瀑布模型还是敏捷开发——都是围绕这一成本构建的。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "I started my career in the early 2000s working on Visual Studio. In those days we shipped software on CD-ROMs with hard manufacturing deadlines. Once we could distribute software online, we began increasing to shipping updates continuously. Now we're changing the way we work again, this time around the time and people it takes to write software.",
+      "chinese": "我的职业生涯始于 2000 年代初期，当时在做 Visual Studio 的开发。那时候我们通过光盘发布软件，有着严格的生产截止日期。后来我们可以在线分发软件了，就开始逐步转向持续交付更新。现在我们再次改变工作方式——这一次，改变的是编写软件所需的时间和人力。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "On the Claude Code team, writing code, writing tests, and refactoring rarely slows us down anymore. But the bottlenecks didn't go away when agentic coding took away the actual need to type code. Verification, code review, and security took their place.",
+      "chinese": "在 Claude Code 团队中，编写代码、编写测试和重构已经很少拖慢我们的进度了。但当智能体编程消除了手动敲代码的需求后，瓶颈并没有消失——验证、代码审查和安全审查取而代之，成为了新的瓶颈。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "We can all generate a lot of code really fast now, but this also brings up new questions: Is this code correct? How is it maintained? And one of the top questions I get from fellow engineering leaders: \"How are humans keeping up with how you're doing code reviews?\"",
+      "chinese": "我们现在都能非常快速地生成大量代码，但这也带来了新的问题：这段代码正确吗？如何维护它？我从其他工程负责人那里最常听到的问题之一是：\"人类如何跟上你们代码审查的节奏？\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "The processes that quietly stopped working",
+      "chinese": "那些悄然失效的流程"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "We all put processes in place for a reason, to close a gap or make something work better. But when that gap no longer exists and those processes become obsolete, they rarely go away on their own. When the Claude Code team began using agentic coding as our default way of working, a lot of our existing processes stopped working. Here are the norms we rewrote, and why.",
+      "chinese": "我们建立流程都是有原因的——为了弥合差距或让某些事情运作得更好。但当差距不复存在、这些流程已经过时时，它们很少会自行消失。当 Claude Code 团队开始将智能体编程作为默认工作方式时，我们现有的很多流程都失效了。以下是我们重新制定的规范，以及背后的原因。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Planning: shift roadmaps to just in time",
+      "chinese": "规划：将路线图转变为即时规划"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "The old norm was to spend a lot more time pre-planning because coding time was expensive. When I first joined the Claude Code team, we wrote a pretty good six month roadmap, and then because of Claude Code, so many things changed that it was out of date by month three.",
+      "chinese": "旧的规范是花大量时间做预先规划，因为编码时间很昂贵。当我刚加入 Claude Code 团队时，我们制定了一份相当不错的六个月路线图，但由于 Claude Code 带来的种种变化，到第三个月时路线图就已经过时了。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "Engineering speed and throughput is different now, so the way we plan sprints has changed. I call it just-in-time (JIT) planning, almost like JIT compiling: how do you do just the right amount at the right time? Our planning ritual shifted away from design docs toward discussions in PRs or prototypes. The space moves fast so we don't do a lot of product reviews. Our process now is let's prototype, get a lot of internal users on it, and start acting on their feedback.",
+      "chinese": "现在的工程速度和产出已经不同了，所以我们规划冲刺的方式也发生了变化。我称之为即时（JIT）规划，类似于即时编译：如何在正确的时间做恰到好处的事？我们的规划仪式从设计文档转向了在 PR 或原型中的讨论。这个领域变化很快，所以我们不做太多产品评审。我们现在的流程是：先做原型，让大量内部用户试用，然后根据反馈采取行动。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Context gathering: ask Claude, not the author",
+      "chinese": "上下文收集：问 Claude，而非作者"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "When engineers wrote code, the first step to getting an answer to most questions was to find the person who wrote the code. Now, since all our PRs are assisted by Claude, \"Who made this change?\" is no longer sufficient. Our new norm is to go a level deeper: what do you actually need to know? For instance: Are you looking for who caused a regression? An expert to answer a customer question? Or context on a decision? You ask Claude that question, and consider whether Claude can answer it directly, also with more data and context.",
+      "chinese": "当工程师自己写代码时，要回答大多数问题的第一步是找到写代码的人。现在，由于我们所有的 PR 都有 Claude 辅助，\"谁做了这个改动？\"已经不够了。我们的新规范是更深入一层思考：你实际需要知道什么？例如：你是在找导致回归的人？还是需要一个专家来回答客户问题？或者是某个决策的背景？你可以先问 Claude 这个问题，并考虑 Claude 是否能凭借更多数据和上下文直接回答。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "On the Claude Code team, no matter what that question is, our process is to also ask \"Is there a way to automate it?\" For example, having Claude summarize customer feedback channels every morning went from a ritual I did manually with my coffee to something I just have running automatically in the background.",
+      "chinese": "在 Claude Code 团队，无论问题是什么，我们的流程都会追问一句：\"有没有办法自动化？\"例如，让 Claude 每天早上总结客户反馈渠道——这原本是我端着咖啡手动完成的例行工作，现在变成了后台自动运行的任务。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Code review: trust but verify",
+      "chinese": "代码审查：信任但验证"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "We use Code Review heavily. Claude handles all the style and linting, PR feedback requests, catching bugs and fixing them before a full commit, and adding tests. Where we still definitely want a human is expertise.",
+      "chinese": "我们大量使用代码审查。Claude 处理所有的代码风格和规范检查、PR 反馈请求、在正式提交前捕获并修复 bug，以及添加测试。但我们仍然坚定地需要人类参与的地方是专业判断。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "The new norm is human review where it matters: for legal review, I always want my legal partner involved in risk tolerance. For trust boundaries and security-sensitive code, I want the domain experts. Product managers and designers also need to be involved with product sense and taste.",
+      "chinese": "新的规范是在关键环节进行人工审查：对于法律审查，我总是希望法务同事参与风险评估；对于信任边界和安全敏感的代码，我需要领域专家参与；产品经理和设计师也需要在产品感知和品味方面参与进来。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "It's important to continually evaluate, though, because the right balance of trust vs. verify will keep changing as the models improve. What you need humans for today might look different with the next model.",
+      "chinese": "不过，持续评估很重要，因为随着模型的进步，信任与验证之间的最佳平衡会不断变化。今天需要人类参与的环节，在下一个模型版本中可能就不同了。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Team makeup: blurring roles",
+      "chinese": "团队构成：角色界限模糊化"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "Claude and AI have reshaped roles across the team. Our PMs code a lot now, which is fun to see. With Claude, you have nontraditional coders now being able to do more engineering, and you have engineers who take on things like content and design, work that were traditionally not on the technical side.",
+      "chinese": "Claude 和 AI 重塑了团队中的各种角色。我们的产品经理现在写很多代码，这很有趣。有了 Claude，非传统编程人员能够承担更多工程工作，而工程师也开始涉足内容和设计等传统上非技术领域的工作。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "On the Claude Code engineering team, I've indexed heavily on two profiles. One is creative builders with product sense: the dreamers who are deeply curious and passionate about shipping products that solve problems. The other one is engineers with deep systems expertise. For example, when I joined the team, I noticed we were missing experts with systems backgrounds and we needed that when building Claude Code on the Web, to ensure we can run Claude everywhere.",
+      "chinese": "在 Claude Code 工程团队中，我重点看重两类人才。一类是具有产品感知力的创造性构建者：那些充满好奇心、热衷于推出解决问题的产品的梦想家。另一类是拥有深厚系统专业知识的工程师。例如，当我加入团队时，我注意到我们缺少系统背景的专家，而在构建 Web 版 Claude Code 时我们需要这类人才，以确保我们能在各处运行 Claude。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "What I index on less, on the other hand, is raw throughput; the models handle that. The more important question is where you still need human expertise, and that's where I'd focus.",
+      "chinese": "另一方面，我不太看重的是纯粹的产出量——模型会处理这些。更重要的问题是：你在哪里仍然需要人类的专业能力？这才是我关注的重点。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Before → After 对照表",
+      "language": "mixed"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "How we rolled out our new norms",
+      "chinese": "我们如何推行新规范"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "As these norms changed, some aspects were mandated as team principles and others we let small sub-teams (pods) figure out on their own. There is a set of the Claude Code core team principles that are non-negotiable \"must dos\":",
+      "chinese": "随着这些规范的变化，有些方面被确定为团队强制原则，而另一些则让小型子团队（pod）自行摸索。Claude Code 核心团队有一套不可协商的\"必须做到\"的原则："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "**Relentlessly dogfood your product:** Every Claude Code team member, including cross-functional partners, uses Claude Code (and also Claude Cowork). We're always thinking of ways to get Claude to help us do our work faster, and more efficiently.",
+      "chinese": "**坚持不懈地使用自家产品：** Claude Code 团队的每一位成员，包括跨职能合作伙伴，都在使用 Claude Code（以及 Claude Cowork）。我们始终在思考如何让 Claude 帮助我们更快、更高效地完成工作。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "**Keep the team flat as possible.** When I joined Claude Code I wanted every manager to start out as an IC first, learn how to be an effective engineer on the team by shipping, and really live through and understand what it's like to be an engineer at Anthropic. We have one overall team mission on Claude Code and Claude Cowork. Managers support pods of work while keeping the team agile so people can move to where the work is.",
+      "chinese": "**保持团队尽可能扁平化。** 当我加入 Claude Code 时，我希望每位管理者都先从独立贡献者（IC）做起，通过实际交付来学习如何成为团队中高效的工程师，真正经历并理解在 Anthropic 做工程师是什么样的。Claude Code 和 Claude Cowork 有一个统一的团队使命。管理者支持各个工作 pod，同时保持团队的敏捷性，让人们能够灵活地转移到工作最需要的地方。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-20",
+      "english": "**Don't hesitate to kill processes that no longer work:** Finally, we relentlessly question why we do things the way we do. When something doesn't make sense anymore, team members have explicit permission to question and kill old processes.",
+      "chinese": "**不要犹豫砍掉不再有效的流程：** 最后，我们不断质疑为什么我们要以这种方式做事。当某件事不再合理时，团队成员被明确授权去质疑并废除旧流程。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-21",
+      "english": "Within these few rules, though, each pod has a lot of agency. They have room to adapt how they use Claude to do triage, how they run any planning rituals or standups, and which workflows get \"Claudified\" first.",
+      "chinese": "不过在这几条规则之内，每个 pod 拥有很大的自主权。他们有空间自行调整如何使用 Claude 进行分类、如何运行规划仪式或站会，以及哪些工作流程优先被\"Claude 化\"。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "How to know your new processes are sticking",
+      "chinese": "如何判断新流程是否奏效"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-22",
+      "english": "Here are three numbers every engineering leader should start tracking now as they roll out changes.",
+      "chinese": "以下是每一位工程负责人在推行变革时应该开始追踪的三个指标。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-23",
+      "english": "**Onboarding ramp time goes down:** How soon can an engineer, a designer, or a PM start being effective? On our team this is much faster than a year ago, and engineers ship real code now within their first week.",
+      "chinese": "**入职适应时间缩短：** 一名工程师、设计师或产品经理多久能开始发挥作用？在我们团队，这比一年前快了很多，工程师现在在第一周就能交付真正的代码。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-24",
+      "english": "**PR cycle time goes down:** This one's interesting to dig into because it might help you identify where your pipeline is struggling to scale. As we're generating so much more code, sometimes build systems and continuous integration (CI) may struggle to keep up.",
+      "chinese": "**PR 周期时间缩短：** 这个指标值得深入研究，因为它可以帮助你识别流水线中哪些地方难以扩展。由于我们现在生成的代码量大增，构建系统和持续集成（CI）有时可能跟不上节奏。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-25",
+      "english": "**Claude-assisted commits going up:** For us, by default, every commit is Claude-assisted. I don't think I've seen a non-Claude-assisted commit in the last four months.",
+      "chinese": "**Claude 辅助的提交比例上升：** 对我们来说，默认每个提交都是 Claude 辅助的。我想我已经四个月没见过非 Claude 辅助的提交了。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-26",
+      "english": "On the third bullet, don't confuse throughput with success. Throughput is one metric, but the real metric is measuring the thing you're trying to solve. With the right alignment, throughput can help you solve problems faster.",
+      "chinese": "关于第三点，不要把产出量和成功混为一谈。产出量是一个指标，但真正的指标是衡量你试图解决的问题本身。在正确对齐的前提下，产出量可以帮助你更快地解决问题。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Getting started",
+      "chinese": "开始行动"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-27",
+      "english": "If I were to leave you with one thing: pick your noisiest workflow. That could be your most expensive workflow, the one you might be dreading, or that your team doesn't look forward to. And ask: is it still serving its purpose? If so, can you automate it?",
+      "chinese": "如果我只能留下一个建议：选择你最嘈杂的工作流程。那可能是你最昂贵的流程、你最害怕的流程，或者你的团队最不期待的流程。然后问自己：它是否仍在发挥应有的作用？如果是，能否将其自动化？"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-28",
+      "english": "I was once on a team that had an expensive weekly review, with a large number of people in a meeting room. I noticed everybody was on their laptops except when it was their time to give a status report. They would pop their head up, say the status, and go back down to their laptops. I asked one simple question: \"Why are we having this meeting again? It seems like an expensive use of our time.\" And just that one question made everyone realize it wasn't needed. So we canceled it.",
+      "chinese": "我曾经在一个团队中，每周都有一场昂贵的评审会，大量人员聚集在会议室。我注意到除了轮到自己汇报状态时，所有人都在低头看笔记本电脑。他们会抬起头来说完状态，然后又低头继续看电脑。我问了一个简单的问题：\"我们为什么还要开这个会？看起来是对时间的昂贵浪费。\"就是这一个问题让所有人都意识到这个会议没有必要，于是我们取消了它。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-29",
+      "english": "So, ask yourself: what's one piece of your engineering workflow that you might consider automating or even dropping altogether?",
+      "chinese": "所以，问问自己：你的工程工作流程中，有哪些环节可以考虑自动化，甚至直接取消？"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"19-ai-native-engineering-org\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"19-ai-native-engineering-org\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"19-ai-native-engineering-org\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"19-ai-native-engineering-org\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"19-ai-native-engineering-org\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"19-ai-native-engineering-org\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"19-ai-native-engineering-org\"."
+    },
+    {
+      "code": "table",
+      "message": "Skipped markdown table in \"19-ai-native-engineering-org\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"19-ai-native-engineering-org\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"19-ai-native-engineering-org\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"19-ai-native-engineering-org\"."
+    }
+  ]
+}
