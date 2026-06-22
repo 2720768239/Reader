@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
@@ -42,5 +42,79 @@ describe("ArticlePage", () => {
     await user.click(paragraphButton);
 
     expect(screen.getByText("第一段中文。")).toBeInTheDocument();
+  });
+
+  it("opens and closes the reading controls from the top bar", async () => {
+    const user = userEvent.setup();
+
+    const { container } = render(
+      <MemoryRouter initialEntries={["/article/demo-article"]}>
+        <Routes>
+          <Route path="/article/:slug" element={<ArticlePage />} />
+        </Routes>
+      </MemoryRouter>
+    );
+
+    await user.click(
+      await screen.findByRole("button", { name: /open reading settings/i })
+    );
+
+    expect(screen.getByText("Text size")).toBeInTheDocument();
+
+    const articleShell = container.querySelector(".page-shell--reader");
+    expect(articleShell).toBeInTheDocument();
+    expect(articleShell).toHaveClass("reader-font-md", "reader-spacing-relaxed");
+
+    await user.click(screen.getByRole("button", { name: "A+" }));
+    await user.click(screen.getByRole("button", { name: "Wide" }));
+
+    expect(articleShell).toHaveClass("reader-font-lg", "reader-spacing-airy");
+
+    await user.click(screen.getByRole("button", { name: /close reading settings/i }));
+
+    expect(screen.queryByText("Text size")).not.toBeInTheDocument();
+  });
+
+  it("hides the top bar while scrolling and restores it when the paper background is tapped", async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <MemoryRouter initialEntries={["/article/demo-article"]}>
+        <Routes>
+          <Route path="/article/:slug" element={<ArticlePage />} />
+        </Routes>
+      </MemoryRouter>
+    );
+
+    await screen.findByRole("button", { name: /first english paragraph\./i });
+
+    Object.defineProperty(document.documentElement, "scrollHeight", {
+      configurable: true,
+      value: 3200
+    });
+    Object.defineProperty(window, "innerHeight", {
+      configurable: true,
+      value: 800
+    });
+    Object.defineProperty(window, "scrollY", {
+      configurable: true,
+      value: 240,
+      writable: true
+    });
+
+    await act(async () => {
+      window.dispatchEvent(new Event("scroll"));
+    });
+
+    expect(container.querySelector(".topbar--hidden")).toBeInTheDocument();
+
+    const readerSurface = container.querySelector(".reader-surface");
+    expect(readerSurface).not.toBeNull();
+    if (!readerSurface) {
+      throw new Error("Expected reader surface");
+    }
+
+    await user.click(readerSurface);
+
+    expect(container.querySelector(".topbar--hidden")).not.toBeInTheDocument();
   });
 });

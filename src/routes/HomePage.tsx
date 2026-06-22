@@ -12,7 +12,7 @@ export default function HomePage() {
           <p className="eyebrow">Kindle-style Reader</p>
           <h1>Read in English. Tap a passage for Chinese.</h1>
         </div>
-        <ThemeToggle />
+        <ThemeToggle variant="icon" />
       </header>
       <section className="article-list">
         {articles.map((article) => (

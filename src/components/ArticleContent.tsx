@@ -7,6 +7,14 @@ type ArticleContentProps = {
   onParagraphSelect: (chinese: string, paragraphId: string) => void;
 };
 
+function resolveImageSrc(src: string) {
+  if (/^(?:https?:|data:|blob:|\/)/i.test(src)) {
+    return src;
+  }
+
+  return `/${src.replace(/^\.?\//, "")}`;
+}
+
 function renderHeading(block: Extract<ArticleBlock, { type: "heading" }>, key: string) {
   const HeadingTag = `h${block.level}` as "h2" | "h3" | "h4" | "h5" | "h6";
   const headingText = "english" in block ? block.english : block.text;
@@ -29,7 +37,14 @@ export default function ArticleContent({
         }
 
         if (block.type === "image") {
-          return <img className="article-image" key={key} src={block.src} alt={block.alt} />;
+          return (
+            <img
+              alt={block.alt}
+              className="article-image"
+              key={key}
+              src={resolveImageSrc(block.src)}
+            />
+          );
         }
 
         if (block.type === "standalone") {

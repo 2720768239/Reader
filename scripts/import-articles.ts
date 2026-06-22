@@ -17,6 +17,25 @@ async function recreateArticlesDir() {
   await fs.mkdir(ARTICLES_DIR, { recursive: true });
 }
 
+async function copyImageAssets(sourceDir: string) {
+  const sourceImagesDir = path.join(sourceDir, "images");
+  const targetImagesDir = path.resolve("public/images");
+
+  try {
+    const stat = await fs.stat(sourceImagesDir);
+
+    if (!stat.isDirectory()) {
+      return;
+    }
+  } catch {
+    return;
+  }
+
+  await fs.rm(targetImagesDir, { recursive: true, force: true });
+  await fs.mkdir(path.dirname(targetImagesDir), { recursive: true });
+  await fs.cp(sourceImagesDir, targetImagesDir, { recursive: true });
+}
+
 function parseCliArgs(argv: string[]) {
   const sourceIndex = argv.findIndex((argument) => argument === "--source");
   const sourceFromFlag =
@@ -43,6 +62,7 @@ async function main() {
   const files = await loadMarkdownFiles(sourceDir);
 
   await recreateArticlesDir();
+  await copyImageAssets(sourceDir);
 
   const index: ArticleIndexEntry[] = [];
 
