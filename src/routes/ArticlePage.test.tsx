@@ -75,6 +75,25 @@ describe("ArticlePage", () => {
     expect(screen.queryByText("Text size")).not.toBeInTheDocument();
   });
 
+  it("keeps the theme button available while the reading controls are open", async () => {
+    const user = userEvent.setup();
+
+    render(
+      <MemoryRouter initialEntries={["/article/demo-article"]}>
+        <Routes>
+          <Route path="/article/:slug" element={<ArticlePage />} />
+        </Routes>
+      </MemoryRouter>
+    );
+
+    await user.click(
+      await screen.findByRole("button", { name: /open reading settings/i })
+    );
+
+    expect(screen.getByRole("button", { name: /toggle theme/i })).toBeInTheDocument();
+    expect(screen.getByText("Text size")).toBeInTheDocument();
+  });
+
   it("hides the top bar while scrolling and restores it when the paper background is tapped", async () => {
     const user = userEvent.setup();
     const { container } = render(
