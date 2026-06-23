@@ -12,6 +12,7 @@ vi.mock("../lib/content/loaders", () => ({
       title: "June Release Notes",
       publishedAt: "June 18, 2026",
       category: "Product announcements",
+      product: "Claude Code",
       preview: "A roundup of June product updates."
     },
     {
@@ -19,6 +20,7 @@ vi.mock("../lib/content/loaders", () => ({
       title: "Managed Agents Guide",
       publishedAt: "June 10, 2026",
       category: "Enterprise AI",
+      product: "Claude Managed Agents",
       preview: "A field guide for teams deploying agents."
     },
     {
@@ -125,7 +127,41 @@ describe("HomePage", () => {
     await user.selectOptions(screen.getByRole("combobox", { name: /filter by category/i }), "Enterprise AI");
 
     expect(screen.getByRole("heading", { name: "Managed Agents Guide" })).toBeInTheDocument();
-    expect(screen.getByText("June 10, 2026")).toBeInTheDocument();
+    const article = screen.getByRole("listitem");
+    expect(within(article).getByText("Date")).toBeInTheDocument();
+    expect(within(article).getByText("Category")).toBeInTheDocument();
+    expect(within(article).getByText("Product")).toBeInTheDocument();
+    expect(within(article).getByText("June 10, 2026")).toBeInTheDocument();
+    expect(within(article).getByText("Enterprise AI")).toBeInTheDocument();
+    expect(within(article).getByText("Claude Managed Agents")).toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: "June Release Notes" })).not.toBeInTheDocument();
+  });
+
+  it("shows date, category, and product metadata as labels and values without the reading field", () => {
+    render(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>
+    );
+
+    const article = screen
+      .getByRole("heading", { name: "June Release Notes" })
+      .closest("article");
+
+    expect(article).not.toBeNull();
+    if (!article) {
+      throw new Error("Expected article card");
+    }
+
+    const metadata = within(article).getByLabelText("Article metadata");
+    expect(within(metadata).getByText("Date")).toBeInTheDocument();
+    expect(within(metadata).getByText("Category")).toBeInTheDocument();
+    expect(within(metadata).getByText("Product")).toBeInTheDocument();
+    expect(within(metadata).getByText("June 18, 2026")).toBeInTheDocument();
+    expect(within(metadata).getByText("Product announcements")).toBeInTheDocument();
+    expect(within(metadata).getByText("Claude Code")).toBeInTheDocument();
+    expect(screen.queryByText("June 18, 2026 | Product announcements | Claude Code")).not.toBeInTheDocument();
+    expect(screen.queryByText("Reading")).not.toBeInTheDocument();
+    expect(screen.queryByText("English with tap-to-translate")).not.toBeInTheDocument();
   });
 });

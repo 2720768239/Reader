@@ -111,6 +111,7 @@ English paragraph.
 
     expect(article.publishedAt).toBe("June 18, 2026");
     expect(article.category).toBe("Product announcements");
+    expect(article.product).toBe("Claude Code");
   });
 
   it("records structural warnings for thematic breaks, tables, and code fences", () => {

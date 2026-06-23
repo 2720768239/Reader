@@ -1271,7 +1271,6 @@ Append to `src/styles.css`:
 .page-shell {
   width: min(100%, calc(var(--content-width) + 2rem));
   margin: 0 auto;
-  padding: 1rem 1rem calc(6rem + env(safe-area-inset-bottom));
 }
 
 .topbar {

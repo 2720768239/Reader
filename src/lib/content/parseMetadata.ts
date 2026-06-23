@@ -3,6 +3,7 @@ export type ParsedMetadata = {
   sourceUrl?: string;
   publishedAt?: string;
   category?: string;
+  product?: string;
   bodyStartIndex: number;
 };
 
@@ -49,6 +50,11 @@ function parseMetadataToken(token: string, target: ParsedMetadata) {
   const rawLabel = normalized.slice(0, colonIndex).trim();
   const value = normalized.slice(colonIndex + 1).trim();
   const label = rawLabel.toLowerCase();
+
+  if (label === "product" || label.includes("product")) {
+    target.product ??= value;
+    return;
+  }
 
   for (const [field, aliases] of Object.entries(FIELD_ALIASES) as Array<
     [keyof typeof FIELD_ALIASES, readonly string[]]

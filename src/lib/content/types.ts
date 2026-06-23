@@ -59,6 +59,7 @@ export type ArticleRecord = {
   sourceUrl?: string;
   publishedAt?: string;
   category?: string;
+  product?: string;
   preview?: string;
   blocks: ArticleBlock[];
   warnings: ContentWarning[];
@@ -66,5 +67,5 @@ export type ArticleRecord = {
 
 export type ArticleIndexEntry = Pick<
   ArticleRecord,
-  "slug" | "title" | "publishedAt" | "category" | "preview"
+  "slug" | "title" | "publishedAt" | "category" | "product" | "preview"
 >;

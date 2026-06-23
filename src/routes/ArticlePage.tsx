@@ -159,6 +159,7 @@ export default function ArticlePage() {
       >
         <ArticleHeader
           category={article.category}
+          product={article.product}
           publishedAt={article.publishedAt}
           title={article.title}
         />

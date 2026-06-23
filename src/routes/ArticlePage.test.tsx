@@ -1,4 +1,4 @@
-import { act, render, screen } from "@testing-library/react";
+import { act, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
@@ -9,6 +9,9 @@ vi.mock("../lib/content/loaders", () => ({
   loadArticleBySlug: async () => ({
     slug: "demo-article",
     title: "Demo Article",
+    publishedAt: "June 10, 2026",
+    category: "Enterprise AI",
+    product: "Claude Managed Agents",
     blocks: [
       {
         type: "paragraph",
@@ -135,5 +138,27 @@ describe("ArticlePage", () => {
     await user.click(readerSurface);
 
     expect(container.querySelector(".topbar--hidden")).not.toBeInTheDocument();
+  });
+
+  it("shows date, category, and product metadata as labels and values", async () => {
+    render(
+      <MemoryRouter initialEntries={["/article/demo-article"]}>
+        <Routes>
+          <Route path="/article/:slug" element={<ArticlePage />} />
+        </Routes>
+      </MemoryRouter>
+    );
+
+    const metadata = await screen.findByLabelText("Article metadata");
+
+    expect(within(metadata).getByText("Date")).toBeInTheDocument();
+    expect(within(metadata).getByText("Category")).toBeInTheDocument();
+    expect(within(metadata).getByText("Product")).toBeInTheDocument();
+    expect(within(metadata).getByText("June 10, 2026")).toBeInTheDocument();
+    expect(within(metadata).getByText("Enterprise AI")).toBeInTheDocument();
+    expect(within(metadata).getByText("Claude Managed Agents")).toBeInTheDocument();
+    expect(
+      screen.queryByText("June 10, 2026 | Enterprise AI | Claude Managed Agents")
+    ).not.toBeInTheDocument();
   });
 });

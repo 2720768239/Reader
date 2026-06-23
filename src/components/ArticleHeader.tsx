@@ -1,16 +1,27 @@
+import ArticleMetadata from "./ArticleMetadata";
+
 type ArticleHeaderProps = {
   title: string;
   publishedAt?: string;
   category?: string;
+  product?: string;
 };
 
-export default function ArticleHeader({ title, publishedAt, category }: ArticleHeaderProps) {
-  const meta = [publishedAt, category].filter(Boolean).join(" | ");
-
+export default function ArticleHeader({
+  title,
+  publishedAt,
+  category,
+  product
+}: ArticleHeaderProps) {
   return (
     <header className="article-header">
       <h1>{title}</h1>
-      {meta ? <p className="article-header__meta">{meta}</p> : null}
+      <ArticleMetadata
+        category={category}
+        className="article-header__meta"
+        product={product}
+        publishedAt={publishedAt}
+      />
     </header>
   );
 }

@@ -172,6 +172,7 @@ export function parseArticle(filename: string, markdown: string): ArticleRecord 
     sourceUrl: metadata.sourceUrl,
     publishedAt: metadata.publishedAt,
     category: metadata.category,
+    product: metadata.product,
     preview,
     blocks,
     warnings

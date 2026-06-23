@@ -65,7 +65,13 @@ export default function HomePage() {
           return true;
         }
 
-        const haystack = [article.title, article.preview, article.category, article.publishedAt]
+        const haystack = [
+          article.title,
+          article.preview,
+          article.category,
+          article.product,
+          article.publishedAt
+        ]
           .filter(Boolean)
           .join(" ")
           .toLowerCase();
@@ -96,7 +102,7 @@ export default function HomePage() {
               aria-label="Search articles"
               className="library-search__input"
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search by title, preview, category, or date"
+              placeholder="Search by title, preview, category, product, or date"
               type="search"
               value={query}
             />
