@@ -1,0 +1,179 @@
+{
+  "slug": "33-how-one-anthropic-seller-rebuilt-his-teams-workflows-with-claude-code",
+  "title": "How one Anthropic seller rebuilt his team's workflows with Claude Code",
+  "sourceUrl": "https://claude.com/blog/how-anthropic-uses-claude-gtm-engineering",
+  "publishedAt": "2026-06-05",
+  "category": "** Claude Code, Enterprise AI",
+  "preview": "*Before he joined Anthropic, Jared Sires, GTM product manager, had never opened a terminal. Now Anthropic's Sales team uses his tools.*",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "*Before he joined Anthropic, Jared Sires, GTM product manager, had never opened a terminal. Now Anthropic's Sales team uses his tools.*",
+      "chinese": "*Before he joined Anthropic, Jared Sires, GTM product manager, had never opened a terminal. Now Anthropic's Sales team uses his tools.*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Before joining Anthropic in 2024, Jared Sires had never written a line of code. And why would he? He was a startup account executive.",
+      "chinese": "Before joining Anthropic in 2024, Jared Sires had never written a line of code. And why would he? He was a startup account executive."
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "As is often the case at fast-growing companies, Jared's book quickly grew to 600 or 700 accounts. With 10 to 15 customer calls a day and an expanding account list, Jared found himself at his desk, answering customer emails until 9 or 10 p.m. every night.",
+      "chinese": "As is often the case at fast-growing companies, Jared's book quickly grew to 600 or 700 accounts. With 10 to 15 customer calls a day and an expanding account list, Jared found himself at his desk, answering customer emails until 9 or 10 p.m. every night."
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "\"It was almost impossible to manage my inbox,\" he says. \"And doing outbound on top of that, you don't really know where to focus.\"",
+      "chinese": "\"It was almost impossible to manage my inbox,\" he says. \"And doing outbound on top of that, you don't really know where to focus.\""
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "Jared turned to Claude Code for help. With no coding experience, he created CLAFTS, short for *Claude Drafts*: an application that lives inside Gmail and uses the Claude API to draft replies to customer emails. It took multiple iterations, but eventually Jared estimates CLAFTS was saving him two to three hours a day. He shared it in Slack the next morning, and within 24 hours, others from the sales organization had started using it with similar results.",
+      "chinese": "Jared turned to Claude Code for help. With no coding experience, he created CLAFTS, short for *Claude Drafts*: an application that lives inside Gmail and uses the Claude API to draft replies to customer emails. It took multiple iterations, but eventually Jared estimates CLAFTS was saving him two to three hours a day. He shared it in Slack the next morning, and within 24 hours, others from the sales organization had started using it with similar results."
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "That led to a shift in Jared's role at Anthropic: today, he is product manager of the go-to-market team, a role focused exclusively on identifying problems in how the Anthropic sales organization operates and building Claude-powered solutions to fix them.",
+      "chinese": "That led to a shift in Jared's role at Anthropic: today, he is product manager of the go-to-market team, a role focused exclusively on identifying problems in how the Anthropic sales organization operates and building Claude-powered solutions to fix them."
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "He describes the shift in his career as \"the most empowering thing I've ever experienced.\"",
+      "chinese": "He describes the shift in his career as \"the most empowering thing I've ever experienced.\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A sales rep buried in administrative tasks",
+      "language": "en"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "被行政任务淹没的销售代表",
+      "language": "en"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "Email volume wasn't the only challenge Jared faced as an account executive. Anthropic ships product changes every 24 to 48 hours, and customer questions tend to land on the most recent details: batch API SLAs, prompt caching discounts, model pricing, SDK behavior.",
+      "chinese": "Email volume wasn't the only challenge Jared faced as an account executive. Anthropic ships product changes every 24 to 48 hours, and customer questions tend to land on the most recent details: batch API SLAs, prompt caching discounts, model pricing, SDK behavior."
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "\"Having to relay technical documentation to customers is pretty hard, especially here at Anthropic when your products evolve so quickly,\" Jared says.",
+      "chinese": "\"Having to relay technical documentation to customers is pretty hard, especially here at Anthropic when your products evolve so quickly,\" Jared says."
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "One of his first experiments with Claude was narrow and practical. Using Apps Script (Google's lightweight development platform) and Claude, Jared pulled product usage data from internal systems and had Claude rank his accounts each morning by how fast they were growing.",
+      "chinese": "One of his first experiments with Claude was narrow and practical. Using Apps Script (Google's lightweight development platform) and Claude, Jared pulled product usage data from internal systems and had Claude rank his accounts each morning by how fast they were growing."
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "\"Each day Claude would give me a brief on who I needed to focus on based on how much they were using,\" he says. With 700 accounts in his book, the daily brief helped him determine where to spend his outbound time.",
+      "chinese": "\"Each day Claude would give me a brief on who I needed to focus on based on how much they were using,\" he says. With 700 accounts in his book, the daily brief helped him determine where to spend his outbound time."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Developing CLAFTS",
+      "language": "en"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "开发 CLAFTS",
+      "language": "en"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "The harder challenge was Jared's inbox and the late hours he had to spend responding to emails.",
+      "chinese": "The harder challenge was Jared's inbox and the late hours he had to spend responding to emails."
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "With Claude Code, he started to develop a system that drafts replies to customer emails in his voice. \"Claude Code, having the terminology 'code' at the end of it, made me feel a little bit intimidated just to even start,\" he says. \"But after a certain time frame, I understood the power of it being able to hook up to my computer and answer things about files on it.\"",
+      "chinese": "With Claude Code, he started to develop a system that drafts replies to customer emails in his voice. \"Claude Code, having the terminology 'code' at the end of it, made me feel a little bit intimidated just to even start,\" he says. \"But after a certain time frame, I understood the power of it being able to hook up to my computer and answer things about files on it.\""
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "CLAFTS is built on roughly 4,300 lines of code, almost all of it written by Claude Code. It pulls context from a shared Google Drive folder and other third-party tools, references Anthropic's public documentation through web search, and matches Jared's writing style.",
+      "chinese": "CLAFTS is built on roughly 4,300 lines of code, almost all of it written by Claude Code. It pulls context from a shared Google Drive folder and other third-party tools, references Anthropic's public documentation through web search, and matches Jared's writing style."
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "Whenever Anthropic ships a product change, the documentation reflects it and Claude picks up the change on the next draft. \"Claude is able to use web search to understand our latest documentation from our website and reference that material when generating emails,\" Jared says. \"I don't need to keep all of that in my head.\"",
+      "chinese": "Whenever Anthropic ships a product change, the documentation reflects it and Claude picks up the change on the next draft. \"Claude is able to use web search to understand our latest documentation from our website and reference that material when generating emails,\" Jared says. \"I don't need to keep all of that in my head.\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Measuring the impact of CLAFTS",
+      "language": "en"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "衡量 CLAFTS 的影响",
+      "language": "en"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "While CLAFTS saves Jared 10-15 hours per week, the shift he cares about most is the accuracy of the work. With Claude pulling current product details from documentation on every draft, the answers customers receive are tied to whatever shipped most recently rather than to whatever Jared happened to remember.",
+      "chinese": "While CLAFTS saves Jared 10-15 hours per week, the shift he cares about most is the accuracy of the work. With Claude pulling current product details from documentation on every draft, the answers customers receive are tied to whatever shipped most recently rather than to whatever Jared happened to remember."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Architecting what's next",
+      "language": "en"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "构建下一步",
+      "language": "en"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "Jared's role has changed alongside the tooling. As a GTM Architect, he now sits in design conversations with product engineers and helps shape new tools for Anthropic's sales team.",
+      "chinese": "Jared's role has changed alongside the tooling. As a GTM Architect, he now sits in design conversations with product engineers and helps shape new tools for Anthropic's sales team."
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "\"I feel like with the technical barrier dissolving, I'm almost able to design more products and have senior engineers help me implement to the final stretch,\" Jared says. \"I'm able to augment and do more things.\"",
+      "chinese": "\"I feel like with the technical barrier dissolving, I'm almost able to design more products and have senior engineers help me implement to the final stretch,\" Jared says. \"I'm able to augment and do more things.\""
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "For sellers wondering whether they could build something similar, his advice is to open Claude Code, find one task that's slowing them down, and ask Claude how to build a solution for it.",
+      "chinese": "For sellers wondering whether they could build something similar, his advice is to open Claude Code, find one task that's slowing them down, and ask Claude how to build a solution for it."
+    },
+    {
+      "type": "paragraph",
+      "id": "p-20",
+      "english": "\"If you told me I was going to be a go-to-market product manager at Anthropic a year ago, I would be pretty surprised,\" he says. \"I never had the technical chops to be in these conversations. With Claude, I'm able to design and build things that don't just improve my own day-to-day workflows, but also those of my broader team. I have space to work more creatively and strategically, and there's no turning back.\"",
+      "chinese": "\"If you told me I was going to be a go-to-market product manager at Anthropic a year ago, I would be pretty surprised,\" he says. \"I never had the technical chops to be in these conversations. With Claude, I'm able to design and build things that don't just improve my own day-to-day workflows, but also those of my broader team. I have space to work more creatively and strategically, and there's no turning back.\""
+    }
+  ],
+  "warnings": []
+}

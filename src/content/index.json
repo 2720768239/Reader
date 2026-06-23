@@ -2,173 +2,186 @@
   {
     "slug": "01-agentic-surfaces",
     "title": "The evolution of agentic surfaces: building with Claude Managed Agents",
-    "publishedAt": "June 10, 2026",
+    "publishedAt": "2026-06-10",
     "category": "Agents / Claude Platform",
     "preview": "As model intelligence and agentic harnesses evolve, Claude Managed Agents allows teams to build and deploy agents in production environments reliably at scale. Here's why and how teams are using it."
   },
   {
     "slug": "02-whats-new-managed-agents",
     "title": "New in Claude Managed Agents: run agents on a schedule and store environment variables in vaults",
-    "publishedAt": "June 9, 2026",
-    "category": "产品公告",
+    "publishedAt": "2026-06-09",
+    "category": "Product announcements",
     "preview": "Starting today, Claude Managed Agents can run on a schedule and securely access CLI tools and other authenticated services. Both features are now available in public beta on the Claude Platform."
   },
   {
     "slug": "03-foundation-models",
     "title": "Building intelligent apps for Apple platforms with Claude in the Foundation Models framework",
-    "preview": "Today we're releasing Foundation Models framework support for Claude through a new Swift package that lets Apple developers use Apple's Foundation Models framework to call Claude for more complex workflows."
+    "preview": "Today we're releasing Foundation Models framework support for Claude through a new Swift package that lets Apple developers use Apple's Foundation Models framework to call Claude for more complex workflows.",
+    "category": "Product announcements"
   },
   {
     "slug": "04-managed-agents-updates",
     "title": "New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels",
-    "publishedAt": "2026年5月19日",
-    "category": "产品公告",
+    "publishedAt": "2026-05-19",
+    "category": "Product announcements",
     "preview": "Starting today, Claude Managed Agents can operate in a sandbox you control and connect to your private Model Context Protocol (MCP) servers. Both the sandbox where an agent executes tools and the services it reaches run within the established boundaries of your enterprise, under your security and runtime controls."
   },
   {
     "slug": "05-new-managed-agents",
     "title": "New in Claude Managed Agents: dreaming, outcomes, and multiagent orchestration",
-    "publishedAt": "2026年5月6日",
-    "preview": "Today we're launching dreaming in Claude Managed Agents as a research preview. Dreaming extends memory by reviewing past sessions to find patterns and help agents self-improve. We're also making outcomes, multiagent orchestration, and webhooks available to developers building with Managed Agents. Together, these updates make agents more capable at handling complex tasks with minimal steering."
+    "publishedAt": "2026-05-06",
+    "preview": "Today we're launching dreaming in Claude Managed Agents as a research preview. Dreaming extends memory by reviewing past sessions to find patterns and help agents self-improve. We're also making outcomes, multiagent orchestration, and webhooks available to developers building with Managed Agents. Together, these updates make agents more capable at handling complex tasks with minimal steering.",
+    "category": "Product announcements"
   },
   {
     "slug": "06-connectors-everyday-life",
     "title": "New connectors in Claude for everyday life | Claude",
-    "publishedAt": "April 23, 2026",
+    "publishedAt": "2026-04-23",
     "category": "Product announcements",
     "preview": "Today we're expanding what you can connect to Claude. Alongside the work tools you already use, you can now connect the apps you use throughout your week, including AllTrails, Instacart, Audible, Tripadvisor, Intuit TurboTax, and more."
   },
   {
     "slug": "07-managed-agents-memory",
     "title": "Scaling Managed Agents: Decoupling the brain from the hands",
-    "publishedAt": "Apr 08, 2026",
-    "preview": "Harnesses encode assumptions that go stale as models improve. Managed Agents—our hosted service for long-horizon agent work—is built around interfaces that stay stable as harnesses change."
+    "publishedAt": "2026-04-08",
+    "preview": "Harnesses encode assumptions that go stale as models improve. Managed Agents—our hosted service for long-horizon agent work—is built around interfaces that stay stable as harnesses change.",
+    "category": "Product announcements"
   },
   {
     "slug": "08-claude-code-desktop-redesign",
     "title": "Redesigning Claude Code on desktop for parallel agents",
-    "publishedAt": "2026年4月14日",
-    "category": "Claude Code / 产品公告",
+    "publishedAt": "2026-04-14",
+    "category": "Claude Code / Product announcements",
     "preview": "Today, we're releasing a redesign of the Claude Code desktop app, built to help you run more Claude Code tasks at once."
   },
   {
     "slug": "09-security-ai-offense",
     "title": "Preparing your security program for AI-accelerated offense",
-    "publishedAt": "April 10, 2026",
+    "publishedAt": "2026-04-10",
     "category": "Agents",
     "preview": "AI is changing the speed at which vulnerabilities are found and exploited. We're publishing an initial set of recommendations to shore up your defenses based on our own findings and security practices."
   },
   {
     "slug": "10-claude-managed-agents",
     "title": "Claude Managed Agents: get to production 10x faster",
-    "preview": "Today, we're launching Claude Managed Agents, a suite of composable APIs for building and deploying cloud-hosted agents at scale."
+    "preview": "Today, we're launching Claude Managed Agents, a suite of composable APIs for building and deploying cloud-hosted agents at scale.",
+    "category": "Product announcements"
   },
   {
     "slug": "11-harnessing-claudes-intelligence",
     "title": "Harnessing Claude's Intelligence",
-    "preview": "One of Anthropic's co-founders, Chris Olah, says that generative AI systems like Claude are grown more than they are built. Researchers set the conditions to direct growth, but the exact structure or capabilities that emerge aren't always predictable."
+    "preview": "One of Anthropic's co-founders, Chris Olah, says that generative AI systems like Claude are grown more than they are built. Researchers set the conditions to direct growth, but the exact structure or capabilities that emerge aren't always predictable.",
+    "category": "Agents"
   },
   {
     "slug": "12-claude-builds-visuals",
     "title": "Claude now creates interactive charts, diagrams and visualizations",
-    "publishedAt": "March 12, 2026",
+    "publishedAt": "2026-03-12",
     "category": "Product announcements",
     "preview": "Update: Now available in Claude Cowork on all paid plans (April 22, 2026)."
   },
   {
     "slug": "13-observability-connectors",
     "title": "Observability for developers building connectors",
-    "preview": "Published connectors in the \"directory\" now have a dashboard showing how they're performing across Claude product surfaces. Connector owners can use it to:"
+    "preview": "Published connectors in the \"directory\" now have a dashboard showing how they're performing across Claude product surfaces. Connector owners can use it to:",
+    "category": "Product announcements"
   },
   {
     "slug": "14-claude-cowork-guide",
     "title": "The Claude Cowork product guide",
-    "publishedAt": "June 5, 2026",
+    "publishedAt": "2026-06-05",
     "category": "Enterprise AI / Claude Cowork",
     "preview": "Most AI tools are conversational. You ask a question, you get an answer, and the work of turning that answer into something useful—a deck, a doc, a spreadsheet, an email—is still manual."
   },
   {
     "slug": "15-anthropic-gtm-engineering",
     "title": "How one Anthropic seller rebuilt his team's workflows with Claude Code",
-    "preview": "Before joining Anthropic in 2024, Jared Sires had never written a line of code. And why would he? He was a startup account executive."
+    "preview": "Before joining Anthropic in 2024, Jared Sires had never written a line of code. And why would he? He was a startup account executive.",
+    "category": "Claude Code, Enterprise AI"
   },
   {
     "slug": "16-self-service-data-analytics",
     "title": "How Anthropic enables self-service data analytics with Claude",
-    "preview": "As many data science and data engineering teams can attest, enabling self-service business analytics has traditionally been a slog."
+    "preview": "As many data science and data engineering teams can attest, enabling self-service business analytics has traditionally been a slog.",
+    "category": "Enterprise AI · Claude Code"
   },
   {
     "slug": "17-claude-code-skills",
     "title": "Lessons from building Claude Code: How we use skills",
-    "publishedAt": "June 3, 2026",
-    "preview": "Skills have become one of the most used extension points in Claude Code. They're flexible, easy to make, and easy to distribute."
+    "publishedAt": "2026-06-03",
+    "preview": "Skills have become one of the most used extension points in Claude Code. They're flexible, easy to make, and easy to distribute.",
+    "category": "Claude Code"
   },
   {
     "slug": "18-claude-cowork-best-practices",
     "title": "Best practices for getting started with Claude Cowork",
-    "preview": "Austin Lau, growth marketing lead at Anthropic, explains when to use Claude Cowork, how to decide what workflows to delegate, and concrete steps to get started."
+    "preview": "Austin Lau, growth marketing lead at Anthropic, explains when to use Claude Cowork, how to decide what workflows to delegate, and concrete steps to get started.",
+    "category": "Enterprise AI / Claude Cowork"
   },
   {
     "slug": "19-ai-native-engineering-org",
     "title": "Running an AI-native Engineering Org",
-    "publishedAt": "June 3, 2026",
+    "publishedAt": "2026-06-03",
     "category": "Claude Code",
     "preview": "At Code w/ Claude SF 2026, Director of Engineering for Claude Code and Claude Cowork Fiona Fung walked through how the team's processes and structure changed once agentic coding became the default way of working."
   },
   {
     "slug": "20-dynamic-workflows-harness",
     "title": "A harness for every task: dynamic workflows in Claude Code",
-    "preview": "Last week, we released dynamic workflows in Claude Code. Claude can now write its own harness on the fly, custom-built for the task at hand."
+    "preview": "Last week, we released dynamic workflows in Claude Code. Claude can now write its own harness on the fly, custom-built for the task at hand.",
+    "category": "Claude Code"
   },
   {
     "slug": "21-intro-dynamic-workflows",
     "title": "Introducing Dynamic Workflows in Claude Code",
-    "publishedAt": "2026年5月28日",
-    "category": "产品公告 / Claude Code",
+    "publishedAt": "2026-05-28",
+    "category": "Product announcements / Claude Code",
     "preview": "**Update: Dynamic workflows are now generally available.**"
   },
   {
     "slug": "22-llms-secure-source-code",
     "title": "Using LLMs to secure source code",
-    "publishedAt": "May 27, 2026",
+    "publishedAt": "2026-05-27",
     "category": "Enterprise AI",
     "preview": "We share best practices for how you can work with Claude Opus to build a threat model, discover vulnerabilities in your codebase, then verify, triage, and patch them."
   },
   {
     "slug": "23-coderabbit-agent-orchestration",
     "title": "How CodeRabbit used Claude to build an agent orchestration system",
-    "publishedAt": "May 27, 2026",
+    "publishedAt": "2026-05-27",
     "category": "Claude Code",
     "preview": "CodeRabbit built a layer on Claude that sits between a coding request and a coding agent, producing a structured coding plan the team can review before any code gets generated."
   },
   {
     "slug": "24-zero-trust-ai-agents",
     "title": "Zero Trust for AI Agents",
-    "preview": "We share a security framework for deploying autonomous AI agents in the enterprise, covering the new threat landscape, a tiered Zero Trust architecture, and defensive operations built for AI-accelerated attacks."
+    "preview": "We share a security framework for deploying autonomous AI agents in the enterprise, covering the new threat landscape, a tiered Zero Trust architecture, and defensive operations built for AI-accelerated attacks.",
+    "category": "Enterprise AI"
   },
   {
     "slug": "25-steering-claude-code",
     "title": "Steering Claude Code: CLAUDE.md 文件、skills、hooks、rules、subagents 等",
-    "preview": "Claude is built to work the way you work, and in Claude Code you can customize it."
+    "preview": "Claude is built to work the way you work, and in Claude Code you can customize it.",
+    "category": "Claude Code"
   },
   {
     "slug": "26-enterprise-managed-auth",
     "title": "Centrally manage authorization for MCP connectors",
-    "publishedAt": "June 18, 2026",
+    "publishedAt": "2026-06-18",
     "category": "Enterprise AI, Product announcements",
     "preview": "Admins can now provision MCP connectors for their whole organization through their identity provider, starting with Okta. Users get connector access automatically on first login, with authorization configured centrally by their organization."
   },
   {
     "slug": "27-artifacts-in-claude-code",
     "title": "Claude Code now supports artifacts",
-    "publishedAt": "June 18, 2026",
+    "publishedAt": "2026-06-18",
     "category": "Product announcements",
     "preview": "Starting today, Claude Code can capture work progress as an artifact, which turn Claude Code's work into live, shareable visual pages— including PR walkthroughs, system explainers, dashboards, and release checklists—that update themselves as your session works."
   },
   {
     "slug": "28-opus-4-8-hackathon-winners",
     "title": "Meet the winners of our Claude Opus 4.8 Build Day hackathon",
-    "publishedAt": "June 17, 2026（2026年6月17日）",
+    "publishedAt": "2026-06-17",
     "category": "Claude Code",
     "preview": "*From reconstructing Tang Dynasty architecture to polling a synthetic San Francisco, see what the winners of our latest hackathon built with Claude Opus 4.8 in a day.*"
   },
@@ -182,13 +195,30 @@
   {
     "slug": "30-workload-identity-federation",
     "title": "Secure access to the Claude Platform with Workload Identity Federation",
-    "publishedAt": "June 17, 2026",
+    "publishedAt": "2026-06-17",
     "category": "Product announcements",
     "preview": "Workload Identity Federation (WIF) is now generally available on the Claude Platform. WIF is compatible with any OIDC-compliant identity provider and covers all Claude API endpoints, including when accessing the endpoints through our first-party SDKs and Claude Code."
   },
   {
     "slug": "31-opus-4-7-hackathon-winners",
     "title": "Meet the winners of the Built with Opus 4.7 Claude Code hackathon",
-    "preview": "From medical training and electronics repair to coding education and factory maintenance, see the projects built by the winners of our latest virtual hackathon."
+    "preview": "From medical training and electronics repair to coding education and factory maintenance, see the projects built by the winners of our latest virtual hackathon.",
+    "category": "Claude Code"
+  },
+  {
+    "slug": "32-building-intelligent-apps-for-apple-platforms-with-claude-in-the-foundation-mode",
+    "title": "Building intelligent apps for Apple platforms with Claude in the Foundation Models framework",
+    "sourceUrl": "https://claude.com/blog/claude-for-foundation-models",
+    "publishedAt": "2026-06-08",
+    "category": "Product announcements",
+    "preview": "Today we're releasing Foundation Models framework support for Claude through a new Swift package that lets Apple developers use Apple's Foundation Models framework to call Claude for more complex workflows."
+  },
+  {
+    "slug": "33-how-one-anthropic-seller-rebuilt-his-teams-workflows-with-claude-code",
+    "title": "How one Anthropic seller rebuilt his team's workflows with Claude Code",
+    "sourceUrl": "https://claude.com/blog/how-anthropic-uses-claude-gtm-engineering",
+    "publishedAt": "2026-06-05",
+    "category": "Claude Code, Enterprise AI",
+    "preview": "*Before he joined Anthropic, Jared Sires, GTM product manager, had never opened a terminal. Now Anthropic's Sales team uses his tools.*"
   }
 ]
