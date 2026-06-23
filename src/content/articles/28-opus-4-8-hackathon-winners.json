@@ -37,6 +37,11 @@
       "chinese": "第一名：Tekton，Holly Tang 和 Austin Burgess"
     },
     {
+      "type": "image",
+      "src": "images/28-opus-4-8-hackathon-winners/build-day-photo.jpg",
+      "alt": "Claude Opus 4.8 Build Day 黑客松现场"
+    },
+    {
       "type": "paragraph",
       "id": "p-5",
       "english": "*Holly Tang and Austin Burgess built Tekton, a 3D reconstruction platform that brings Tang Dynasty architecture back to life, with every component traceable to its historical source.*",

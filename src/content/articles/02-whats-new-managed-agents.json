@@ -19,6 +19,16 @@
       "chinese": "按计划运行代理"
     },
     {
+      "type": "image",
+      "src": "images/02-new-in-claude-managed-agents/scheduled-deployments.png",
+      "alt": "Claude Console 中的定时部署界面"
+    },
+    {
+      "type": "image",
+      "src": "images/02-new-in-claude-managed-agents/credential-vaults-diagram.png",
+      "alt": "CLI 凭据保险库工作流程图"
+    },
+    {
       "type": "paragraph",
       "id": "p-2",
       "english": "Agents can now run on a schedule, completing routine work automatically. A scheduled deployment gives an agent a cron schedule. Each time the schedule fires, the agent starts a new session and completes its task, with no scheduler for you to build or host.",

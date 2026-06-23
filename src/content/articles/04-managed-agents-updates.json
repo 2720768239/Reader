@@ -31,6 +31,16 @@
       "chinese": "将代理执行保持在您的边界之内"
     },
     {
+      "type": "image",
+      "src": "images/04-new-in-claude-managed-agents/sandboxes.png",
+      "alt": "Claude Managed Agents 沙箱架构"
+    },
+    {
+      "type": "image",
+      "src": "images/04-new-in-claude-managed-agents/mcp-tunnel.png",
+      "alt": "MCP 隧道连接示意图"
+    },
+    {
       "type": "paragraph",
       "id": "p-4",
       "english": "With self-hosted sandboxes, you keep sensitive files, packages, and services in your own infrastructure or with a managed sandbox provider. The agent loop that handles orchestration, context management, and error recovery stays on Anthropic's infrastructure, while tool execution moves to your own configured environment.",

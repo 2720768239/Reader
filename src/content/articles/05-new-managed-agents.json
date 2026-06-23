@@ -18,6 +18,11 @@
       "chinese": "通过\"梦境\"构建自我改进的智能体"
     },
     {
+      "type": "image",
+      "src": "images/05-new-managed-agents/dreaming.png",
+      "alt": "Claude Managed Agents Dreaming 功能示意图"
+    },
+    {
       "type": "paragraph",
       "id": "p-2",
       "english": "Dreaming is a scheduled process that reviews your agent sessions and memory stores, extracts patterns, and curates memories so your agents improve over time. You decide how much control you want: dreaming can update memory automatically, or you can review changes before they land.",
