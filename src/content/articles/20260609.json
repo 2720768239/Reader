@@ -1,8 +1,6 @@
 {
-  "slug": "02-whats-new-managed-agents",
   "title": "New in Claude Managed Agents: run agents on a schedule and store environment variables in vaults",
   "sourceUrl": "https://claude.com/blog/whats-new-in-claude-managed-agents",
-  "publishedAt": "June 9, 2026",
   "category": "产品公告",
   "preview": "Starting today, Claude Managed Agents can run on a schedule and securely access CLI tools and other authenticated services. Both features are now available in public beta on the Claude Platform.",
   "blocks": [
@@ -176,5 +174,6 @@
       "code": "thematic-break",
       "message": "Skipped thematic break in \"02-whats-new-managed-agents\"."
     }
-  ]
+  ],
+  "id": "20260609"
 }

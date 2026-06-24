@@ -1,8 +1,6 @@
 {
-  "slug": "01-agentic-surfaces",
   "title": "The evolution of agentic surfaces: building with Claude Managed Agents",
   "sourceUrl": "https://claude.com/blog/building-with-claude-managed-agents",
-  "publishedAt": "June 10, 2026",
   "category": "Agents / Claude Platform",
   "preview": "As model intelligence and agentic harnesses evolve, Claude Managed Agents allows teams to build and deploy agents in production environments reliably at scale. Here's why and how teams are using it.",
   "blocks": [
@@ -45,7 +43,7 @@
     {
       "type": "image",
       "alt": "Messages API 架构",
-      "src": "images/01-agentic-surfaces/01-messages-api.png"
+      "src": "images/20260610/01-messages-api.png"
     },
     {
       "type": "paragraph",
@@ -74,7 +72,7 @@
     {
       "type": "image",
       "alt": "Claude Agent SDK",
-      "src": "images/01-agentic-surfaces/02-claude-agent-sdk.png"
+      "src": "images/20260610/02-claude-agent-sdk.png"
     },
     {
       "type": "paragraph",
@@ -145,12 +143,12 @@
     {
       "type": "image",
       "alt": "Claude Managed Agents 架构",
-      "src": "images/01-agentic-surfaces/03-claude-managed-agents.png"
+      "src": "images/20260610/03-claude-managed-agents.png"
     },
     {
       "type": "image",
       "alt": "Managed Agents 运行时",
-      "src": "images/01-agentic-surfaces/05-managed-agents-runtime.png"
+      "src": "images/20260610/05-managed-agents-runtime.png"
     },
     {
       "type": "heading",
@@ -185,7 +183,7 @@
     {
       "type": "image",
       "alt": "Agents、Environments、Sessions 关系图",
-      "src": "images/01-agentic-surfaces/04-agents-environments-sessions.png"
+      "src": "images/20260610/04-agents-environments-sessions.png"
     },
     {
       "type": "heading",
@@ -319,5 +317,6 @@
       "code": "thematic-break",
       "message": "Skipped thematic break in \"01-agentic-surfaces\"."
     }
-  ]
+  ],
+  "id": "20260610"
 }

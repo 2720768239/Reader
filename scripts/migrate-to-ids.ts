@@ -78,18 +78,26 @@ type IndexEntry = {
 async function main() {
   const files = (await fs.readdir(ARTICLES_DIR))
     .filter((file) => file.endsWith(".json"))
+    .filter((file) => !/^\d{8}/.test(file))
     .sort((left, right) => left.localeCompare(right));
 
   const usedIds: string[] = [];
   const indexEntries: IndexEntry[] = [];
   const missingProduct: string[] = [];
+  const missingDate: string[] = [];
 
   for (const file of files) {
     const oldPath = path.join(ARTICLES_DIR, file);
     const article = JSON.parse(await fs.readFile(oldPath, "utf8")) as LegacyArticle;
     const oldSlug = article.slug ?? file.replace(/\.json$/, "");
 
-    const date = parsePublishedAt(article.publishedAt);
+    let date: string;
+    try {
+      date = parsePublishedAt(article.publishedAt);
+    } catch {
+      missingDate.push(`${oldSlug} (${article.title})`);
+      continue;
+    }
     const id = nextIdForDate(usedIds, date);
     usedIds.push(id);
 
@@ -147,6 +155,13 @@ async function main() {
   if (missingProduct.length > 0) {
     console.warn("[migrate] articles missing product (need Hermes cleanup):");
     for (const entry of missingProduct) {
+      console.warn(`  - ${entry}`);
+    }
+  }
+
+  if (missingDate.length > 0) {
+    console.warn("[migrate] skipped articles missing publishedAt (kept in old format):");
+    for (const entry of missingDate) {
       console.warn(`  - ${entry}`);
     }
   }

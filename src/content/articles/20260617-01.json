@@ -1,8 +1,6 @@
 {
-  "slug": "30-workload-identity-federation",
   "title": "Secure access to the Claude Platform with Workload Identity Federation",
   "sourceUrl": "https://claude.com/blog/workload-identity-federation",
-  "publishedAt": "June 17, 2026",
   "category": "Product announcements",
   "preview": "Workload Identity Federation (WIF) is now generally available on the Claude Platform. WIF is compatible with any OIDC-compliant identity provider and covers all Claude API endpoints, including when accessing the endpoints through our first-party SDKs and Claude Code.",
   "blocks": [
@@ -85,5 +83,6 @@
       "chinese": "API 密钥与 WIF 可以并行使用，因此你可以逐个工作负载地进行迁移。阅读各身份提供者的设置[指南](https://docs.anthropic.com/en/docs/workload-identity-federation)，或打开 [Claude Console](https://console.anthropic.com/) 连接你的第一个工作负载。"
     }
   ],
-  "warnings": []
+  "warnings": [],
+  "id": "20260617-01"
 }

@@ -1,7 +1,5 @@
 {
-  "slug": "09-security-ai-offense",
   "title": "Preparing your security program for AI-accelerated offense",
-  "publishedAt": "April 10, 2026",
   "category": "Agents",
   "preview": "AI is changing the speed at which vulnerabilities are found and exploited. We're publishing an initial set of recommendations to shore up your defenses based on our own findings and security practices.",
   "blocks": [
@@ -603,5 +601,6 @@
       "code": "thematic-break",
       "message": "Skipped thematic break in \"09-security-ai-offense\"."
     }
-  ]
+  ],
+  "id": "20260410"
 }

@@ -1,8 +1,6 @@
 {
-  "slug": "17-claude-code-skills",
   "title": "Lessons from building Claude Code: How we use skills",
   "sourceUrl": "https://claude.com/blog/lessons-from-building-claude-code-how-we-use-skills",
-  "publishedAt": "June 3, 2026",
   "preview": "Skills have become one of the most used extension points in Claude Code. They're flexible, easy to make, and easy to distribute.",
   "blocks": [
     {
@@ -797,5 +795,6 @@
       "code": "thematic-break",
       "message": "Skipped thematic break in \"17-claude-code-skills\"."
     }
-  ]
+  ],
+  "id": "20260603"
 }

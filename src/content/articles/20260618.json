@@ -1,8 +1,6 @@
 {
-  "slug": "26-enterprise-managed-auth",
   "title": "Centrally manage authorization for MCP connectors",
   "sourceUrl": "https://claude.com/blog/enterprise-managed-auth",
-  "publishedAt": "June 18, 2026",
   "category": "Enterprise AI, Product announcements",
   "preview": "Admins can now provision MCP connectors for their whole organization through their identity provider, starting with Okta. Users get connector access automatically on first login, with authorization configured centrally by their organization.",
   "blocks": [
@@ -115,5 +113,6 @@
       "chinese": "任何身份或 MCP 提供商都可以通过实现 MCP 授权规范的[开放扩展](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#7-enterprise-managed-authorization)来支持企业托管授权。[在此](https://forms.anthropic.com/enterprise-managed-auth-beta)提交加入 beta 的意向。"
     }
   ],
-  "warnings": []
+  "warnings": [],
+  "id": "20260618"
 }

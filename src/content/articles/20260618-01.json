@@ -1,7 +1,5 @@
 {
-  "slug": "27-artifacts-in-claude-code",
   "title": "Claude Code now supports artifacts",
-  "publishedAt": "June 18, 2026",
   "category": "Product announcements",
   "preview": "Starting today, Claude Code can capture work progress as an artifact, which turn Claude Code's work into live, shareable visual pages— including PR walkthroughs, system explainers, dashboards, and release checklists—that update themselves as your session works.",
   "blocks": [
@@ -176,5 +174,6 @@
       "code": "thematic-break",
       "message": "Skipped thematic break in \"27-artifacts-in-claude-code\"."
     }
-  ]
+  ],
+  "id": "20260618-01"
 }

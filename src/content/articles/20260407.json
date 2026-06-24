@@ -1,8 +1,6 @@
 {
-  "slug": "07-managed-agents-memory",
   "title": "Scaling Managed Agents: Decoupling the brain from the hands",
   "sourceUrl": "https://www.anthropic.com/engineering/managed-agents",
-  "publishedAt": "Apr 08, 2026",
   "preview": "Harnesses encode assumptions that go stale as models improve. Managed Agents—our hosted service for long-horizon agent work—is built around interfaces that stay stable as harnesses change.",
   "blocks": [
     {
@@ -353,5 +351,6 @@
       "code": "thematic-break",
       "message": "Skipped thematic break in \"07-managed-agents-memory\"."
     }
-  ]
+  ],
+  "id": "20260407"
 }

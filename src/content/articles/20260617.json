@@ -1,8 +1,6 @@
 {
-  "slug": "29-claude-design-on-brand",
   "title": "Claude Design now stays on brand for daily work",
   "sourceUrl": "https://claude.com/blog/claude-design-stays-on-brand-for-daily-work",
-  "publishedAt": "2026-06-17",
   "category": "Product announcements",
   "preview": "Claude Design now sticks to your design system across projects, works fluidly with Claude Code, lets you edit directly on the canvas, and connects to more tools you already use. It has a new home in the sidebar on the Claude desktop app; you can also find it at claude.ai/design.",
   "blocks": [
@@ -97,5 +95,6 @@
       "chinese": "Claude Design 目前在 Claude Pro、Max、Team 和 Enterprise 计划中处于 Beta 测试阶段，包含在你的订阅中。Enterprise 用户默认关闭此功能；管理员可以在组织设置中启用它，且工作仅可在组织内部共享。在 claude.ai/design 或桌面应用的侧边栏中找到它。引入你的设计系统并开始创作。没有想法？要求为你下一个着陆页（landing page）提供三个方向，然后选择值得细化的那个。"
     }
   ],
-  "warnings": []
+  "warnings": [],
+  "id": "20260617"
 }

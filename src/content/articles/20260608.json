@@ -1,8 +1,6 @@
 {
-  "slug": "32-building-intelligent-apps-for-apple-platforms-with-claude-in-the-foundation-mode",
   "title": "Building intelligent apps for Apple platforms with Claude in the Foundation Models framework",
   "sourceUrl": "https://claude.com/blog/claude-for-foundation-models",
-  "publishedAt": "2026-06-08",
   "category": "** Product announcements",
   "preview": "Today we're releasing Foundation Models framework support for Claude through a new Swift package that lets Apple developers use Apple's Foundation Models framework to call Claude for more complex workflows.",
   "blocks": [
@@ -85,5 +83,6 @@
       "chinese": "Claude support with the Foundation Models framework will be available tomorrow and works through Apple's Foundation Models framework on iOS 27, iPadOS 27, macOS 27, and visionOS 27, and watchOS 27. Add it to your project, sign in with an Anthropic API key, and pass typed outputs from Apple's on-device model into a Claude request — the package handles streaming, tool calls, and structured responses back into your SwiftUI view."
     }
   ],
-  "warnings": []
+  "warnings": [],
+  "id": "20260608"
 }

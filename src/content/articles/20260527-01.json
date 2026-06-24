@@ -1,8 +1,6 @@
 {
-  "slug": "23-coderabbit-agent-orchestration",
   "title": "How CodeRabbit used Claude to build an agent orchestration system",
   "sourceUrl": "https://claude.com/blog/how-coderabbit-used-claude-to-build-an-agent-orchestration-system",
-  "publishedAt": "May 27, 2026",
   "category": "Claude Code",
   "preview": "CodeRabbit built a layer on Claude that sits between a coding request and a coding agent, producing a structured coding plan the team can review before any code gets generated.",
   "blocks": [
@@ -256,5 +254,6 @@
       "code": "table",
       "message": "Skipped markdown table in \"23-coderabbit-agent-orchestration\"."
     }
-  ]
+  ],
+  "id": "20260527-01"
 }

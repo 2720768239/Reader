@@ -1,8 +1,6 @@
 {
-  "slug": "19-ai-native-engineering-org",
   "title": "Running an AI-native Engineering Org",
   "sourceUrl": "https://claude.com/blog/running-an-ai-native-engineering-org",
-  "publishedAt": "June 3, 2026",
   "category": "Claude Code",
   "preview": "At Code w/ Claude SF 2026, Director of Engineering for Claude Code and Claude Cowork Fiona Fung walked through how the team's processes and structure changed once agentic coding became the default way of working.",
   "blocks": [
@@ -280,5 +278,6 @@
       "code": "thematic-break",
       "message": "Skipped thematic break in \"19-ai-native-engineering-org\"."
     }
-  ]
+  ],
+  "id": "20260603-01"
 }

@@ -1,8 +1,6 @@
 {
-  "slug": "12-claude-builds-visuals",
   "title": "Claude now creates interactive charts, diagrams and visualizations",
   "sourceUrl": "https://claude.com/blog/claude-builds-visuals",
-  "publishedAt": "March 12, 2026",
   "category": "Product announcements",
   "preview": "Update: Now available in Claude Cowork on all paid plans (April 22, 2026).",
   "blocks": [
@@ -33,7 +31,7 @@
     {
       "type": "image",
       "alt": "内联可视化演示",
-      "src": "images/12-claude-builds-visuals/inline-visualization.gif"
+      "src": "images/20260312/inline-visualization.gif"
     },
     {
       "type": "paragraph",
@@ -44,7 +42,7 @@
     {
       "type": "image",
       "alt": "内联可视化示例 2",
-      "src": "images/12-claude-builds-visuals/inline-visuals-2.png"
+      "src": "images/20260312/inline-visuals-2.png"
     },
     {
       "type": "paragraph",
@@ -84,5 +82,6 @@
       "code": "thematic-break",
       "message": "Skipped thematic break in \"12-claude-builds-visuals\"."
     }
-  ]
+  ],
+  "id": "20260312"
 }

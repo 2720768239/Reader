@@ -1,8 +1,6 @@
 {
-  "slug": "33-how-one-anthropic-seller-rebuilt-his-teams-workflows-with-claude-code",
   "title": "How one Anthropic seller rebuilt his team's workflows with Claude Code",
   "sourceUrl": "https://claude.com/blog/how-anthropic-uses-claude-gtm-engineering",
-  "publishedAt": "2026-06-05",
   "category": "** Claude Code, Enterprise AI",
   "preview": "*Before he joined Anthropic, Jared Sires, GTM product manager, had never opened a terminal. Now Anthropic's Sales team uses his tools.*",
   "blocks": [
@@ -175,5 +173,6 @@
       "chinese": "\"If you told me I was going to be a go-to-market product manager at Anthropic a year ago, I would be pretty surprised,\" he says. \"I never had the technical chops to be in these conversations. With Claude, I'm able to design and build things that don't just improve my own day-to-day workflows, but also those of my broader team. I have space to work more creatively and strategically, and there's no turning back.\""
     }
   ],
-  "warnings": []
+  "warnings": [],
+  "id": "20260605-01"
 }
