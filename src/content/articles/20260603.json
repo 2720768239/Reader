@@ -1,6 +1,8 @@
 {
   "title": "Lessons from building Claude Code: How we use skills",
   "sourceUrl": "https://claude.com/blog/lessons-from-building-claude-code-how-we-use-skills",
+  "category": "Claude Code",
+  "product": "Claude Code",
   "preview": "Skills have become one of the most used extension points in Claude Code. They're flexible, easy to make, and easy to distribute.",
   "blocks": [
     {
@@ -70,6 +72,11 @@
       "chinese": "Claude Code 团队将我们的内部 Skills 进行了分类，发现它们可以归纳为九个不同的类别。"
     },
     {
+      "type": "image",
+      "src": "images/20260603/skill-1.png",
+      "alt": "Library and API reference skill 示意图"
+    },
+    {
       "type": "heading",
       "level": 3,
       "english": "1. Library and API reference",
@@ -104,6 +111,11 @@
       "id": "p-14",
       "english": "- `sandbox-proxy` — configuring your org's egress gateway for dev work: which hosts are reachable, how to debug \"connection refused\" errors, how to add an allowlist entry.",
       "chinese": "- `sandbox-proxy` — 配置组织的出站网关用于开发工作：哪些主机可达、如何调试\"连接被拒绝\"错误、如何添加白名单条目。"
+    },
+    {
+      "type": "image",
+      "src": "images/20260603/skill-2.png",
+      "alt": "Product verification skill 示意图"
     },
     {
       "type": "heading",
@@ -154,6 +166,11 @@
       "chinese": "- `tmux-cli-driver` — 用于需要 TTY 的交互式 CLI 测试验证。"
     },
     {
+      "type": "image",
+      "src": "images/20260603/skill-3.png",
+      "alt": "Data fetching and analysis skill 示意图"
+    },
+    {
       "type": "heading",
       "level": 3,
       "english": "3. Data fetching and analysis",
@@ -196,6 +213,11 @@
       "chinese": "- `datadog` — 字段参考（@request_id vs trace_id）、服务列表、指标前缀约定。"
     },
     {
+      "type": "image",
+      "src": "images/20260603/skill-4.png",
+      "alt": "Business process and team automation skill 示意图"
+    },
+    {
       "type": "heading",
       "level": 3,
       "english": "4. Business process and team automation",
@@ -230,6 +252,11 @@
       "id": "p-32",
       "english": "- `weekly-recap` — merged PRs + closed tickets + deploys → formatted recap post.",
       "chinese": "- `weekly-recap` — 合并的 PR + 关闭的工单 + 部署 → 格式化的周报。"
+    },
+    {
+      "type": "image",
+      "src": "images/20260603/skill-5.png",
+      "alt": "Code scaffolding and templates skill 示意图"
     },
     {
       "type": "heading",
@@ -268,6 +295,11 @@
       "chinese": "- `create-app` — 新的内部应用，预配置了认证、日志和部署配置。"
     },
     {
+      "type": "image",
+      "src": "images/20260603/skill-6.png",
+      "alt": "Code quality and review skill 示意图"
+    },
+    {
       "type": "heading",
       "level": 3,
       "english": "6. Code quality and review",
@@ -302,6 +334,11 @@
       "id": "p-42",
       "english": "- `testing-practices` — instructions on how to write tests and what to test.",
       "chinese": "- `testing-practices` — 关于如何编写测试以及测试什么的指导。"
+    },
+    {
+      "type": "image",
+      "src": "images/20260603/skill-7.png",
+      "alt": "CI/CD and deployment skill 示意图"
     },
     {
       "type": "heading",
@@ -340,6 +377,11 @@
       "chinese": "- `cherry-pick-prod` — 隔离的工作树 → cherry-pick → 冲突解决 → 基于模板创建 PR。"
     },
     {
+      "type": "image",
+      "src": "images/20260603/skill-8.png",
+      "alt": "Runbooks skill 示意图"
+    },
+    {
       "type": "heading",
       "level": 3,
       "english": "8. Runbooks",
@@ -374,6 +416,11 @@
       "id": "p-52",
       "english": "- `log-correlator` — given a request ID, pulls matching logs from every system that might have touched it.",
       "chinese": "- `log-correlator` — 给定一个请求 ID，从可能涉及的每个系统中拉取匹配的日志。"
+    },
+    {
+      "type": "image",
+      "src": "images/20260603/skill-9.png",
+      "alt": "Infrastructure operations skill 示意图"
     },
     {
       "type": "heading",

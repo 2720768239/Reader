@@ -26,7 +26,7 @@ describe("ArticleHeader", () => {
     expect(within(meta).getByText("2026-06-10")).toBeInTheDocument();
     expect(within(meta).getByText("Agents")).toBeInTheDocument();
     expect(within(meta).getByText("Claude Managed Agents")).toBeInTheDocument();
-    expect(within(meta).getByRole("link", { name: "原文" })).toHaveAttribute(
+    expect(within(meta).getByRole("link", { name: "Click here" })).toHaveAttribute(
       "href",
       "https://example.com/demo"
     );

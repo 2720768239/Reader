@@ -1,6 +1,8 @@
 {
   "title": "Claude Code now supports artifacts",
+  "sourceUrl": "https://claude.com/blog/artifacts-in-claude-code",
   "category": "Product announcements",
+  "product": "Claude Code",
   "preview": "Starting today, Claude Code can capture work progress as an artifact, which turn Claude Code's work into live, shareable visual pages— including PR walkthroughs, system explainers, dashboards, and release checklists—that update themselves as your session works.",
   "blocks": [
     {
@@ -23,14 +25,8 @@
     {
       "type": "heading",
       "level": 2,
-      "text": "Built on the context from your session",
-      "language": "en"
-    },
-    {
-      "type": "heading",
-      "level": 3,
-      "text": "**基于会话上下文构建**",
-      "language": "zh"
+      "english": "Built on the context from your session",
+      "chinese": "基于会话上下文构建"
     },
     {
       "type": "paragraph",
@@ -41,14 +37,8 @@
     {
       "type": "heading",
       "level": 2,
-      "text": "Live pages that update in place",
-      "language": "en"
-    },
-    {
-      "type": "heading",
-      "level": 3,
-      "text": "**实时更新的页面**",
-      "language": "zh"
+      "english": "Live pages that update in place",
+      "chinese": "实时更新的页面"
     },
     {
       "type": "paragraph",
@@ -65,14 +55,8 @@
     {
       "type": "heading",
       "level": 2,
-      "text": "Private to your organization",
-      "language": "en"
-    },
-    {
-      "type": "heading",
-      "level": 3,
-      "text": "**组织内私有**",
-      "language": "zh"
+      "english": "Private to your organization",
+      "chinese": "组织内私有"
     },
     {
       "type": "paragraph",
@@ -83,14 +67,8 @@
     {
       "type": "heading",
       "level": 2,
-      "text": "Getting started",
-      "language": "en"
-    },
-    {
-      "type": "heading",
-      "level": 3,
-      "text": "**开始使用**",
-      "language": "zh"
+      "english": "Getting started",
+      "chinese": "开始使用"
     },
     {
       "type": "paragraph",

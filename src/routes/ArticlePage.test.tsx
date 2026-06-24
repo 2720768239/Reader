@@ -159,7 +159,7 @@ describe("ArticlePage", () => {
     expect(within(metadata).getByText("2026-06-10")).toBeInTheDocument();
     expect(within(metadata).getByText("Enterprise AI")).toBeInTheDocument();
     expect(within(metadata).getByText("Claude Managed Agents")).toBeInTheDocument();
-    expect(within(metadata).getByRole("link", { name: "原文" })).toHaveAttribute(
+    expect(within(metadata).getByRole("link", { name: "Click here" })).toHaveAttribute(
       "href",
       "https://example.com/demo"
     );

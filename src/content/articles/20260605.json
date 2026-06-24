@@ -2,6 +2,7 @@
   "title": "The Claude Cowork product guide",
   "sourceUrl": "https://claude.com/blog/the-claude-cowork-product-guide",
   "category": "Enterprise AI / Claude Cowork",
+  "product": "Claude Cowork",
   "preview": "Most AI tools are conversational. You ask a question, you get an answer, and the work of turning that answer into something useful—a deck, a doc, a spreadsheet, an email—is still manual.",
   "blocks": [
     {

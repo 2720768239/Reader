@@ -1,0 +1,161 @@
+{
+  "title": "Redesigning Claude Code on desktop for parallel agents",
+  "sourceUrl": "https://claude.com/blog/claude-code-desktop-redesign",
+  "category": "Claude Code",
+  "preview": "Today, we're releasing a redesign of the Claude Code desktop app, built to help you run more Claude Code tasks at once.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Today, we're releasing a redesign of the Claude Code desktop app, built to help you run more Claude Code tasks at once.",
+      "chinese": "今天，我们发布了 Claude Code 桌面应用的重新设计，旨在帮助您同时运行更多 Claude Code 任务。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "It includes a new sidebar for managing multiple sessions, a drag-and-drop layout for arranging your workspace, an integrated terminal and file editor, plus performance and quality-of-life improvements.",
+      "chinese": "其中包括一个用于管理多个会话的新侧边栏、一个用于排列工作区的拖放布局、一个集成的终端和文件编辑器，以及性能和使用体验方面的改进。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "The new desktop experience",
+      "chinese": "全新的桌面体验"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "For many developers, the shape of agentic work has changed. You're not typing one prompt and waiting. You're kicking off a refactor in one repo, a bug fix in another, and a test-writing pass in a third, checking on each as results come in, steering when something drifts, and reviewing diffs before you ship.",
+      "chinese": "对于许多开发者来说，智能体工作的方式已经发生了变化。你不再是输入一个提示然后等待。你在一个仓库中启动重构，在另一个仓库中修复 bug，在第三个仓库中编写测试，随时检查各个任务的进展，在偏离方向时及时调整，并在提交前审查差异。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "The new app is built for how agentic coding actually feels now: many things in flight, and you in the orchestrator seat.",
+      "chinese": "这款新应用正是为当下智能体编码的真实体验而打造的：多个任务同时进行，而你坐在编排者的位置上。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Run sessions in parallel",
+      "chinese": "并行运行会话"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "The new sidebar puts every active and recent session in one place. Kick off work across multiple repos and move between them as results arrive.",
+      "chinese": "新的侧边栏将所有活跃和最近的会话集中在一个地方。你可以在多个仓库中启动任务，并在结果到来时在它们之间切换。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "You can filter by status, project, or environment, or group the sidebar by project to find and resume sessions faster. When a session's PR merges or closes, it archives itself so the sidebar stays focused on what's live.",
+      "chinese": "你可以按状态、项目或环境进行筛选，或者按项目对侧边栏进行分组，以便更快地查找和恢复会话。当某个会话的 PR 被合并或关闭时，它会自动归档，使侧边栏始终保持对活跃任务的关注。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "When you need to ask a question mid-task, you can open a side chat (⌘ + ; or Ctrl + ;) to branch off a conversation. Side chats pull context from the main thread, but don't add anything back to the thread, to avoid misdirecting your tasks.",
+      "chinese": "当你需要在任务中途提问时，可以打开侧边聊天（⌘ + ; 或 Ctrl + ;）来分支对话。侧边聊天会从主线程中获取上下文，但不会将任何内容添加回主线程，以避免干扰你的任务。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Review and ship without leaving the app",
+      "chinese": "无需离开应用即可审查和交付"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "The redesign brings more commonly-used tools into the app, so you can review, tweak, and ship Claude's work without bouncing to your editor:",
+      "chinese": "这次重新设计将更多常用工具集成到应用中，让你无需切换到编辑器即可审查、调整和交付 Claude 的工作："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "- **Integrated terminal**: Run tests or builds alongside your session.",
+      "chinese": "- **集成终端**：在会话旁边运行测试或构建。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "- **In-app file editor**: Open files, make spot edits directly, and save changes.",
+      "chinese": "- **应用内文件编辑器**：打开文件，直接进行局部编辑，并保存更改。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "- **Faster diff viewer**: Rebuilt for performance on large changesets.",
+      "chinese": "- **更快的差异查看器**：针对大型变更集的性能进行了重建。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "- **Expanded preview**: Open HTML files or PDFs in-app, in addition to running local app servers in the preview pane.",
+      "chinese": "- **扩展预览**：除了在预览面板中运行本地应用服务器外，还可以在应用内打开 HTML 文件或 PDF。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "Every pane is drag-and-drop. Arrange the terminal, preview, diff viewer, and chat in whatever grid matches how you work.",
+      "chinese": "每个面板都支持拖放。你可以按照自己喜欢的方式排列终端、预览、差异查看器和聊天窗口。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Fits your stack",
+      "chinese": "适配你的技术栈"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "The desktop app now has parity with CLI plugins. If your org manages Claude Code plugins centrally, or you've installed your own locally, they work in the desktop app exactly the way they do in your terminal.",
+      "chinese": "桌面应用现在与 CLI 插件实现了功能对齐。如果你的组织集中管理 Claude Code 插件，或者你已经在本地安装了自己的插件，它们在桌面应用中的工作方式与在终端中完全相同。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "You can still run sessions locally or in the cloud. SSH support now extends to Mac alongside Linux, so you can point sessions at remote machines from either platform.",
+      "chinese": "你仍然可以在本地或云端运行会话。SSH 支持现在已从 Linux 扩展到 Mac，因此你可以从任一平台将会话指向远程机器。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Customize for how you work",
+      "chinese": "根据你的工作方式自定义"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "Three view modes—Verbose, Normal, and Summary—let you dial the interface from full transparency into Claude's tool calls to just the results. New keyboard shortcuts cover session switching, spawning, and navigation; press ⌘ + / (or Ctrl + /) to see the full list. A new usage button shows both your context window and session usage at a glance.",
+      "chinese": "三种视图模式——详细、普通和摘要——让你可以将界面从完全透明地展示 Claude 的工具调用调整为仅显示结果。新的键盘快捷键涵盖了会话切换、创建和导航；按 ⌘ + /（或 Ctrl + /）可查看完整列表。新增的使用量按钮可以让你一目了然地查看上下文窗口和会话使用情况。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "Under the hood, the app has been rebuilt for reliability and speed, and now streams responses as Claude generates them.",
+      "chinese": "在底层，应用已为可靠性和速度进行了重建，现在可以在 Claude 生成回复时实时流式传输。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Getting started",
+      "chinese": "开始使用"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "The redesigned desktop app is available now for all Claude Code users on Pro, Max, Team, and Enterprise plans, and via the Claude API.",
+      "chinese": "重新设计的桌面应用现已面向 Pro、Max、Team 和 Enterprise 计划的所有 Claude Code 用户开放，也可通过 Claude API 使用。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "Download the app, or update and restart if you already have it. Explore the documentation to learn more.",
+      "chinese": "下载应用，或者如果你已经安装了，请更新并重启。查阅文档以了解更多信息。"
+    }
+  ],
+  "warnings": [],
+  "id": "20260414",
+  "product": "Claude Code"
+}

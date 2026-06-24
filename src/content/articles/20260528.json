@@ -1,0 +1,157 @@
+{
+  "title": "Introducing Dynamic Workflows in Claude Code",
+  "sourceUrl": "https://claude.com/blog/introducing-dynamic-workflows-in-claude-code",
+  "category": "Product announcements",
+  "preview": "**Update: Dynamic workflows are now generally available.**",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "**Update: Dynamic workflows are now generally available.**",
+      "chinese": "**更新：动态工作流现已正式发布。**"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Today we're introducing dynamic workflows in Claude Code, helping Claude take on the most challenging tasks end-to-end. Work you'd normally plan in quarters now finishes in days. Claude dynamically writes orchestration scripts that run tens to hundreds of parallel subagents in a single session, checking its work before anything reaches you.",
+      "chinese": "今天，我们在 Claude Code 中推出动态工作流，帮助 Claude 端到端地承担最具挑战性的任务。原本需要按季度规划的工作，现在几天就能完成。Claude 会动态编写编排脚本，在单个会话中运行数十到数百个并行子代理，并在结果到达你之前先自行检查其工作成果。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "Some problems are too big for one pass by a single agent, especially in complex, legacy codebases: a bug hunt across an entire service, a migration that touches hundreds of files, a plan you want stress-tested from every angle before you commit to it. Dynamic workflows can handle all of these end-to-end.",
+      "chinese": "有些问题太大了，单个代理一次处理根本不够，尤其是在复杂的遗留代码库中：跨越整个服务的漏洞排查、涉及数百个文件的迁移、你想在投入之前从各个角度进行压力测试的方案。动态工作流可以端到端地处理所有这些问题。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "Dynamic workflows are generally available in the Claude Code CLI, Desktop, and the VS code extension for Pro, Max, Team, and Enterprise plans, as well as on the Claude API, on Amazon Bedrock, Vertex AI, and Microsoft Foundry.",
+      "chinese": "动态工作流已在 Claude Code CLI、桌面版和 VS Code 扩展中全面推出，适用于 Pro、Max、Team 和 Enterprise 计划，同时也支持 Claude API、Amazon Bedrock、Vertex AI 和 Microsoft Foundry。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "Note: Dynamic workflows can consume substantially more tokens than a typical Claude Code session, so we recommend starting on a scoped task to get a feel for usage in your work.",
+      "chinese": "注意：动态工作流消耗的 token 可能比典型的 Claude Code 会话多得多，因此我们建议从一个有明确范围的任务开始，以便了解在你的工作中的使用情况。"
+    },
+    {
+      "type": "image",
+      "src": "images/20260528/dynamic-workflows.png",
+      "alt": "Dynamic Workflows 架构示意图"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "For the best experience, turn on auto mode when using dynamic workflows. From there, you have two ways to start a workflow:",
+      "chinese": "为了获得最佳体验，在使用动态工作流时请开启自动模式。之后，你有两种方式来启动工作流："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "1. Ask Claude to create a dynamic workflow directly (e.g., \"Create a workflow\"), or",
+      "chinese": "1. 直接让 Claude 创建动态工作流（例如\"创建一个工作流\"），或者"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "2. Switch on a new Claude Code-specific setting called `ultracode`. This is accessible through the effort menu and it sets the effort level to xhigh, while letting Claude decide automatically when to use a workflow to handle your task.",
+      "chinese": "2. 开启一个 Claude Code 专属的新设置 `ultracode`。该选项可通过 effort 菜单访问，它会将 effort 级别设置为 xhigh，同时让 Claude 自动决定何时使用工作流来处理你的任务。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Dynamic Workflows in Action",
+      "chinese": "动态工作流的实际应用"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "Early access users and teams inside Anthropic have been using dynamic workflows for a wide range of use cases, including:",
+      "chinese": "Anthropic 内部的早期访问用户和团队已经在广泛使用动态工作流，涵盖以下场景："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "- **Codebase-wide bug hunts, profiler-guided optimization audits, and security audits:** Claude searches a service or repo in parallel, then runs independent verification on every finding so the report surfaces real issues. The same shape works for hardening passes: auth checks, input validation, and unsafe patterns across an entire codebase.",
+      "chinese": "- **全代码库范围的漏洞排查、性能分析引导的优化审计和安全审计：** Claude 并行搜索服务或仓库，然后对每个发现运行独立验证，确保报告中呈现的是真正的问题。同样的模式也适用于加固检查：对整个代码库进行认证检查、输入验证和不安全模式检测。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "- **Large migrations and modernization efforts:** Claude can handle framework swaps, API deprecations, language ports that span thousands of files end-to-end.",
+      "chinese": "- **大规模迁移和现代化工作：** Claude 可以端到端地处理框架切换、API 弃用、跨越数千个文件的语言移植。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "- **Critical work you need checked twice:** When the cost of a wrong answer is high, a workflow gives Claude independent attempts at the problem and adversarial agents working to break the result before you see it.",
+      "chinese": "- **需要二次检查的关键工作：** 当错误答案的代价很高时，工作流让 Claude 对问题进行独立尝试，并让对抗性代理在结果到达你之前尝试攻破它。"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "english": "Rewriting Bun with Dynamic Workflows",
+      "chinese": "用动态工作流重写 Bun"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "An example of what dynamic workflows can unlock at scale is the recent rewrite of Bun. Jarred Sumner used dynamic workflows to port Bun from Zig to Rust with 99.8% of the existing test suite passing, roughly 750,000 lines of Rust, and eleven days from first commit to merge. One workflow mapped the right Rust lifetime for every struct field in the Zig codebase. The next wrote every .rs file as a behavior-identical port of its .zig counterpart, hundreds of agents working in parallel with two reviewers on each file. A fix loop then drove the build and test suite until both ran clean. After the port landed, an overnight workflow addressed unnecessary data copies and opened a PR for each for final review. While not yet in production, all of this was handled by dynamic workflows. Jarred will be writing about this more in the future.",
+      "chinese": "动态工作流大规模解锁能力的一个例子是最近对 Bun 的重写。Jarred Sumner 使用动态工作流将 Bun 从 Zig 移植到 Rust，现有测试套件通过率达到 99.8%，约 75 万行 Rust 代码，从首次提交到合并仅用了十一天。一个工作流为 Zig 代码库中每个结构体字段映射了正确的 Rust 生命周期。接下来的工作流将每个 .rs 文件编写为其 .zig 对应文件的行为等价移植版本，数百个代理并行工作，每个文件都有两个审查者。随后的修复循环驱动构建和测试套件运行，直到两者都顺利通过。移植完成后，一个通宵运行的工作流处理了不必要的数据复制，并为每一项都提交了 PR 以供最终审查。虽然尚未投入生产，但所有这些都由动态工作流完成。Jarred 将在未来撰写更多相关内容。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "How It Works",
+      "chinese": "工作原理"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "When a workflow kicks off, Claude plans dynamically based on your prompt, breaks it into subtasks, and fans the work out across subagents running in parallel. Results are checked before they're folded in, and you come back to a single, coordinated answer. Agents address the problem from independent angles, other agents try to refute what they found, and the run keeps iterating until the answers converge—which is how a workflow reaches results a single pass can't.",
+      "chinese": "当工作流启动时，Claude 会根据你的提示进行动态规划，将其分解为子任务，并将工作分发给并行运行的子代理。结果在被整合之前会经过检查，最终你得到一个统一的、协调的答案。代理们从不同角度独立解决问题，其他代理则试图反驳他们的发现，运行持续迭代直到答案趋于一致——这就是工作流能够达到单次运行无法实现的结果的原因。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "Dynamic workflows are built for parallel and long-running work that can extend into hours and days, doing the most complex engineering work that previously would have taken weeks. Progress is saved as the run goes, so a job that's interrupted picks up where it left off instead of starting over. Because the coordination happens outside the conversation, the plan stays on track no matter how big the task gets.",
+      "chinese": "动态工作流专为并行和长时间运行的工作而设计，可以持续数小时甚至数天，完成以前需要数周的最复杂的工程工作。进度在运行过程中持续保存，因此被中断的任务会从中断处继续，而不是重新开始。由于协调工作发生在对话之外，无论任务多大，计划都能保持正轨。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "It's important to note that dynamic workflows consume meaningfully more usage than a typical Claude Code session. The first time a workflow triggers, Claude Code shows what's about to run and asks you to confirm. Organization admins can also optionally disable workflows through managed settings.",
+      "chinese": "需要注意的是，动态工作流的使用量明显高于典型的 Claude Code 会话。工作流首次触发时，Claude Code 会显示即将运行的内容并请求你确认。组织管理员也可以通过管理设置选择禁用工作流。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Getting Started",
+      "chinese": "开始使用"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "Dynamic workflows are on by default for Max, Team, and Enterprise plans, and when using Claude Code via the API. Pro plan users can enable them in `/config`. Ask Claude to create a workflow or turn on the Claude Code-specific setting `ultracode` to get started. Admins can manage availability in settings.",
+      "chinese": "动态工作流在 Max、Team 和 Enterprise 计划中默认开启，通过 API 使用 Claude Code 时也是如此。Pro 计划用户可以在 `/config` 中启用。让 Claude 创建一个工作流，或开启 Claude Code 专属设置 `ultracode` 即可开始。管理员可以在设置中管理可用性。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "*Read the [documentation](https://docs.anthropic.com) for more details on dynamic workflows.*",
+      "chinese": "*阅读[文档](https://docs.anthropic.com)了解更多关于动态工作流的详情。*"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"20260528\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"20260528\"."
+    }
+  ],
+  "id": "20260528",
+  "product": "Claude Code"
+}

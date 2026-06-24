@@ -2,6 +2,7 @@
   "title": "Using LLMs to secure source code",
   "sourceUrl": "https://claude.com/blog/using-llms-to-secure-source-code",
   "category": "Enterprise AI",
+  "product": "Claude Code",
   "preview": "We share best practices for how you can work with Claude Opus to build a threat model, discover vulnerabilities in your codebase, then verify, triage, and patch them.",
   "blocks": [
     {
@@ -27,6 +28,11 @@
       "id": "p-4",
       "english": "This guide walks through how you can work with Claude Opus to build a threat model, discover vulnerabilities in your codebase, then verify, triage, and patch them. While we don't have all the answers, we'll share how teams have scaled discovery and what's helped in the later stages. Get started today with the accompanying repo which includes skills for interactive workflows and a demo harness for autonomous scanning; we'll call out the skill that implements each step as you read.",
       "chinese": "本指南将介绍如何与 Claude Opus 协作来构建威胁模型、发现代码库中的漏洞，然后对漏洞进行验证、分类和修补。虽然我们并非所有问题都有答案，但我们将分享团队如何扩展漏洞发现规模，以及在后续阶段哪些做法行之有效。今天就开始使用配套仓库吧，其中包含交互式工作流的技能和用于自主扫描的演示工具；在阅读过程中，我们会指出每个步骤对应的技能。"
+    },
+    {
+      "type": "image",
+      "src": "images/20260527/security-scan.png",
+      "alt": "LLM 安全扫描流程示意图"
     },
     {
       "type": "heading",

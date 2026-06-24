@@ -1,7 +1,8 @@
 {
   "title": "New in Claude Managed Agents: run agents on a schedule and store environment variables in vaults",
   "sourceUrl": "https://claude.com/blog/whats-new-in-claude-managed-agents",
-  "category": "产品公告",
+  "category": "Product announcements",
+  "product": "Claude Managed Agents",
   "preview": "Starting today, Claude Managed Agents can run on a schedule and securely access CLI tools and other authenticated services. Both features are now available in public beta on the Claude Platform.",
   "blocks": [
     {
@@ -18,12 +19,12 @@
     },
     {
       "type": "image",
-      "src": "images/02-new-in-claude-managed-agents/scheduled-deployments.png",
+      "src": "images/20260609/scheduled-deployments.png",
       "alt": "Claude Console 中的定时部署界面"
     },
     {
       "type": "image",
-      "src": "images/02-new-in-claude-managed-agents/credential-vaults-diagram.png",
+      "src": "images/20260609/credential-vaults-diagram.png",
       "alt": "CLI 凭据保险库工作流程图"
     },
     {

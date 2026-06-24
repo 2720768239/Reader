@@ -32,7 +32,7 @@ export default function ArticleMetadata({
     product: product ?? "",
     source: sourceUrl ? (
       <a href={sourceUrl} rel="noreferrer noopener" target="_blank">
-        原文
+        Click here
       </a>
     ) : (
       ""

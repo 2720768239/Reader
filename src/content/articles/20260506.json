@@ -1,0 +1,174 @@
+{
+  "title": "New in Claude Managed Agents: dreaming, outcomes, and multiagent orchestration",
+  "sourceUrl": "https://claude.com/blog/new-in-claude-managed-agents",
+  "preview": "Today we're launching dreaming in Claude Managed Agents as a research preview. Dreaming extends memory by reviewing past sessions to find patterns and help agents self-improve. We're also making outcomes, multiagent orchestration, and webhooks available to developers building with Managed Agents. Together, these updates make agents more capable at handling complex tasks with minimal steering.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Today we're launching dreaming in Claude Managed Agents as a research preview. Dreaming extends memory by reviewing past sessions to find patterns and help agents self-improve. We're also making outcomes, multiagent orchestration, and webhooks available to developers building with Managed Agents. Together, these updates make agents more capable at handling complex tasks with minimal steering.",
+      "chinese": "今天，我们在 Claude 托管智能体（Managed Agents）中以研究预览的形式推出了\"梦境\"（Dreaming）功能。梦境通过回顾过去的会话来发现规律，从而扩展记忆功能，帮助智能体自我改进。我们还向使用托管智能体的开发者开放了\"成果\"（Outcomes）、\"多智能体编排\"（Multiagent Orchestration）和 Webhook 功能。这些更新共同使智能体在最小化人工引导的情况下，更有能力处理复杂任务。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Build self-improving agents with dreaming",
+      "chinese": "通过\"梦境\"构建自我改进的智能体"
+    },
+    {
+      "type": "image",
+      "src": "images/20260506/dreaming.png",
+      "alt": "Claude Managed Agents Dreaming 功能示意图"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Dreaming is a scheduled process that reviews your agent sessions and memory stores, extracts patterns, and curates memories so your agents improve over time. You decide how much control you want: dreaming can update memory automatically, or you can review changes before they land.",
+      "chinese": "\"梦境\"是一个定时执行的过程，它会回顾你的智能体会话和记忆存储，提取规律并整理记忆，从而使你的智能体随时间不断改进。你可以决定想要多少控制权：梦境可以自动更新记忆，也可以让你在变更生效前进行审核。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "Dreaming surfaces patterns that a single agent can't see on its own, including recurring mistakes, workflows that agents converge on, and preferences shared across a team. It also restructures memory so it stays high-signal as it evolves. This is especially useful for long-running work and multiagent orchestration.",
+      "chinese": "\"梦境\"能揭示单个智能体自身无法看到的规律，包括反复出现的错误、智能体趋同的工作流程，以及团队共享的偏好。它还会重构记忆，使其在演进过程中保持高信号质量。这对长时间运行的工作和多智能体编排尤其有用。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "Together, memory and dreaming form a robust memory system for self-improving agents. Memory lets each agent capture what it learns *as it works*. Dreaming refines that memory *between sessions*, pulling shared learnings across agents and keeping it up-to-date.",
+      "chinese": "记忆和梦境共同构成了一个强大的自我改进智能体记忆系统。记忆让每个智能体在*工作过程中*捕获所学到的内容。梦境则在*会话之间*提炼这些记忆，汇聚跨智能体的共享学习成果并保持其时效性。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "Dreaming is available in Managed Agents on the Claude Platform; developers can [request access here](https://claude.com/blog/new-in-claude-managed-agents).",
+      "chinese": "\"梦境\"功能已在 Claude 平台的托管智能体中提供；开发者可以[在此申请访问权限](https://claude.com/blog/new-in-claude-managed-agents)。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Deliver better outcomes",
+      "chinese": "提供更优质的成果"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "With outcomes, you write a rubric describing what success looks like and the agent works toward it. A separate grader evaluates the output against your criteria in its own context window, so it isn't influenced by the agent's reasoning. When something isn't right, the grader pinpoints what needs to change and the agent takes another pass.",
+      "chinese": "通过\"成果\"功能，你可以编写一份描述成功标准的评分准则，智能体会朝着这个目标努力。一个独立的评估器会在自己的上下文窗口中根据你的标准评估输出结果，因此不会受到智能体推理过程的影响。当结果不达标时，评估器会指出需要修改的地方，智能体则会进行再次尝试。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "Agents do their best work when they know what \"good\" looks like. For example, a structural framework, a presentation standard, or a set of requirements that need to be met. With outcomes, agents can check their work against that bar and self-correct until the output is good enough, without a human needing to review each attempt.",
+      "chinese": "智能体在知道\"好\"是什么样子时能发挥最佳水平。例如，一个结构框架、一套演示标准，或一组需要满足的需求。通过\"成果\"功能，智能体可以对照这个标准检查自己的工作并自我修正，直到输出足够好，无需人工审核每次尝试。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "Outcomes is particularly useful for tasks that require attention to detail and exhaustive coverage. It also works for subjective quality, like whether copy matches a brand voice or a design follows visual guidelines. In testing, outcomes improved task success by up to 10 points over a standard prompting loop, with the largest gains on the hardest problems. Outcomes also improved file generation quality, with +8.4% task success on docx and +10.1% on pptx in our internal benchmarks.",
+      "chinese": "\"成果\"功能对需要关注细节和全面覆盖的任务尤为有效。它也适用于主观质量评估，比如文案是否符合品牌调性，或设计是否遵循视觉指南。在测试中，\"成果\"功能相比标准提示循环将任务成功率提高了最多10个百分点，在最困难的问题上提升最为显著。在我们的内部基准测试中，\"成果\"功能还提升了文件生成质量，docx 格式的任务成功率提高了8.4%，pptx 格式提高了10.1%。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "You can also now define an outcome, let the agent run, and get notified by a webhook when it's done.",
+      "chinese": "你还可以定义一个成果目标，让智能体运行，并在完成时通过 webhook 接收通知。"
+    },
+    {
+      "type": "image",
+      "src": "images/20260506/sessions-ui.png",
+      "alt": "Claude Managed Agents Sessions UI 界面图"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Handle complex tasks with multiple agents",
+      "chinese": "用多个智能体处理复杂任务"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "When there is too much work for a single agent to do well, multiagent orchestration lets a lead agent break the job into pieces and delegate each one to a specialist with its own model, prompt, and tools. For example, a lead agent can run an investigation while subagents fan out through deploy history, error logs, metrics, and support tickets.",
+      "chinese": "当工作量超出单个智能体的能力范围时，多智能体编排允许一个主导智能体将任务拆分为多个部分，并将每个部分委派给拥有独立模型、提示词和工具的专家智能体。例如，主导智能体可以统筹调查工作，而子智能体则分别深入部署历史、错误日志、指标数据和工单系统。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "These specialists work in parallel on a shared filesystem and contribute to the lead agent's overall context. The lead agent can check back in with other agents mid-workflow because events are persistent and every agent remembers what it's done. You can also trace every step in the Claude Console: which agent did what, in what order, and why, giving you full visibility into how your task was delegated and executed.",
+      "chinese": "这些专家智能体在共享文件系统上并行工作，并贡献到主导智能体的总体上下文中。主导智能体可以在工作流中途与其他智能体再次沟通，因为事件是持久化的，每个智能体都记得自己做过什么。你还可以在 Claude 控制台中追踪每一步：哪个智能体做了什么、按什么顺序、出于什么原因，让你对任务的委派和执行过程拥有完全的可见性。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "What teams are building",
+      "chinese": "团队正在构建什么"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "Teams are using dreaming, outcomes, and multiagent orchestration to ship agents that verify their own work, learn across sessions, and parallelize complex jobs:",
+      "chinese": "团队正在使用\"梦境\"、\"成果\"和多智能体编排来部署能够自我验证、跨会话学习和并行处理复杂工作的智能体："
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "- **Harvey** uses Managed Agents to coordinate complex legal work like long-form drafting and document creation. With dreaming, their agents remember what they learned between sessions, including filetype workarounds and tool-specific patterns. Completion rates went up ~6x in their tests.",
+      "chinese": "- **Harvey** 使用托管智能体来协调复杂的法律工作，如长文起草和文档创建。通过\"梦境\"功能，他们的智能体能记住会话之间学到的内容，包括文件类型变通方案和特定工具的使用模式。在他们的测试中，完成率提升了约6倍。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "- **Netflix**'s platform team built an analysis agent that processes logs from hundreds of builds across different sources. With changes that affect thousands of applications, what matters is finding the issues that recur across many of them. Multiagent orchestration lets the agent analyze batches in parallel and surface only the patterns worth acting on.",
+      "chinese": "- **Netflix** 的平台团队构建了一个分析智能体，处理来自不同来源的数百次构建的日志。在影响数千个应用的变更中，关键在于找到在多个应用中反复出现的问题。多智能体编排使该智能体能够并行分析批次数据，并仅呈现值得关注的规律。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "- **Spiral by Every** is using multiagent orchestration and outcomes to power the writing agent behind their new API and CLI. The lead agent runs on Haiku: it fields incoming requests, poses quick follow-up questions when needed, then delegates the drafting to subagents running on Opus. When a user asks for multiple drafts, the subagents run in parallel. Writing quality is Spiral's core value, so they use outcomes to enforce it. Each draft is scored against a rubric of Every's editorial principles and the user's voice, both pulled from memory. Only drafts that clear the bar are returned.",
+      "chinese": "- **Spiral by Every** 使用多智能体编排和\"成果\"功能来驱动其新 API 和 CLI 背后的写作智能体。主导智能体运行在 Haiku 模型上：接收传入请求，需要时提出快速跟进问题，然后将草稿工作委派给运行在 Opus 上的子智能体。当用户要求多个草稿时，子智能体并行运行。写作质量是 Spiral 的核心价值，因此他们使用\"成果\"功能来确保质量。每份草稿都根据 Every 的编辑原则和用户风格（均从记忆中提取）的评分准则进行评分，只有达到标准的草稿才会返回。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "- **Wisedocs** built a document quality check agent on Managed Agents, using outcomes to grade each review against their internal guidelines. Reviews now run 50% faster, while staying aligned with their team's standards.",
+      "chinese": "- **Wisedocs** 在托管智能体上构建了一个文档质量检查智能体，使用\"成果\"功能根据其内部指南对每次审查进行评分。审查速度现在提高了50%，同时保持与团队标准的一致性。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Getting started",
+      "chinese": "开始使用"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "Dreaming is available in research preview, outcomes, multiagent orchestration, and memory are available in public beta as part of Managed Agents. To get started with dreaming, [request access here](https://claude.com/blog/new-in-claude-managed-agents). Explore our [documentation](https://docs.anthropic.com) to learn more or visit the [Claude Console](https://console.anthropic.com) to deploy your first agent.",
+      "chinese": "\"梦境\"以研究预览形式提供，\"成果\"、多智能体编排和记忆功能作为托管智能体的一部分以公开测试版提供。要开始使用\"梦境\"，请[在此申请访问权限](https://claude.com/blog/new-in-claude-managed-agents)。查阅我们的[文档](https://docs.anthropic.com)了解更多信息，或访问 [Claude 控制台](https://console.anthropic.com)部署你的第一个智能体。"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"20260506\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"20260506\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"20260506\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"20260506\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"20260506\"."
+    }
+  ],
+  "id": "20260506",
+  "category": "Product announcements",
+  "product": "Claude Managed Agents"
+}

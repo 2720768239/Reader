@@ -2,6 +2,7 @@
   "title": "The evolution of agentic surfaces: building with Claude Managed Agents",
   "sourceUrl": "https://claude.com/blog/building-with-claude-managed-agents",
   "category": "Agents / Claude Platform",
+  "product": "Claude Managed Agents",
   "preview": "As model intelligence and agentic harnesses evolve, Claude Managed Agents allows teams to build and deploy agents in production environments reliably at scale. Here's why and how teams are using it.",
   "blocks": [
     {

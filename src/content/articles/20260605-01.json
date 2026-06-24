@@ -1,176 +1,153 @@
 {
   "title": "How one Anthropic seller rebuilt his team's workflows with Claude Code",
   "sourceUrl": "https://claude.com/blog/how-anthropic-uses-claude-gtm-engineering",
-  "category": "** Claude Code, Enterprise AI",
+  "category": "Claude Code, Enterprise AI",
+  "product": "Claude Code",
   "preview": "*Before he joined Anthropic, Jared Sires, GTM product manager, had never opened a terminal. Now Anthropic's Sales team uses his tools.*",
   "blocks": [
     {
       "type": "paragraph",
       "id": "p-1",
       "english": "*Before he joined Anthropic, Jared Sires, GTM product manager, had never opened a terminal. Now Anthropic's Sales team uses his tools.*",
-      "chinese": "*Before he joined Anthropic, Jared Sires, GTM product manager, had never opened a terminal. Now Anthropic's Sales team uses his tools.*"
+      "chinese": "*在加入 Anthropic 之前，GTM 产品经理 Jared Sires 从未打开过终端。现在 Anthropic 的销售团队正在使用他开发的工具。*"
     },
     {
       "type": "paragraph",
       "id": "p-2",
       "english": "Before joining Anthropic in 2024, Jared Sires had never written a line of code. And why would he? He was a startup account executive.",
-      "chinese": "Before joining Anthropic in 2024, Jared Sires had never written a line of code. And why would he? He was a startup account executive."
+      "chinese": "在 2024 年加入 Anthropic 之前，Jared Sires 从未写过一行代码。这也合情合理——他是一名初创企业的客户经理。"
     },
     {
       "type": "paragraph",
       "id": "p-3",
       "english": "As is often the case at fast-growing companies, Jared's book quickly grew to 600 or 700 accounts. With 10 to 15 customer calls a day and an expanding account list, Jared found himself at his desk, answering customer emails until 9 or 10 p.m. every night.",
-      "chinese": "As is often the case at fast-growing companies, Jared's book quickly grew to 600 or 700 accounts. With 10 to 15 customer calls a day and an expanding account list, Jared found himself at his desk, answering customer emails until 9 or 10 p.m. every night."
+      "chinese": "正如快速增长公司中常见的情况，Jared 的客户群迅速扩大到 600 到 700 个账户。每天 10 到 15 个客户电话加上不断扩大的客户列表，Jared 每晚都要坐在办公桌前回复客户邮件直到晚上 9 点或 10 点。"
     },
     {
       "type": "paragraph",
       "id": "p-4",
       "english": "\"It was almost impossible to manage my inbox,\" he says. \"And doing outbound on top of that, you don't really know where to focus.\"",
-      "chinese": "\"It was almost impossible to manage my inbox,\" he says. \"And doing outbound on top of that, you don't really know where to focus.\""
+      "chinese": "\"管理收件箱几乎是不可能完成的任务，\"他说，\"在此基础上还要做外联工作，你根本不知道应该把精力集中在哪里。\""
     },
     {
       "type": "paragraph",
       "id": "p-5",
       "english": "Jared turned to Claude Code for help. With no coding experience, he created CLAFTS, short for *Claude Drafts*: an application that lives inside Gmail and uses the Claude API to draft replies to customer emails. It took multiple iterations, but eventually Jared estimates CLAFTS was saving him two to three hours a day. He shared it in Slack the next morning, and within 24 hours, others from the sales organization had started using it with similar results.",
-      "chinese": "Jared turned to Claude Code for help. With no coding experience, he created CLAFTS, short for *Claude Drafts*: an application that lives inside Gmail and uses the Claude API to draft replies to customer emails. It took multiple iterations, but eventually Jared estimates CLAFTS was saving him two to three hours a day. He shared it in Slack the next morning, and within 24 hours, others from the sales organization had started using it with similar results."
+      "chinese": "Jared 向 Claude Code 寻求帮助。在没有编程经验的情况下，他创建了 CLAFTS（*Claude Drafts* 的缩写）：一个运行在 Gmail 内部的应用程序，使用 Claude API 来草拟客户邮件的回复。经过多次迭代，Jared 估计 CLAFTS 每天为他节省了两到三个小时。第二天早上他在 Slack 上分享了这一成果，24 小时内，销售团队的其他成员也开始使用它，并取得了类似的效果。"
     },
     {
       "type": "paragraph",
       "id": "p-6",
       "english": "That led to a shift in Jared's role at Anthropic: today, he is product manager of the go-to-market team, a role focused exclusively on identifying problems in how the Anthropic sales organization operates and building Claude-powered solutions to fix them.",
-      "chinese": "That led to a shift in Jared's role at Anthropic: today, he is product manager of the go-to-market team, a role focused exclusively on identifying problems in how the Anthropic sales organization operates and building Claude-powered solutions to fix them."
+      "chinese": "这导致 Jared 在 Anthropic 的角色发生了转变：如今，他是市场推广团队的产品经理，专门负责识别 Anthropic 销售组织运作中的问题，并构建基于 Claude 的解决方案来修复这些问题。"
     },
     {
       "type": "paragraph",
       "id": "p-7",
       "english": "He describes the shift in his career as \"the most empowering thing I've ever experienced.\"",
-      "chinese": "He describes the shift in his career as \"the most empowering thing I've ever experienced.\""
+      "chinese": "他将自己职业生涯中的这一转变描述为\"我所经历过的最赋能的事情\"。"
     },
     {
       "type": "heading",
       "level": 2,
-      "text": "A sales rep buried in administrative tasks",
-      "language": "en"
-    },
-    {
-      "type": "heading",
-      "level": 2,
-      "text": "被行政任务淹没的销售代表",
-      "language": "en"
+      "english": "A sales rep buried in administrative tasks",
+      "chinese": "被行政任务淹没的销售代表"
     },
     {
       "type": "paragraph",
       "id": "p-8",
       "english": "Email volume wasn't the only challenge Jared faced as an account executive. Anthropic ships product changes every 24 to 48 hours, and customer questions tend to land on the most recent details: batch API SLAs, prompt caching discounts, model pricing, SDK behavior.",
-      "chinese": "Email volume wasn't the only challenge Jared faced as an account executive. Anthropic ships product changes every 24 to 48 hours, and customer questions tend to land on the most recent details: batch API SLAs, prompt caching discounts, model pricing, SDK behavior."
+      "chinese": "邮件量并不是 Jared 作为客户经理面临的唯一挑战。Anthropic 每 24 到 48 小时就会发布产品变更，客户的问题往往集中在最新细节上：批量 API SLA、提示缓存折扣、模型定价、SDK 行为。"
     },
     {
       "type": "paragraph",
       "id": "p-9",
       "english": "\"Having to relay technical documentation to customers is pretty hard, especially here at Anthropic when your products evolve so quickly,\" Jared says.",
-      "chinese": "\"Having to relay technical documentation to customers is pretty hard, especially here at Anthropic when your products evolve so quickly,\" Jared says."
+      "chinese": "\"必须向客户传达技术文档是相当困难的，尤其是在 Anthropic 这样产品快速迭代的公司，\"Jared 说。"
     },
     {
       "type": "paragraph",
       "id": "p-10",
       "english": "One of his first experiments with Claude was narrow and practical. Using Apps Script (Google's lightweight development platform) and Claude, Jared pulled product usage data from internal systems and had Claude rank his accounts each morning by how fast they were growing.",
-      "chinese": "One of his first experiments with Claude was narrow and practical. Using Apps Script (Google's lightweight development platform) and Claude, Jared pulled product usage data from internal systems and had Claude rank his accounts each morning by how fast they were growing."
+      "chinese": "他最早使用 Claude 的尝试之一既专注又实用。通过 Apps Script（Google 的轻量级开发平台）和 Claude，Jared 从内部系统中提取产品使用数据，让 Claude 每天早上按账户增长速度排序。"
     },
     {
       "type": "paragraph",
       "id": "p-11",
       "english": "\"Each day Claude would give me a brief on who I needed to focus on based on how much they were using,\" he says. With 700 accounts in his book, the daily brief helped him determine where to spend his outbound time.",
-      "chinese": "\"Each day Claude would give me a brief on who I needed to focus on based on how much they were using,\" he says. With 700 accounts in his book, the daily brief helped him determine where to spend his outbound time."
+      "chinese": "\"每天 Claude 都会给我一份简报，告诉我需要重点关注哪些客户，基于他们的使用量，\"他说。面对 700 个客户账户，这份每日简报帮助他确定应该在哪里投入外联时间。"
     },
     {
       "type": "heading",
       "level": 2,
-      "text": "Developing CLAFTS",
-      "language": "en"
-    },
-    {
-      "type": "heading",
-      "level": 2,
-      "text": "开发 CLAFTS",
-      "language": "en"
+      "english": "Developing CLAFTS",
+      "chinese": "开发 CLAFTS"
     },
     {
       "type": "paragraph",
       "id": "p-12",
       "english": "The harder challenge was Jared's inbox and the late hours he had to spend responding to emails.",
-      "chinese": "The harder challenge was Jared's inbox and the late hours he had to spend responding to emails."
+      "chinese": "更艰巨的挑战是 Jared 的收件箱以及他不得不花在回复邮件上的深夜时光。"
     },
     {
       "type": "paragraph",
       "id": "p-13",
       "english": "With Claude Code, he started to develop a system that drafts replies to customer emails in his voice. \"Claude Code, having the terminology 'code' at the end of it, made me feel a little bit intimidated just to even start,\" he says. \"But after a certain time frame, I understood the power of it being able to hook up to my computer and answer things about files on it.\"",
-      "chinese": "With Claude Code, he started to develop a system that drafts replies to customer emails in his voice. \"Claude Code, having the terminology 'code' at the end of it, made me feel a little bit intimidated just to even start,\" he says. \"But after a certain time frame, I understood the power of it being able to hook up to my computer and answer things about files on it.\""
+      "chinese": "利用 Claude Code，他开始开发一个能够以他的语气草拟客户邮件回复的系统。\"Claude Code 这个名称末尾带有'代码'这个词，让我在刚开始时感到有些畏惧，\"他说，\"但过了一段时间后，我理解了它能够连接我的电脑并回答关于文件问题的强大能力。\""
     },
     {
       "type": "paragraph",
       "id": "p-14",
       "english": "CLAFTS is built on roughly 4,300 lines of code, almost all of it written by Claude Code. It pulls context from a shared Google Drive folder and other third-party tools, references Anthropic's public documentation through web search, and matches Jared's writing style.",
-      "chinese": "CLAFTS is built on roughly 4,300 lines of code, almost all of it written by Claude Code. It pulls context from a shared Google Drive folder and other third-party tools, references Anthropic's public documentation through web search, and matches Jared's writing style."
+      "chinese": "CLAFTS 基于大约 4,300 行代码构建，几乎全部由 Claude Code 编写。它从共享的 Google Drive 文件夹和其他第三方工具中提取上下文，通过网络搜索引用 Anthropic 的公开文档，并匹配 Jared 的写作风格。"
     },
     {
       "type": "paragraph",
       "id": "p-15",
       "english": "Whenever Anthropic ships a product change, the documentation reflects it and Claude picks up the change on the next draft. \"Claude is able to use web search to understand our latest documentation from our website and reference that material when generating emails,\" Jared says. \"I don't need to keep all of that in my head.\"",
-      "chinese": "Whenever Anthropic ships a product change, the documentation reflects it and Claude picks up the change on the next draft. \"Claude is able to use web search to understand our latest documentation from our website and reference that material when generating emails,\" Jared says. \"I don't need to keep all of that in my head.\""
+      "chinese": "每当 Anthropic 发布产品变更时，文档会随之更新，Claude 也会在下一封草稿中获取这些变更。\"Claude 能够通过网络搜索了解我们网站上的最新文档，并在生成邮件时引用这些材料，\"Jared 说，\"我不需要把所有信息都记在脑子里。\""
     },
     {
       "type": "heading",
       "level": 2,
-      "text": "Measuring the impact of CLAFTS",
-      "language": "en"
-    },
-    {
-      "type": "heading",
-      "level": 2,
-      "text": "衡量 CLAFTS 的影响",
-      "language": "en"
+      "english": "Measuring the impact of CLAFTS",
+      "chinese": "衡量 CLAFTS 的影响"
     },
     {
       "type": "paragraph",
       "id": "p-16",
       "english": "While CLAFTS saves Jared 10-15 hours per week, the shift he cares about most is the accuracy of the work. With Claude pulling current product details from documentation on every draft, the answers customers receive are tied to whatever shipped most recently rather than to whatever Jared happened to remember.",
-      "chinese": "While CLAFTS saves Jared 10-15 hours per week, the shift he cares about most is the accuracy of the work. With Claude pulling current product details from documentation on every draft, the answers customers receive are tied to whatever shipped most recently rather than to whatever Jared happened to remember."
+      "chinese": "虽然 CLAFTS 每周为 Jared 节省 10-15 个小时，但他最在意的转变是工作的准确性。由于 Claude 在每一封草稿中都从文档中提取最新的产品细节，客户收到的答案始终与最新发布的内容保持一致，而不是取决于 Jared 碰巧记住的信息。"
     },
     {
       "type": "heading",
       "level": 2,
-      "text": "Architecting what's next",
-      "language": "en"
-    },
-    {
-      "type": "heading",
-      "level": 2,
-      "text": "构建下一步",
-      "language": "en"
+      "english": "Architecting what's next",
+      "chinese": "构建下一步"
     },
     {
       "type": "paragraph",
       "id": "p-17",
       "english": "Jared's role has changed alongside the tooling. As a GTM Architect, he now sits in design conversations with product engineers and helps shape new tools for Anthropic's sales team.",
-      "chinese": "Jared's role has changed alongside the tooling. As a GTM Architect, he now sits in design conversations with product engineers and helps shape new tools for Anthropic's sales team."
+      "chinese": "Jared 的角色随着工具的演进而发生了变化。作为 GTM 架构师，他现在参与产品工程师的设计讨论，帮助为 Anthropic 的销售团队打造新工具。"
     },
     {
       "type": "paragraph",
       "id": "p-18",
       "english": "\"I feel like with the technical barrier dissolving, I'm almost able to design more products and have senior engineers help me implement to the final stretch,\" Jared says. \"I'm able to augment and do more things.\"",
-      "chinese": "\"I feel like with the technical barrier dissolving, I'm almost able to design more products and have senior engineers help me implement to the final stretch,\" Jared says. \"I'm able to augment and do more things.\""
+      "chinese": "\"我感觉随着技术壁垒的消融，我几乎能够设计更多的产品，并让高级工程师帮助我实现到最后阶段，\"Jared 说，\"我能够放大自己的能力，做更多事情。\""
     },
     {
       "type": "paragraph",
       "id": "p-19",
       "english": "For sellers wondering whether they could build something similar, his advice is to open Claude Code, find one task that's slowing them down, and ask Claude how to build a solution for it.",
-      "chinese": "For sellers wondering whether they could build something similar, his advice is to open Claude Code, find one task that's slowing them down, and ask Claude how to build a solution for it."
+      "chinese": "对于那些想知道自己能否构建类似工具的销售人员，他的建议是打开 Claude Code，找到一个拖慢自己速度的任务，然后问 Claude 如何为此构建解决方案。"
     },
     {
       "type": "paragraph",
       "id": "p-20",
       "english": "\"If you told me I was going to be a go-to-market product manager at Anthropic a year ago, I would be pretty surprised,\" he says. \"I never had the technical chops to be in these conversations. With Claude, I'm able to design and build things that don't just improve my own day-to-day workflows, but also those of my broader team. I have space to work more creatively and strategically, and there's no turning back.\"",
-      "chinese": "\"If you told me I was going to be a go-to-market product manager at Anthropic a year ago, I would be pretty surprised,\" he says. \"I never had the technical chops to be in these conversations. With Claude, I'm able to design and build things that don't just improve my own day-to-day workflows, but also those of my broader team. I have space to work more creatively and strategically, and there's no turning back.\""
+      "chinese": "\"如果一年前你告诉我，我将会成为 Anthropic 的市场推广产品经理，我会非常惊讶，\"他说，\"我从来没有足够的技术能力参与这些讨论。有了 Claude，我能够设计和构建不仅改善我自己日常工作流程、也改善整个团队工作流程的东西。我有空间进行更具创造性和战略性的工作，而且没有回头路可走。\""
     }
   ],
   "warnings": [],

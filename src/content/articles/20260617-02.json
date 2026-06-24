@@ -1,0 +1,232 @@
+{
+  "title": "Meet the winners of our Claude Opus 4.8 Build Day hackathon",
+  "sourceUrl": "https://claude.com/blog/meet-the-winners-of-our-claude-opus-4-8-build-day-hackathon",
+  "category": "Claude Code",
+  "preview": "*From reconstructing Tang Dynasty architecture to polling a synthetic San Francisco, see what the winners of our latest hackathon built with Claude Opus 4.8 in a day.*",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "*From reconstructing Tang Dynasty architecture to polling a synthetic San Francisco, see what the winners of our latest hackathon built with Claude Opus 4.8 in a day.*",
+      "chinese": "*从重建唐代建筑到对一个虚拟旧金山进行民调，看看我们最新黑客松的获奖者们在一天之内用 Claude Opus 4.8 构建了什么。*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "On June 13, we brought more than 300 founders and builders to San Francisco for a 12-hour hackathon with Claude Opus 4.8. More than 1,500 people had applied; 310 took part, many traveling from around the world, each with $500 in credits and one day to turn an idea into a working demo.",
+      "chinese": "6月13日，我们将300多位创始人和开发者带到旧金山，举办了一场为期12小时的 Claude Opus 4.8 黑客松。超过1,500人申请参加；310人最终参赛，其中许多人从世界各地远道而来，每人获得500美元的额度，用一天时间将创意变成可运行的演示。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "We caught up with the three winning teams about what they built and how they used Claude to do it.",
+      "chinese": "我们采访了三个获奖团队，了解他们构建了什么以及如何使用 Claude 来完成的。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "Congratulations to the winners and everyone who took part. We hope their projects give you a few ideas of your own.",
+      "chinese": "祝贺获奖者和所有参与者。我们希望他们的项目能给你带来一些灵感。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "First place: Tekton, Holly Tang and Austin Burgess",
+      "chinese": "第一名：Tekton，Holly Tang 和 Austin Burgess"
+    },
+    {
+      "type": "image",
+      "src": "images/20260617-02/build-day-photo.jpg",
+      "alt": "Claude Opus 4.8 Build Day 黑客松现场"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "*Holly Tang and Austin Burgess built Tekton, a 3D reconstruction platform that brings Tang Dynasty architecture back to life, with every component traceable to its historical source.*",
+      "chinese": "*Holly Tang 和 Austin Burgess 构建了 Tekton，一个让唐代建筑重获新生的3D重建平台，每个构件都可追溯至其历史来源。*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "When a historic wooden building burns, centuries of craftsmanship can disappear with it. Tekton reconstructs those buildings in 3D and traces every piece back to a documented source.",
+      "chinese": "当一座历史木结构建筑被烧毁时，数个世纪的工艺可能随之消失。Tekton 以3D方式重建这些建筑，并将每一块构件追溯到有文献记载的来源。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "Give Tekton a historical building and Claude researches it, pulling together schematics, construction documents, photographs, and diagrams, then assembles a 3D model across 339 incremental construction states. When you click any component in the model, Tekton shows where the detail came from and why it was placed there. The team calls this an evidence chain, running from source material to verified model. They built it for academic validation, restoration work, and cultural preservation, starting with Tang Dynasty architecture and the spire of Notre-Dame.",
+      "chinese": "给 Tekton 一座历史建筑，Claude 就会对其进行研究，汇集图纸、施工文件、照片和示意图，然后通过339个增量施工状态组装出3D模型。当你点击模型中的任何构件时，Tekton 会显示该细节的来源以及放置原因。团队称之为\"证据链\"，从原始资料到验证模型的完整链条。他们将其构建用于学术验证、修复工作和文化保护，以唐代建筑和巴黎圣母院尖塔为起点。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "The verification ran entirely on Opus 4.8. Independent verifier sub-agents graded each reconstruction in isolated context windows, and self-correction loops rechecked component placement until all 20 tests passed. Every build was measured against the historical record and its citations, so the finished model follows the documented rules of how the structure was originally built.",
+      "chinese": "验证过程完全在 Opus 4.8 上运行。独立的验证者 sub-agent 在隔离的 context window 中对每次重建进行评分，自校正循环反复检查构件放置，直到所有20项测试通过。每次构建都对照历史记录及其引文进行衡量，因此最终模型遵循有文献记载的原始建造规则。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "Holly Tang and Austin Burgess met a month earlier, in line for coffee at a Code with Claude event. Holly, a designer, has been helping with Austin's startup, Pearl. \"I love watching documentaries, and it always upset me to see beautiful buildings lost to fire,\" Holly says. She had prototyped a single reconstruction on her own; Austin's contribution was scaling it to work on any building, end to end.",
+      "chinese": "Holly Tang 和 Austin Burgess 一个月前在一次 Code with Claude 活动中排队买咖啡时相识。Holly 是一名设计师，一直在帮助 Austin 的初创公司 Pearl。\"我喜欢看纪录片，看到美丽的建筑毁于火灾总是让我难过，\"Holly 说。她曾独自原型化了一次重建；Austin 的贡献是将其扩展为端到端地适用于任何建筑。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "To build Tekton, the two worked in stages: they got the spire of Notre-Dame rendering at scale first, then added finer detail, then expanded toward the rest of the structure. Time ran out before the full cathedral was done. Even so, several hackathon attendees asked about it or offered to help make it more accurate. Holly and Austin want to make Tekton open source, so museums, historians, nonprofits, and governments can build on it.",
+      "chinese": "构建 Tekton 时，两人分阶段工作：首先让巴黎圣母院尖塔按比例渲染，然后添加更精细的细节，再向其余结构扩展。时间用完了，完整的大教堂尚未完成。即便如此，几位黑客松参与者询问了该项目或主动提出帮助提高准确性。Holly 和 Austin 希望将 Tekton 开源，以便博物馆、历史学家、非营利组织和政府可以在此基础上继续开发。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "**Advice to other builders:** Map the whole project before you build any of it.",
+      "chinese": "**给其他开发者的建议：** 在构建任何部分之前，先规划整个项目。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "\"We built an entire PRD and a Notion board with around 50 tickets, one for each specific task,\" Austin says. \"It was almost like, here's the complete project end to end, and this is exactly what we want for each step.\" With the plan set, he broke the build into separate workflows and ran them in parallel.",
+      "chinese": "\"我们构建了一份完整的 PRD 和一个包含大约50个工单的 Notion 看板，每个工单对应一个具体任务，\"Austin 说。\"这就好像是，这是端到端的完整项目，而这正是我们在每一步想要的。\"计划确定后，他将构建拆分为独立的工作流并并行运行。"
+    },
+    {
+      "type": "standalone",
+      "text": "🔗 [Tekton on GitHub](https://github.com)",
+      "language": "en"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Second place: Sim Francisco, Tanmayi Priya Dasari and Tejas Prabhune",
+      "chinese": "第二名：Sim Francisco，Tanmayi Priya Dasari 和 Tejas Prabhune"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "*Tanmayi Priya Dasari and Tejas Prabhune built Sim Francisco, a Census-seeded digital twin of San Francisco's population that can poll a synthetic city in seconds and forecast real-world outcomes.*",
+      "chinese": "*Tanmayi Priya Dasari 和 Tejas Prabhune 构建了 Sim Francisco，一个基于人口普查数据的旧金山人口数字孪生体，可以在几秒钟内对一个虚拟城市进行民调并预测现实世界的结果。*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "Sim Francisco is a working model of San Francisco's population. It has 10,000 synthetic residents drawn from US Census data, each with their own demographics, personal history, and worldview, placed on a map of the city and reacting to the news in real time.",
+      "chinese": "Sim Francisco 是旧金山人口的工作模型。它拥有10,000名来自美国人口普查数据的虚拟居民，每个人都有自己的人口统计特征、个人经历和世界观，放置在城市地图上并对新闻做出实时反应。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "Ask the city a question and it polls the entire synthetic electorate, neighborhood by neighborhood. Running on models with an October 2023 knowledge cutoff, it forecast the 2024 presidential vote at 81.3% Democratic against an actual 83.8%, and San Francisco's March 2024 Prop A at 70% against an actual 70.38%. It tracks prediction markets like Kalshi and Polymarket within a couple of points.*",
+      "chinese": "向城市提问，它会逐社区地对整个虚拟选民进行民调。在知识截止日期为2023年10月的模型上运行，它预测2024年总统选举民主党的得票率为81.3%（实际为83.8%），旧金山2024年3月的 Prop A 为70%（实际为70.38%）。它跟踪 Kalshi 和 Polymarket 等预测市场的误差在几个百分点以内。*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "Opus 4.8 wrote the entire front and back end and verified the backend's behavior end to end. To verify the model's work, the team had Claude work alongside a verifier and an adversarial agent to build a backend that reproduced the city's real demographic distributions.",
+      "chinese": "Opus 4.8 编写了整个前端和后端，并端到端地验证了后端的行为。为了验证模型的工作，团队让 Claude 与一个验证者和一个对抗性 agent 协作，构建了一个能复现城市真实人口分布的后端。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "Tanmayi Priya Dasari and Tejas Prabhune are electrical engineering and computer science majors at UC Berkeley who met through the Machine Learning club on campus. For Tejas, Sim Francisco doubles as a test for the post-training company he's building, where he's working out whether simulated personas can stay consistent enough to train models on long-horizon tasks.",
+      "chinese": "Tanmayi Priya Dasari 和 Tejas Prabhune 是加州大学伯克利分校的电气工程和计算机科学专业学生，通过校园机器学习俱乐部相识。对 Tejas 来说，Sim Francisco 同时也是他正在构建的 post-training 公司的测试，他在探索模拟人格能否保持足够的一致性来训练模型执行长期任务。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "**Advice to other builders:** Don't settle for the first approach that works, especially when it's expensive.",
+      "chinese": "**给其他开发者的建议：** 不要满足于第一个可行的方法，尤其是当它很昂贵时。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "The team's first version made a separate inference call for each of the 10,000 residents, which got costly. \"Over time, Claude ran an evolutionary clustering algorithm it created itself,\" Tejas says, batching residents into about 300 representative personas. The grouped version held the same accuracy against Kalshi, Polymarket, and historical results while cutting inference cost by 10 to 100 times.",
+      "chinese": "团队的第一版为10,000名居民中的每一位进行单独的 inference 调用，成本很高。\"随着时间推移，Claude 运行了一个它自己创建的进化聚类算法，\"Tejas 说，将居民批量归入大约300个代表性人格。分组版本在 Kalshi、Polymarket 和历史结果上保持了相同的准确性，同时将 inference 成本降低了10到100倍。"
+    },
+    {
+      "type": "standalone",
+      "text": "🔗 [Sim Francisco on GitHub](https://github.com)",
+      "language": "en"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Third place: Custom Universe, Jake Stevens and Mauricio Pereira",
+      "chinese": "第三名：Custom Universe，Jake Stevens 和 Mauricio Pereira"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-20",
+      "english": "*Jake Stevens and Mauricio Pereira built Custom Universe, a real-time engine that turns a single phone photo into a fully editable, photorealistic 3D scene.*",
+      "chinese": "*Jake Stevens 和 Mauricio Pereira 构建了 Custom Universe，一个实时引擎，能将一张手机照片转换为完全可编辑的、照片级真实的3D场景。*"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-21",
+      "english": "Snap a phone photo of a chair, and Custom Universe turns it into a 3D object you can drop into a scene, restyle with a text prompt, and move around while the rendered image updates in real time.",
+      "chinese": "用手机拍一张椅子的照片，Custom Universe 就会将其转换为一个3D物体，你可以将其放入场景中，用文本提示重新设计样式，并在移动时实时更新渲染图像。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-22",
+      "english": "The project is aimed at robotics labs, which need large volumes of synthetic data to train robots for specific tasks and settings. A lab can scan a machine from a factory floor, drop it into a scene, and generate data to fine-tune a robotics model for that exact environment. Building that kind of setup usually means hiring physicists and engineers to handle the physics and collision geometry. Custom Universe lets you arrange a scene by dragging objects around instead, and the team plans to add precise placement, like nudging an object 30 centimeters across a kitchen counter.",
+      "chinese": "该项目面向机器人实验室，这些实验室需要大量 synthetic data 来训练机器人执行特定任务和适应特定环境。实验室可以扫描工厂车间的机器，将其放入场景中，并生成数据来 fine-tune 针对该环境的机器人模型。构建这样的设置通常需要雇佣物理学家和工程师来处理物理和碰撞几何。Custom Universe 让你通过拖动物体来排列场景，团队计划添加精确定位功能，例如将物体在厨房台面上移动30厘米。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-23",
+      "english": "Opus 4.8 built the project end to end and operated the remote NVIDIA H100 that ran the model throughout the hackathon. The team also used Claude to work out which models produced the right output and to build the pipeline that brings phone-scanned objects, captured with Apple's RealityKit, into the web app.",
+      "chinese": "Opus 4.8 端到端地构建了该项目，并在整个黑客松期间操作了运行模型的远程 NVIDIA H100。团队还使用 Claude 来确定哪些模型产生了正确的输出，并构建了将用 Apple RealityKit 捕获的手机扫描物体导入 web app 的 pipeline。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-24",
+      "english": "Jake Stevens and Mauricio Pereira met at the event. Jake is a Rochester Institute of Technology (RIT) computer-vision graduate who runs Luminal, a startup focused on speeding up AI models; the scene builder started as a side project he had wanted to try. Mauricio, an MIT robotics graduate who runs Coat Robotics, brought the problem he knew firsthand: robotics still lacks training data, and building synthetic environments is hard. Custom Universe relies on open-source models and algorithms and is free to use; the team says users can run it on their own GPUs.",
+      "chinese": "Jake Stevens 和 Mauricio Pereira 在活动中相识。Jake 是罗切斯特理工学院（RIT）计算机视觉毕业生，经营着 Luminal，一家专注于加速 AI 模型的初创公司；场景构建器最初是他一直想尝试的副业项目。Mauricio 是麻省理工学院机器人专业毕业生，经营着 Coat Robotics，他带来了自己亲身体验的问题：机器人领域仍然缺乏训练数据，构建 synthetic environment 很困难。Custom Universe 依赖开源模型和算法，免费使用；团队表示用户可以在自己的 GPU 上运行。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-25",
+      "english": "**Advice to other builders:** Use Claude to choose your tools, not just to write the code.",
+      "chinese": "**给其他开发者的建议：** 用 Claude 来选择工具，而不仅仅是编写代码。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-26",
+      "english": "\"A lot of the iteration was looking at which model was giving us the right output, so we used Claude to do a lot of the research,\" Mauricio says. The team also handed Claude unfamiliar technologies to integrate. \"For example, Apple RealityKit, and how we were going to make sure people can input their scanned objects to our website. We asked Claude: add this to the pipeline.\"",
+      "chinese": "\"很多迭代都在看哪个模型给了我们正确的输出，所以我们用 Claude 来做大量研究，\"Mauricio 说。团队还将不熟悉的技术交给 Claude 来集成。\"例如，Apple RealityKit，以及我们如何确保人们可以将扫描的物体输入到我们的网站。我们对 Claude 说：把这个加到 pipeline 里。\""
+    },
+    {
+      "type": "standalone",
+      "text": "🔗 [Custom Universe on GitHub](https://github.com)",
+      "language": "en"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-27",
+      "english": "*Sim Francisco is an independent hackathon project that uses forecasting election outcomes as an example. This does not represent an Anthropic endorsement of using AI-simulated election predictions as a use case.*",
+      "chinese": "*Sim Francisco 是一个独立的黑客松项目，以预测选举结果为例。这并不代表 Anthropic 认可将 AI 模拟选举预测作为一种应用场景。*"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"20260617-02\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"20260617-02\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"20260617-02\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"20260617-02\"."
+    },
+    {
+      "code": "thematic-break",
+      "message": "Skipped thematic break in \"20260617-02\"."
+    }
+  ],
+  "id": "20260617-02",
+  "product": "Claude Code"
+}

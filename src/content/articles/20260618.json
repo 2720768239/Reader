@@ -2,6 +2,7 @@
   "title": "Centrally manage authorization for MCP connectors",
   "sourceUrl": "https://claude.com/blog/enterprise-managed-auth",
   "category": "Enterprise AI, Product announcements",
+  "product": "Claude Platform",
   "preview": "Admins can now provision MCP connectors for their whole organization through their identity provider, starting with Okta. Users get connector access automatically on first login, with authorization configured centrally by their organization.",
   "blocks": [
     {

@@ -2,6 +2,7 @@
   "title": "How CodeRabbit used Claude to build an agent orchestration system",
   "sourceUrl": "https://claude.com/blog/how-coderabbit-used-claude-to-build-an-agent-orchestration-system",
   "category": "Claude Code",
+  "product": "Claude Code",
   "preview": "CodeRabbit built a layer on Claude that sits between a coding request and a coding agent, producing a structured coding plan the team can review before any code gets generated.",
   "blocks": [
     {

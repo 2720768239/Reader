@@ -1,6 +1,8 @@
 {
   "title": "Scaling Managed Agents: Decoupling the brain from the hands",
   "sourceUrl": "https://www.anthropic.com/engineering/managed-agents",
+  "category": "Engineering",
+  "product": "Claude Managed Agents",
   "preview": "Harnesses encode assumptions that go stale as models improve. Managed Agents—our hosted service for long-horizon agent work—is built around interfaces that stay stable as harnesses change.",
   "blocks": [
     {
@@ -46,6 +48,11 @@
       "chinese": "Managed Agents 遵循同样的模式。我们将智能体的组件虚拟化：一个会话（所有发生事件的追加日志）、一个 Harness（调用 Claude 并将 Claude 的工具调用路由到相关基础设施的循环），以及一个沙箱（Claude 可以运行代码和编辑文件的执行环境）。这使得每个组件的实现可以在不影响其他组件的情况下被替换。我们对接口的形式有明确的主张，但对背后运行的内容不做限制。"
     },
     {
+      "type": "image",
+      "src": "images/20260407/managed-agents-arch-1.png",
+      "alt": "Managed Agents 架构总览图"
+    },
+    {
       "type": "heading",
       "level": 2,
       "english": "Don't adopt a pet",
@@ -74,6 +81,11 @@
       "id": "p-11",
       "english": "A second issue was that the harness assumed that whatever Claude worked on lived in the container with it. When customers asked us to connect Claude to their virtual private cloud, they had to either peer their network with ours, or run our harness in their own environment. An assumption baked into the harness became a problem when we wanted to connect it to different infrastructure.",
       "chinese": "第二个问题是，Harness 假设 Claude 工作的一切都与它在同一个容器中。当客户要求我们将 Claude 连接到他们的虚拟私有云时，他们必须要么将他们的网络与我们的对等连接，要么在他们自己的环境中运行我们的 Harness。当我们将 Harness 连接到不同基础设施时，这个嵌入在 Harness 中的假设就变成了问题。"
+    },
+    {
+      "type": "image",
+      "src": "images/20260407/managed-agents-arch-2.png",
+      "alt": "大脑与双手解耦架构图"
     },
     {
       "type": "heading",
@@ -112,6 +124,11 @@
       "chinese": "我们使用两种模式来确保这一点。认证可以与资源捆绑，或保存在沙箱外部的保险库中。对于 Git，我们在沙箱初始化期间使用每个仓库的访问令牌克隆仓库，并将其接入本地 git remote。Git push 和 pull 在沙箱内部工作，而智能体本身永远不会处理令牌。对于自定义工具，我们支持 MCP 并将 OAuth 令牌存储在安全保险库中。Claude 通过专用代理调用 MCP 工具；该代理接收与会话关联的令牌。代理然后可以从保险库中获取相应的凭据并调用外部服务。Harness 永远不会被告知任何凭据。"
     },
     {
+      "type": "image",
+      "src": "images/20260407/managed-agents-arch-3.png",
+      "alt": "安全边界示意图"
+    },
+    {
       "type": "heading",
       "level": 2,
       "english": "The session is not Claude's context window",
@@ -140,6 +157,11 @@
       "id": "p-20",
       "english": "Any fetched events can also be transformed in the harness before being passed to Claude's context window. These transformations can be whatever the harness encodes, including context organization to achieve a high prompt cache hit rate and context engineering. We separated the concerns of recoverable context storage in the session and arbitrary context management in the harness because we can't predict what specific context engineering will be required in future models. The interfaces push that context management into the harness, and only guarantee that the session is durable and available for interrogation.",
       "chinese": "任何获取的事件也可以在传递到 Claude 上下文窗口之前在 Harness 中进行转换。这些转换可以是 Harness 编码的任何内容，包括上下文组织以实现高提示缓存命中率和上下文工程。我们将可恢复上下文存储在会话中和任意上下文管理在 Harness 中的关注点分离开来，因为我们无法预测未来模型将需要什么样的具体上下文工程。接口将上下文管理推入 Harness，只保证会话是持久的并且可供查询。"
+    },
+    {
+      "type": "image",
+      "src": "images/20260407/managed-agents-arch-4.png",
+      "alt": "多大脑多手架构图"
     },
     {
       "type": "heading",

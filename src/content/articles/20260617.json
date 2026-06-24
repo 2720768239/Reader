@@ -2,6 +2,7 @@
   "title": "Claude Design now stays on brand for daily work",
   "sourceUrl": "https://claude.com/blog/claude-design-stays-on-brand-for-daily-work",
   "category": "Product announcements",
+  "product": "Claude Design",
   "preview": "Claude Design now sticks to your design system across projects, works fluidly with Claude Code, lets you edit directly on the canvas, and connects to more tools you already use. It has a new home in the sidebar on the Claude desktop app; you can also find it at claude.ai/design.",
   "blocks": [
     {
@@ -15,6 +16,11 @@
       "id": "p-2",
       "english": "Our goal remains the same as before: letting you explore more directions than a deadline usually allows and making the handoff to polish or build as seamless as possible. That goal now serves a lot more people. Over one million people used Claude Design in its first week, and your feedback is shaping what we build next.",
       "chinese": "我们的目标与之前相同：让你能在截止日期允许的范围之外探索更多方向，并使向打磨或构建阶段的交接尽可能无缝。这个目标现在服务着更多的人。超过一百万人在第一周就使用了 Claude Design，你们的反馈正在塑造我们接下来构建的内容。"
+    },
+    {
+      "type": "image",
+      "src": "images/20260617/claude-design-beta.png",
+      "alt": "Claude Design 界面示意图"
     },
     {
       "type": "heading",

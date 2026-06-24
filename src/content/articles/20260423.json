@@ -2,6 +2,7 @@
   "title": "New connectors in Claude for everyday life | Claude",
   "sourceUrl": "https://claude.com/blog/connectors-for-everyday-life",
   "category": "Product announcements",
+  "product": "Claude",
   "preview": "Today we're expanding what you can connect to Claude. Alongside the work tools you already use, you can now connect the apps you use throughout your week, including AllTrails, Instacart, Audible, Tripadvisor, Intuit TurboTax, and more.",
   "blocks": [
     {
@@ -15,6 +16,11 @@
       "level": 2,
       "english": "How people have been using connectors",
       "chinese": "用户如何使用连接器"
+    },
+    {
+      "type": "image",
+      "src": "images/20260423/connectors.png",
+      "alt": "Claude 连接器示意图"
     },
     {
       "type": "paragraph",
