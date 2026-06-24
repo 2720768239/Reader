@@ -11,7 +11,7 @@ Hermes may change only these paths:
 ```text
 src/content/articles/*.json
 src/content/index.json
-public/images/<article-slug>/*
+public/images/<id>/*
 ```
 
 Hermes must not change application code, styles, package files, tests, build scripts, or documentation unless explicitly requested by the repository owner.
@@ -21,7 +21,7 @@ Hermes must not change application code, styles, package files, tests, build scr
 For every collected article, Hermes must create one article JSON file:
 
 ```text
-src/content/articles/<slug>.json
+src/content/articles/<id>.json
 ```
 
 Hermes must also update:
@@ -33,7 +33,7 @@ src/content/index.json
 If the article contains images, Hermes must download and store them under:
 
 ```text
-public/images/<slug>/<image-file-name>
+public/images/<id>/<image-file-name>
 ```
 
 Image references inside article JSON must use paths relative to `public/`, for example:
@@ -41,7 +41,7 @@ Image references inside article JSON must use paths relative to `public/`, for e
 ```json
 {
   "type": "image",
-  "src": "images/example-article/diagram-01.png",
+  "src": "images/20260610/diagram-01.png",
   "alt": "Architecture diagram"
 }
 ```
@@ -52,11 +52,11 @@ Each article file must be valid UTF-8 JSON and follow this shape:
 
 ```json
 {
-  "slug": "example-article",
+  "id": "20260610",
   "title": "Example Article Title",
   "sourceUrl": "https://example.com/article",
-  "publishedAt": "2026-06-23",
   "category": "AI / Engineering",
+  "product": "Claude Code",
   "preview": "The first English paragraph or a concise English summary.",
   "blocks": [
     {
@@ -72,8 +72,8 @@ Each article file must be valid UTF-8 JSON and follow this shape:
 
 ### Field rules
 
-`slug`
-: Lowercase kebab-case. It must be unique across `src/content/articles/*.json`.
+`id`
+: Publication date as `YYYYMMDD`. If another article shares the same date, append a two-digit sequence (`-01`, `-02`, ...). Must be unique across all articles. The publication date is derived from `id`; do NOT add a separate `publishedAt` field.
 
 `title`
 : Human-readable article title. Keep the original title unless it is unavailable.
@@ -81,11 +81,11 @@ Each article file must be valid UTF-8 JSON and follow this shape:
 `sourceUrl`
 : Original article URL. Required for fetched articles.
 
-`publishedAt`
-: Use `YYYY-MM-DD` when the original date is known. If unknown, omit the field.
-
 `category`
 : Short category label used by the Reader home page. Prefer stable labels such as `AI / Engineering`, `Product`, `Research`, or `Security`.
+
+`product`
+: **Required.** Product the article belongs to (e.g. `Claude Code`, `Claude Platform`, `Claude Managed Agents`, `API`, `Claude.ai`). Use `General` if no specific product applies.
 
 `preview`
 : A short English preview. Prefer the first meaningful English paragraph. Do not put Chinese-only text here.
@@ -158,14 +158,14 @@ Use for downloaded article images.
 ```json
 {
   "type": "image",
-  "src": "images/example-article/diagram-01.png",
+  "src": "images/20260610/diagram-01.png",
   "alt": "Architecture diagram"
 }
 ```
 
 Rules:
 
-- Store the file under `public/images/<slug>/`.
+- Store the file under `public/images/<id>/`.
 - Use descriptive `alt` text.
 - Do not hotlink remote images.
 - Skip tracking pixels, avatars, social icons, ads, and decorative images.
@@ -191,10 +191,10 @@ Use this sparingly.
 ```json
 [
   {
-    "slug": "example-article",
+    "id": "20260610",
     "title": "Example Article Title",
-    "publishedAt": "2026-06-23",
     "category": "AI / Engineering",
+    "product": "Claude Code",
     "preview": "The first English paragraph or a concise English summary."
   }
 ]
@@ -204,8 +204,8 @@ Rules:
 
 - Every article JSON file must have one matching index entry.
 - Every index entry must point to an existing article JSON file.
-- Keep the list sorted with newest articles first when `publishedAt` is available.
-- Do not duplicate slugs.
+- Keep the list sorted by `id` descending (newest first).
+- Do not duplicate ids.
 
 ## Translation rules
 
@@ -249,18 +249,21 @@ Pull request body template:
 - URL: <source URL>
 - Published: <YYYY-MM-DD or unknown>
 - Category: <category>
+- Product: <product>
 
 ## Content changes
 
-- Added: `src/content/articles/<slug>.json`
+- Added: `src/content/articles/<id>.json`
 - Updated: `src/content/index.json`
-- Images: `public/images/<slug>/` or none
+- Images: `public/images/<id>/` or none
 
 ## Hermes checks
 
 - [ ] Article JSON is valid UTF-8.
 - [ ] Every paragraph has `english` and `chinese`.
 - [ ] Paragraph IDs are sequential.
+- [ ] `id` is valid and unique.
+- [ ] `product` and `sourceUrl` are present.
 - [ ] `src/content/index.json` includes the new article.
 - [ ] No Reader application code was changed.
 - [ ] No secrets, cookies, tokens, or private credentials were committed.
@@ -279,14 +282,14 @@ Your job:
 3. Translate the article paragraph by paragraph into simplified Chinese.
 4. Generate final Reader article JSON files directly under `src/content/articles/`.
 5. Update `src/content/index.json`.
-6. Download necessary article images into `public/images/<slug>/` and reference them as `images/<slug>/<file>`.
+6. Download necessary article images into `public/images/<id>/` and reference them as `images/<id>/<file>`.
 7. Open a pull request.
 
 Repository rules:
 - You may change only:
   - `src/content/articles/*.json`
   - `src/content/index.json`
-  - `public/images/<article-slug>/*`
+  - `public/images/<id>/*`
 - Do not modify application code, CSS, package files, build scripts, tests, or docs.
 - Do not submit Markdown source files.
 - Do not require Reader to run an importer or parser.
@@ -294,11 +297,11 @@ Repository rules:
 - All files must be valid UTF-8.
 
 Article schema:
-- `slug`: lowercase kebab-case, unique.
+- `id`: publication date as `YYYYMMDD`, unique. If collision, append `-01`, `-02`, etc. Date is derived from `id`; do not add a separate `publishedAt` field.
 - `title`: original article title.
 - `sourceUrl`: original URL.
-- `publishedAt`: `YYYY-MM-DD` if known.
 - `category`: short stable category.
+- `product`: **required.** Product the article belongs to.
 - `preview`: first meaningful English paragraph or concise English summary.
 - `blocks`: final renderable body.
 - `warnings`: usually `[]`.
@@ -322,13 +325,15 @@ Heading block:
 Image block:
 {
   "type": "image",
-  "src": "images/<slug>/<file>",
+  "src": "images/<id>/<file>",
   "alt": "..."
 }
 
 Before opening the PR, verify:
 - JSON parses successfully.
-- `src/content/index.json` references the article.
+- `id` is valid (`YYYYMMDD` with optional `-NN` suffix) and unique.
+- `product` and `sourceUrl` are present.
+- `src/content/index.json` references the article and stays sorted by `id` descending.
 - Paragraph IDs are sequential.
 - Every paragraph has both English and Chinese.
 - No unrelated files changed.
