@@ -77,20 +77,20 @@ async function main() {
 
     if (article.warnings.length > 0) {
       for (const warning of article.warnings) {
-        console.warn(`[import:articles] ${article.slug}: ${warning.message}`);
+        console.warn(`[import:articles] ${article.id}: ${warning.message}`);
       }
     }
 
     index.push({
-      slug: article.slug,
+      id: article.id,
       title: article.title,
-      publishedAt: article.publishedAt,
       category: article.category,
+      product: article.product,
       preview: article.preview
     });
 
     await fs.writeFile(
-      path.join(ARTICLES_DIR, `${article.slug}.json`),
+      path.join(ARTICLES_DIR, `${article.id}.json`),
       JSON.stringify(article, null, 2),
       "utf8"
     );

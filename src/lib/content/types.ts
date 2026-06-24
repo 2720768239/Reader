@@ -54,18 +54,17 @@ export type ArticleBlock =
   | ArticleStandaloneBlock;
 
 export type ArticleRecord = {
-  slug: string;
+  id: string;
   title: string;
-  sourceUrl?: string;
-  publishedAt?: string;
-  category?: string;
-  product?: string;
-  preview?: string;
+  sourceUrl: string;
+  category: string;
+  product: string;
+  preview: string;
   blocks: ArticleBlock[];
   warnings: ContentWarning[];
 };
 
 export type ArticleIndexEntry = Pick<
   ArticleRecord,
-  "slug" | "title" | "publishedAt" | "category" | "product" | "preview"
+  "id" | "title" | "category" | "product" | "preview"
 >;

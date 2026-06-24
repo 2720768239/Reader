@@ -4,14 +4,14 @@ import type { ArticleIndexEntry, ArticleRecord } from "./types";
 const articleModules = import.meta.glob("../../content/articles/*.json");
 
 export function loadArticleIndex(): ArticleIndexEntry[] {
-  return indexData as ArticleIndexEntry[];
+  return indexData as unknown as ArticleIndexEntry[];
 }
 
-export async function loadArticleBySlug(slug: string): Promise<ArticleRecord> {
-  const loader = articleModules[`../../content/articles/${slug}.json`];
+export async function loadArticleById(id: string): Promise<ArticleRecord> {
+  const loader = articleModules[`../../content/articles/${id}.json`];
 
   if (!loader) {
-    throw new Error(`Article not found: ${slug}`);
+    throw new Error(`Article not found: ${id}`);
   }
 
   const module = (await loader()) as { default: ArticleRecord };

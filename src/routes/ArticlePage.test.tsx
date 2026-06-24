@@ -6,12 +6,13 @@ import { describe, expect, it, vi } from "vitest";
 import ArticlePage from "./ArticlePage";
 
 vi.mock("../lib/content/loaders", () => ({
-  loadArticleBySlug: async () => ({
-    slug: "demo-article",
+  loadArticleById: async () => ({
+    id: "20260610",
     title: "Demo Article",
-    publishedAt: "June 10, 2026",
+    sourceUrl: "https://example.com/demo",
     category: "Enterprise AI",
     product: "Claude Managed Agents",
+    preview: "First english paragraph.",
     blocks: [
       {
         type: "paragraph",
@@ -31,7 +32,7 @@ describe("ArticlePage", () => {
     render(
       <MemoryRouter initialEntries={["/article/demo-article"]}>
         <Routes>
-          <Route path="/article/:slug" element={<ArticlePage />} />
+          <Route path="/article/:id" element={<ArticlePage />} />
         </Routes>
       </MemoryRouter>
     );
@@ -53,7 +54,7 @@ describe("ArticlePage", () => {
     const { container } = render(
       <MemoryRouter initialEntries={["/article/demo-article"]}>
         <Routes>
-          <Route path="/article/:slug" element={<ArticlePage />} />
+          <Route path="/article/:id" element={<ArticlePage />} />
         </Routes>
       </MemoryRouter>
     );
@@ -84,7 +85,7 @@ describe("ArticlePage", () => {
     render(
       <MemoryRouter initialEntries={["/article/demo-article"]}>
         <Routes>
-          <Route path="/article/:slug" element={<ArticlePage />} />
+          <Route path="/article/:id" element={<ArticlePage />} />
         </Routes>
       </MemoryRouter>
     );
@@ -102,7 +103,7 @@ describe("ArticlePage", () => {
     const { container } = render(
       <MemoryRouter initialEntries={["/article/demo-article"]}>
         <Routes>
-          <Route path="/article/:slug" element={<ArticlePage />} />
+          <Route path="/article/:id" element={<ArticlePage />} />
         </Routes>
       </MemoryRouter>
     );
@@ -140,11 +141,11 @@ describe("ArticlePage", () => {
     expect(container.querySelector(".topbar--hidden")).not.toBeInTheDocument();
   });
 
-  it("shows date, category, and product metadata as labels and values", async () => {
+  it("shows date, category, product, and source metadata as labels and values", async () => {
     render(
       <MemoryRouter initialEntries={["/article/demo-article"]}>
         <Routes>
-          <Route path="/article/:slug" element={<ArticlePage />} />
+          <Route path="/article/:id" element={<ArticlePage />} />
         </Routes>
       </MemoryRouter>
     );
@@ -154,11 +155,16 @@ describe("ArticlePage", () => {
     expect(within(metadata).getByText("Date")).toBeInTheDocument();
     expect(within(metadata).getByText("Category")).toBeInTheDocument();
     expect(within(metadata).getByText("Product")).toBeInTheDocument();
-    expect(within(metadata).getByText("June 10, 2026")).toBeInTheDocument();
+    expect(within(metadata).getByText("Source")).toBeInTheDocument();
+    expect(within(metadata).getByText("2026-06-10")).toBeInTheDocument();
     expect(within(metadata).getByText("Enterprise AI")).toBeInTheDocument();
     expect(within(metadata).getByText("Claude Managed Agents")).toBeInTheDocument();
+    expect(within(metadata).getByRole("link", { name: "原文" })).toHaveAttribute(
+      "href",
+      "https://example.com/demo"
+    );
     expect(
-      screen.queryByText("June 10, 2026 | Enterprise AI | Claude Managed Agents")
+      screen.queryByText("2026-06-10 | Enterprise AI | Claude Managed Agents")
     ).not.toBeInTheDocument();
   });
 });

@@ -73,7 +73,7 @@ export function validateArticle(article: ArticleRecord) {
       next.language !== "en"
     ) {
       throw new Error(
-        `Consecutive same-level standalone headings in "${article.slug}": "${current.text}" / "${next.text}"`
+        `Consecutive same-level standalone headings in "${article.id}": "${current.text}" / "${next.text}"`
       );
     }
   }
@@ -165,14 +165,13 @@ export function parseArticle(filename: string, markdown: string): ArticleRecord 
   flushParagraph();
 
   const blocks = pairBlocks(rawBlocks, { articleId: slug });
-  const preview = blocks.find((block) => block.type === "paragraph")?.english;
+  const preview = blocks.find((block) => block.type === "paragraph")?.english ?? "";
   const article: ArticleRecord = {
-    slug,
+    id: slug,
     title: metadata.title,
-    sourceUrl: metadata.sourceUrl,
-    publishedAt: metadata.publishedAt,
-    category: metadata.category,
-    product: metadata.product,
+    sourceUrl: metadata.sourceUrl ?? "",
+    category: metadata.category ?? "",
+    product: metadata.product ?? "",
     preview,
     blocks,
     warnings

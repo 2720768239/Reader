@@ -8,9 +8,8 @@ type ArticleCardProps = ArticleIndexEntry & {
 };
 
 export default function ArticleCard({
-  slug,
+  id,
   title,
-  publishedAt,
   category,
   product,
   primaryCategory
@@ -19,13 +18,13 @@ export default function ArticleCard({
 
   return (
     <article className="article-card" role="listitem">
-      <Link className="article-card__link" to={`/article/${slug}`}>
+      <Link className="article-card__link" to={`/article/${id}`}>
         <h2>{title}</h2>
         <ArticleMetadata
           category={categoryText}
           className="article-card__facts"
+          id={id}
           product={product}
-          publishedAt={publishedAt}
         />
       </Link>
     </article>

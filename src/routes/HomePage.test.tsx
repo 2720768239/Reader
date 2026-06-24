@@ -8,26 +8,24 @@ import HomePage from "./HomePage";
 vi.mock("../lib/content/loaders", () => ({
   loadArticleIndex: () => [
     {
-      slug: "june-update",
+      id: "20260618",
       title: "June Release Notes",
-      publishedAt: "June 18, 2026",
       category: "Product announcements",
       product: "Claude Code",
       preview: "A roundup of June product updates."
     },
     {
-      slug: "agents-guide",
+      id: "20260610",
       title: "Managed Agents Guide",
-      publishedAt: "June 10, 2026",
       category: "Enterprise AI",
       product: "Claude Managed Agents",
       preview: "A field guide for teams deploying agents."
     },
     {
-      slug: "apple-framework",
+      id: "20260502",
       title: "Building on Apple platforms",
-      publishedAt: "May 2, 2026",
       category: "Developer guides",
+      product: "Apple Foundation Models",
       preview: "How to build native workflows on Apple devices."
     }
   ]
@@ -131,7 +129,7 @@ describe("HomePage", () => {
     expect(within(article).getByText("Date")).toBeInTheDocument();
     expect(within(article).getByText("Category")).toBeInTheDocument();
     expect(within(article).getByText("Product")).toBeInTheDocument();
-    expect(within(article).getByText("June 10, 2026")).toBeInTheDocument();
+    expect(within(article).getByText("2026-06-10")).toBeInTheDocument();
     expect(within(article).getByText("Enterprise AI")).toBeInTheDocument();
     expect(within(article).getByText("Claude Managed Agents")).toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: "June Release Notes" })).not.toBeInTheDocument();
@@ -157,10 +155,10 @@ describe("HomePage", () => {
     expect(within(metadata).getByText("Date")).toBeInTheDocument();
     expect(within(metadata).getByText("Category")).toBeInTheDocument();
     expect(within(metadata).getByText("Product")).toBeInTheDocument();
-    expect(within(metadata).getByText("June 18, 2026")).toBeInTheDocument();
+    expect(within(metadata).getByText("2026-06-18")).toBeInTheDocument();
     expect(within(metadata).getByText("Product announcements")).toBeInTheDocument();
     expect(within(metadata).getByText("Claude Code")).toBeInTheDocument();
-    expect(screen.queryByText("June 18, 2026 | Product announcements | Claude Code")).not.toBeInTheDocument();
+    expect(screen.queryByText("2026-06-18 | Product announcements | Claude Code")).not.toBeInTheDocument();
     expect(screen.queryByText("Reading")).not.toBeInTheDocument();
     expect(screen.queryByText("English with tap-to-translate")).not.toBeInTheDocument();
   });

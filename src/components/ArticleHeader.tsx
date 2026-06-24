@@ -2,16 +2,18 @@ import ArticleMetadata from "./ArticleMetadata";
 
 type ArticleHeaderProps = {
   title: string;
-  publishedAt?: string;
+  id: string;
   category?: string;
   product?: string;
+  sourceUrl?: string;
 };
 
 export default function ArticleHeader({
   title,
-  publishedAt,
+  id,
   category,
-  product
+  product,
+  sourceUrl
 }: ArticleHeaderProps) {
   return (
     <header className="article-header">
@@ -19,8 +21,9 @@ export default function ArticleHeader({
       <ArticleMetadata
         category={category}
         className="article-header__meta"
+        id={id}
         product={product}
-        publishedAt={publishedAt}
+        sourceUrl={sourceUrl}
       />
     </header>
   );

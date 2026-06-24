@@ -11,11 +11,11 @@ import {
   storeReaderPreferences,
   type ReaderPreferences
 } from "../lib/readerPreferences";
-import { loadArticleBySlug } from "../lib/content/loaders";
+import { loadArticleById } from "../lib/content/loaders";
 import type { ArticleRecord } from "../lib/content/types";
 
 export default function ArticlePage() {
-  const { slug = "" } = useParams();
+  const { id = "" } = useParams();
   const lastScrollYRef = useRef(0);
   const [activeParagraphId, setActiveParagraphId] = useState<string | null>(null);
   const [article, setArticle] = useState<ArticleRecord | null>(null);
@@ -38,7 +38,7 @@ export default function ArticlePage() {
   useEffect(() => {
     let cancelled = false;
 
-    loadArticleBySlug(slug).then((nextArticle) => {
+    loadArticleById(id).then((nextArticle) => {
       if (!cancelled) {
         setArticle(nextArticle);
       }
@@ -47,7 +47,7 @@ export default function ArticlePage() {
     return () => {
       cancelled = true;
     };
-  }, [slug]);
+  }, [id]);
 
   useEffect(() => {
     if (!article) {
@@ -159,8 +159,9 @@ export default function ArticlePage() {
       >
         <ArticleHeader
           category={article.category}
+          id={article.id}
           product={article.product}
-          publishedAt={article.publishedAt}
+          sourceUrl={article.sourceUrl}
           title={article.title}
         />
 

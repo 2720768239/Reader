@@ -1,19 +1,11 @@
 import { useMemo, useState } from "react";
 
 import ArticleCard from "../components/ArticleCard";
+import { idToDateLabel } from "../lib/content/id";
 import { loadArticleIndex } from "../lib/content/loaders";
 import type { ArticleIndexEntry } from "../lib/content/types";
 
 type SortOption = "newest" | "oldest" | "title";
-
-function parseArticleDate(value?: string): number {
-  if (!value) {
-    return Number.NEGATIVE_INFINITY;
-  }
-
-  const timestamp = Date.parse(value);
-  return Number.isNaN(timestamp) ? Number.NEGATIVE_INFINITY : timestamp;
-}
 
 function splitCategories(category?: string): string[] {
   if (!category) {
@@ -70,7 +62,7 @@ export default function HomePage() {
           article.preview,
           article.category,
           article.product,
-          article.publishedAt
+          idToDateLabel(article.id)
         ]
           .filter(Boolean)
           .join(" ")
@@ -83,10 +75,9 @@ export default function HomePage() {
           return left.title.localeCompare(right.title);
         }
 
-        const leftDate = parseArticleDate(left.publishedAt);
-        const rightDate = parseArticleDate(right.publishedAt);
-
-        return sort === "oldest" ? leftDate - rightDate : rightDate - leftDate;
+        return sort === "oldest"
+          ? left.id.localeCompare(right.id)
+          : right.id.localeCompare(left.id);
       });
   }, [articles, categoryFilter, query, sort]);
 
@@ -165,7 +156,7 @@ export default function HomePage() {
         <div aria-label="Article list" className="article-list" role="list">
           {visibleArticles.map((article) => (
             <ArticleCard
-              key={article.slug}
+              key={article.id}
               {...article}
               primaryCategory={splitCategories(article.category)[0]}
             />

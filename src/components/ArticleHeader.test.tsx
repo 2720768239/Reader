@@ -8,8 +8,9 @@ describe("ArticleHeader", () => {
     render(
       <ArticleHeader
         category="Agents"
+        id="20260610"
         product="Claude Managed Agents"
-        publishedAt="June 10, 2026"
+        sourceUrl="https://example.com/demo"
         title="Demo Article"
       />
     );
@@ -21,9 +22,16 @@ describe("ArticleHeader", () => {
     expect(within(meta).getByText("Date")).toBeInTheDocument();
     expect(within(meta).getByText("Category")).toBeInTheDocument();
     expect(within(meta).getByText("Product")).toBeInTheDocument();
-    expect(within(meta).getByText("June 10, 2026")).toBeInTheDocument();
+    expect(within(meta).getByText("Source")).toBeInTheDocument();
+    expect(within(meta).getByText("2026-06-10")).toBeInTheDocument();
     expect(within(meta).getByText("Agents")).toBeInTheDocument();
     expect(within(meta).getByText("Claude Managed Agents")).toBeInTheDocument();
-    expect(screen.queryByText("June 10, 2026 | Agents | Claude Managed Agents")).not.toBeInTheDocument();
+    expect(within(meta).getByRole("link", { name: "原文" })).toHaveAttribute(
+      "href",
+      "https://example.com/demo"
+    );
+    expect(
+      screen.queryByText("2026-06-10 | Agents | Claude Managed Agents")
+    ).not.toBeInTheDocument();
   });
 });

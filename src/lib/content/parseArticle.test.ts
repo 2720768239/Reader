@@ -30,11 +30,11 @@ Another english paragraph.
     const article = parseArticle("01-example.md", markdown);
 
     expect(article).toEqual({
-      slug: "01-example",
+      id: "01-example",
       title: "Example Title",
       sourceUrl: "https://example.com/post",
-      publishedAt: "June 10, 2026",
       category: "Agents",
+      product: "",
       preview: "English intro paragraph.",
       blocks: [
         {
@@ -81,7 +81,6 @@ English paragraph.
     const article = parseArticle("another-example.md", markdown);
 
     expect(article.sourceUrl).toBe("https://example.com/another");
-    expect(article.publishedAt).toBe("2026-06-17");
     expect(article.category).toBe("Product announcements");
     expect(article.blocks).toEqual([
       {
@@ -109,7 +108,6 @@ English paragraph.
 
     const article = parseArticle("artifacts.md", markdown);
 
-    expect(article.publishedAt).toBe("June 18, 2026");
     expect(article.category).toBe("Product announcements");
     expect(article.product).toBe("Claude Code");
   });
@@ -201,8 +199,12 @@ English paragraph.
   it("fails validation when same-level english and localized headings remain consecutive", () => {
     expect(() =>
       validateArticle({
-        slug: "validation-example",
+        id: "validation-example",
         title: "Validation Example",
+        sourceUrl: "",
+        category: "",
+        product: "",
+        preview: "",
         blocks: [
           {
             type: "heading",
