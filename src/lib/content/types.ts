@@ -1,10 +1,3 @@
-export type RawHeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
-
-export type RawBlock =
-  | { type: "heading"; level: RawHeadingLevel; text: string }
-  | { type: "paragraph"; text: string }
-  | { type: "image"; src: string; alt: string };
-
 export type ContentLanguage = "en" | "zh" | "mixed";
 
 export type ArticleHeadingBlock =

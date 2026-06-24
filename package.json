@@ -9,8 +9,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test": "vitest run --globals --passWithNoTests",
-    "test:watch": "vitest --globals --passWithNoTests",
-    "import:articles": "tsx scripts/import-articles.ts"
+    "test:watch": "vitest --globals --passWithNoTests"
   },
   "dependencies": {
     "react": "^19.1.0",
