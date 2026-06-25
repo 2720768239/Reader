@@ -1,0 +1,71 @@
+name: Deploy Reader
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Package dist
+        run: tar -czf reader-dist.tar.gz -C dist .
+
+      - name: Setup SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.ALIYUN_SSH_KEY }}
+          SSH_HOST: ${{ secrets.ALIYUN_HOST }}
+          SSH_PORT: ${{ secrets.ALIYUN_PORT }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p "$SSH_PORT" "$SSH_HOST" >> ~/.ssh/known_hosts
+
+      - name: Upload dist package
+        env:
+          SSH_HOST: ${{ secrets.ALIYUN_HOST }}
+          SSH_PORT: ${{ secrets.ALIYUN_PORT }}
+          SSH_USER: ${{ secrets.ALIYUN_USER }}
+        run: |
+          scp -P "$SSH_PORT" reader-dist.tar.gz "$SSH_USER@$SSH_HOST:/tmp/reader-dist.tar.gz"
+
+      - name: Deploy on server
+        env:
+          SSH_HOST: ${{ secrets.ALIYUN_HOST }}
+          SSH_PORT: ${{ secrets.ALIYUN_PORT }}
+          SSH_USER: ${{ secrets.ALIYUN_USER }}
+        run: |
+          ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" '
+            set -euo pipefail
+            mkdir -p /var/www/reader
+            rm -rf /tmp/reader-dist
+            mkdir -p /tmp/reader-dist
+            tar -xzf /tmp/reader-dist.tar.gz -C /tmp/reader-dist
+            rsync -av --delete /tmp/reader-dist/ /var/www/reader/
+            rm -rf /tmp/reader-dist /tmp/reader-dist.tar.gz
+          '
