@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import type { ArticleBlock } from "../lib/content/types";
 import ParagraphBlock from "./ParagraphBlock";
 
@@ -27,40 +29,94 @@ export default function ArticleContent({
   blocks,
   onParagraphSelect
 }: ArticleContentProps) {
+  const [expandedImage, setExpandedImage] = useState<{
+    alt: string;
+    src: string;
+  } | null>(null);
+
   return (
-    <section className="article-content">
-      {blocks.map((block, index) => {
-        const key = `${block.type}-${index}`;
+    <>
+      {expandedImage ? (
+        <>
+          <button
+            aria-label="Close expanded image"
+            className="reader-overlay reader-overlay--image"
+            onClick={() => {
+              setExpandedImage(null);
+            }}
+            type="button"
+          />
+          <div
+            aria-label="Expanded image view"
+            className="article-image-lightbox"
+            role="dialog"
+          >
+            <button
+              aria-label={`Shrink image: ${expandedImage.alt}`}
+              className="article-image-lightbox__button"
+              onClick={() => {
+                setExpandedImage(null);
+              }}
+              type="button"
+            >
+              <img
+                alt={`${expandedImage.alt} enlarged`}
+                className="article-image article-image--expanded"
+                src={expandedImage.src}
+              />
+            </button>
+          </div>
+        </>
+      ) : null}
 
-        if (block.type === "heading") {
-          return renderHeading(block, key);
-        }
+      <section className="article-content">
+        {blocks.map((block, index) => {
+          const key = `${block.type}-${index}`;
 
-        if (block.type === "image") {
+          if (block.type === "heading") {
+            return renderHeading(block, key);
+          }
+
+          if (block.type === "image") {
+            const imageSrc = resolveImageSrc(block.src);
+
+            return (
+              <button
+                aria-label={`Expand image: ${block.alt}`}
+                className="article-image-button"
+                key={key}
+                onClick={() => {
+                  setExpandedImage({
+                    alt: block.alt,
+                    src: imageSrc
+                  });
+                }}
+                type="button"
+              >
+                <img
+                  alt={block.alt}
+                  className="article-image"
+                  src={imageSrc}
+                />
+              </button>
+            );
+          }
+
+          if (block.type === "standalone") {
+            return <p className="article-standalone" key={key}>{block.text}</p>;
+          }
+
           return (
-            <img
-              alt={block.alt}
-              className="article-image"
+            <ParagraphBlock
+              id={block.id}
+              isActive={activeParagraphId === block.id}
               key={key}
-              src={resolveImageSrc(block.src)}
+              onSelect={() => onParagraphSelect(block.chinese, block.id)}
+              text={block.english}
             />
           );
-        }
-
-        if (block.type === "standalone") {
-          return <p className="article-standalone" key={key}>{block.text}</p>;
-        }
-
-        return (
-          <ParagraphBlock
-            id={block.id}
-            isActive={activeParagraphId === block.id}
-            key={key}
-            onSelect={() => onParagraphSelect(block.chinese, block.id)}
-            text={block.english}
-          />
-        );
-      })}
-    </section>
+        })}
+      </section>
+    </>
   );
 }

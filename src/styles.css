@@ -512,6 +512,45 @@ a:focus-visible {
   object-fit: cover;
 }
 
+.article-image-button {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.article-image-button:hover .article-image,
+.article-image-button:focus-visible .article-image {
+  border-color: color-mix(in srgb, var(--ink-mark-strong) 58%, var(--ink-border-soft));
+}
+
+.article-image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 46;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.article-image-lightbox__button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: min(72rem, calc(100vw - 2.5rem));
+  max-height: calc(100vh - 2.5rem);
+}
+
+.article-image--expanded {
+  width: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 2.5rem);
+  object-fit: contain;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+}
+
 .article-standalone {
   color: var(--ink-text-secondary);
   line-height: 1.8;
@@ -779,6 +818,11 @@ a:focus-visible {
 
 .reader-overlay--drawer {
   z-index: 41;
+}
+
+.reader-overlay--image {
+  z-index: 45;
+  background: rgba(24, 22, 18, 0.72);
 }
 
 .reader-settings-sheet {
