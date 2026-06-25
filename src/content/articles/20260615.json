@@ -147,7 +147,7 @@
   ],
   "warnings": [
     {
-      "code": "table-skipped",
+      "code": "table",
       "message": "Skipped embedded table in 'meet-the-winners-of-built-with-opus-4-7-claude-code-hackathon'."
     }
   ]

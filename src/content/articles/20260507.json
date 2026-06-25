@@ -1,0 +1,167 @@
+{
+  "id": "20260507",
+  "title": "Collaborate with Claude across Excel, PowerPoint, Word and Outlook",
+  "sourceUrl": "https://claude.com/blog/collaborate-with-claude-across-excel-powerpoint-word-and-outlook",
+  "category": "Product announcements",
+  "product": "Claude Enterprise",
+  "preview": "Starting today, Claude for Excel, PowerPoint, and Word are generally available, and Claude for Outlook is now in public beta for all paid plans.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Starting today, Claude for Excel, PowerPoint, and Word are generally available, and Claude for Outlook is now in public beta for all paid plans. As Claude moves between tasks in your Microsoft apps, it keeps the full context of your conversation.",
+      "chinese": "从今天起，Claude for Excel、PowerPoint 和 Word 已正式可用，Claude for Outlook 也已在所有付费套餐中进入公开测试阶段。当 Claude 在你的 Microsoft 应用任务之间切换时，它会保留整段对话的完整上下文。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "One conversation across four apps",
+      "chinese": "一段对话贯穿四个应用"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Most work doesn't live in one application, so Claude moves between them as you do. Triage an email in Outlook, open the attachment in Word to draft a memo in your team's template, build the supporting analysis in Excel, and turn it into a deck in PowerPoint - all without re-explaining what you're working on. Adjust an assumption in Excel and the chart in PowerPoint and the number in your Word memo automatically update, too.",
+      "chinese": "大多数工作并不只存在于一个应用里，所以 Claude 会像你一样在这些应用之间流转。你可以先在 Outlook 里梳理邮件，再在 Word 中打开附件并按团队模板起草备忘录，在 Excel 里完成支撑分析，最后把它整理成 PowerPoint 演示文稿，全程都不需要重新解释你正在做什么。你在 Excel 中调整一个假设后，PowerPoint 里的图表以及 Word 备忘录中的数字也会自动更新。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "Claude works across open files, so keep the spreadsheet, deck, and memo open side by side and changes will flow between them.",
+      "chinese": "Claude 能跨打开的文件协同工作，所以你可以把电子表格、演示文稿和备忘录并排打开，修改会在它们之间流动。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "Conversations persist with each file, so you can close the sidebar, reopen it the next day, and pick up where you left off using your keyboard or your voice.",
+      "chinese": "对话会随着每个文件持续保留，因此你可以关闭侧边栏，第二天再重新打开，并通过键盘或语音从上次中断的地方继续。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Claude for Outlook",
+      "chinese": "Claude for Outlook"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "Claude for Outlook brings Claude into your inbox. Ask Claude to triage your inbox and it sorts messages by what needs your response, what it can draft for you, and what's noise. Replies land as drafts in Outlook's compose pane with recipients, subject, and body filled in. Calendar invites check attendee availability and open in Outlook's native event form.",
+      "chinese": "Claude for Outlook 把 Claude 带进了你的收件箱。你可以让 Claude 帮你整理收件箱，它会把邮件分成需要你回复的、它可以代你起草的，以及属于噪音的内容。回复会以草稿形式出现在 Outlook 的撰写面板中，并自动填好收件人、主题和正文。日历邀请也会检查与会者的可用时间，并在 Outlook 原生的事件表单中打开。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "Open an attachment in Word or Excel and Claude already knows what the sender asked for. You review every reply and calendar invite before it goes out, and nothing goes out until you click send.",
+      "chinese": "当你在 Word 或 Excel 中打开附件时，Claude 已经知道发件人提出了什么要求。你会在每一封回复和每一个日历邀请发出前进行审核，在你点击发送之前，任何内容都不会被发出。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Deploying Claude for Microsoft 365 across your organization",
+      "chinese": "在整个组织内部署 Claude for Microsoft 365"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "Claude for Excel, PowerPoint, and Word are now generally available, with the controls IT admins and organizations need. One AppSource listing covers Excel, PowerPoint, and Word, and a separate listing adds Outlook in beta. Admins can deploy both from the Microsoft admin center.",
+      "chinese": "Claude for Excel、PowerPoint 和 Word 现已正式可用，并提供 IT 管理员和组织所需的控制能力。一个 AppSource 列表覆盖 Excel、PowerPoint 和 Word，另一个单独的列表则加入了处于测试阶段的 Outlook。管理员可以通过 Microsoft 管理中心部署这两者。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "Enterprise admins can configure OpenTelemetry to stream prompts, tool calls, and document references to their own collector, so security teams see exactly what Claude does across every app. The Analytics API breaks out activity per user, per app, per day.",
+      "chinese": "企业管理员可以配置 OpenTelemetry，把提示词、工具调用和文档引用流式发送到自己的收集器中，这样安全团队就能准确看到 Claude 在每个应用里的具体操作。Analytics API 还可以按用户、按应用、按天拆分活动数据。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "Organizations can access all four add-ins with a Claude account, or route traffic through an existing LLM gateway to Claude models running on Amazon Bedrock, Google Cloud's Vertex AI, or Microsoft Foundry.",
+      "chinese": "组织可以通过一个 Claude 账户访问这四个加载项，也可以把流量路由到现有的 LLM 网关，接入运行在 Amazon Bedrock、Google Cloud Vertex AI 或 Microsoft Foundry 上的 Claude 模型。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "Microsoft 365 Copilot customers can also work with Claude AI models directly within Excel and PowerPoint.",
+      "chinese": "Microsoft 365 Copilot 的客户也可以直接在 Excel 和 PowerPoint 中使用 Claude AI 模型。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "How organizations use Claude for Microsoft 365",
+      "chinese": "组织如何使用 Claude for Microsoft 365"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "\"We can instruct Claude to build a style guide from an executive's prior written communications so our EAs can draft their emails in their voice. That's high-leverage work the team would never have time to set up by hand.\"",
+      "chinese": "“我们可以让 Claude 根据高管过去的书面沟通内容生成一份风格指南，这样行政助理团队就能用他们的语气来起草邮件。这类高杠杆工作，团队如果靠手工几乎永远没有时间去搭建。”"
+    },
+    {
+      "type": "standalone",
+      "text": "Ben Letalik, Sr. Director, Digital Transformation & Innovation",
+      "language": "en"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "\"Claude for M365 is being rapidly adopted by ServiceNow. Claude does the work in Excel itself, instead of asking us to move content between tools, driving step change in productivity.\"",
+      "chinese": "“ServiceNow 正在快速采用 Claude for M365。Claude 直接在 Excel 里完成工作，而不是让我们在不同工具之间来回搬运内容，这带来了生产力上的跃迁式提升。”"
+    },
+    {
+      "type": "standalone",
+      "text": "Rajeev Sethi, GVP Enterprise Technologies",
+      "language": "en"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "\"Our investment professionals live in data and analytical models, and Claude for Excel meets them there. Analysts are using it to build and update coverage models, separate signal from noise, and pressure-test their work - all with a step-change in efficiency.\"",
+      "chinese": "“我们的投资专业人员每天都在与数据和分析模型打交道，而 Claude for Excel 正好能在那个工作场景中帮助他们。分析师正在用它构建和更新覆盖模型、从噪音中识别信号，并对他们的工作进行压力测试，而且效率有了跃迁式的提升。”"
+    },
+    {
+      "type": "standalone",
+      "text": "Atte Lahtiranta, Head of Core Engineering",
+      "language": "en"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "\"Claude in Excel allows my teams to build an initial version of complex models faster, enabling them to focus on refining the model, pressure testing inputs and assumption, and exploring more scenarios and trade-offs. This helps us have richer and deeper discussions with our clients earlier.\"",
+      "chinese": "“Claude in Excel 让我的团队能够更快地构建复杂模型的初始版本，从而把精力放在完善模型、对输入和假设做压力测试，以及探索更多场景和权衡上。这帮助我们更早与客户展开更丰富、更深入的讨论。”"
+    },
+    {
+      "type": "standalone",
+      "text": "Gene Rapoport, Head of Private Equity AI Practice",
+      "language": "en"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "\"Claude enables a seamless transition from rough ideas to polished, branded deliverables across presentation, document and spreadsheet applications without disrupting the workflow. That end-to-end consistency has been a significant time-saver, especially when quality, formatting, and speed all matter.\"",
+      "chinese": "“Claude 让粗略想法可以在不打断工作流程的情况下，顺畅地转化为带有品牌风格的成熟交付物，并贯穿演示文稿、文档和电子表格应用。这种端到端的一致性显著节省了时间，尤其是在质量、格式和速度都很重要的时候。”"
+    },
+    {
+      "type": "standalone",
+      "text": "Vivek Kulkarni, US AI Transformation Leader",
+      "language": "en"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Getting started",
+      "chinese": "开始使用"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "All Mac and Windows users on paid plans can access Claude for Microsoft 365. Claude for Outlook is available in beta on all paid plans. Admins can deploy these add-ins from Microsoft AppSource through the Microsoft admin center.",
+      "chinese": "所有使用付费套餐的 Mac 和 Windows 用户都可以使用 Claude for Microsoft 365。Claude for Outlook 已在所有付费套餐中以测试版形式提供。管理员可以通过 Microsoft 管理中心从 Microsoft AppSource 部署这些加载项。"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "thematic-break",
+      "message": "Skipped decorative separator after the introduction."
+    }
+  ]
+}

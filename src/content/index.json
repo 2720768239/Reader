@@ -140,6 +140,13 @@
     "preview": "Starting today, Claude Managed Agents can operate in a sandbox you control and connect to your private Model Context Protocol (MCP) servers. Both the sandbox where an agent executes tools and the services it reaches run within the established boundaries of your enterprise, under your security and runtime controls."
   },
   {
+    "id": "20260507",
+    "title": "Collaborate with Claude across Excel, PowerPoint, Word and Outlook",
+    "category": "Product announcements",
+    "product": "Claude Enterprise",
+    "preview": "Starting today, Claude for Excel, PowerPoint, and Word are generally available, and Claude for Outlook is now in public beta for all paid plans."
+  },
+  {
     "id": "20260506",
     "title": "New in Claude Managed Agents: dreaming, outcomes, and multiagent orchestration",
     "category": "Product announcements",

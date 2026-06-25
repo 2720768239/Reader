@@ -243,7 +243,7 @@
   ],
   "warnings": [
     {
-      "code": "table-skipped",
+      "code": "table",
       "message": "Skipped comparison table of 7 methods in 'steering-claude-code-skills-hooks-rules-subagents-and-more'."
     }
   ]
