@@ -22,40 +22,44 @@ A bilingual (English/Chinese) Claude blog article reader built with React. Artic
 - `alt`: Chinese alt text
 - Placed after paragraphs, before subheadings
 
-## Current State (as of June 24, 2026)
+## Current State (as of June 25, 2026)
 
-### Articles: 22 entries in index.json
+### Articles: 26 entries in index.json
 All in `src/content/articles/*.json`, all valid schema (no slug/publishedAt).
 
 | ID | Title | Product | Category |
 |----|-------|---------|----------|
+| 20260624 | Agent identity in Claude Tag | Claude | Claude Code |
+| 20260622 | Full Claude Desktop on AWS, Google Cloud, Microsoft Foundry | Claude Enterprise | Enterprise AI |
+| 20260618-02 | Steering Claude Code: CLAUDE.md, skills, hooks, rules, subagents | Claude Code | Claude Code |
 | 20260618-01 | Claude Code now supports artifacts | Claude Code | Product announcements |
 | 20260618 | Centrally manage authorization for MCP connectors | Claude Platform | Enterprise AI, Product announcements |
 | 20260617-02 | Meet the winners of our Claude Opus 4.8 Build Day hackathon | Claude Code | Claude Code |
-| 20260617-01 | Secure access to the Claude Platform with Workload Identity Federation | Claude Platform | Product announcements |
+| 20260617-01 | Secure access to Claude Platform with Workload Identity Federation | Claude Platform | Product announcements |
 | 20260617 | Claude Design now stays on brand for daily work | Claude Design | Product announcements |
+| 20260615 | Meet the winners of Built with Opus 4.7 Claude Code hackathon | Claude Code | Claude Code |
 | 20260610 | The evolution of agentic surfaces: building with Claude Managed Agents | Claude Managed Agents | Agents / Claude Platform |
-| 20260609 | New in Claude Managed Agents: run agents on a schedule and store environment variables in vaults | Claude Managed Agents | Product announcements |
-| 20260608 | Building intelligent apps for Apple platforms with Claude in the Foundation Models framework | API | Product announcements |
-| 20260605-01 | How one Anthropic seller rebuilt his team's workflows with Claude Code | Claude Code | Claude Code, Enterprise AI |
+| 20260609 | New in Claude Managed Agents: run agents on schedule, vaults | Claude Managed Agents | Product announcements |
+| 20260608 | Building intelligent apps for Apple platforms with Claude in FM framework | API | Product announcements |
+| 20260605-01 | How one Anthropic seller rebuilt workflows with Claude Code | Claude Code | Claude Code, Enterprise AI |
 | 20260605 | The Claude Cowork product guide | Claude Cowork | Enterprise AI / Claude Cowork |
 | 20260603-01 | Running an AI-native Engineering Org | Claude Code | Claude Code |
 | 20260603 | Lessons from building Claude Code: How we use skills | Claude Code | Claude Code |
 | 20260528 | Introducing Dynamic Workflows in Claude Code | Claude Code | Product announcements |
-| 20260527-01 | How CodeRabbit used Claude to build an agent orchestration system | Claude Code | Claude Code |
+| 20260527-01 | How CodeRabbit used Claude to build an agent orchestration | Claude Code | Claude Code |
 | 20260527 | Using LLMs to secure source code | Claude Code | Enterprise AI |
-| 20260519 | New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels | Claude Managed Agents | Product announcements |
-| 20260506 | New in Claude Managed Agents: dreaming, outcomes, and multiagent orchestration | Claude Managed Agents | Product announcements |
+| 20260519 | New in Claude Managed Agents: self-hosted sandboxes, MCP tunnels | Claude Managed Agents | Product announcements |
+| 20260506 | New in Claude Managed Agents: dreaming, outcomes, multiagent | Claude Managed Agents | Product announcements |
 | 20260423 | New connectors in Claude for everyday life | Claude | Product announcements |
 | 20260414 | Redesigning Claude Code on desktop for parallel agents | Claude Code | Claude Code |
 | 20260410 | Preparing your security program for AI-accelerated offense | Claude Enterprise | Agents |
-| 20260407 | Scaling Managed Agents: Decoupling the brain from the hands | Claude Managed Agents | Engineering |
+| 20260407 | Scaling Managed Agents: Decoupling brain from hands | Claude Managed Agents | Engineering |
 | 20260312 | Claude now creates interactive charts, diagrams and visualizations | Claude | Product announcements |
 
 ### Valid Product values
 `API`, `Claude`, `Claude Code`, `Claude Cowork`, `Claude Design`, `Claude Enterprise`, `Claude Managed Agents`, `Claude Platform`
 
-### Image directories: 22 under `public/images/`
+### Image directories: 26 under `public/images/`
 All referenced images exist on disk. Missing images were downloaded from source URLs.
 
 ## Work Completed This Session
@@ -95,6 +99,12 @@ All referenced images exist on disk. Missing images were downloaded from source 
 ### 7. Verification
 - `npm run typecheck`: clean
 - `npm test`: 32/32 passing across 8 test files
+
+### 8. New article creation
+- Created `20260624.json`, `20260622.json`, `20260618-02.json`, `20260615.json`
+- Added all 4 to index.json in correct descending-ID order
+- Index now has 26 entries
+- Article creation scripts deleted after use
 
 ## Known Issues / Potential Work
 - `20260312.json` and `20260605.json` have **no heading translation structure** (headings lack english/chinese keys entirely) — may need translation

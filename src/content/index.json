@@ -1,5 +1,26 @@
 [
   {
+    "id": "20260624",
+    "title": "Agent identity in Claude Tag: a new access model for autonomous, team-wide AI",
+    "category": "Claude Code",
+    "product": "Claude",
+    "preview": "For an AI agent to do its best work on a human-agent team, it needs access to the same tools, documents, and context humans have."
+  },
+  {
+    "id": "20260622",
+    "title": "The full Claude Desktop experience on AWS, Google Cloud, and Microsoft Foundry",
+    "category": "Enterprise AI",
+    "product": "Claude Enterprise",
+    "preview": "Organizations that use Claude Desktop through AWS, Google Cloud, and Microsoft Foundry now get the full Desktop experience — chat, Claude Cowork, and Claude Code, all in one app."
+  },
+  {
+    "id": "20260618-02",
+    "title": "Steering Claude Code: CLAUDE.md files, skills, hooks, rules, subagents and more",
+    "category": "Claude Code",
+    "product": "Claude Code",
+    "preview": "There are seven methods for instructing Claude's behavior: CLAUDE.md files, rules, skills, subagents, hooks, output styles, and appending the system prompt."
+  },
+  {
     "id": "20260618-01",
     "title": "Claude Code now supports artifacts",
     "category": "Product announcements",
@@ -33,6 +54,13 @@
     "category": "Product announcements",
     "product": "Claude Design",
     "preview": "Claude Design now sticks to your design system across projects, works fluidly with Claude Code, lets you edit directly on the canvas, and connects to more tools you already use. It has a new home in the sidebar on the Claude desktop app; you can also find it at claude.ai/design."
+  },
+  {
+    "id": "20260615",
+    "title": "Meet the winners of the Built with Opus 4.7 Claude Code hackathon",
+    "category": "Claude Code",
+    "product": "Claude Code",
+    "preview": "From medical training and electronics repair to coding education and factory maintenance, see the projects built by the winners of our latest virtual hackathon."
   },
   {
     "id": "20260610",

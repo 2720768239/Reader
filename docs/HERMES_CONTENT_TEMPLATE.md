@@ -85,7 +85,7 @@ Each article file must be valid UTF-8 JSON and follow this shape:
 : Short category label used by the Reader home page. Prefer stable labels such as `AI / Engineering`, `Product`, `Research`, or `Security`.
 
 `product`
-: **Required.** Product the article belongs to (e.g. `Claude Code`, `Claude Platform`, `Claude Managed Agents`, `API`, `Claude.ai`). Use `General` if no specific product applies.
+: **Required.** One of: `API`, `Claude`, `Claude Code`, `Claude Cowork`, `Claude Design`, `Claude Enterprise`, `Claude Managed Agents`, `Claude Platform`.
 
 `preview`
 : A short English preview. Prefer the first meaningful English paragraph. Do not put Chinese-only text here.

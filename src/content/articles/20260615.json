@@ -1,0 +1,154 @@
+{
+  "id": "20260615",
+  "title": "Meet the winners of the Built with Opus 4.7 Claude Code hackathon",
+  "sourceUrl": "https://claude.com/blog/meet-the-winners-of-built-with-opus-4-7-claude-code-hackathon",
+  "category": "Claude Code",
+  "product": "Claude Code",
+  "preview": "From medical training and electronics repair to coding education and factory maintenance, see the projects built by the winners of our latest virtual hackathon.",
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "First place: Medkit, Bedirhan Keskin",
+      "chinese": "第一名：Medkit，Bedirhan Keskin"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Bedirhan Keskin, an Istanbul-based physician-turned-software engineer, used Claude Managed Agents to build Medkit: a learning tool for medical residents or junior doctors.",
+      "chinese": "Bedirhan Keskin 是一位来自伊斯坦布尔的医生转软件工程师，他使用 Claude Managed Agents 构建了 Medkit：一个面向住院医师或初级医生的学习工具。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "With Medkit, medical students practice diagnosing and treating simulated patients.",
+      "chinese": "使用 Medkit，医学生可以练习诊断和治疗模拟患者。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "Bedirhan built Medkit across four separate Claude Code sessions, keeping each context clean and progressing on all at once.",
+      "chinese": "Bedirhan 在四个独立的 Claude Code 会话中构建了 Medkit，保持每个上下文的清洁并同时推进所有部分。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "Advice to other builders: Work with Claude as a thought partner, not just a coding agent.",
+      "chinese": "给其他构建者的建议：将 Claude 作为思考伙伴，而不仅仅是编码代理。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Second place: Wrench Board, Alexis Chapellier",
+      "chinese": "第二名：Wrench Board，Alexis Chapellier"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "Alexis Chapellier from France spent years fixing electronics before creating RepairMind, an AI-powered management platform for repair shops.",
+      "chinese": "来自法国的 Alexis Chapellier 在创建 RepairMind（一个 AI 驱动的维修店管理平台）之前，有多年维修电子设备的经验。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "His hackathon project, Wrench Board, helps independent technicians figure out complex repairs.",
+      "chinese": "他的黑客马拉松项目 Wrench Board 帮助独立技术人员解决复杂维修问题。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "Advice to other builders: Go deep in the brainstorm and push back on the model.",
+      "chinese": "给其他构建者的建议：深入头脑风暴并向模型提出挑战。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Third place: Maieutic, Paula Vasquez-Henriquez",
+      "chinese": "第三名：Maieutic，Paula Vasquez-Henriquez"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "Paula Vasquez-Henriquez, who teaches computer science at Universidad del Desarrollo in Concepcion, Chile, says over the past two years she is seeing more students pass tests without understanding their own code.",
+      "chinese": "在智利康塞普西翁 del Desarrollo 大学教授计算机科学的 Paula Vasquez-Henriquez 表示，过去两年她看到越来越多的学生在不理解自己代码的情况下通过考试。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "Maieutic is an IDE designed to make students slow down at key moments.",
+      "chinese": "Maieutic 是一个 IDE，旨在让学生在关键时刻放慢速度。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "Advice to other builders: Think before you build.",
+      "chinese": "给其他构建者的建议：先思考再构建。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Most Creative Use of Opus 4.7: Virtual Puppet Theater, Rene Hangstrup Moller",
+      "chinese": "Opus 4.7 最具创意使用：Virtual Puppet Theater，Rene Hangstrup Moller"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "Intrigued with Opus 4.7's spatial reasoning capabilities, full stack developer Rene Hangstrup Moller built Virtual Puppet Theater.",
+      "chinese": "受 Opus 4.7 空间推理能力的吸引，全栈开发者 Rene Hangstrup Moller 构建了 Virtual Puppet Theater。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "Advice to other builders: Plan time to create the demo video.",
+      "chinese": "给其他构建者的建议：留出时间制作演示视频。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Keep Thinking Prize: MaestrIA, Benjamin Torralbo",
+      "chinese": "Keep Thinking 奖：MaestrIA，Benjamin Torralbo"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "Benjamin Torralbo grew up apprenticing alongside his father, a certified carpenter in Chile.",
+      "chinese": "Benjamin Torralbo 从小跟随父亲学徒，他父亲是智利的一名认证木匠。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "His MaestrIA hackathon project solves both sides as a web app that gives ordinary people master-level home repair diagnostics.",
+      "chinese": "他的 MaestrIA 黑客马拉松项目从两方面解决了问题，作为一个 web 应用为普通人提供大师级的家庭维修诊断。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "Advice to other builders: Eval first, features later.",
+      "chinese": "给其他构建者的建议：先评估，后功能。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Best Use of Claude Managed Agents: ARIA, Idriss Benguezzou & Adam Hnaien",
+      "chinese": "Claude Managed Agents 最佳使用：ARIA，Idriss Benguezzou 和 Adam Hnaien"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "ARIA (Adaptive Runtime Intelligence) turns an experienced maintenance engineer's instincts into an affordable AI system that monitors factory machines.",
+      "chinese": "ARIA（自适应运行时智能）将经验丰富的维护工程师的本能转化为一个经济实惠的 AI 系统，用于监控工厂机器。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "Advice to other builders: Let Claude audit. Ask Claude to find if there is anything wrong with what you have already built.",
+      "chinese": "给其他构建者的建议：让 Claude 审计。让 Claude 发现你已构建的内容是否存在任何问题。"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "table-skipped",
+      "message": "Skipped embedded table in 'meet-the-winners-of-built-with-opus-4-7-claude-code-hackathon'."
+    }
+  ]
+}

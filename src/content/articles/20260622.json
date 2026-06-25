@@ -1,0 +1,107 @@
+{
+  "id": "20260622",
+  "title": "The full Claude Desktop experience on AWS, Google Cloud, and Microsoft Foundry",
+  "sourceUrl": "https://claude.com/blog/the-full-claude-desktop-experience-on-aws-google-cloud-and-microsoft-foundry",
+  "category": "Enterprise AI",
+  "product": "Claude Enterprise",
+  "preview": "Organizations that use Claude Desktop through AWS, Google Cloud, and Microsoft Foundry now get the full Desktop experience — chat, Claude Cowork, and Claude Code, all in one app.",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Organizations that use Claude Desktop through AWS, Google Cloud, and Microsoft Foundry now get the full Desktop experience — chat, Claude Cowork, and Claude Code, all in one app.",
+      "chinese": "通过 AWS、Google Cloud 和 Microsoft Foundry 使用 Claude Desktop 的组织现在可以获得完整的桌面体验——聊天、Claude Cowork 和 Claude Code，全部集成在一个应用中。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "Now IT teams can keep inference inside their own environment across products, and deploy Claude Desktop organization-wide with per-user SSO, MDM policy templates, an offline installer option, and an M365 connector that can run entirely on the device.",
+      "chinese": "现在 IT 团队可以跨产品将推理保留在自己的环境中，并通过每用户 SSO、MDM 策略模板、离线安装程序选项以及可完全在设备上运行的 M365 connector，在整个组织范围内部署 Claude Desktop。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "Inference runs on your cloud in the regions you configure and conversation history is stored locally. You control the endpoints data connectors reach and the aggregated telemetry Anthropic receives.",
+      "chinese": "推理在您配置区域的云上运行，对话历史记录存储在本地。您可以控制数据 connector 访问的端点以及 Anthropic 接收的汇总遥测数据。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "One surface for the entire organization",
+      "chinese": "面向整个组织的统一界面"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "Until today, customers using Claude Desktop through AWS, Google Cloud, and Microsoft Foundry only had access to Claude Cowork and Claude Code. Now, one deployment covers every role, and each surface has its own policy key, so you decide who gets what, and when.",
+      "chinese": "在此之前，通过 AWS、Google Cloud 和 Microsoft Foundry 使用 Claude Desktop 的客户只能访问 Claude Cowork 和 Claude Code。现在，一次部署即可覆盖所有角色，每个功能界面都有自己的策略密钥，由您决定谁在什么时候获得什么权限。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "Chat for quick answers and thinking through a problem. Claude Cowork for the work your people would rather hand off: Claude researches across approved sources, works with the files already on the device and builds the deliverable, surfacing results when it's done. Claude Code for engineers who want agentic coding without living in a terminal.",
+      "chinese": "Chat 用于快速解答和深入思考问题。Claude Cowork 用于处理员工更愿意交出去的工作：Claude 在已批准的来源中进行研究，处理设备上已有的文件，构建交付成果，并在完成后呈现结果。Claude Code 适用于希望进行智能编码但不愿一直待在终端中的工程师。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Deployment controls",
+      "chinese": "部署控制"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "Deploying Claude Desktop organization-wide means working within the systems you already have.",
+      "chinese": "在整个组织范围内部署 Claude Desktop 意味着在您现有系统内进行工作。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "Sign in like any work app. Employees use the same work account they use for everything else: IAM Identity Center, Workforce Identity Federation, Microsoft Entra ID, or any OIDC provider like Okta. No shared keys to rotate, no cloud credentials on end-user machines.",
+      "chinese": "像任何工作应用一样登录。员工使用与其他所有工具相同的工作账户：IAM Identity Center、Workforce Identity Federation、Microsoft Entra ID 或任何 OIDC 提供商（如 Okta）。无需轮换共享密钥，终端用户机器上无需云凭证。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "Deploy like any app you already manage. Export policy templates from the setup UI and push them through Intune, GPO, or Jamf. An offline installer covers air-gapped environments.",
+      "chinese": "像管理任何已有应用一样部署。从设置界面导出策略模板，通过 Intune、GPO 或 Jamf 推送。离线安装程序支持气隙环境。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "Know it works before anyone sees it. Test every connector, confirm which Claude models your provider serves, and verify the connection, all before rollout. A model guard keeps routing on Claude, including in GovCloud, even if a setting is misconfigured.",
+      "chinese": "在任何人看到之前确认其正常运行。在推广之前测试每个 connector，确认您的提供商提供哪些 Claude 模型，并验证连接。模型防护确保路由始终保持在 Claude（包括 GovCloud），即使设置配置错误也能保证。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "Start small, expand as adoption grows. Chat, Claude Cowork, and Claude Code each have their own policy key, so you can give non-technical teams chat and Claude Cowork, engineering Claude Code, and then broaden access as teams adopt each surface. Your hard-deny rules apply across every tab.",
+      "chinese": "从小范围开始，随着采用率增长逐步扩展。Chat、Claude Cowork 和 Claude Code 各有自己的策略密钥，因此您可以向非技术团队提供 Chat 和 Claude Cowork，向工程团队提供 Claude Code，然后随着各团队采用相应界面逐步扩大访问权限。硬性拒绝规则适用于所有标签页。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "Bring Claude to where the work lives. A Microsoft 365 connector gives Claude access to mail and documents through your own Entra app, with tenant allowlisting and beta support for GCC High/DoD endpoints. For the strictest residency requirements, use our local connector, and the connection stays between the device and Microsoft.",
+      "chinese": "将 Claude 带到工作所在之处。Microsoft 365 connector 通过您自己的 Entra 应用为 Claude 提供邮件和文档访问权限，支持租户白名单以及 GCC High/DoD 端点的 beta 支持。对于最严格的驻留要求，请使用我们的本地 connector，连接仅保持在设备和 Microsoft 之间。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "\"We rolled out Claude Desktop fast through our existing cloud environment — no separate vendor contract. Our own LLM Gateway let one team deploy it to hundreds of users worldwide, with no heavy infrastructure build-out.\" — Sarang Oh, Analytics/AI Team Leader, Hanwha Solutions",
+      "chinese": "\"我们通过现有的云环境快速部署了 Claude Desktop——无需单独的供应商合同。我们自己的 LLM Gateway 让一个团队将其部署到全球数百用户，无需繁重的基础设施建设。\"——韩华解决方案（Hanwha Solutions）分析/AI 团队负责人 Sarang Oh"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Getting started",
+      "chinese": "开始使用"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "For admins, the deployment guide walks through SSO, policy templates, and pre-rollout validation. Or contact your account team and we'll help you plan the rollout.",
+      "chinese": "对于管理员，部署指南介绍了 SSO、策略模板和预部署验证的步骤。或联系您的客户团队，我们将帮助您规划部署。"
+    }
+  ],
+  "warnings": []
+}

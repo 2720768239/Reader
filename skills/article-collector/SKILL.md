@@ -50,7 +50,7 @@ Field rules:
 - `title` — required, original title.
 - `sourceUrl` — required, the original article URL.
 - `category` — required, short stable label (e.g. `Product announcements`, `Engineering`, `Research`, `Security`).
-- `product` — **required**. The product this belongs to (e.g. `Claude Code`, `Claude Platform`, `Claude Managed Agents`, `API`, `Claude.ai`). If genuinely none, use `General`.
+- `product` — **required**. One of: `API`, `Claude`, `Claude Code`, `Claude Cowork`, `Claude Design`, `Claude Enterprise`, `Claude Managed Agents`, `Claude Platform`.
 - `preview` — required, English. Prefer the first meaningful English paragraph.
 - `blocks` — required, the renderable body.
 - `warnings` — usually `[]`. Add an entry only for known content loss (skipped table, code block).

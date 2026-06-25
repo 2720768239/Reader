@@ -1,0 +1,250 @@
+{
+  "id": "20260618-02",
+  "title": "Steering Claude Code: CLAUDE.md files, skills, hooks, rules, subagents and more",
+  "sourceUrl": "https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more",
+  "category": "Claude Code",
+  "product": "Claude Code",
+  "preview": "There are seven methods for instructing Claude's behavior: CLAUDE.md files, rules, skills, subagents, hooks, output styles, and appending the system prompt.",
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Seven methods for delivering instructions",
+      "chinese": "传递指令的七种方法"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-1",
+      "english": "Claude is built to work the way you work, and in Claude Code you can customize it.",
+      "chinese": "Claude 致力于按照你的方式工作，在 Claude Code 中你可以对其进行自定义。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-2",
+      "english": "There are seven methods for instructing Claude's behavior: CLAUDE.md files, rules, skills, subagents, hooks, output styles, and appending the system prompt.",
+      "chinese": "有七种方法可以指导 Claude 的行为：CLAUDE.md 文件、规则、Skills、子智能体、钩子、输出样式和追加系统提示。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-3",
+      "english": "Each method controls: when an instruction loads into context; whether it persists through long sessions (compaction behavior); and how much authority it carries.",
+      "chinese": "每种方法控制：指令何时加载到上下文中；是否在长会话中持续存在（压缩行为）；以及它承载多少权威性。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-4",
+      "english": "The table below provides a quick summary of key differences across each method while the post provides additional detail and decision framework for determining where each of your Claude instructions belongs.",
+      "chinese": "下表提供了每种方法关键差异的快速总结，而文章则提供了额外的细节和决策框架，用于确定每条 Claude 指令应归属何处。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "CLAUDE.md files",
+      "chinese": "CLAUDE.md 文件"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-5",
+      "english": "CLAUDE.md is a markdown file at the root of your project. It loads into context at session start and stays there for the entire session.",
+      "chinese": "CLAUDE.md 是项目根目录下的一个 markdown 文件。它在会话开始时加载到上下文中，并在整个会话期间保留。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-6",
+      "english": "Build commands, directory layout, monorepo structure, coding conventions, and team norms all fit naturally here.",
+      "chinese": "构建命令、目录布局、monorepo 结构、编码规范和团队规范都自然地适合放在这里。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-7",
+      "english": "There are two types, and they load differently: Always loaded - root CLAUDE.md files; On-demand - CLAUDE.md files in subdirectories.",
+      "chinese": "有两种类型，它们的加载方式不同：始终加载——根目录 CLAUDE.md 文件；按需加载——子目录中的 CLAUDE.md 文件。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-8",
+      "english": "In a shared repository, CLAUDE.md grows the way any unowned config file does: every team appends its own instructions and nothing gets deleted.",
+      "chinese": "在共享仓库中，CLAUDE.md 会像任何无主的配置文件一样增长：每个团队都会追加自己的指令，而没有任何内容会被删除。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-9",
+      "english": "Tip: Keep CLAUDE.md under 200 lines, give it an owner, and review changes to it like code.",
+      "chinese": "提示：保持 CLAUDE.md 在 200 行以内，指定所有者，并像审查代码一样审查对其的更改。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Rules",
+      "chinese": "规则"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-10",
+      "english": "Rules are markdown files in .claude/rules/ that give Claude specific constraints or conventions.",
+      "chinese": "规则是 .claude/rules/ 中的 markdown 文件，为 Claude 提供特定的约束或约定。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-11",
+      "english": "Unscoped rules behave like CLAUDE.md in that they are always loaded at session start and get re-injected on compaction.",
+      "chinese": "无作用域规则的行为类似于 CLAUDE.md，它们总是在会话开始时加载，并在压缩时重新注入。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-12",
+      "english": "Path-scoped rules allow you to load rule instructions only when they are relevant by adding a paths field.",
+      "chinese": "路径作用域规则允许你仅当相关时才加载规则指令，通过添加 paths 字段来实现。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Skills",
+      "chinese": "Skills"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-13",
+      "english": "Skills live in .claude/skills/ as folders of instructions, scripts, and resources that Claude loads dynamically.",
+      "chinese": "Skills 作为指令、脚本和资源的文件夹位于 .claude/skills/ 中，由 Claude 动态加载。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-14",
+      "english": "Only the name and description load at session start; the full body loads when Claude invokes the skill.",
+      "chinese": "只有名称和描述在会话开始时加载；完整内容在 Claude 调用该 Skill 时加载。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-15",
+      "english": "Tip: Instructions that are procedural, like deploy workflows, release checklists, or review processes, belong in a skill rather than in CLAUDE.md.",
+      "chinese": "提示：流程性的指令，如部署工作流、发布清单或审查流程，应放在 Skill 中而非 CLAUDE.md 中。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Subagents",
+      "chinese": "子智能体"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-16",
+      "english": "Subagents are markdown files in .claude/agents/ that define isolated assistants for specific side tasks.",
+      "chinese": "子智能体是 .claude/agents/ 中的 markdown 文件，为特定辅助任务定义独立的助手。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-17",
+      "english": "Subagents are similar to skills in that the name, description, and tool list load at session start, but the larger context within the body of the agent does not auto-invoke.",
+      "chinese": "子智能体与 Skills 类似，名称、描述和工具列表在会话开始时加载，但 agent 主体中的较大上下文不会自动调用。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-18",
+      "english": "The subagent then runs in its own fresh context window, and the only thing that returns to your main session is the subagent's final message plus metadata.",
+      "chinese": "子智能体然后在其自己的全新上下文窗口中运行，返回主会话的只有子智能体的最终消息及其元数据。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-19",
+      "english": "Tip: Use a subagent when a side task like deep search, a log analysis pass, or a dependency audit would clutter your main conversation.",
+      "chinese": "提示：当深度搜索、日志分析或依赖审计等辅助任务会使主会话变得杂乱时，使用子智能体。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Hooks",
+      "chinese": "钩子"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-20",
+      "english": "Hooks are user-defined commands, HTTP endpoints, or LLM prompts that provide more deterministic control over Claude's behavior.",
+      "chinese": "钩子是用户定义的命令、HTTP 端点或 LLM 提示，用于对 Claude 的行为提供更确定性的控制。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-21",
+      "english": "You register hooks in settings.json, managed policy settings, or skill/agent frontmatter.",
+      "chinese": "你可以在 settings.json、托管策略设置或 skill/agent 前置元数据中注册钩子。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-22",
+      "english": "Tip: Use hooks for anything that should happen deterministically: running linters after edits, posting to Slack on completion, or blocking specific commands.",
+      "chinese": "提示：使用钩子处理任何应该确定性地发生的事情：编辑后运行 linter、完成后发布到 Slack 或阻止特定命令。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Output styles",
+      "chinese": "输出样式"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-23",
+      "english": "Output styles are files in .claude/output-styles/ that inject instructions into the system prompt.",
+      "chinese": "输出样式是 .claude/output-styles/ 中的文件，用于向系统提示注入指令。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-24",
+      "english": "Because they sit in the system prompt, output styles carry the highest instruction-following weight.",
+      "chinese": "由于它们位于系统提示中，输出样式具有最高的指令遵循权重。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-25",
+      "english": "Tip: Before writing a custom output style, check the built-in styles. Proactive, Explanatory, and Learning cover the most common needs.",
+      "chinese": "提示：在编写自定义输出样式之前，请检查内置样式。Proactive、Explanatory 和 Learning 涵盖了最常见的需求。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Appending the system prompt",
+      "chinese": "追加系统提示"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-26",
+      "english": "An alternative to modifying output styles is the append-system-prompt flag. It is only additive to the original system prompt.",
+      "chinese": "修改输出样式的替代方案是 append-system-prompt 标志。它仅对原始系统提示进行追加。"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-27",
+      "english": "Tip: Appending the system prompt is best for adding specific coding standards, output formatting, or domain-specific knowledge.",
+      "chinese": "提示：追加系统提示最适合添加特定的编码标准、输出格式或领域特定知识。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Quick tips for Claude Code customization",
+      "chinese": "Claude Code 自定义快速提示"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-28",
+      "english": "If you find yourself doing one of the following, you may want to consider an alternative location for your instructions.",
+      "chinese": "如果你发现自己做了以下某件事，你可能需要考虑将指令放在其他地方。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "english": "Getting started",
+      "chinese": "开始使用"
+    },
+    {
+      "type": "paragraph",
+      "id": "p-29",
+      "english": "You can find more tips and patterns for getting the most out of Claude Code in our best practices for Claude Code documentation.",
+      "chinese": "你可以在我们的 Claude Code 最佳实践文档中找到更多关于充分利用 Claude Code 的技巧和模式。"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "table-skipped",
+      "message": "Skipped comparison table of 7 methods in 'steering-claude-code-skills-hooks-rules-subagents-and-more'."
+    }
+  ]
+}
