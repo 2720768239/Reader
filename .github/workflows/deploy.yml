@@ -41,10 +41,11 @@ jobs:
           SSH_HOST: ${{ secrets.ALIYUN_HOST }}
           SSH_PORT: ${{ secrets.ALIYUN_PORT }}
         run: |
+          PORT="${SSH_PORT:-22}"
           mkdir -p ~/.ssh
           printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p "$SSH_PORT" "$SSH_HOST" >> ~/.ssh/known_hosts
+          ssh-keyscan -p "$PORT" "$SSH_HOST" >> ~/.ssh/known_hosts
 
       - name: Upload dist package
         env:
@@ -52,7 +53,8 @@ jobs:
           SSH_PORT: ${{ secrets.ALIYUN_PORT }}
           SSH_USER: ${{ secrets.ALIYUN_USER }}
         run: |
-          scp -P "$SSH_PORT" reader-dist.tar.gz "$SSH_USER@$SSH_HOST:/tmp/reader-dist.tar.gz"
+          PORT="${SSH_PORT:-22}"
+          scp -P "$PORT" reader-dist.tar.gz "$SSH_USER@$SSH_HOST:/tmp/reader-dist.tar.gz"
 
       - name: Deploy on server
         env:
@@ -60,7 +62,8 @@ jobs:
           SSH_PORT: ${{ secrets.ALIYUN_PORT }}
           SSH_USER: ${{ secrets.ALIYUN_USER }}
         run: |
-          ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" '
+          PORT="${SSH_PORT:-22}"
+          ssh -p "$PORT" "$SSH_USER@$SSH_HOST" '
             set -euo pipefail
             mkdir -p /var/www/reader
             rm -rf /tmp/reader-dist
