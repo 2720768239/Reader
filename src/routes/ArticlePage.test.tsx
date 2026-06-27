@@ -67,12 +67,39 @@ describe("ArticlePage", () => {
 
     const articleShell = container.querySelector(".page-shell--reader");
     expect(articleShell).toBeInTheDocument();
-    expect(articleShell).toHaveClass("reader-font-md", "reader-spacing-relaxed");
+    expect(articleShell).toHaveStyle({
+      "--reader-font-size": "1.08rem",
+      "--reader-line-height": "1.95",
+      "--reader-paragraph-gap": "1.25rem"
+    });
 
     await user.click(screen.getByRole("button", { name: "A+" }));
+    await user.click(screen.getByRole("button", { name: "A+" }));
+
+    expect(articleShell).toHaveStyle({
+      "--reader-font-size": "1.24rem"
+    });
+
+    await user.click(screen.getByRole("button", { name: "A" }));
+
+    expect(articleShell).toHaveStyle({
+      "--reader-font-size": "1.08rem"
+    });
+
+    await user.click(screen.getByRole("button", { name: "Wide" }));
     await user.click(screen.getByRole("button", { name: "Wide" }));
 
-    expect(articleShell).toHaveClass("reader-font-lg", "reader-spacing-airy");
+    expect(articleShell).toHaveStyle({
+      "--reader-line-height": "2.19",
+      "--reader-paragraph-gap": "1.61rem"
+    });
+
+    await user.click(screen.getByRole("button", { name: "Comfort" }));
+
+    expect(articleShell).toHaveStyle({
+      "--reader-line-height": "1.95",
+      "--reader-paragraph-gap": "1.25rem"
+    });
 
     await user.click(screen.getByRole("button", { name: /close reading settings/i }));
 

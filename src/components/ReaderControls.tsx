@@ -1,25 +1,21 @@
-import type {
-  ReaderFontSize,
-  ReaderPreferences,
-  ReaderSpacing
-} from "../lib/readerPreferences";
+import type { ReaderPreferences } from "../lib/readerPreferences";
 
 type ReaderControlsProps = {
-  onFontSizeChange: (fontSize: ReaderFontSize) => void;
-  onSpacingChange: (spacing: ReaderSpacing) => void;
+  onFontSizeChange: (delta: -1 | 0 | 1) => void;
+  onSpacingChange: (delta: -1 | 0 | 1) => void;
   preferences: ReaderPreferences;
 };
 
-const FONT_SIZE_OPTIONS: Array<{ label: string; value: ReaderFontSize }> = [
-  { label: "A-", value: "sm" },
-  { label: "A", value: "md" },
-  { label: "A+", value: "lg" }
+const FONT_SIZE_OPTIONS: Array<{ delta: -1 | 0 | 1; label: string }> = [
+  { label: "A-", delta: -1 },
+  { label: "A", delta: 0 },
+  { label: "A+", delta: 1 }
 ];
 
-const SPACING_OPTIONS: Array<{ label: string; value: ReaderSpacing }> = [
-  { label: "Tight", value: "compact" },
-  { label: "Comfort", value: "relaxed" },
-  { label: "Wide", value: "airy" }
+const SPACING_OPTIONS: Array<{ delta: -1 | 0 | 1; label: string }> = [
+  { label: "Tight", delta: -1 },
+  { label: "Comfort", delta: 0 },
+  { label: "Wide", delta: 1 }
 ];
 
 export default function ReaderControls({
@@ -34,10 +30,10 @@ export default function ReaderControls({
         <div className="reader-controls__options">
           {FONT_SIZE_OPTIONS.map((option) => (
             <button
-              aria-pressed={preferences.fontSize === option.value}
+              aria-pressed={option.delta === 0 && preferences.fontSizeLevel === 0}
               className="reader-chip"
-              key={option.value}
-              onClick={() => onFontSizeChange(option.value)}
+              key={option.label}
+              onClick={() => onFontSizeChange(option.delta)}
               type="button"
             >
               {option.label}
@@ -51,10 +47,10 @@ export default function ReaderControls({
         <div className="reader-controls__options">
           {SPACING_OPTIONS.map((option) => (
             <button
-              aria-pressed={preferences.spacing === option.value}
+              aria-pressed={option.delta === 0 && preferences.spacingLevel === 0}
               className="reader-chip"
-              key={option.value}
-              onClick={() => onSpacingChange(option.value)}
+              key={option.label}
+              onClick={() => onSpacingChange(option.delta)}
               type="button"
             >
               {option.label}

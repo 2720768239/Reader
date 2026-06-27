@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { type CSSProperties, useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import ArticleContent from "../components/ArticleContent";
@@ -13,6 +13,50 @@ import {
 } from "../lib/readerPreferences";
 import { loadArticleById } from "../lib/content/loaders";
 import type { ArticleRecord } from "../lib/content/types";
+
+const DEFAULT_READER_FONT_SIZE_REM = 1.08;
+const READER_FONT_SIZE_STEP_REM = 0.08;
+const MIN_READER_FONT_SIZE_REM = 0.72;
+const DEFAULT_READER_LINE_HEIGHT = 1.95;
+const READER_LINE_HEIGHT_STEP = 0.12;
+const MIN_READER_LINE_HEIGHT = 1.45;
+const DEFAULT_READER_PARAGRAPH_GAP_REM = 1.25;
+const READER_PARAGRAPH_GAP_STEP_REM = 0.18;
+const MIN_READER_PARAGRAPH_GAP_REM = 0.65;
+
+type ReaderStyle = CSSProperties &
+  Record<
+    "--reader-font-size" | "--reader-line-height" | "--reader-paragraph-gap",
+    string
+  >;
+
+function formatCssNumber(value: number): string {
+  return Number(value.toFixed(2)).toString();
+}
+
+function getReaderStyle(preferences: ReaderPreferences): ReaderStyle {
+  const fontSize = Math.max(
+    MIN_READER_FONT_SIZE_REM,
+    DEFAULT_READER_FONT_SIZE_REM +
+      preferences.fontSizeLevel * READER_FONT_SIZE_STEP_REM
+  );
+  const lineHeight = Math.max(
+    MIN_READER_LINE_HEIGHT,
+    DEFAULT_READER_LINE_HEIGHT +
+      preferences.spacingLevel * READER_LINE_HEIGHT_STEP
+  );
+  const paragraphGap = Math.max(
+    MIN_READER_PARAGRAPH_GAP_REM,
+    DEFAULT_READER_PARAGRAPH_GAP_REM +
+      preferences.spacingLevel * READER_PARAGRAPH_GAP_STEP_REM
+  );
+
+  return {
+    "--reader-font-size": `${formatCssNumber(fontSize)}rem`,
+    "--reader-line-height": formatCssNumber(lineHeight),
+    "--reader-paragraph-gap": `${formatCssNumber(paragraphGap)}rem`
+  };
+}
 
 export default function ArticlePage() {
   const { id = "" } = useParams();
@@ -81,9 +125,12 @@ export default function ArticlePage() {
     return <main className="page-shell">Loading...</main>;
   }
 
+  const readerStyle = getReaderStyle(preferences);
+
   return (
     <main
-      className={`page-shell page-shell--reader reader-font-${preferences.fontSize} reader-spacing-${preferences.spacing}`}
+      className="page-shell page-shell--reader"
+      style={readerStyle}
     >
       {isControlsOpen ? (
         <button
@@ -131,16 +178,18 @@ export default function ArticlePage() {
         >
           {isControlsOpen ? (
             <ReaderControls
-              onFontSizeChange={(fontSize) => {
+              onFontSizeChange={(delta) => {
                 setPreferences((current) => ({
                   ...current,
-                  fontSize
+                  fontSizeLevel:
+                    delta === 0 ? 0 : current.fontSizeLevel + delta
                 }));
               }}
-              onSpacingChange={(spacing) => {
+              onSpacingChange={(delta) => {
                 setPreferences((current) => ({
                   ...current,
-                  spacing
+                  spacingLevel:
+                    delta === 0 ? 0 : current.spacingLevel + delta
                 }));
               }}
               preferences={preferences}

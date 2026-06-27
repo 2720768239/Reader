@@ -1,24 +1,40 @@
-export type ReaderFontSize = "sm" | "md" | "lg";
-export type ReaderSpacing = "compact" | "relaxed" | "airy";
-
 export type ReaderPreferences = {
-  fontSize: ReaderFontSize;
-  spacing: ReaderSpacing;
+  fontSizeLevel: number;
+  spacingLevel: number;
 };
 
 const STORAGE_KEY = "reader-preferences";
 
 const DEFAULT_PREFERENCES: ReaderPreferences = {
-  fontSize: "md",
-  spacing: "relaxed"
+  fontSizeLevel: 0,
+  spacingLevel: 0
 };
 
-function isFontSize(value: unknown): value is ReaderFontSize {
-  return value === "sm" || value === "md" || value === "lg";
+const LEGACY_FONT_SIZE_LEVELS = {
+  sm: -1,
+  md: 0,
+  lg: 1
+} as const;
+
+const LEGACY_SPACING_LEVELS = {
+  compact: -1,
+  relaxed: 0,
+  airy: 1
+} as const;
+
+function isReaderLevel(value: unknown): value is number {
+  return typeof value === "number" && Number.isFinite(value);
 }
 
-function isSpacing(value: unknown): value is ReaderSpacing {
-  return value === "compact" || value === "relaxed" || value === "airy";
+function readLegacyLevel<T extends Record<string, number>>(
+  value: unknown,
+  legacyLevels: T
+): number | undefined {
+  if (typeof value !== "string") {
+    return undefined;
+  }
+
+  return legacyLevels[value as keyof T];
 }
 
 export function getDefaultReaderPreferences(): ReaderPreferences {
@@ -33,11 +49,25 @@ export function readStoredReaderPreferences(): ReaderPreferences {
   }
 
   try {
-    const parsed = JSON.parse(raw) as Partial<ReaderPreferences>;
+    const parsed = JSON.parse(raw) as Partial<
+      ReaderPreferences & { fontSize: string; spacing: string }
+    >;
+    const legacyFontSizeLevel = readLegacyLevel(
+      parsed.fontSize,
+      LEGACY_FONT_SIZE_LEVELS
+    );
+    const legacySpacingLevel = readLegacyLevel(
+      parsed.spacing,
+      LEGACY_SPACING_LEVELS
+    );
 
     return {
-      fontSize: isFontSize(parsed.fontSize) ? parsed.fontSize : DEFAULT_PREFERENCES.fontSize,
-      spacing: isSpacing(parsed.spacing) ? parsed.spacing : DEFAULT_PREFERENCES.spacing
+      fontSizeLevel: isReaderLevel(parsed.fontSizeLevel)
+        ? parsed.fontSizeLevel
+        : legacyFontSizeLevel ?? DEFAULT_PREFERENCES.fontSizeLevel,
+      spacingLevel: isReaderLevel(parsed.spacingLevel)
+        ? parsed.spacingLevel
+        : legacySpacingLevel ?? DEFAULT_PREFERENCES.spacingLevel
     };
   } catch {
     return DEFAULT_PREFERENCES;
